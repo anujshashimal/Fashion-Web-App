@@ -4,9 +4,26 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const app = express()
 
-app.use(bodyParser.json());
+app.use(bodyParser());
 
-//db connection
+
+//connect to mongo db
+mongoose.connect(conn.database,{useNewUrlParser:true,useCreateIndex:true});
+const connection = mongoose.connection;
+connection.once('open',()=>{
+  console.log("Mongodb database connection established successfully");
+})
+//
+
+
+//products section
+const ProductRouter = require('./routes/Products');
+app.use('/products',ProductRouter);
+//
+
+
+
+//Server connection
 app.listen(conn.port, (err)=>{
     if(err){
       console.error(err);
