@@ -1,37 +1,14 @@
 const router = require('express').Router();
-const multer = require('multer');
+const upload  = require('../Uploadmiddleware/upload');
+const ProductControlller = require('../controllers/Product');
 
-let  Product = require('../models/Product');
 
-router.route('/:id').get((req,res)=>{
-    Product.find()
-    .then(Products => res.json(Products))
-    .catch(err=>res.status(400).json("Error:"+err))
-});
+router.get('/:id',ProductControlller.Find_Product);       // find the products
 
-router.route('/add').post((req,res)=>{
-    const productid = req.body.productid;
-    const description = req.body.description;
-    const  maincategory = req.body.maincategory;
-    const  subcategory = req.body.subcategory;
-    const  price = Number(req.body.price);
-    const  quantity = Number(req.body.quantity);
-    const stockmanagerid = req.body.stockmanagerid;
+router.post('/add',upload.single('image'),ProductControlller.Store_Product);     //  Add the product
 
-   const  newProduct = new Product({
-    productid,
-    description,
-    maincategory,
-    subcategory,
-    price,
-    quantity,
-    stockmanagerid
-   });
+router.post('/update/:id',upload.single('image'),ProductControlller.Update_Product); // update  the product
 
-   newProduct.save()
-   .then(()=>res.json('Product Added!'))
-   .catch(err=>res.status(400).json("Error:"+err));
-
-});
+router.delete('/delete/:id',ProductControlller.Delete_Product);    // Delete Product
 
 module.exports = router;

@@ -31,11 +31,14 @@ const Product_Schema  =  mongoose.Schema({
         type : Number,
         required :true
     },
-    
+    image :{
+        type: String,
+        required :true
+     },
     stockmanagerid:{
         type :String,
         required :true,
-    }
+    },
 
 });
 
