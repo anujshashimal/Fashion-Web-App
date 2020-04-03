@@ -1,4 +1,3 @@
-const ProductRouter = require('./routes/Products');
 const Category = require('./routes/Category');
 const StoreManager = require('./routes/StoreManager');
 
@@ -6,9 +5,11 @@ const conn = require('./db/connection')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const express =  require('express')
-const app = express()
+const app = express();
 
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json());
+
 
 
 //connect to mongo db
@@ -21,7 +22,9 @@ connection.once('open',()=>{
 
 
 //products section
+const ProductRouter = require('./routes/Products');
  app.use('/products',ProductRouter);
+ app.use('/uploads',express.static('uploads'));
 // //
 //
 // //Category section
