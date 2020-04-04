@@ -26,4 +26,4 @@ router.route('/addCategory').post((req,res)=>{
 
 });
 
-module.exports = router;
+module.exports = router; //exports category
