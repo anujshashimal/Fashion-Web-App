@@ -11,4 +11,4 @@ router.post('/update/:id',upload.single('image'),ProductControlller.Update_Produ
 
 router.delete('/delete/:productid',ProductControlller.Delete_Product);    // Delete Product
 
-module.exports = router;
+module.exports = router;  //exports
