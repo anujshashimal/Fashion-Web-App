@@ -51,3 +51,26 @@ app.listen(conn.port, (err)=>{
   });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const Cart = require('./routes/Cart');
+app.use('/cart',Cart);
+
