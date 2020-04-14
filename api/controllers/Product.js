@@ -3,7 +3,8 @@ let  Product = require('../models/Product');
 
 //find   Store Manager  Products
  exports.Find_Product = (req,res,next)=>{
-    Product.findById(req.params.id)
+    Product.find({
+      'stockmanagerid': req.params.stockmanagerid})
     .then(Products => res.json(Products))
     .catch(err=>res.status(400).json("Error:"+err))
 
@@ -70,7 +71,7 @@ let  Product = require('../models/Product');
 
 exports.Delete_Product = (req,res,next)=>{
 
-       Product.findByIdAndDelete(req.params.id)
+       Product.findOneAndDelete({'productid':req.params.productid})
        .then(()=>res.json('Product Deleted'))
        .catch(err=>res.status(400).json('Error'+err))
 
