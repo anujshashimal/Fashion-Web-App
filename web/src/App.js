@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch} from "react-router-dom";
-import Header from "./Components/CommonComponents/header.js";import Footer from './Components/CommonComponents/footer';
+import Header from "./Components/CommonComponents/header.js";import Footer from './Components/CommonComponents/footer'; import logo from './img/logo.gif'
 // {/*Lahiru Import Here*/}
 //
 //
@@ -159,7 +159,7 @@ class App extends React.Component {
             <div>
                 <Header />
                 <br/><br/><br/>
-<p align="center"><img src="img/logo.gif"width="20%"/></p>
+                <p align="center"><img src={logo} width="20%"/></p>
                 <BrowserRouter>
                     <Switch>
                         {/*Access authorized for - (Everyone)*/}
