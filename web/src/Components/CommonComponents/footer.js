@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-export default class header extends Component{
+export default class footer extends Component{
     render() {
         return(
             <div>
@@ -8,7 +8,11 @@ export default class header extends Component{
 
     
     <div class="container text-center text-md-left">
+  
+      
       <div class="row text-center text-md-left mt-3 pb-3">
+  
+        
         <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
           <h6 class="text-uppercase mb-4 font-weight-bold">Online Shopping Cart System for a Fashion Store </h6>
           <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,

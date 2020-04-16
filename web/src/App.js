@@ -158,6 +158,8 @@ class App extends React.Component {
         return (
             <div>
                 <Header />
+                <br/><br/><br/>
+<p align="center"><img src="img/logo.gif"width="20%"/></p>
                 <BrowserRouter>
                     <Switch>
                         {/*Access authorized for - (Everyone)*/}
