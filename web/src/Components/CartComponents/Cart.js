@@ -16,7 +16,7 @@ const Cart = (props) =>{
         <div>
 
             <header>
-            <p>Hello I'm Cart</p>
+            <p>Hello I'm Cartt</p>
             <button type="button" className="btn btn-primary"onClick={addToBasket}>Add to Cart</button>
             <h1> Current Numbers in Cart {numberBasket}</h1>
         </header>
