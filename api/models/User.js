@@ -1,12 +1,43 @@
-console.log('Add one userr')
-console.log('Add one userr')
-console.log('Add one userr')
-console.log('Mm Meka add kara')
+const mongoose = require('mongoose');
 
-console.log('Add one')
-console.log('anuj')
-console.log('Vishaka')
-console.log('Add two')
+const Schema = mongoose.Schema;
 
+const User_Schema  =  mongoose.Schema({
+
+    userid : {
+        type :String,
+        required : true,
+        unique :true,
+        trim :true
+    },
+    username : {
+        type : String,
+        required : true
+    },
+    email :{
+        type: String,
+        required:true
+    },
+    address :{
+        type: String,
+        required:true
+    },
+    contactno :{
+        type: Number,
+        required:true
+    },
+    gender :{
+        type: String,
+        required:true
+    },
+    password :{
+        type: String,
+        required:true
+    },
+});
+
+const User = mongoose.model('User',User_Schema);
+
+module.exports = User;
 
 

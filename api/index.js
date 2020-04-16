@@ -1,5 +1,6 @@
 const Category = require('./routes/Category');
 const StoreManager = require('./routes/StoreManager');
+const User = require('./routes/User');
 
 const conn = require('./db/connection')
 const bodyParser = require('body-parser')
@@ -35,6 +36,10 @@ const ProductRouter = require('./routes/Products');
  app.use('/storemanager',StoreManager);
 // //
 
+// //User section
+app.use('/user',User);
+// //
+
 
 
 //Server connection
@@ -45,4 +50,27 @@ app.listen(conn.port, (err)=>{
     console.log('Connected to port '+ conn.port)
   });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const Cart = require('./routes/Cart');
+app.use('/cart',Cart);
 
