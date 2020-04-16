@@ -5,6 +5,7 @@ function cart(){
     return (
         <header>
             <p>Hello I'm Cart</p>
+            <button type="button" className="btn btn-denger">Add to Cart</button>
         </header>
 
 
