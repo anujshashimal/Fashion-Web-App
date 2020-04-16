@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch} from "react-router-dom";
-
+import header from "./Components/CommonComponents/header.js";
 
 // {/*Lahiru Import Here*/}
 //
@@ -158,6 +158,7 @@ class App extends React.Component {
 
         return (
             <div>
+                
                 <BrowserRouter>
                     <Switch>
                         <Route path={'/'} exact component={sampleRoute}/>
