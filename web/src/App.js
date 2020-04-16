@@ -1,38 +1,33 @@
 import React , {Component} from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch} from "react-router-dom";
-// import store from './store';
-// import {Provider} from 'react-redux';
-
-{/*Lahiru Import Here*/}
 
 
-
-
-
-
-
-{/*Vishaka Import Here*/}
-
-
-
-
-
-
-
-
-{/*Ravindu Import Here*/}
-
-
-
-
-
-
-
-
-{/*Anuj Import Here*/}
-
-
+// {/*Lahiru Import Here*/}
+//
+//
+//
+//
+//
+// {/*Vishaka Import Here*/}
+//
+//
+//
+//
+//
+//
+//
+//
+// {/*Ravindu Import Here*/}
+//
+//
+//
+//
+//
+//
+//
+// {/*Anuj Import Here*/}
+import cart from './Components/CartComponents/Cart';
 
 
 
@@ -175,7 +170,7 @@ class App extends React.Component {
 
 
                         {/*Access authorized for - (Anuj)*/}
-
+                        <Route path = {'/cart'} exact component={cart} />
 
 
 
