@@ -1,8 +1,7 @@
 import React , {Component} from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch} from "react-router-dom";
-import header from "./Components/CommonComponents/header.js";
-
+import Header from "./Components/CommonComponents/header.js";import Footer from './Components/CommonComponents/footer';
 // {/*Lahiru Import Here*/}
 //
 //
@@ -158,13 +157,10 @@ class App extends React.Component {
 
         return (
             <div>
-                
+                <Header />
                 <BrowserRouter>
                     <Switch>
-                        <Route path={'/'} exact component={sampleRoute}/>
-
                         {/*Access authorized for - (Everyone)*/}
-
 
 
 
@@ -199,6 +195,7 @@ class App extends React.Component {
 
                     </Switch>
                 </BrowserRouter>
+                <Footer/>
             </div>
         );
     }

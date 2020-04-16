@@ -6,7 +6,6 @@ export default class header extends Component{
             <header>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark  deep-purple darken-1 scrolling-navbar">
-	
       <a class="navbar-brand" href="#"><strong>Faction Store</strong></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
