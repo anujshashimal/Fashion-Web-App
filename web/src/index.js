@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import reducer from './store'
+import stores from './store'
 import {Provider} from 'react-redux'
 import {createStore } from 'redux'
 
@@ -12,10 +12,8 @@ import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
 
 
-const store = createStore(reducer)
-
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={stores}>
     <App />
     </Provider>
   ,
