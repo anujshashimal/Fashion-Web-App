@@ -1,7 +1,7 @@
 import {combineReducers} from "redux";
-import backerReducers from './BasketReducers';
+import backetReducers from './BasketReducers';
 
 export default combineReducers({
-
+    basketState : backetReducers
 
 })
