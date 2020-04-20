@@ -28,6 +28,7 @@ const initialState = {
 export default (state = initialState, action) =>{
     switch(action.type) {
         case ADD_PRODUCT_TO_BACKET:
+<<<<<<< HEAD
             let addQuntity = { ...state.products[action.payload]}
             addQuntity.numbers += 1;
             addQuntity.incart = true;
@@ -41,6 +42,10 @@ export default (state = initialState, action) =>{
                     [action.payload]: addQuntity,
 
                 }
+=======
+            return {
+                backetNumbers: state.backetNumbers + 1
+>>>>>>> e3a68c0f16f2c54e547b679eb1af0a6ebcad8573
             }
 
         case GET_NUMBERS_IN_BASKET:
