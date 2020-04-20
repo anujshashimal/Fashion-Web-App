@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Switch} from "react-router-dom";
 import Header from "./Components/CommonComponents/header.js";import Footer from './Components/CommonComponents/footer'; import logo from './img/logo.gif'
 // {/*Lahiru Import Here*/}
-//
+    import MainProductPage from './Components/StoreManagerComponents/MainProduct'
 //
 //
 //
@@ -175,7 +175,7 @@ class App extends React.Component {
 
 
                         {/*Access authorized for - (Laka)*/}
-
+                        <Route  path = {'/Product'}  exact component={MainProductPage} />
 
 
 

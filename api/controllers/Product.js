@@ -15,12 +15,13 @@ let  Product = require('../models/Product');
 
  exports.Store_Product = (req,res,next)=>{
 
-    const productid = req.body.productid;
+    //const productid = req.body.productid;
     const description = req.body.description;
     const  maincategory = req.body.maincategory;
     const  subcategory = req.body.subcategory;
     const  price = Number(req.body.price);
     const  quantity = Number(req.body.quantity);
+    const  discount = Number(req.body.discount);
     const stockmanagerid = req.body.stockmanagerid;
 
    const  newProduct = new Product({
