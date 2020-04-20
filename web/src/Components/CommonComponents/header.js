@@ -1,7 +1,6 @@
-import React, {Component, useState} from 'react'; import {connect} from 'react-redux'; import {getNumbers} from "../../Actions/getActions";
+import React, {Component, useState} from 'react'; import {connect} from 'react-redux'; import {getNumbers} from "../../Actions/getActions";import{Link} from "react-router-dom";
 
 const header = (props) => {
-  console.log(props)
       return(
             <div>
             
@@ -30,7 +29,9 @@ const header = (props) => {
         </ul>
         <ul className="nav navbar-nav nav-flex-icons ml-auto"> <li className="nav-item"><a href="" className="nav-link waves-effect"><span className="badge red z-depth-1 mr-1"> 2 </span><i id="navbar-static-cart" alt="Cart" className="fas fa-list"></i><span className="sr-only"> Cart </span></a></li>
 		
-		 <li className="nav-item"><a href="" className="nav-link waves-effect"> <span className="badge red z-depth-1 mr-1"> {props.basketProps.backetNumbers} </span><i id="navbar-static-cart" alt="Cart" className="fas fa-shopping-cart"></i><span className="sr-only"> Cart </span></a></li>
+		 <li className="nav-item"><a href="" className="nav-link waves-effect"><Link to='/cartpage'> Click </Link>
+
+             <span className="badge red z-depth-1 mr-1"> {props.basketProps.backetNumbers} </span><i id="navbar-static-cart" alt="Cart" className="fas fa-shopping-cart"></i><span className="sr-only"> Cart </span></a></li>
 
         
         <li className="nav-item dropdown">
