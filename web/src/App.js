@@ -27,8 +27,8 @@ import Header from "./Components/CommonComponents/header.js";import Footer from 
 //
 // {/*Anuj Import Here*/}
 import cart from './Components/CartComponents/Cart';
-
-
+import cartpage from './Components/CartComponents/CartPage';
+import cartsample from './Components/CartComponents/CartSample';
 
 
 
@@ -157,10 +157,10 @@ class App extends React.Component {
 
         return (
             <div>
-                <Header />
-                <br/><br/><br/>
-                <p align="center"><img src={logo} width="20%"/></p>
                 <BrowserRouter>
+                    <Header />
+                    <br/><br/><br/>
+                    <p align="center"><img src={logo} width="20%"/></p>
                     <Switch>
                         {/*Access authorized for - (Everyone)*/}
 
@@ -170,8 +170,8 @@ class App extends React.Component {
 
                         {/*Access authorized for - (Anuj)*/}
                         <Route path = {'/cart'} exact component={cart} />
-
-
+                        <Route path = {'/cartpage'} exact component={cartpage} />
+                        <Route path = {'/cartsample'} exact component={cartsample} />
 
 
                         {/*Access authorized for - (Laka)*/}
@@ -196,8 +196,8 @@ class App extends React.Component {
 
 
                     </Switch>
+                    <Footer/>
                 </BrowserRouter>
-                <Footer/>
             </div>
         );
     }
