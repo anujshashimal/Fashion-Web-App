@@ -1,7 +1,9 @@
 import React , {Component} from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch} from "react-router-dom";
-import Header from "./Components/CommonComponents/header.js";import Footer from './Components/CommonComponents/footer'; import logo from './img/logo.gif'
+import Header from "./Components/CommonComponents/header.js";
+import Footer from './Components/CommonComponents/footer';
+import logo from './img/logo.gif'
 // {/*Lahiru Import Here*/}
     import MainProductPage from './Components/StoreManagerComponents/MainProduct'
 //
