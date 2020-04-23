@@ -11,6 +11,7 @@ import logo from './img/logo.gif'
 //
 //
 // {/*Vishaka Import Here*/}
+import MainCategory from './Components/CategoryComponents/mainCategory'
 //
 //
 //
@@ -191,6 +192,7 @@ class App extends React.Component {
 
 
                         {/*Access authorized for - (Vishaka)*/}
+                        <Route  path = {'/maincategory'}  exact component={MainCategory} />
 
 
 
