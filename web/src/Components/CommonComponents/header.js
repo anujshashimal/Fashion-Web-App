@@ -4,11 +4,8 @@ import React, {Component, useState} from 'react'; import {connect} from 'react-r
         console.log(props)
         return (
             <div>
-
                 <header>
-
-                    <nav
-                        className="navbar fixed-top navbar-expand-lg navbar-dark  deep-purple darken-1 scrolling-navbar">
+                    <nav className="navbar fixed-top navbar-expand-lg navbar-dark  deep-purple darken-1 scrolling-navbar">
                         <a className="navbar-brand" href="#"><strong>Faction Store</strong></a>
                         <button className="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent"
