@@ -1,7 +1,9 @@
 import React , {Component} from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch} from "react-router-dom";
-import Header from "./Components/CommonComponents/header.js";import Footer from './Components/CommonComponents/footer'; import logo from './img/logo.gif'
+import Header from "./Components/CommonComponents/header.js";
+import Footer from './Components/CommonComponents/footer';
+import logo from './img/logo.gif'
 // {/*Lahiru Import Here*/}
     import MainProductPage from './Components/StoreManagerComponents/MainProduct'
 //
@@ -9,6 +11,8 @@ import Header from "./Components/CommonComponents/header.js";import Footer from 
 //
 //
 // {/*Vishaka Import Here*/}
+import MainCategory from './Components/CategoryComponents/mainCategory';
+import AddStoreManager from './Components/AdminComponents/AddStoreManager'
 //
 //
 //
@@ -27,8 +31,8 @@ import Header from "./Components/CommonComponents/header.js";import Footer from 
 //
 // {/*Anuj Import Here*/}
 import cart from './Components/CartComponents/Cart';
-
-
+import cartpage from './Components/CartComponents/CartPage';
+import cartsample from './Components/CartComponents/CartSample';
 
 
 
@@ -157,10 +161,10 @@ class App extends React.Component {
 
         return (
             <div>
-                <Header />
-                <br/><br/><br/>
-                <p align="center"><img src={logo} width="20%"/></p>
                 <BrowserRouter>
+                    <Header />
+                    <br/><br/><br/>
+                    <p align="center"><img src={logo} width="20%"/></p>
                     <Switch>
                         {/*Access authorized for - (Everyone)*/}
 
@@ -170,8 +174,8 @@ class App extends React.Component {
 
                         {/*Access authorized for - (Anuj)*/}
                         <Route path = {'/cart'} exact component={cart} />
-
-
+                        <Route path = {'/cartpage'} exact component={cartpage} />
+                        <Route path = {'/cartsample'} exact component={cartsample} />
 
 
                         {/*Access authorized for - (Laka)*/}
@@ -189,6 +193,8 @@ class App extends React.Component {
 
 
                         {/*Access authorized for - (Vishaka)*/}
+                        <Route  path = {'/maincategory'}  exact component={MainCategory} />
+                        <Route  path = {'/addstoremanager'}  exact component={AddStoreManager} />
 
 
 
@@ -196,8 +202,8 @@ class App extends React.Component {
 
 
                     </Switch>
+                    <Footer/>
                 </BrowserRouter>
-                <Footer/>
             </div>
         );
     }
