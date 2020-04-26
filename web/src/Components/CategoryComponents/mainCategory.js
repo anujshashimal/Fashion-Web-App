@@ -7,6 +7,7 @@ import others from '../../img/others.jpg'
 import  './Styles/style.css';
 
 
+
 export class MainCategory extends Component {
     render() {
         return (
@@ -44,7 +45,7 @@ export class MainCategory extends Component {
                                                 <img class="card-img-top" src={women} alt="Card image cap"/>
 
                                                 <a href="#!" >
-                                                    <div class="mask rgba-white-slight"></div>
+                                                    <div class="mask rgba-white-slight "></div>
                                                 </a>
                                             </div>
                                         </div>
@@ -57,7 +58,7 @@ export class MainCategory extends Component {
 
                                             <p class="card-text">Hey Sir, To add subcategories under the women category.</p>
 
-                                            <a href="#" class="btn btn-primary">Women</a>
+                                            <a href="mainCategory.js" class="btn deep-pgit originurple darken-1" id="btnName">Women</a>
 
                                         </div>
 
@@ -87,7 +88,7 @@ export class MainCategory extends Component {
 
                                             <p className="card-text">Hey Sir, To add subcategories under the men category.</p>
 
-                                            <a href="#" className="btn btn-primary">Men</a>
+                                            <a href="#" className="btn deep-purple darken-1" id="btnName">Men</a>
 
                                         </div>
 
@@ -116,7 +117,7 @@ export class MainCategory extends Component {
 
                                             <p className="card-text">Hey Sir, To add subcategories under the kids category.</p>
 
-                                            <a href="#" className="btn btn-primary">Kids</a>
+                                            <a href="#" className="btn deep-purple darken-1" id="btnName">Kids</a>
 
                                         </div>
 
@@ -145,7 +146,7 @@ export class MainCategory extends Component {
 
                                             <p className="card-text">Hey Sir, To add subcategories under the other category. </p>
 
-                                            <a href="#" className="btn btn-primary">Others </a>
+                                            <a href="#" className="btn deep-purple darken-1" id="btnName">Others </a>
 
                                         </div>
 
@@ -174,4 +175,4 @@ export class MainCategory extends Component {
     }
 }
 
-export default AddCategory
+export default MainCategory

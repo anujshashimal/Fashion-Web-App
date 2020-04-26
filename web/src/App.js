@@ -204,6 +204,7 @@ class App extends React.Component {
 
 
                         {/*Access authorized for - (Vishaka)*/}
+                        <Route  path = {'/maincategory'}  exact component={MainCategory} />
 
 
 
