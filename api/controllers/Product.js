@@ -15,7 +15,6 @@ let  Product = require('../models/Product');
 
  exports.Store_Product = (req,res,next)=>{
 
-    //const productid = req.body.productid;
     const description = req.body.description;
     const  maincategory = req.body.maincategory;
     const  subcategory = req.body.subcategory;
@@ -25,12 +24,12 @@ let  Product = require('../models/Product');
     const stockmanagerid = req.body.stockmanagerid;
 
    const  newProduct = new Product({
-    productid,
     description,
     maincategory,
     subcategory,
     price,
     quantity,
+    discount,
     stockmanagerid,
    });
 
@@ -48,7 +47,7 @@ let  Product = require('../models/Product');
 
  exports.Update_Product = (req,res,next)=>{
        
-     Product.findByIdAndUpdate(req.params.productid)
+     Product.findByIdAndUpdate(req.params.stockmanagerid)
      .then(product =>{
          product.description = req.body.description;
          product.maincategory =  req.body.maincategory;
@@ -64,7 +63,7 @@ let  Product = require('../models/Product');
          .then(()=>res.json('Product Updated'))
          .catch(err=>res.status(400).json('Error'+err));
      })
-     .catch(err=> res.status(400).json('Err'+err));
+     .catch(err=> res.status(400).json('Err'+err))
      
  }
 
@@ -72,7 +71,7 @@ let  Product = require('../models/Product');
 
 exports.Delete_Product = (req,res,next)=>{
 
-       Product.findOneAndDelete({'productid':req.params.productid})
+       Product.findOneAndDelete({'stockmanagerid':req.params.stockmanagerid})
        .then(()=>res.json('Product Deleted'))
        .catch(err=>res.status(400).json('Error'+err))
 
