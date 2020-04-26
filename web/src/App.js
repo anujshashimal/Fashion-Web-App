@@ -6,6 +6,8 @@ import Footer from './Components/CommonComponents/footer';
 import logo from './img/logo.gif'
 // {/*Lahiru Import Here*/}
     import MainProductPage from './Components/StoreManagerComponents/MainProduct'
+
+   
 //
 //
 //
@@ -22,6 +24,10 @@ import AddStoreManager from './Components/AdminComponents/AddStoreManager'
 //
 //
 // {/*Ravindu Import Here*/}
+ //User ----------------------------------------------------------------
+ import Login from './Components/UserComponents/login';
+ import Register from './Components/UserComponents/Register'
+ //---------------------------------------------------------------------
 //
 //
 //
@@ -162,9 +168,9 @@ class App extends React.Component {
         return (
             <div>
                 <BrowserRouter>
-                    <Header />
+                    {/* <Header />
                     <br/><br/><br/>
-                    <p align="center"><img src={logo} width="20%"/></p>
+                    <p align="center"><img src={logo} width="20%"/></p> */}
                     <Switch>
                         {/*Access authorized for - (Everyone)*/}
 
@@ -186,6 +192,8 @@ class App extends React.Component {
 
 
                         {/*Access authorized for - (Ravindu)*/}
+                        <Route path = {'/Login'} exact component={Login}/> 
+                        <Route path = {'/Register'} exact component={Register}/>
 
 
 
@@ -202,7 +210,7 @@ class App extends React.Component {
 
 
                     </Switch>
-                    <Footer/>
+                    {/* <Footer/> */}
                 </BrowserRouter>
             </div>
         );
