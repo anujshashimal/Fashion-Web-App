@@ -11,6 +11,8 @@ import logo from './img/logo.gif'
 //
 //
 // {/*Vishaka Import Here*/}
+import MainCategory from './Components/CategoryComponents/mainCategory';
+import AddStoreManager from './Components/AdminComponents/AddStoreManager'
 //
 //
 //
@@ -191,6 +193,8 @@ class App extends React.Component {
 
 
                         {/*Access authorized for - (Vishaka)*/}
+                        <Route  path = {'/maincategory'}  exact component={MainCategory} />
+                        <Route  path = {'/addstoremanager'}  exact component={AddStoreManager} />
 
 
 

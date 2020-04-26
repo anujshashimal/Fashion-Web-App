@@ -1,0 +1,23 @@
+#btn{
+    color: aliceblue;
+    background-color: #5e35b1;
+    border:aliceblue solid 2px ;
+    border-radius: 10px;
+}
+#topic{
+
+    color: #5E35B1;
+    font-family: Arial;
+    font-size: 25px;
+
+}
+#btn:hover{
+
+
+    color:#5E35B1;
+    border-radius: 10px;
+    border:#5E35B1 solid 2px ;
+    font-weight:bold ;
+    background-color: aliceblue;
+
+}
