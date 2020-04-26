@@ -1,0 +1,16 @@
+.inner{
+    overflow: hidden;
+}
+.inner img{
+    transition: all 1.5s ease;
+}
+.inner:hover img{
+    transform: scale(1.5);
+}
+.container{
+    margin-top: 8%;
+}
+#btnName{
+    color: cornsilk;
+    border-radius: 10px;
+}
