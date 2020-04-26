@@ -1,27 +1,31 @@
 import React, {Component} from 'react';
-export default class header extends Component{
+export default class footer extends Component{
     render() {
         return(
             <div>
             
-            <footer class="page-footer fixed-bottem font-small mdb-color pt-4  deep-purple darken-1">
+            <footer className="page-footer fixed-bottem font-small mdb-color pt-4  deep-purple darken-1">
 
     
-    <div class="container text-center text-md-left">
-      <div class="row text-center text-md-left mt-3 pb-3">
-        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h6 class="text-uppercase mb-4 font-weight-bold">Online Shopping Cart System for a Fashion Store </h6>
+    <div className="container text-center text-md-left">
+  
+      
+      <div className="row text-center text-md-left mt-3 pb-3">
+  
+        
+        <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h6 className="text-uppercase mb-4 font-weight-bold">Online Shopping Cart System for a Fashion Store </h6>
           <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
             consectetur
             adipisicing elit.</p>
         </div>
         
   
-        <hr class="w-100 clearfix d-md-none"/>
+        <hr className="w-100 clearfix d-md-none"/>
   
         
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-          <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+        <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h6 className="text-uppercase mb-4 font-weight-bold">Products</h6>
           <p>
             <a href="#!">MDBootstrap</a>
           </p>
@@ -35,13 +39,13 @@ export default class header extends Component{
             <a href="#!">Bootstrap Angular</a>
           </p>
         </div>
+
+
+        <hr className="w-100 clearfix d-md-none"/>
+
         
-  
-        <hr class="w-100 clearfix d-md-none"/>
-  
-        
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-          <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+        <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h6 className="text-uppercase mb-4 font-weight-bold">Useful links</h6>
           <p>
             <a href="#!">Your Account</a>
           </p>
@@ -57,19 +61,19 @@ export default class header extends Component{
         </div>
   
         
-        <hr class="w-100 clearfix d-md-none"/>
+        <hr className="w-100 clearfix d-md-none"/>
   
         
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+        <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h6 className="text-uppercase mb-4 font-weight-bold">Contact</h6>
           <p>
-            <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+            <i className="fas fa-home mr-3"></i> New York, NY 10012, US</p>
           <p>
-            <i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
+            <i className="fas fa-envelope mr-3"></i> info@gmail.com</p>
           <p>
-            <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+            <i className="fas fa-phone mr-3"></i> + 01 234 567 88</p>
           <p>
-            <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            <i className="fas fa-print mr-3"></i> + 01 234 567 89</p>
         </div>
         
   
@@ -79,13 +83,13 @@ export default class header extends Component{
       <hr/>
   
       
-      <div class="row d-flex align-items-center">
+      <div className="row d-flex align-items-center">
   
         
-        <div class="col-md-7 col-lg-8">
+        <div className="col-md-7 col-lg-8">
   
           
-          <p class="text-center text-md-left">© 2020 Copyright:
+          <p className="text-center text-md-left">© 2020 Copyright:
             <a href="https://mdbootstrap.com/">
               <strong> ZeroBug</strong>
             </a>
@@ -95,29 +99,29 @@ export default class header extends Component{
         
   
         
-        <div class="col-md-5 col-lg-4 ml-lg-0">
+        <div className="col-md-5 col-lg-4 ml-lg-0">
   
           
-          <div class="text-center text-md-right">
-            <ul class="list-unstyled list-inline">
-              <li class="list-inline-item">
-                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fab fa-facebook-f"></i>
+          <div className="text-center text-md-right">
+            <ul className="list-unstyled list-inline">
+              <li className="list-inline-item">
+                <a className="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i className="fab fa-facebook-f"></i>
                 </a>
               </li>
-              <li class="list-inline-item">
-                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fab fa-twitter"></i>
+              <li className="list-inline-item">
+                <a className="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i className="fab fa-twitter"></i>
                 </a>
               </li>
-              <li class="list-inline-item">
-                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fab fa-google-plus-g"></i>
+              <li className="list-inline-item">
+                <a className="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i className="fab fa-google-plus-g"></i>
                 </a>
               </li>
-              <li class="list-inline-item">
-                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fab fa-linkedin-in"></i>
+              <li className="list-inline-item">
+                <a className="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i className="fab fa-linkedin-in"></i>
                 </a>
               </li>
             </ul>
