@@ -63,7 +63,7 @@ let  Product = require('../models/Product');
          .then(()=>res.json('Product Updated'))
          .catch(err=>res.status(400).json('Error'+err));
      })
-     .catch(err=> res.status(400).json('Err'+err));
+     .catch(err=> res.status(400).json('Err'+err))
      
  }
 
