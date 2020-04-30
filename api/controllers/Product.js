@@ -1,5 +1,5 @@
 let  Product = require('../models/Product');
-
+var uuid = require('uuid');
 
 //find   Store Manager  Products
  exports.Find_Product = (req,res,next)=>{
@@ -15,6 +15,7 @@ let  Product = require('../models/Product');
 
  exports.Store_Product = (req,res,next)=>{
 
+    const  productid  = "P-"+ uuid.v4();
     const description = req.body.description;
     const  maincategory = req.body.maincategory;
     const  subcategory = req.body.subcategory;
@@ -24,6 +25,7 @@ let  Product = require('../models/Product');
     const stockmanagerid = req.body.stockmanagerid;
 
    const  newProduct = new Product({
+    productid,   
     description,
     maincategory,
     subcategory,
