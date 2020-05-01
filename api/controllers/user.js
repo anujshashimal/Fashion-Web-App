@@ -11,16 +11,16 @@ let  User = require('../models/User');
 
 // Add User to Database---------------------------------------
  exports.Add_User = (req,res,next)=>{
+    console.log('body data',req.body)
     const userid = req.body.userid;
     const username = req.body.username;
     const email = req.body.email;
     const address = req.body.address;
-    const contactno = Number(req.body.contactno);
+    const contactno = req.body.contactno;
     const gender = req.body.gender;
     const password = req.body.password;
 
     const newUser = new User({
-        userid,
         username,
         email,
         address,
@@ -28,10 +28,13 @@ let  User = require('../models/User');
         gender,
         password,
     });
+    console.log('newuser',newUser);
 
-   newUser.save()
+   const user = newUser.save()
    .then(()=>res.json('User Added!'))
    .catch(err=>res.status(400).json("Error:"+err));
+
+   console.log(user);
 }
 
 
