@@ -11,6 +11,17 @@ var uuid = require('uuid');
 }
 
 
+  //find all products
+  exports.Find_All_Product = (req,res,next)=>{
+
+    Product.find()
+    .then(products => res.json(products))
+     .catch(err=>res.status(400).json('Error :'+err));
+
+  });
+
+
+
        //Add Products to db
 
  exports.Store_Product = (req,res,next)=>{
