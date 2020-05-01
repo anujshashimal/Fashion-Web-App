@@ -27,6 +27,7 @@ import AddStoreManager from './Components/AdminComponents/AddStoreManager'
  //User ----------------------------------------------------------------
  import Login from './Components/UserComponents/login';
  import Register from './Components/UserComponents/Register'
+ import viewProduct from './Components/UserComponents/viewProduct'
  //---------------------------------------------------------------------
 //
 //
@@ -194,6 +195,7 @@ class App extends React.Component {
                         {/*Access authorized for - (Ravindu)*/}
                         <Route path = {'/Login'} exact component={Login}/> 
                         <Route path = {'/Register'} exact component={Register}/>
+                        <Route path = {'/viewProduct'} exact component={viewProduct}/>
 
 
 

@@ -67,26 +67,28 @@ export default class header extends Component{
     handleRegisterSubmit = event => {
         event.preventDefault();
         if(this.state.password !== this.state.conformpassword){
-            alert("Conforn Password not match");
-            // NotificationManager.error('pleace correct', 'Confirm Password not matched');
+            // alert("Conforn Password not match");
+            NotificationManager.error('pleace correct', 'Confirm Password not matched');
             return false;
         }
-        console.log(this.state.username);
-        console.log(this.state.email);
-        console.log(this.state.contactno);
-        console.log(this.state.address);
-        console.log(this.state.password);
-        console.log(this.state.conformpassword);
-        console.log(this.state.gender);
+        // console.log(this.state.username);
+        // console.log(this.state.email);
+        // console.log(this.state.contactno);
+        // console.log(this.state.address);
+        // console.log(this.state.password);
+        // console.log(this.state.conformpassword);
+        // console.log(this.state.gender);
         this.sendData();
 
-        this.state.username ='';
-        this.state.email ='';
-        this.state.contactno ='';
-        this.state.address ='';
-        this.state.password ='';
-        this.state.conformpassword ='';
-        this.state.gender ='';
+        this.setState({
+        username:'',
+        email:'',
+        contactno:'',
+        address:'',
+        password:'',
+        conformpassword:'',
+        gender:'',
+    })
     }
 
     async sendData () {
@@ -96,14 +98,13 @@ export default class header extends Component{
             contactno: this.state.contactno,
             address: this.state.address,
             password: this.state.password,
-            conformpassword: this.state.conformpassword,
             gender: this.state.gender
         }
         try{
             const responce = await axios({
                 method: 'post',
                 url: 'http://localhost:5000/user/add',
-                data: JSON.stringify(data),
+                data: data,
               });
               console.log(responce);
         }catch(ex){
@@ -227,7 +228,10 @@ export default class header extends Component{
                                         required />
                                     </div>
                                     <br/>
-                                    <button type="submit" class="btn1" onclick="javascript: return myFunction();">Register</button>
+                                    <button 
+                                    type="submit" 
+                                    class="btn1" 
+                                    onclick="javascript: return myFunction();">Register</button>
                                 </form>
                                 <br />
                             </div>

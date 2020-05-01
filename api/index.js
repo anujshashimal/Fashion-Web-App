@@ -13,6 +13,21 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
 
+// app.use(function(err,req,res,next){  // handle errors
+
+//   console.log(err);
+
+// res.header("Access-Control-Allow-Origin", "http://localhost:3001"); // update to match the domain you will make the request from
+// res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+// res.header("Access-Control-Allow-Methods" , "POST, GET, OPTIONS");
+
+// next();
+
+
+//   res.send(err);
+
+// });
+
 
 
 //connect to mongo db

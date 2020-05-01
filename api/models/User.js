@@ -4,15 +4,16 @@ const Schema = mongoose.Schema;
 
 const User_Schema  =  mongoose.Schema({
 
-    userid : {
-        type :String,
-        required : true,
-        unique :true,
-        trim :true
-    },
+    // userid : {
+    //     type :String,
+    //     required : true,
+    //     unique :true,
+    //     trim :true
+    // },
     username : {
         type : String,
-        required : true
+        required : true,
+        unique :true,
     },
     email :{
         type: String,
@@ -23,7 +24,7 @@ const User_Schema  =  mongoose.Schema({
         required:true
     },
     contactno :{
-        type: Number,
+        type: String,
         required:true
     },
     gender :{
