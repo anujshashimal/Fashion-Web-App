@@ -113,9 +113,11 @@ export default class header extends Component{
     }
     
     render() {
+        const {data} = this.props;
         const {username, email, contactno, address, password, conformpassword, gender} =this.state
         return(
             <div class="container" >
+                <li>{data}</li>
                 <div class="raw">
                     <div className="rowalign">
                         <div class="col-md-6"><br/>
