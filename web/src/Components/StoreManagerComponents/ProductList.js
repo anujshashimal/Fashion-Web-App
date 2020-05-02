@@ -14,10 +14,10 @@ const Product = props =>(
         <td className="tabletext">{props.product.image}</td>
         <td className="tabletext">{props.product.stockmanagerid}</td>
         <td>
-          <img  src={editimage} alt="logo"/>
+         <Link  to= {'/Product/edit/'+props.product.productid}><img  src={editimage} alt="logo"/></Link>
         </td>  
         <td>
-        <img  src={deleteimage} alt="logo"/>
+          <img  src={deleteimage} alt="logo" onClick ={()=>{if(window.confirm('Delete the Item?')){props.deletedproduct(props.product.productid)}}}/>
         </td>
       </tr>
 
@@ -34,6 +34,7 @@ export class ProductList extends Component {
            Products : [],
         }
 
+        this.deleteproduct = this.deleteproduct.bind(this);
     }
  
    componentDidMount()
@@ -48,12 +49,22 @@ export class ProductList extends Component {
 
    }    
    
+  deleteproduct(product_id)
+  {
+    axios.delete('http://localhost:5000/products/delete/'+product_id)
+    .then(res=>console.log(res.data))
+    this.setState({
+      Products : this.state.Products.filter(product=>product.productid != product_id)
+    })
+
+  }
+
   
 
    ProductList()
    {
       return this.state.Products.map(currentproduct=>{
-        return <Product product ={currentproduct}  key={currentproduct.productid} ></Product>
+        return <Product product ={currentproduct}  key={currentproduct.productid} deletedproduct ={this.deleteproduct} ></Product>
 
       })
 
