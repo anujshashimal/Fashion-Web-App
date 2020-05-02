@@ -34,8 +34,7 @@ import React, {Component, useState} from 'react'; import {connect} from 'react-r
                                                                                       className="fas fa-list"></i><span
                                     className="sr-only"> Cart </span></a></li>
 
-                                <li className="nav-item"><a href="" className="nav-link waves-effect"><Link
-                                    to='/cartpage'> Click </Link>
+                                <li className="nav-item"><a href="" className="nav-link waves-effect"><Link to='/cartpage'> Click </Link>
 
                                     <span
                                         className="badge red z-depth-1 mr-1"> {props.basketProps.backetNumbers} </span><i
