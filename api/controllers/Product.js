@@ -10,6 +10,15 @@ var uuid = require('uuid');
 
 }
 
+  exports.Find_Edit_Product = (req,res,next)=>{
+     Product.find({'productid':req.params.productid})
+     .then(Productfind=>res.json(Productfind))
+     .catch(err=>res.status(400).json("Error:"+err))
+  
+  }
+
+
+
 
   //find all products
   exports.Find_All_Product = (req,res,next)=>{
@@ -18,7 +27,7 @@ var uuid = require('uuid');
     .then(products => res.json(products))
      .catch(err=>res.status(400).json('Error :'+err));
 
-  });
+  };
 
 
 
@@ -62,6 +71,7 @@ var uuid = require('uuid');
        
      Product.findByIdAndUpdate(req.params.stockmanagerid)
      .then(product =>{
+         product.productid  =  req.body.productid;
          product.description = req.body.description;
          product.maincategory =  req.body.maincategory;
          product.subcategory  =   req.body.subcategory;
@@ -84,7 +94,7 @@ var uuid = require('uuid');
 
 exports.Delete_Product = (req,res,next)=>{
 
-       Product.findOneAndDelete({'stockmanagerid':req.params.stockmanagerid})
+       Product.findOneAndDelete({'productid':req.params.productid})
        .then(()=>res.json('Product Deleted'))
        .catch(err=>res.status(400).json('Error'+err))
 
