@@ -3,19 +3,20 @@ import {connect} from 'react-redux';
 import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 
 const CartPage = ({basketProps}) =>{
-    console.log(basketProps.products)
+    console.log(basketProps.products);
 
     let productsinCart = [];
 
     Object.keys(basketProps.products).forEach( function (item) {
-        console.log(item)
-        console.log(basketProps.products[item].incart)
+        console.log(item);
+        console.log(basketProps.products[item].incart);
         if(basketProps.products[item].incart){
             productsinCart.push(basketProps.products.item)
         }
+
         console.log(productsinCart)
 
-    })
+    });
 
     productsinCart = productsinCart.map((productes, index) =>{
         return (
@@ -23,7 +24,6 @@ const CartPage = ({basketProps}) =>{
 
 
             </Fragment>
-
         )
     })
 

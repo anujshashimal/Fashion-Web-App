@@ -15,7 +15,6 @@ function CartRoute() {
             <Route path = 'cartpage' exact component={Cartpage} ></Route>
             <Route path = 'cartsample' exact component={Cartsample} ></Route>
             <Footer />
-
         </Router>
     )
 }

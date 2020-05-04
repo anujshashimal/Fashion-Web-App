@@ -40,7 +40,7 @@ const CartSample = (props) => {
     
     return (
         <div className='flex-row' >
-            <ul>{this.state.cart.map(c => <li> {c.name} } units {c.units}</li>)}</ul>
+            {/*<ul>{this.state.cart.map(c => <li> {c.name} } units {c.units}</li>)}</ul>*/}
             {
                 products.map(p =>  <Product key={p.id}  {...p}/>)
             }
