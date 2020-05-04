@@ -1,13 +1,16 @@
-.card {
+.card1 {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-bottom: 10%;
     transition: 0.3s;
-    width: 40%;
+    width: 10px%;
+    color: black;
+    background-color: #C5BBE1;
   }
   
-  .card:hover {
+  .card1:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
   
-  .container {
+  .container1 {
     padding: 2px 16px;
   }

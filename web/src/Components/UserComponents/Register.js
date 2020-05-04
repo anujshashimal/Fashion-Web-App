@@ -113,6 +113,7 @@ export default class header extends Component{
     }
     
     render() {
+        const {data} = this.props;
         const {username, email, contactno, address, password, conformpassword, gender} =this.state
         return(
             <div class="container" >
