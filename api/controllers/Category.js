@@ -1,12 +1,19 @@
-const router = require('express').Router();
-const  Category = require('../models/Category');
+// const router = require('express').Router();
+let  Category = require('../models/Category');
 
 
-exports.Find_Category = (req,res,next)=>{
-    Category.findById(req.params.Category_ID)
-        .then(Category => res.json(Category))
-        .catch(err=>res.status(400).json("Error:"+err))
+// exports.Find_Category = (req,res,next)=>{
+//     Category.findById(req.params.Category_ID)
+//         .then(Category => res.json(Category))
+//         .catch(err=>res.status(400).json("Error:"+err))
+//
+// }
 
+exports.findCategory = (req,res,next)=>{
+    Category.find({'Category_ID':req.params.Category_ID})
+        .then(category=>res.json(category))
+        .catch(err=> res.status(400).json("error : "+err));
+    // console.log(req.body.Category_ID);
 }
 
 // router.route('/addCategory').post((req,res)=>{
@@ -52,7 +59,7 @@ exports.SaveCategory = (req,res,next)=>{
 
 exports.Update_Category = (req,res,next)=>{
 
-    Category.findByIdAndUpdate(req.params.Category_ID)
+    Category.findByIdAndUpdate({'Category_ID':req.params.Category_ID})
         .then(category =>{
             category.CategoryName = req.body.CategoryName;
             category.MainCategory =  req.body.MainCategory;
@@ -71,7 +78,7 @@ exports.Update_Category = (req,res,next)=>{
 
 exports.Delete_Category = (req,res,next)=>{
 
-    Category.findByIdAndDelete(req.params.Category_ID)
+    Category.findOneAndDelete({'Category_ID':req.params.Category_ID})
         .then(()=>res.json('Category Deleted'))
         .catch(err=>res.status(400).json('Error'+err))
 
