@@ -28,6 +28,7 @@ import AddStoreManager from './Components/AdminComponents/AddStoreManager'
  import Login from './Components/UserComponents/login';
  import Register from './Components/UserComponents/Register'
  import viewProduct from './Components/UserComponents/viewProduct'
+ import ProductDetails from './Components/UserComponents/ProductDetails'
  //---------------------------------------------------------------------
 //
 //
@@ -196,7 +197,7 @@ class App extends React.Component {
                         <Route path = {'/Login'} exact component={Login}/> 
                         <Route path = {'/Register'} exact component={Register}/>
                         <Route path = {'/viewProduct'} exact component={viewProduct}/>
-
+                        <Route path = {'/ProductDetails'} exact component={ProductDetails}/>
 
 
 

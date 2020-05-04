@@ -3,6 +3,8 @@
     margin-bottom: 10%;
     transition: 0.3s;
     width: 10px%;
+    color: black;
+    background-color: #C5BBE1;
   }
   
   .card1:hover {
