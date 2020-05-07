@@ -15,15 +15,15 @@ export class ProductDetails extends Component {
     }
 
     componentDidMount() {
-        const values = queryString.parse(this.props.location.search)
+        var values = queryString.parse(this.props.location.search)
         console.log(values.item)
         console.log(values.user)
         this.setState({
             itemid: values.item,
-            user: values.user,
+            userid: values.user,
         })
-
-        axios.get('http://localhost:5000/Products/find')
+        console.log('itemid',this.state.itemid)
+        axios.get('http://localhost:5000/products/finds/'+values.item)
         .then(response=>{
           if(response.data.length>0){
             this.setState({
@@ -33,19 +33,21 @@ export class ProductDetails extends Component {
     
           }
         })
-
+        console.log('list',this.state.product)
+        
 
       }
     
     render() {
-        const {itemid} =this.state
+        const {itemid, product} =this.state
         return (
             <div>
+                {product.description}
             <div>
-                {this.state.product.filter(product => product._id === itemid).map(function(product){
+                {/* {this.state.product.filter(product => product._id === itemid).map(function(product){
                     return <div>{product._id} {product.description} </div>
                 })
-                }
+                } */}
             </div>
             <Link to={'/ProductDetails?item='+itemid}>Add to cart</Link>
             </div>

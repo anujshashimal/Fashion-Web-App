@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import  {Link}  from  'react-router-dom'
 import './card.css';
+import item from './080203207710-C4-1-Shakalaka_Mens-T-Shirt.jpg'
 
 export class viewProduct extends Component {
     constructor(props) {
@@ -38,6 +39,7 @@ export class viewProduct extends Component {
     
           }
         })
+        console.log('products', this.state.products);
     }
 
     OnChangesubcategory = event => {
@@ -66,16 +68,16 @@ export class viewProduct extends Component {
                             <select 
                             ref="userInput" 
                             required 
-                            className="form-control" 
-                            value = {this.state.maincategory} 
-                            onChange = {this.OnChangemaincategory} 
+                            className="form-control"
+                            value = {this.state.maincategory}
+                            onChange = {this.OnChangemaincategory}
                             multiple= {false}>
                                 <option key ="Men" value="Men">Men</option>
                                 <option key ="Weman" value="Weman">Weman</option>
                                 <option key ="Kid" value="Kid">Kid</option>
                                 <option key ="Baby" value="Baby">Baby</option>
-                            </select>   
-                        </div> 
+                            </select>
+                        </div>
                     </div>
                     <div className="col-md" style={{}}>
                         <div className="texboxwidth" style={{width: "50%"}}>
@@ -109,7 +111,7 @@ export class viewProduct extends Component {
                                <Link to={'/ProductDetails?item='+products._id+'&user=5'}>
                           <div class="card1">
                           {/* {products.image} */}
-                              <img src= {'...../api/${products.image}'} alt="Product" style={{width: "100%"}} />
+                              <img src= {item} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                                   <div class="container1">
                                       <h4><b>{products.description}</b></h4> 
                                       <p>Product ID : {products._id}<br/>
@@ -126,13 +128,13 @@ export class viewProduct extends Component {
                     <div className="row" style={{textAlign: "center" , marginLeft: "1%" , marginRight: "1%" , marginTop: "1%"}}>
                         {this.state.products.filter(products => products.maincategory === maincategory && products.subcategory === subcategory).map(products => (
                             <div className="col-md-3">
-                            <Link to={'/ProductDetails?item='+products._id+'&user=5'}>
+                            <Link to={'/ProductDetails?item='+products.productid+'&user=5'}>
                        <div class="card1">
                        {/* {products.image} */}
-                           <img src= {"...../api/"+products.image} alt="Product" style={{width: "100%"}} />
+                           <img src= {item} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                                <div class="container1">
                                    <h4><b>{products.description}</b></h4> 
-                                   <p>Product ID : {products._id}<br/>
+                                   <p>Product ID : {products.productid}<br/>
                                    Price : {products.price}<br/>
                                    Available : {products.quantity}</p>
                                </div>
