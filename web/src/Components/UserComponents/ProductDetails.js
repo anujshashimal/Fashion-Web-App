@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import  {Link}  from  'react-router-dom'
+import  {Link}  from  'react-router-dom';import NavBar from "../CommonComponents/header";import Footer from '../CommonComponents/footer';
+import {addBasket} from "../../Actions/addActions";
+import {connect} from 'react-redux';
 const queryString = require('query-string');
 
 export class ProductDetails extends Component {
@@ -12,6 +14,7 @@ export class ProductDetails extends Component {
              userid: '',
              product: [],
         }
+        console.log(props)
     }
 
     componentDidMount() {
@@ -34,7 +37,7 @@ export class ProductDetails extends Component {
           }
         })
         console.log('list',this.state.product)
-        
+
 
       }
     
@@ -42,17 +45,26 @@ export class ProductDetails extends Component {
         const {itemid, product} =this.state
         return (
             <div>
-                {product.description}
-            <div>
-                {/* {this.state.product.filter(product => product._id === itemid).map(function(product){
-                    return <div>{product._id} {product.description} </div>
-                })
-                } */}
+                <NavBar />
+
+                <div>
+                {this.state.product.filter(product => product._id === itemid).map(function(product){
+                    return <div>
+                        {product._id}
+                        {product.description}
+                        {product.price}
+                    </div>
+                })}
             </div>
-            <Link to={'/ProductDetails?item='+itemid}>Add to cart</Link>
+
+            {/*<Link to={'/ProductDetails?item='+itemid}>Add to cart {console.log({product._id})}</Link>*/}
+                {console.log()}
+                <button type="button" className="btn btn-primary" onClick={this.props.addBasket()}>Add to Cart</button>
+                {/*<Link to={'/ProductDetails?item='+itemid}>Add to cart</Link>*/}
+                <h1> sfejio </h1>
+                <Footer />
             </div>
         )
     }
 }
-
-export default ProductDetails
+export default connect(null, {addBasket})(ProductDetails);

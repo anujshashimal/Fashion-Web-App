@@ -61,13 +61,9 @@ import React, {Component, useState} from 'react'; import {connect} from 'react-r
                             </ul>
                         </div>
                     </nav>
-
                 </header>
-
-
             </div>
         )
-
 
     }
     const mapStatetoProps = (state) => ({

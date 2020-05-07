@@ -4,24 +4,6 @@ const initialState = {
     backetNumbers: 0,
     cartCost: 0,
     products: {
-        // sample1:{
-        //     name: "sample1",
-        //     price: 15,
-        //     numbers: 0,
-        //     incart: false
-        // },
-        // sample2:{
-        //     name: "sample2",
-        //     price: 15,
-        //     numbers: 0,
-        //     incart: false
-        // },
-        // sample3:{
-        //     name: "sample3",
-        //     price: 15,
-        //     numbers: 0,
-        //     incart: false
-        // }
     }
 }
 
