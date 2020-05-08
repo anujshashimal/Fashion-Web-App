@@ -24,9 +24,7 @@ export class viewProduct extends Component {
             this.setState({
                 categorys :  response.data.map(categorys=>categorys),
             //   subcategory : response.data[0].CategoryName
-         })
-    
-          }
+         })}
         })
         
         axios.get('http://localhost:5000/Products/find')
@@ -102,26 +100,25 @@ export class viewProduct extends Component {
                         </div>
                     </div>
                 </div>
-            
+
                 {(this.state.subcategory === 'All') ? (
-                    
+
                         <div className="row" style={{textAlign: "center" , marginLeft: "1%" , marginRight: "1%" , marginTop: "1%"}}>
                             {this.state.products.filter(products => products.maincategory === maincategory).map(products => (
                                <div className="col-md-3">
-                               <Link to={'/ProductDetails?item='+products._id+'&user=5'}>
+                               <Link to={'/ProductDetails?item='+products.productid+'&user=5'}>
                           <div class="card1">
                           {/* {products.image} */}
                               <img src= {item} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                                   <div class="container1">
-                                      <h4><b>{products.description}</b></h4> 
-                                      <p>Product ID : {products._id}<br/>
+                                      <h4><b>{products.description}</b></h4>
+                                      <p>Product ID : {products.productid}<br/>
                                       Price : {products.price}<br/>
                                       Available : {products.quantity}</p>
                                   </div>
                           </div></Link>
                           </div>
-                            ))
-                            }
+                            ))}
                         </div>
                     
                 ) : (
