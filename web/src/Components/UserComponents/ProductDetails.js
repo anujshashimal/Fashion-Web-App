@@ -13,6 +13,7 @@ export class ProductDetails extends Component {
              itemid: '',
              userid: '',
              product: [],
+             Cprice : ''
         }
         console.log(props)
     }
@@ -28,40 +29,33 @@ export class ProductDetails extends Component {
         console.log('itemid',this.state.itemid)
         axios.get('http://localhost:5000/products/finds/'+values.item)
         .then(response=>{
-          if(response.data.length>0){
             this.setState({
                 product :  response.data.map(product=>product),
-            //   subcategory : response.data[0].CategoryName
-         })
-    
-          }
         })
-        console.log('list',this.state.product)
 
-
-      }
+      })
+    }
     
     render() {
-        const {itemid, product} =this.state
+        const {itemid, product, Cprice} =this.state
         return (
             <div>
                 <NavBar />
 
-                <div>
-                {this.state.product.filter(product => product._id === itemid).map(function(product){
-                    return <div>
-                        {product._id}
-                        {product.description}
-                        {product.price}
-                    </div>
-                })}
-            </div>
+                <h1>id is :  {
+                    this.state.product.map( val => (
+                        <div className="container1">
+                            <h4><b>{val.description}</b></h4>
+                            <p> Product ID : {val.productid}<br/>
+                                Price : {val.price}<br/>
+                                Available : {val.quantity}</p>
+                                <button type="button" className="btn btn-primary" onClick={() =>this.props.addBasket(val.description, val.price, val.quantity)}>Add to Cart</button>
+                        </div>
 
-            {/*<Link to={'/ProductDetails?item='+itemid}>Add to cart {console.log({product._id})}</Link>*/}
-                {console.log()}
-                <button type="button" className="btn btn-primary" onClick={this.props.addBasket()}>Add to Cart</button>
-                {/*<Link to={'/ProductDetails?item='+itemid}>Add to cart</Link>*/}
-                <h1> sfejio </h1>
+                    )
+
+                )} </h1>
+
                 <Footer />
             </div>
         )
