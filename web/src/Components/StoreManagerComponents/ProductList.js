@@ -14,10 +14,10 @@ const Product = props =>(
         <td className="tabletext">{props.product.image}</td>
         <td className="tabletext">{props.product.stockmanagerid}</td>
         <td>
-         <Link  to= {'/Product/edit/'+props.product.productid}><img  src={editimage} alt="logo"/></Link>
+         <Link  to= {'/Product/edit/'+props.product.productid}><button><img  src={editimage} alt="logo"/></button></Link>
         </td>  
         <td>
-          <img  src={deleteimage} alt="logo" onClick ={()=>{if(window.confirm('Delete the Item?')){props.deletedproduct(props.product.productid)}}}/>
+         <button><img  src={deleteimage} alt="logo" onClick ={()=>{if(window.confirm('Delete the Item?')){props.deletedproduct(props.product.productid)}}}/></button>
         </td>
       </tr>
 

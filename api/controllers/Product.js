@@ -69,24 +69,28 @@ var uuid = require('uuid');
 
  exports.Update_Product = (req,res,next)=>{
        
-     Product.findByIdAndUpdate(req.params.stockmanagerid)
+     Product.findOne({'productid':req.params.productid})
      .then(product =>{
-         product.productid  =  req.body.productid;
+        // product.productid  = req.body.productid;
          product.description = req.body.description;
-         product.maincategory =  req.body.maincategory;
-         product.subcategory  =   req.body.subcategory;
-         product.price  =  Number(req.body.price); 
-         product.quantity = Number(req.body.quantity);
+         product.maincategory = req.body.maincategory;
+         product.subcategory  = req.body.subcategory;
+         product.price = Number(req.body.price); 
+         product.quantity =Number(req.body.quantity);
+         product.discount =Number(req.body.discount);
+         product.stockmanagerid =req.body.stockmanagerid;
 
+            
          if(req.file){
-            newProduct.image = req.file.path
+            product.image = req.file.path
         }
+         console.log(product)
 
          product.save()
          .then(()=>res.json('Product Updated'))
          .catch(err=>res.status(400).json('Error'+err));
      })
-     .catch(err=> res.status(400).json('Err'+err))
+     .catch(err=> res.status(400).json('Err'+err)) 
      
  }
 

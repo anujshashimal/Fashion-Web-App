@@ -161,7 +161,7 @@ class AddProduct extends Component {
         stockmanagerid : '',
        
     })
-         window.location = '/';
+        // window.location = '/';
   } 
 
    }
