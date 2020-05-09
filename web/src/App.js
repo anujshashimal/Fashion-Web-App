@@ -31,6 +31,7 @@ import AddCategory from './Components/CategoryComponents/AddCategory';
  import Register from './Components/UserComponents/Register'
  import viewProduct from './Components/UserComponents/viewProduct'
  import ProductDetails from './Components/UserComponents/ProductDetails'
+//  import Home from './Components/UserComponents/Home'
  //---------------------------------------------------------------------
 //
 //
@@ -200,6 +201,7 @@ class App extends React.Component {
                         <Route path = {'/Register'} exact component={Register}/>
                         <Route path = {'/viewProduct'} exact component={viewProduct}/>
                         <Route path = {'/ProductDetails'} exact component={ProductDetails}/>
+                        {/* <Route path = {'/Home'} exact component={Home}/> */}
 
 
 

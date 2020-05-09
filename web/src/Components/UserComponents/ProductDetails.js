@@ -20,14 +20,15 @@ export class ProductDetails extends Component {
 
     componentDidMount() {
         var values = queryString.parse(this.props.location.search)
+        console.log(this.props.location.search)
         console.log(values.item)
         console.log(values.user)
         this.setState({
             itemid: values.item,
             userid: values.user,
         })
-        console.log('itemid',this.state.itemid)
-        axios.get('http://localhost:5000/products/finds/'+values.item)
+        console.log('itemid',values.id)
+        axios.get('http://localhost:5000/Products/finds/'+values.item)
         .then(response=>{
             this.setState({
                 product :  response.data.map(product=>product),
