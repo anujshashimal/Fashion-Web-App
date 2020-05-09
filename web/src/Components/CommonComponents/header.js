@@ -47,18 +47,11 @@ import React, {Component, useState} from 'react'; import {connect} from 'react-r
                                     className="sr-only"> Cart </span></a></li>
 
 
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
-                                       data-toggle="dropdown"
-                                       aria-haspopup="true" aria-expanded="false"><i className="fas fa-user"> </i><span
-                                        className="d-none d-xl-inline-block ml-1"></span></a>
-                                    <div className="dropdown-menu dropdown-primary dropdown-menu-right"
-                                         aria-labelledby="navbarDropdownMenuLink">
-                                        <div className="dropdown-item">UserName</div>
-                                        <a className="dropdown-item" href="#">Profile</a>
-                                        <a className="dropdown-item" href="#">SignOut</a>
-                                    </div>
-                                </li>
+                                <li className="nav-item">
+                                    <div className="nav-link waves-effect"> 
+                                        <i id="navbar-static-cart" alt="Cart" className="fas fa-user"></i>
+                                        {props.username}
+                                        <span className="sr-only"> Cart </span></div></li> 
                             </ul>
                         </div>
                     </nav>

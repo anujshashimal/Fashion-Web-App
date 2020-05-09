@@ -3,10 +3,21 @@ let  User = require('../models/User');
 //Find User--------------------------------------------------
  exports.Find_User = (req,res,next)=>{
     User.find({
-      'userid': req.params.userid})
+      'username': req.params.username})
     .then(User => res.json(User))
     .catch(err=>res.status(400).json("Error:"+err))
 }
+
+
+
+  //find all products
+  exports.Find_All_Users = (req,res,next)=>{
+
+    User.find()
+    .then(User => res.json(User))
+     .catch(err=>res.status(400).json('Error :'+err));
+
+  };
 
 
 // Add User to Database---------------------------------------
