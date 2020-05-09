@@ -145,8 +145,11 @@ export class viewProduct extends Component {
                                <div className="col-md-3">
                                <Link to={'/ProductDetails?item='+products.productid+'&user=5'}>
                           <div class="card1">
-                          {/* {products.image} */}
-                              <img src= {item} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
+                               
+                             
+                               {/* <img src= {item} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} /> */}
+                               {/* <img src={products.image}/> */}
+                            <img src={'http://localhost:5000/uploads/'+products.image} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                                   <div class="container1">
                                       <h4><b>{products.description}</b></h4>
                                       <p>Product ID : {products.productid}<br/>
@@ -156,7 +159,9 @@ export class viewProduct extends Component {
                           </div></Link>
                           </div>
                             ))}
+        
                         </div>
+                         
                     
                 ) : (
                     <div className="row" style={{textAlign: "center" , marginLeft: "1%" , marginRight: "1%" , marginTop: "1%"}}>
