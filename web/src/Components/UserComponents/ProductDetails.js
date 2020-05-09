@@ -3,6 +3,7 @@ import axios from 'axios'
 import  {Link}  from  'react-router-dom';import NavBar from "../CommonComponents/header";import Footer from '../CommonComponents/footer';
 import {addBasket} from "../../Actions/addActions";
 import {connect} from 'react-redux';
+import Comments from "./comments";
 const queryString = require('query-string');
 
 export class ProductDetails extends Component {
@@ -40,8 +41,7 @@ export class ProductDetails extends Component {
         const {itemid, product, Cprice} =this.state
         return (
             <div>
-                <NavBar />
-
+                <NavBar /><br/><br/><br/>
                 <h1>id is :  {
                     this.state.product.map( val => (
                         <div className="container1">
@@ -57,6 +57,9 @@ export class ProductDetails extends Component {
                     )
 
                 )} </h1>
+                <div>
+                    <Comments productid={this.state.itemid}/>
+                    </div>
 
                 <Footer />
             </div>

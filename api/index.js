@@ -1,6 +1,7 @@
 const Category = require('./routes/Category');
 const StoreManager = require('./routes/StoreManager');
 const User = require('./routes/User');
+const Comments = require('./routes/Comments');
 
 const conn = require('./db/connection')
 const bodyParser = require('body-parser')
@@ -55,7 +56,10 @@ const ProductRouter = require('./routes/Products');
 
 // //User section
 app.use('/user',User);
+app.use('/Comments',Comments);
 // //
+
+
 
 
 
