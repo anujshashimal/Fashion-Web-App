@@ -2,7 +2,7 @@ import React , {Component} from 'react';
 import { BrowserRouter as Router,Route} from "react-router-dom";
 import  StorManagerNavBar  from  './StoreManagerNavbar';
 import  ProductList from './ProductList';
-import  editProduct from  './EditProduct';
+import  EditProduct from './EditProduct';
 import  AddProduct  from  './AddProduct';
 
 function MainProduct() {
@@ -12,7 +12,7 @@ function MainProduct() {
       <StorManagerNavBar/> 
       <br/>    
          <Route path = "/Products/:id" exact component={ProductList}></Route>
-         <Route path = "/Product/edit/:id" exact component ={editProduct}></Route>
+         <Route path = "/Product/edit/:id" exact component={EditProduct}></Route>
          <Route path = "/Product/Add" exact component={AddProduct}></Route>
     </Router>
   )

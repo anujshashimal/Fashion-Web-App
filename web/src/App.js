@@ -1,11 +1,13 @@
 import React , {Component} from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, BrowserRouter, Route, Switch} from "react-router-dom";
 import Header from "./Components/CommonComponents/header.js";
 import Footer from './Components/CommonComponents/footer';
 import logo from './img/logo.gif'
 // {/*Lahiru Import Here*/}
     import MainProductPage from './Components/StoreManagerComponents/MainProduct'
+
+   
 //
 //
 //
@@ -22,6 +24,12 @@ import AddStoreManager from './Components/AdminComponents/AddStoreManager'
 //
 //
 // {/*Ravindu Import Here*/}
+ //User ----------------------------------------------------------------
+ import Login from './Components/UserComponents/login';
+ import Register from './Components/UserComponents/Register'
+ import viewProduct from './Components/UserComponents/viewProduct'
+ import ProductDetails from './Components/UserComponents/ProductDetails'
+ //---------------------------------------------------------------------
 //
 //
 //
@@ -30,9 +38,8 @@ import AddStoreManager from './Components/AdminComponents/AddStoreManager'
 //
 //
 // {/*Anuj Import Here*/}
-import cart from './Components/CartComponents/Cart';
-import cartpage from './Components/CartComponents/CartPage';
-import cartsample from './Components/CartComponents/CartSample';
+import CartRoute from './Components/CartComponents/CartRoute';
+import Cartpage from "./Components/CartComponents/CartPage";
 
 
 
@@ -162,9 +169,9 @@ class App extends React.Component {
         return (
             <div>
                 <BrowserRouter>
-                    <Header />
+                    {/* <Header />
                     <br/><br/><br/>
-                    <p align="center"><img src={logo} width="20%"/></p>
+                    <p align="center"><img src={logo} width="20%"/></p> */}
                     <Switch>
                         {/*Access authorized for - (Everyone)*/}
 
@@ -173,9 +180,10 @@ class App extends React.Component {
 
 
                         {/*Access authorized for - (Anuj)*/}
-                        <Route path = {'/cart'} exact component={cart} />
-                        <Route path = {'/cartpage'} exact component={cartpage} />
-                        <Route path = {'/cartsample'} exact component={cartsample} />
+                        <Route path = {'/CartRoute'} exact component={CartRoute} />
+                        <Route path = {'/cartpage'} exact component={Cartpage} />
+
+
 
 
                         {/*Access authorized for - (Laka)*/}
@@ -186,7 +194,10 @@ class App extends React.Component {
 
 
                         {/*Access authorized for - (Ravindu)*/}
-
+                        <Route path = {'/Login'} exact component={Login}/> 
+                        <Route path = {'/Register'} exact component={Register}/>
+                        <Route path = {'/viewProduct'} exact component={viewProduct}/>
+                        <Route path = {'/ProductDetails'} exact component={ProductDetails}/>
 
 
 
@@ -202,7 +213,7 @@ class App extends React.Component {
 
 
                     </Switch>
-                    <Footer/>
+                    {/* <Footer/> */}
                 </BrowserRouter>
             </div>
         );

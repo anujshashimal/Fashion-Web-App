@@ -22,11 +22,12 @@ class AddProduct extends Component {
       this.onSubmit = this.onSubmit.bind(this);
       this.increment = this.increment.bind(this);
       this.decrement = this.decrement.bind(this);
+     
 
      this.state = {
           description : '',  
-         maincategory : '',
-         subcategory : '',
+          maincategory : '',
+          subcategory : '',
           price : 0,
           quantity : 0,
           discount : '' ,
@@ -34,6 +35,7 @@ class AddProduct extends Component {
           stockmanagerid : '',
           maincategorys : [],
           subcategorys : [],
+          formErrors: {}    
           
      }
    }
@@ -134,8 +136,8 @@ class AddProduct extends Component {
       var  image = this.state.image;
       var  stockmanagerid = this.state.stockmanagerid;
       
-      
-      let formdata = new FormData();
+   if(this.handleFormValidation())    
+  {   let formdata = new FormData();
       formdata.set('description',description);
       formdata.set('maincategory',maincategory);
       formdata.set('subcategory',subcategory);
@@ -159,19 +161,50 @@ class AddProduct extends Component {
         stockmanagerid : '',
        
     })
-     
-     // window.location = '/';
+         window.location = '/';
+  } 
+
    }
+
+
+   handleFormValidation() {    
+    const {  description,price,quantity,discount, image } = this.state;    
+    let formErrors = {};    
+    let formIsValid = true;    
+    //var numberpattern =  '^[0-9]*$';
+
+    //product description      
+    if (!description) {    
+        formIsValid = false;    
+        formErrors["descriptionErr"] = "Description is required.";    
+    }
+    else if(description.length < 10)    
+   {
+        formIsValid = false;    
+        formErrors["descriptionErr"] = "Description characters id more than 10 required."; 
+
+   }
+   if (image === null) {
+    formIsValid = false;    
+    formErrors["imageErr"] = "Please select image"; 
+  }
+
+    this.setState({ formErrors: formErrors });    
+    return formIsValid;    
+  }    
 
 
 
    
   render() {
+
+    const { descriptionErr, priceErr, quantityErr, discountErr, imageErr } = this.state.formErrors;    
+
     return (
-      <div>
+      <div className="jumbotron">
            <h2 className="header">Add Product</h2>
            <form  onSubmit={this.onSubmit}>
-              <div className="card">
+              <div >
                    <div className="jumbotron" >
 
                          <div className="texboxwidth">
@@ -185,7 +218,7 @@ class AddProduct extends Component {
                               </select>    
                            </div>
                           <br/>
-
+                             <h1></h1>
                           <div className="texboxwidth">
                               <label htmlFor="exampleInput">Product Sub Category</label>
                                  <select ref="userInput" required className="form-control" value = {this.state.subcategory} onChange = {this.OnChangesubcategory} multiple= {false}>
@@ -204,8 +237,11 @@ class AddProduct extends Component {
                           <div className="texboxwidth">
                           <div className="form-group">
                             <label htmlFor="exampleFormControlTextarea1">Product Description</label>
-                           <textarea  className="form-control" id="exampleFormControlTextarea1"  value={this.state.description} onChange={this.OnChangedescription} rows="5" />
+                           <textarea className="form-control ${descriptionErr ? 'showError' : ''}" id="exampleFormControlTextarea1"  value={this.state.description} onChange={this.OnChangedescription} rows="5"  />
                          </div>
+                         {descriptionErr &&    
+                                <div style={{ color: "red", paddingBottom: 10 }}>{descriptionErr}</div>    
+                            }  
                            </div>
                           <br/>
 
@@ -215,10 +251,13 @@ class AddProduct extends Component {
                                   <div className="input-group-prepend">
                                       <span className="input-group-text">$</span>
                                   </div>
-                                  <input type="text" className="form-control" value={this.state.price}  onChange={this.OnChangeprice} aria-label="Amount (to the nearest dollar)" />
+                                  <input pattern ='^[0-9]{0,5}' type="text" className="form-control ${priceErr ? 'showError' : ''}" value={this.state.price}  onChange={this.OnChangeprice} aria-label="Amount (to the nearest dollar)" />
                                   <div className="input-group-append">
                                           <span className="input-group-text">.00</span>
                                    </div>
+                                   {priceErr &&    
+                                <div style={{ color: "red", paddingBottom: 10 }}>{priceErr}</div>    
+                                  }  
                                  </div>
                           </div>
                           <br/>
@@ -232,7 +271,7 @@ class AddProduct extends Component {
                                <label htmlFor="exampleInput">Discount</label>
                                  <div className="input-group mb-3">
                                   <div className="input-group-prepend">
-                               <input type="text" id="exampleInput" className="form-control" value ={this.state.discount} onChange={this.OnChangediscount} placeholder=" Enter Discount" />
+                               <input pattern ='^[0-9]{0,2}' type="text" id="exampleInput" className="form-control" value ={this.state.discount} onChange={this.OnChangediscount} placeholder=" Enter Discount" />
                                    <div className="input-group-append">
                                           <span className="input-group-text">%</span>
                                    </div>
@@ -243,7 +282,10 @@ class AddProduct extends Component {
 
                           <div className="texboxwidth">
                           <label htmlFor="exampleInput">Image</label>
-                           <input type="file" className="form-control-file" id="exampleFormControlFile1"  onChange={(e)=>this.OnChangeImage(e)} />
+                           <input type="file" className="form-control-file ${imageErr ? 'showError' : ''}" id="exampleFormControlFile1"  onChange={(e)=>this.OnChangeImage(e)} />
+                           {imageErr &&    
+                                <div style={{ color: "red", paddingBottom: 10 }}>{imageErr}</div>    
+                                  }  
                           </div>
                           <br/>
                           

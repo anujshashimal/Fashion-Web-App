@@ -57,3 +57,17 @@ a:link {
   a:active {
     text-decoration: underline;
   }
+
+  .rowalign {
+    position: absolute; 
+    vertical-align: middle;
+  }
+
+  .centeralign {
+    align-items: center;
+  }
+
+  .formalign {
+    max-width: 500px;
+    margin: auto;
+  }

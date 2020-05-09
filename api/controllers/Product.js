@@ -1,5 +1,5 @@
 let  Product = require('../models/Product');
-
+var uuid = require('uuid');
 
 //find   Store Manager  Products
  exports.Find_Product = (req,res,next)=>{
@@ -10,11 +10,32 @@ let  Product = require('../models/Product');
 
 }
 
+  exports.Find_Edit_Product = (req,res,next)=>{
+     Product.find({'productid':req.params.productid})
+     .then(Productfind=>res.json(Productfind))
+     .catch(err=>res.status(400).json("Error:"+err))
+  
+  }
+
+
+
+
+  //find all products
+  exports.Find_All_Product = (req,res,next)=>{
+
+    Product.find()
+    .then(products => res.json(products))
+     .catch(err=>res.status(400).json('Error :'+err));
+
+  };
+
+
 
        //Add Products to db
 
  exports.Store_Product = (req,res,next)=>{
 
+    const  productid  = "P-"+ uuid.v4();
     const description = req.body.description;
     const  maincategory = req.body.maincategory;
     const  subcategory = req.body.subcategory;
@@ -24,6 +45,7 @@ let  Product = require('../models/Product');
     const stockmanagerid = req.body.stockmanagerid;
 
    const  newProduct = new Product({
+    productid,   
     description,
     maincategory,
     subcategory,
@@ -49,6 +71,7 @@ let  Product = require('../models/Product');
        
      Product.findByIdAndUpdate(req.params.stockmanagerid)
      .then(product =>{
+         product.productid  =  req.body.productid;
          product.description = req.body.description;
          product.maincategory =  req.body.maincategory;
          product.subcategory  =   req.body.subcategory;
@@ -71,7 +94,7 @@ let  Product = require('../models/Product');
 
 exports.Delete_Product = (req,res,next)=>{
 
-       Product.findOneAndDelete({'stockmanagerid':req.params.stockmanagerid})
+       Product.findOneAndDelete({'productid':req.params.productid})
        .then(()=>res.json('Product Deleted'))
        .catch(err=>res.status(400).json('Error'+err))
 

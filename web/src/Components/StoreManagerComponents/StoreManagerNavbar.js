@@ -4,6 +4,18 @@ import  {Link}  from  'react-router-dom';
 
 
 export class StoreManagerNavbar extends Component {
+
+    constructor(props)
+   {
+      super(props);
+      this.state ={
+          id : 's001'
+
+      }
+   }
+
+
+
   render() {
     return (
      <nav className = "navbar navbar-dark bg-dark navbar-expand-lg">
@@ -11,7 +23,7 @@ export class StoreManagerNavbar extends Component {
        <div className="collpase navbar-collapse">
          <ul className="navbar-nav mr-auto" >
              <li className="navbar-item">
-              <Link to ="/Products/:id" className="nav-link">Products List</Link>
+              <Link to ={"/Products/"+this.state.id} className="nav-link">Products List</Link>
              </li>
              <li className="navbar-item">
                <Link to ="/Product/Add" className="nav-link">Add Product</Link>

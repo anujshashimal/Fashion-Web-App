@@ -13,24 +13,24 @@ router.route('/:id').get((req,res)=>{
 
 
 
-router.route('/addCategory').post((req,res)=>{
-    const Category_ID = req.body.Category_ID;
-    const CategoryName = req.body.CategoryName;
-    const  MainCategory = req.body.MainCategory;
-    const  Admin = req.body.Admin;
+// router.route('/addCategory').post((req,res)=>{
+//     const Category_ID = req.body.Category_ID;
+//     const CategoryName = req.body.CategoryName;
+//     const  MainCategory = req.body.MainCategory;
+//     const  Admin = req.body.Admin;
 
-    const  newCategory = new Category({
-        Category_ID,
-        CategoryName,
-        MainCategory,
-        Admin
-    });
+//     const  newCategory = new Category({
+//         Category_ID,
+//         CategoryName,
+//         MainCategory,
+//         Admin
+//     });
 
-    newCategory.save()
-        .then(()=>res.json('Category Added!'))
-        .catch(err=>res.status(400).json("Error:"+err));
+//     newCategory.save()
+//         .then(()=>res.json('Category Added!'))
+//         .catch(err=>res.status(400).json("Error:"+err));
 
-});
+// });
 
 const categoryController = require('../controllers/Category');
 
