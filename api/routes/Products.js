@@ -11,7 +11,7 @@ router.get('/find/:stockmanagerid',ProductControlller.Find_Product);       // fi
 
 router.post('/add',upload.single('image'),ProductControlller.Store_Product);     //  Add the product
 
-router.put('/update/:id',upload.single('image'),ProductControlller.Update_Product); // update  the product
+router.put('/update/:productid',upload.single('image'),ProductControlller.Update_Product); // update  the product
 
 router.delete('/delete/:productid',ProductControlller.Delete_Product);    // Delete Product
 

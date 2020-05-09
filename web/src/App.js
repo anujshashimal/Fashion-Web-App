@@ -14,7 +14,9 @@ import logo from './img/logo.gif'
 //
 // {/*Vishaka Import Here*/}
 import MainCategory from './Components/CategoryComponents/mainCategory';
-import AddStoreManager from './Components/AdminComponents/AddStoreManager'
+import AddStoreManager from './Components/AdminComponents/AddStoreManager';
+import showStoreManager from './Components/AdminComponents/showStoreManager';
+import AddCategory from './Components/CategoryComponents/AddCategory';
 //
 //
 //
@@ -29,6 +31,7 @@ import AddStoreManager from './Components/AdminComponents/AddStoreManager'
  import Register from './Components/UserComponents/Register'
  import viewProduct from './Components/UserComponents/viewProduct'
  import ProductDetails from './Components/UserComponents/ProductDetails'
+//  import Home from './Components/UserComponents/Home'
  //---------------------------------------------------------------------
 //
 //
@@ -198,6 +201,7 @@ class App extends React.Component {
                         <Route path = {'/Register'} exact component={Register}/>
                         <Route path = {'/viewProduct'} exact component={viewProduct}/>
                         <Route path = {'/ProductDetails'} exact component={ProductDetails}/>
+                        {/* <Route path = {'/Home'} exact component={Home}/> */}
 
 
 
@@ -206,6 +210,8 @@ class App extends React.Component {
                         {/*Access authorized for - (Vishaka)*/}
                         <Route  path = {'/maincategory'}  exact component={MainCategory} />
                         <Route  path = {'/addstoremanager'}  exact component={AddStoreManager} />
+                        <Route  path = {'/showstoremanager'}  exact component={showStoreManager} />
+                        <Route  path = {'/addCategory'}  exact component={AddCategory} />
 
 
 

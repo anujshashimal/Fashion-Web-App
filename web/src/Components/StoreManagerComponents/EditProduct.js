@@ -155,6 +155,7 @@ class EditProduct extends Component {
       
    if(this.handleFormValidation())    
   {   let formdata = new FormData();
+      formdata.set('productid',this.props.match.params.productid);
       formdata.set('description',description);
       formdata.set('maincategory',maincategory);
       formdata.set('subcategory',subcategory);
@@ -166,7 +167,7 @@ class EditProduct extends Component {
 
       console.log(formdata);
 
-      axios.post('http://localhost:5000/products/add',formdata)
+      axios.put('http://localhost:5000/products/update/'+this.props.match.params.id,formdata)
        .then(res=>console.log(res.data));
 
     this.setState({
@@ -178,7 +179,8 @@ class EditProduct extends Component {
         stockmanagerid : '',
        
     })
-         window.location = '/';
+        // window.location = '/';
+        alert('Product Details Updated Successfully')
   } 
 
    }
@@ -219,7 +221,7 @@ class EditProduct extends Component {
 
     return (
       <div className="jumbotron">
-           <h2 className="header">Update Product</h2>
+           <h2 className="header">Edit Product</h2>
            <form  onSubmit={this.onSubmit}>
               <div >
                    <div className="jumbotron" >
@@ -314,7 +316,7 @@ class EditProduct extends Component {
 
                           <div className="text-center mt-4">
                             <MDBBtn color="#5e35b1 deep-purple darken-1" type="submit">
-                              Add Product
+                              Update Product
                             </MDBBtn>
                         </div>
 

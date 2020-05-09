@@ -21,3 +21,6 @@
     background-color: aliceblue;
 
 }
+li{
+    list-style-type: none;
+}
