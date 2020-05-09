@@ -45,7 +45,9 @@ export class ProductDetails extends Component {
                 <h1>id is :  {
                     this.state.product.map( val => (
                         <div className="container1">
+                            <img src={'http://localhost:5000/uploads/'+val.image} alt="Product" style={{width: "10%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                             <h4><b>{val.description}</b></h4>
+                
                             <p> Product ID : {val.productid}<br/>
                                 Price : {val.price}<br/>
                                 Available : {val.quantity}</p>
