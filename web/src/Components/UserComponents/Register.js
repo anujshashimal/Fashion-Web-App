@@ -19,6 +19,7 @@ export default class header extends Component{
              password: '',
              conformpassword: '',
              gender: '',
+             UserAlreadyTaken: [],
         }
     }
 
@@ -67,28 +68,35 @@ export default class header extends Component{
     handleRegisterSubmit = event => {
         event.preventDefault();
         if(this.state.password !== this.state.conformpassword){
-            // alert("Conforn Password not match");
-            NotificationManager.error('pleace correct', 'Confirm Password not matched');
+            alert("Conforn Password not match");
+            // NotificationManager.error('pleace correct', 'Confirm Password not matched');
             return false;
+        } else{
+            // this.sendData();
+            // console.log(this.state.username);
+            // console.log(this.state.email);
+            // console.log(this.state.contactno);
+            // console.log(this.state.address);
+            // console.log(this.state.password);
+            // console.log(this.state.conformpassword);
+            // console.log(this.state.gender);
+            this.getUsers();
+            if(this.state.UserAlreadyTaken.length > 0){
+                alert("User Already Taken");
+                return false;
+            } else{
+                this.sendData();
+                this.setState({
+                    username:'',
+                    email:'',
+                    contactno:'',
+                    address:'',
+                    password:'',
+                    conformpassword:'',
+                    gender:'',
+                })
+            }
         }
-        // console.log(this.state.username);
-        // console.log(this.state.email);
-        // console.log(this.state.contactno);
-        // console.log(this.state.address);
-        // console.log(this.state.password);
-        // console.log(this.state.conformpassword);
-        // console.log(this.state.gender);
-        this.sendData();
-
-        this.setState({
-        username:'',
-        email:'',
-        contactno:'',
-        address:'',
-        password:'',
-        conformpassword:'',
-        gender:'',
-    })
     }
 
     async sendData () {
@@ -111,9 +119,22 @@ export default class header extends Component{
 
         }
     }
+
+    getUsers (){
+        console.log(this.state.username)
+        axios.get('http://localhost:5000/user//find/'+this.state.username)
+        .then(response=>{
+            this.setState({
+                UserAlreadyTaken : response.data.map(user=>user),
+            })
+            console.log(response)
+            console.log('users',this.state.UserAlreadyTaken)
+        }).catch(err=>console.log("Error:"+err))
+        
+    }
     
     render() {
-        const {data} = this.props;
+        // const {data} = this.props;
         const {username, email, contactno, address, password, conformpassword, gender} =this.state
         return(
             <div class="container" >
