@@ -9,8 +9,17 @@
 }
 .container{
     margin-top: 8%;
+
 }
 #btnName{
     color: cornsilk;
     border-radius: 10px;
 }
+.subcategory{
+    width:20%;
+    /*height: 50px;*/
+    /*padding-right: 20%;*/
+    margin-right: 0%;
+}
+
+

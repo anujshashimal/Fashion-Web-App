@@ -30,8 +30,9 @@ const Product_Schema  =  mongoose.Schema({
         type : Number,
         required :true
     },
-    dicount : {
-       type : Number
+    discount : {
+       type : Number,
+       required :true
     },
     image :{
         type: String,

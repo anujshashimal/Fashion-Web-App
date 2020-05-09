@@ -36,9 +36,6 @@ import React, {Component, useState} from 'react'; import {connect} from 'react-r
 
                                 <li className="nav-item"><a href="" className="nav-link waves-effect">
 
-
-
-
                                     <span
                                         className="badge red z-depth-1 mr-1"> {props.basketProps.backetNumbers} </span><Link to='/cartpage'><i
                                         id="navbar-static-cart" alt="Cart" className="fas fa-shopping-cart"></i></Link><span

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import  {Link}  from  'react-router-dom'
+import  {Link}  from  'react-router-dom';import NavBar from "../CommonComponents/header";import Footer from '../CommonComponents/footer';
+import {addBasket} from "../../Actions/addActions";
+import {connect} from 'react-redux';
 const queryString = require('query-string');
 
 export class ProductDetails extends Component {
@@ -11,7 +13,9 @@ export class ProductDetails extends Component {
              itemid: '',
              userid: '',
              product: [],
+             Cprice : ''
         }
+        console.log(props)
     }
 
     componentDidMount() {
@@ -26,36 +30,35 @@ export class ProductDetails extends Component {
         console.log('itemid',values.id)
         axios.get('http://localhost:5000/Products/finds/'+values.item)
         .then(response=>{
-            console.log(response)
-
-          if(response.data.length>0){
             this.setState({
                 product :  response.data.map(product=>product),
-            //   subcategory : response.data[0].CategoryName
-         })
-    
-          }
         })
-        console.log('list',this.state.product)
-        
-
-      }
+      })
+    }
     
     render() {
-        const {itemid, product} =this.state
+        const {itemid, product, Cprice} =this.state
         return (
             <div>
-                {product.description}
-            <div>
-                {/* {this.state.product.filter(product => product._id === itemid).map(function(product){
-                    return <div>{product._id} {product.description} </div>
-                })
-                } */}
-            </div>
-            <Link to={'/ProductDetails?item='+itemid}>Add to cart</Link>
+                <NavBar />
+
+                <h1>id is :  {
+                    this.state.product.map( val => (
+                        <div className="container1">
+                            <h4><b>{val.description}</b></h4>
+                            <p> Product ID : {val.productid}<br/>
+                                Price : {val.price}<br/>
+                                Available : {val.quantity}</p>
+                                <button type="button" className="btn btn-primary" onClick={() =>this.props.addBasket(val.description, val.price, val.quantity)}>Add to Cart</button>
+                        </div>
+
+                    )
+
+                )} </h1>
+
+                <Footer />
             </div>
         )
     }
 }
-
-export default ProductDetails
+export default connect(null, {addBasket})(ProductDetails);

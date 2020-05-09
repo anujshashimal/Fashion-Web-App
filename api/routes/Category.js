@@ -35,12 +35,12 @@ router.route('/:id').get((req,res)=>{
 const categoryController = require('../controllers/Category');
 
 
-router.get('/findCategory/:id',categoryController.Find_Category);
+router.get('/findCategory/:Category_ID',categoryController.findCategory);
 
 router.post('/addCategory',categoryController.SaveCategory);
 
-router.post('/updateCategory/:id',categoryController.Update_Category);
+router.post('/updateCategory/:Category_ID',categoryController.Update_Category);
 
-router.delete('/deletecategory/:id',categoryController.Delete_Category);
+router.delete('/deletecategory/:Category_ID',categoryController.Delete_Category);
 
-module.exports = router; //exports category
+module.exports = router;

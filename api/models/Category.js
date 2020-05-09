@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var Categoryy = new Schema({
+var Categories = new Schema({
 
     Category_ID:{
         type:String,
@@ -22,6 +22,6 @@ var Categoryy = new Schema({
 
 });
 
-const Category = mongoose.model('Category',Categoryy);
+const Category = mongoose.model('Category',Categories);
 
 module.exports = Category;
