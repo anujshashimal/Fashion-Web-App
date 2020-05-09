@@ -9,37 +9,36 @@ const CartPage = ({basketProps}) =>{
 
     console.log(basketProps)
     let productInCart = [];
+    let sg =[];
 
-   console.log(basketProps)
+
     Object.keys(basketProps.items).forEach( function (item) {
         console.log(item)
-        productInCart.push(basketProps.items)
+        productInCart.push(basketProps.items[item])
         console.log(productInCart)
     })
 
     productInCart = productInCart.map( (product, index) => {
+        console.log(product)
         return(
-            <Fragment>
-                <ion-icon name='arrow-back-circle-outline'></ion-icon>
-                <div className='product'> <ion-icon name = 'close-circle'></ion-icon> <img src={img[index]} />
-                <span className='sm-hide' > ${product.name} </span>
-                </div>
-                <div className='price sm-hide'> ${product.price},00</div>
-                <div className='quntity'>
-                    <ion-icon className = 'decrease' name='arrow-back-circle-outline'></ion-icon>
-                    <span> </span>
-                    <ion-icon className = 'increase' name='arrow-forward-circle-outline'></ion-icon>
-                </div>
-                <div className='total'> ${product.price},00 </div>
-            </Fragment>
-        )
 
+                <tr key={product.name}>
+                    <th> {index} </th>
+
+                    <td>{product.name}</td>
+                    <td>{product.price}</td>
+                    <td>{product.avaliable}</td>
+                </tr>
+
+        )
     })
     return (
         <div>
             <Hea />
-            <header>
-                <div className='container-products'>
+                <div className='container'>
+                    <header>
+
+                    <div className='container-products'>
                     <div className='product-header'>
                         <h5 className='product-title'> PRODUCT  </h5>
                         <h5 className='product-sm'> PRICE </h5>
@@ -47,15 +46,21 @@ const CartPage = ({basketProps}) =>{
                         <h5 className='total'> TOTAL  </h5>
                     </div>
                     <div className='products'>
+                        <table id='students'>
+                        <tbody>
                         {productInCart}
+                        </tbody>
+                        </table>
                     </div>
                     <div className='basketTotalContainer'>
                         <h4 className='basketTotalTitle'>Basket Total </h4>
                         <h4 className='basketTotal'>{basketProps.cartCost},00 </h4>
 
                     </div>
+
                 </div>
             </header>
+        </div>
             <Foo />
         </div>
     )
