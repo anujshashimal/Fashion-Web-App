@@ -43,6 +43,7 @@ import AddCategory from './Components/CategoryComponents/AddCategory';
 // {/*Anuj Import Here*/}
 import CartRoute from './Components/CartComponents/CartRoute';
 import Cartpage from "./Components/CartComponents/CartPage";
+import PlaceOrder from "./Components/CartComponents/PlaceOrder";
 
 
 
@@ -185,7 +186,7 @@ class App extends React.Component {
                         {/*Access authorized for - (Anuj)*/}
                         <Route path = {'/CartRoute'} exact component={CartRoute} />
                         <Route path = {'/cartpage'} exact component={Cartpage} />
-
+                        <Route path = {'/PlaceOrder'} exact component={PlaceOrder} />
 
 
 

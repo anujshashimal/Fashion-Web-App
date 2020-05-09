@@ -1,7 +1,6 @@
 const Category = require('./routes/Category');
 const StoreManager = require('./routes/StoreManager');
 const User = require('./routes/User');
-
 const conn = require('./db/connection')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
@@ -56,8 +55,6 @@ const ProductRouter = require('./routes/Products');
 // //User section
 app.use('/user',User);
 // //
-
-
 
 //Server connection
 app.listen(conn.port, (err)=>{
