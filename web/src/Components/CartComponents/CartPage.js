@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React , {Link} from 'react';
 import {connect} from 'react-redux';
 import img from '../../img/sample1.jpg'
 import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
@@ -6,6 +6,7 @@ import './Styles/Style..css';
 import Hea from "../CommonComponents/header";
 import Foo from "../CommonComponents/footer";
 const CartPage = ({basketProps}) =>{
+
 
     console.log(basketProps)
     let productInCart = [];
@@ -32,6 +33,8 @@ const CartPage = ({basketProps}) =>{
 
         )
     })
+
+
     return (
         <div>
             <Hea />
@@ -55,6 +58,7 @@ const CartPage = ({basketProps}) =>{
                     <div className='basketTotalContainer'>
                         <h4 className='basketTotalTitle'>Basket Total </h4>
                         <h4 className='basketTotal'>{basketProps.cartCost},00 </h4>
+                            <button type="button" className="btn btn-secondary" >Place Order</button>
 
                     </div>
 
