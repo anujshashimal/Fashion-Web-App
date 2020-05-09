@@ -1,25 +1,19 @@
 .container,
 .container-products{
-    display: table-header-group;
     justify-content: center;
     flex-wrap: wrap;
     margin-top:100px;
 }
 
-.container-products{
-    max-width: 650px;
-    justify-content: space-around;
-    margin: 0 auto;
-    margin-top: 100px;
-}
+
 
 .container-products ion-icon{
-    font-size: 25px;
-    color: #5e35b1;
-    margin-left: 10px;
-    margin-right: 10px;
-    cursor: pointer;
-}
+     font-size: 25px;
+     color: #5e35b1;
+     margin-left: 10px;
+     margin-right: 10px;
+     cursor: pointer;
+ }
 
 .product-header{
     width: 100%;
@@ -27,7 +21,8 @@
     display: flex;
     justify-content: flex-start;
     border-bottom: 4px solid lightgray;
-    margin: 0 auto;
+    margin-top: 15%;
+    padding: 13px;
 }
 
 .product-title{
@@ -36,14 +31,10 @@
 .price{
     width: 15px;
     border-bottom: 1px solid lightgray;
-    display: flex;
-    align-items: center;
 }
 .quntity{
     width: 30%;
     border-bottom: 1px solid lightgray;
-    display: flex;
-    align-items: center;
 }
 
 .total{
@@ -107,4 +98,35 @@
     .basketTotalContainer{
         padding-right: 8%;
     }
+}
+
+
+#title {
+    text-align: center;
+    font-family: arial, sans-serif;
+}
+
+#students {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    border: 3px solid #ddd;
+    width: 100%;
+}
+
+#students td, #students th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#students tr:nth-child(even){background-color: #f2f2f2;}
+
+#students tr:hover {background-color: #ddd;}
+
+#students th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: blueviolet;
+    color: white;
 }

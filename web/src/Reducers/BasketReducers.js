@@ -3,9 +3,7 @@ import {ADD_PRODUCT_TO_BACKET, GET_NUMBERS_IN_BASKET} from "../Actions/types";
 const initialState = {
     backetNumbers: 0,
     cartCost: 0,
-    items:{
-
-    }
+    items:[]
 }
 
 export default (state = initialState, action) =>{
@@ -21,7 +19,10 @@ export default (state = initialState, action) =>{
                     ...state,
                     backetNumbers: state.backetNumbers + 1,
                     cartCost: state.cartCost + payload.price,
-                    items : {...payload},
+                    items : [
+                        ...state.items,
+                        action.payload
+                    ]
             };
 
             case GET_NUMBERS_IN_BASKET:
