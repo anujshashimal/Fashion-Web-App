@@ -4,6 +4,8 @@ import women from '../../img/women.jpg'
 import men from '../../img/men.jpg'
 import kids from '../../img/kids.jpg'
 import others from '../../img/others.jpg'
+import  './Styles/style.css';
+
 
 
 export class MainCategory extends Component {

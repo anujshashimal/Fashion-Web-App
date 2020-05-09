@@ -2,12 +2,16 @@
 const  StoreManager = require('../models/StoreManager');
 
 exports.Find_StoreManager = (req,res,next)=>{
-    StoreManager.find(
-        req.params.smId)
+    StoreManager.find({'smId':req.params.smId})
         .then(storeManager => res.json(storeManager))
         .catch(err=>res.status(400).json("Error:"+err))
-
 }
+
+exports.getAllStoreManager=(req,res,next)=>{
+    StoreManager.find().then(storeManager=>res.json(storeManager))
+        .catch(err=>res.status(400).json("error:"+err))
+}
+
 
 // router.route('/addCategory').post((req,res)=>{
 //     const Category_ID = req.body.Category_ID;
@@ -76,7 +80,7 @@ exports.Update_StoreManger = (req,res,next)=>{
 
 exports.Delete_StoreManager = (req,res,next)=>{
 
-    StoreManager.findOneAndDelete(req.params.smId)
+    StoreManager.findOneAndDelete({'smId':req.params.smId})
         .then(()=>res.json('store Manager Deleted'))
         .catch(err=>res.status(400).json('Error'+err))
 
