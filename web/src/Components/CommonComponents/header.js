@@ -31,20 +31,22 @@ import React, {Component, useState} from 'react'; import {connect} from 'react-r
                             <ul className="nav navbar-nav nav-flex-icons ml-auto">
                                 <li className="nav-item"><a href="" className="nav-link waves-effect"><span
                                     className="badge red z-depth-1 mr-1"> 2 </span><i id="navbar-static-cart" alt="Cart"
-                                                                                      className="fas fa-list"></i><span
+                                                                                      className="fas fa-heart"></i><span
                                     className="sr-only"> Cart </span></a></li>
 
-                                <li className="nav-item"><a href="" className="nav-link waves-effect"><Link
-                                    to='/cartpage'> Click </Link>
+                                <li className="nav-item"><a href="" className="nav-link waves-effect">
+
+
+
 
                                     <span
-                                        className="badge red z-depth-1 mr-1"> {props.basketProps.backetNumbers} </span><i
-                                        id="navbar-static-cart" alt="Cart" className="fas fa-shopping-cart"></i><span
+                                        className="badge red z-depth-1 mr-1"> {props.basketProps.backetNumbers} </span><Link to='/cartpage'><i
+                                        id="navbar-static-cart" alt="Cart" className="fas fa-shopping-cart"></i></Link><span
                                         className="sr-only"> Cart </span></a></li>
-                                <li className="nav-item"><a href="" className="nav-link waves-effect"> <span
+                                {/* <li className="nav-item"><a href="" className="nav-link waves-effect"> <span
                                     className="badge red z-depth-1 mr-1"> {props.basketProps.backetNumbers} </span><i
                                     id="navbar-static-cart" alt="Cart" className="fas fa-shopping-cart"></i><span
-                                    className="sr-only"> Cart </span></a></li>
+                                    className="sr-only"> Cart </span></a></li> */}
 
 
                                 <li className="nav-item">
@@ -55,13 +57,9 @@ import React, {Component, useState} from 'react'; import {connect} from 'react-r
                             </ul>
                         </div>
                     </nav>
-
                 </header>
-
-
             </div>
         )
-
 
     }
     const mapStatetoProps = (state) => ({
