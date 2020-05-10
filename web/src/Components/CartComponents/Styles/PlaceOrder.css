@@ -1,0 +1,20 @@
+
+.myform{
+    margin-top: 20px;
+    top: 50%;
+    left: 70%;
+}
+.total{
+    position: absolute;
+    right: 25%;
+    text-align: center;
+    top: 20%;
+    position: absolute;
+
+}
+.total1{
+    top: 70%;
+    position: absolute;
+    right: 10%;
+    text-align: center;
+}

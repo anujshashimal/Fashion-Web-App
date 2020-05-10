@@ -94,7 +94,7 @@ export class viewProduct extends Component {
         return (
             <div>
                 <Header username={this.state.username} />
-                <p>{this.state.username}</p>
+                <br/><br/><br/>
                 {/* <button type="button" className="button" onClick={this.Logout}>Logout</button> */}
                 <div className="row" style={{marginLeft: "5%", marginTop: "1%"}}>
                     <div className="col-md" style={{}}>
@@ -143,10 +143,13 @@ export class viewProduct extends Component {
                         <div className="row" style={{textAlign: "center" , marginLeft: "1%" , marginRight: "1%" , marginTop: "1%"}}>
                             {this.state.products.filter(products => products.maincategory === maincategory).map(products => (
                                <div className="col-md-3">
-                               <Link to={'/ProductDetails?item='+products.productid+'&user=5'}>
+                               <Link to={'/ProductDetails?item='+products.productid+'&username='+this.state.username}>
                           <div class="card1">
-                          {/* {products.image} */}
-                              <img src= {item} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
+                               
+                             
+                               {/* <img src= {item} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} /> */}
+                               {/* <img src={products.image}/> */}
+                            <img src={'http://localhost:5000/uploads/'+products.image} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                                   <div class="container1">
                                       <h4><b>{products.description}</b></h4>
                                       <p>Product ID : {products.productid}<br/>
@@ -156,16 +159,18 @@ export class viewProduct extends Component {
                           </div></Link>
                           </div>
                             ))}
+        
                         </div>
+                         
                     
                 ) : (
                     <div className="row" style={{textAlign: "center" , marginLeft: "1%" , marginRight: "1%" , marginTop: "1%"}}>
                         {this.state.products.filter(products => products.maincategory === maincategory && products.subcategory === subcategory).map(products => (
                             <div className="col-md-3">
-                            <Link to={'/ProductDetails?item='+products.productid+'&user=5'}>
+                            <Link to={'/ProductDetails?item='+products.productid+'&username='+this.state.username}>
                        <div class="card1">
                        {/* {products.image} */}
-                           <img src= {item} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
+                       <img src={'http://localhost:5000/uploads/'+products.image} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                                <div class="container1">
                                    <h4><b>{products.description}</b></h4> 
                                    <p>Product ID : {products.productid}<br/>
