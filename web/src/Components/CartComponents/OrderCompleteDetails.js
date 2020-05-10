@@ -15,6 +15,8 @@ class OrderCompleteDetails extends Component {
             OrderID: '',
             Name: '',
             Address:'',
+            Number:'',
+
         }
     }
     componentDidMount() {
