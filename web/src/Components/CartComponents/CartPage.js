@@ -7,9 +7,9 @@ import Hea from "../CommonComponents/header";
 import Foo from "../CommonComponents/footer";
 import PlaceOrder from '../CartComponents/PlaceOrder';
 import {Link, Redirect} from "react-router-dom";
-
-
-const CartPage = ({basketProps}) =>{
+import { MDBBtn, MDBCloseIcon  } from "mdbreact";
+import {clearProduct} from '../../Actions/ProductQuantity'
+const CartPage = ({basketProps, clearProduct}) =>{
     console.log(basketProps)
     let productInCart = [];
     let sg =[];
@@ -18,19 +18,35 @@ const CartPage = ({basketProps}) =>{
     Object.keys(basketProps.items).forEach( function (item) {
         console.log(item)
         productInCart.push(basketProps.items[item])
+
         console.log(productInCart)
     })
+
+    const ItemEdit = () => {
+        console.log('hello')
+
+    }
+
+    const ItemDelete = () => {
+        console.log('hello')
+
+    }
 
 
     productInCart = productInCart.map( (product, index) => {
         console.log(product)
         return(
-
                 <tr key={product.name}>
                     <th> {index} </th>
+                    <MDBCloseIcon  onClick={() => {clearProduct(product.name)}}> Clear Product</MDBCloseIcon >
+                    <tr/>
+                    <img src={'http://localhost:5000/uploads/'+product.image} alt="Product" style={{height: "5%" }} />
                     <td>{product.name}</td>
                     <td>{product.price}</td>
                     <td>{product.avaliable}</td>
+                    <td>{product.discount}% discount</td>
+                    <MDBBtn rounded color="secondary" onClick={() =>ItemEdit()}>Edit</MDBBtn>
+                    <MDBBtn rounded color="secondary" onClick={() =>ItemDelete()}>Delete</MDBBtn>
                 </tr>
 
         )
@@ -44,20 +60,21 @@ const CartPage = ({basketProps}) =>{
     return (
         <div>
             <Hea />
-                <div className='container'>
-                    <header>
+
+            <div className='container'>
+                <h1> Cart</h1>
+
+                <header>
 
                     <div className='container-products'>
                     <div className='product-header'>
-                        <h5 className='product-title'> PRODUCT  </h5>
-                        <h5 className='product-sm'> PRICE </h5>
-                        <h5 className='quntity'> QUNTITY </h5>
-                        <h5 className='total'> TOTAL  </h5>
+
                     </div>
                     <div className='products'>
                         <table id='students'>
                         <tbody>
                         {productInCart}
+
                         </tbody>
                         </table>
                     </div>
@@ -66,9 +83,7 @@ const CartPage = ({basketProps}) =>{
                         <h4 className='basketTotal'>{basketProps.cartCost},00 </h4>
                             <Link type="button" className="btn btn-secondary" to='PlaceOrder'  >Place Order
                             </Link>
-
                     </div>
-
 
                 </div>
             </header>
@@ -78,7 +93,8 @@ const CartPage = ({basketProps}) =>{
     )
 }
 const mapStateToPropss = state => ({
-    basketProps : state.basketState
+    basketProps : state.basketState,
+    watchListProps : state.watchListState
 })
 
-export default connect(mapStateToPropss)(CartPage);
+export default connect(mapStateToPropss, {clearProduct})(CartPage);

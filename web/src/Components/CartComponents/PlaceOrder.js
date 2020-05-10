@@ -1,9 +1,15 @@
 import React, {Component} from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBTabPane, MDBTabContent,MDBNav,MDBNavItem,MDBNavLink } from 'mdbreact';
-import axios from 'axios'
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBTabPane, MDBTabContent,MDBNav,MDBNavItem,MDBNavLink,MDBCard,MDBCardBody,MDBCardImage,MDBCardTitle,MDBCardText } from 'mdbreact';
+import axios from 'axios';
+import {Link} from "react-router-dom";
+import Header from "../CommonComponents/header";
+import Footer from '../CommonComponents/footer'
 import { PaymentInputsWrapper, usePaymentInputs } from 'react-payment-inputs';
 import  { Redirect } from 'react-router-dom'
 import {connect} from 'react-redux';
+import './Styles/PlaceOrder.css';
+import paymentLogo from '../../img/paymentlogo.jpg';
+import CashOnDelivery from '../../img/Cash-On-Delivery.png'
 
 class PlaceOrder extends Component {
      constructor(props) {
@@ -59,16 +65,11 @@ class PlaceOrder extends Component {
          })
      }
 
-     handleOrderIDNoChange = event => {
-         this.setState({
-             OrderId: event.target.value
-         })
-     }
 
-
-     handleRegisterSubmit = event => {
+      handleRegisterSubmit = event => {
             event.preventDefault()
             this.sendOrderData();
+
      }
 
     handleCardNumberChange = event => {
@@ -116,10 +117,39 @@ class PlaceOrder extends Component {
          const {fullname, email, address, contactNo, OrderId, cardNumber,cvv,expireDate} =this.state
 
      return(
-        <MDBContainer>
-            <MDBRow>
+         <div>
+         <Header />
+         <div className='total'>
+             <MDBCol>
+                 <MDBCard style={{ width: "26rem" }}>
+                     <MDBCardImage className="img-fluid" src={paymentLogo}  />
+                     <MDBCardBody>
+                         <MDBCardTitle>Total Amount You Have To Pay :</MDBCardTitle>
+                         <MDBCardTitle>
+                             Rs {this.props.basketProps.cartCost}.00
+                         </MDBCardTitle>
+                     </MDBCardBody>
+                 </MDBCard>
+             </MDBCol>
+
+         </div>
+             {/*<div className='total1'>*/}
+             {/*    <MDBCol>*/}
+             {/*        <MDBCard style={{ width: "26rem" }}>*/}
+             {/*            <MDBCardImage className="img-fluid" src={CashOnDelivery}  />*/}
+             {/*            <MDBCardBody>*/}
+             {/*                <MDBCardTitle>Now We Are Avaliable On Cash On Dilevery</MDBCardTitle>*/}
+             {/*            </MDBCardBody>*/}
+             {/*        </MDBCard>*/}
+             {/*    </MDBCol>*/}
+
+             {/*</div>*/}
+
+         <MDBContainer>
+
+             <MDBRow>
                 <MDBCol md="6">
-                    <form onClick={this.handleRegisterSubmit}>
+                    <form className='myform' onClick={this.handleRegisterSubmit} >
                         <p className="h4 text-center mb-4">Add Order Details</p>
                         <label htmlFor="defaultFormContactNameEx" className="grey-text">
                             Full Name
@@ -240,15 +270,19 @@ class PlaceOrder extends Component {
                         </MDBTabContent>
 
                         <div className="text-center mt-4">
-                            <MDBBtn color="warning" outline type="submit">
+                            <Link color="warning" outline type="submit" to={'orderDetails?username='+ this.state.fullname}>
                                 Send
                                 <MDBIcon far icon="paper-plane" className="ml-2" />
-                            </MDBBtn>
+                            </Link>
                         </div>
                     </form>
                 </MDBCol>
             </MDBRow>
-        </MDBContainer>
+
+         </MDBContainer>
+             <Footer />
+
+         </div>
 
 )}
 }
