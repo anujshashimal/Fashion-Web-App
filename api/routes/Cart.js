@@ -57,6 +57,7 @@ router.route('/PlaceOrder').post((req,res)=>{
 
 
 router.get('/findOrder',CartControlller.Find_All_OrderDetails);
+router.get('/findUserOrder/:fullname',CartControlller.Find_All_OrderDetails_User);
 
 
 module.exports = router;
