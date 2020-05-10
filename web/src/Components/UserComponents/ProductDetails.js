@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import  {Link}  from  'react-router-dom';import NavBar from "../CommonComponents/header";import Footer from '../CommonComponents/footer';
+import  {Link}  from  'react-router-dom';
+import Header from "../CommonComponents/header.js";
+import Footer from '../CommonComponents/footer';
 import {addBasket} from "../../Actions/addActions";
 import {connect} from 'react-redux';
 import Comments from "./comments";
@@ -12,7 +14,7 @@ export class ProductDetails extends Component {
     
         this.state = {
              itemid: '',
-             userid: '',
+             username: '',
              product: [],
              Cprice : ''
         }
@@ -23,10 +25,10 @@ export class ProductDetails extends Component {
         var values = queryString.parse(this.props.location.search)
         console.log(this.props.location.search)
         console.log(values.item)
-        console.log(values.user)
+        console.log(values.username)
         this.setState({
             itemid: values.item,
-            userid: values.user,
+            username: values.username,
         })
         console.log('itemid',values.id)
         axios.get('http://localhost:5000/Products/finds/'+values.item)
@@ -41,24 +43,32 @@ export class ProductDetails extends Component {
         const {itemid, product, Cprice} =this.state
         return (
             <div>
-                <NavBar /><br/><br/><br/>
-                <h1>id is :  {
-                    this.state.product.map( val => (
-                        <div className="container1">
-                            <img src={'http://localhost:5000/uploads/'+val.image} alt="Product" style={{width: "10%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
-                            <h4><b>{val.description}</b></h4>
+                <Header username={this.state.username} />
+                <div className="">
+                    {this.state.product.map( val => (
+                        
+                        <div className="container" style={{textAlign: "center"}}>
+                            <div className="row">
+                                <div className="col-md">
+                            <img src={'http://localhost:5000/uploads/'+val.image} alt="Product" style={{width: "50%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
+                            </div>
+                            <div className="col-md" style={{textAlign: "left"}}>
+                            <h2><b>{val.description}</b></h2>
                 
                             <p> Product ID : {val.productid}<br/>
                                 Price : {val.price}<br/>
                                 Available : {val.quantity}</p>
-                                <button type="button" className="btn btn-primary" onClick={() =>this.props.addBasket(val.description, val.price, val.quantity)}>Add to Cart</button>
+                                <button type="button" className="btn btn-deep-purple" onClick={() =>this.props.addBasket(val.description, val.price, val.quantity)}><i class="fa fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Add to Cart</button>
+                                <button type="button" className="btn btn-danger"><i class="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>
+                                </div>
+                                </div>
                         </div>
 
                     )
 
-                )} </h1>
+                )} </div>
                 <div>
-                    <Comments productid={this.state.itemid}/>
+                    <Comments productid={this.state.itemid} username={this.state.username} />
                     </div>
 
                 <Footer />
