@@ -60,9 +60,6 @@ app.use('/Comments',Comments);
 // //
 
 
-
-
-
 //Server connection
 app.listen(conn.port, (err)=>{
     if(err){
