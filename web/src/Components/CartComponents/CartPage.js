@@ -62,19 +62,14 @@ const CartPage = ({basketProps, clearProduct}) =>{
             <Hea />
 
             <div className='container'>
-                <h1> Cart</h1>
-
                 <header>
-
                     <div className='container-products'>
                     <div className='product-header'>
-
                     </div>
                     <div className='products'>
                         <table id='students'>
                         <tbody>
                         {productInCart}
-
                         </tbody>
                         </table>
                     </div>
