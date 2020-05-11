@@ -30,7 +30,8 @@ router.route('/PlaceOrder').post((req,res)=>{
     const email = req.body.email;
     const address = req.body.address;
     const contactNo = req.body.contactNo;
-    const OrderId = "O-"+ uuid.v4();
+    const OrderId = "ORDER-"+ uuid.v1();
+    const TrackingNum = "TRACK-" + uuid.v1();
     const TotalCost = req.body.TotalCost;
     const cardNumber = req.body.cardNumber;
     const cvv = req.body.cvv;
@@ -46,15 +47,14 @@ router.route('/PlaceOrder').post((req,res)=>{
         TotalCost,
         cardNumber,
         cvv,
-        expireDate
+        expireDate,
+        TrackingNum
     });
 
     Cartdet.save()
         .then(()=>res.json('Order Plased!'))
         .catch(err=>res.status(400).json("Error:"+err));
 });
-
-
 
 router.get('/findOrder',CartControlller.Find_All_OrderDetails);
 router.get('/findUserOrder/:fullname',CartControlller.Find_All_OrderDetails_User);

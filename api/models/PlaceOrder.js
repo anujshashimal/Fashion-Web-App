@@ -23,6 +23,10 @@ const PlaceOrderr = new Schema({
         type:String,
         required:true
     },
+    TrackingNum:{
+        type:String,
+        required:true
+    },
     TotalCost:{
         type:String,
         required:true

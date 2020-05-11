@@ -5,6 +5,7 @@ const initialState = {
     cartCost: 0,
     withDiscartCost: 0,
     getdiscount: 0,
+    numbers: 0,
     items:[],
     productSelected:[]
 }
@@ -13,7 +14,7 @@ export default (state = initialState, action) =>{
     const {payload} = action
     switch(action.type) {
         case ADD_PRODUCT_TO_BACKET:
-            let addQuntity = {...state.items[payload] }
+            let addQuntity = [payload.numbers]
             console.log(addQuntity)
             addQuntity.numbers += 1;
             addQuntity.incart = true;

@@ -34,7 +34,6 @@ const WatchList = ({watchListProps}) => {
                 <MDBBtn rounded color="secondary" >Edit</MDBBtn>
                 <MDBBtn rounded color="secondary" >Delete</MDBBtn>
             </tr>
-
         )
     })
 
@@ -42,7 +41,6 @@ const WatchList = ({watchListProps}) => {
         <div>
             <Hea />
             <div className='container'>
-                <h1> Watch List</h1>
                 <header>
                     <div className='container-products'>
                         <div className='product-header'>
