@@ -1,4 +1,14 @@
-import {ADD_PRODUCT_TO_BACKET, ADD_PRODUCT_TO_WATCHLIST} from "./types";
+import {ADD_PRODUCT_TO_BACKET, ADD_PRODUCT_TO_WATCHLIST, REMOVE_PRODUCT} from "./types";
+
+
+
+export const removeItem = ()=>{
+    return function (dispatch) {
+        dispatch({
+            type:REMOVE_PRODUCT,
+        })
+    }
+}
 
 export const addBasket = (productName, price, avaliable, discount, image) => {
 
@@ -15,5 +25,5 @@ export const addBasket = (productName, price, avaliable, discount, image) => {
         })
     }
 
-
 }
+

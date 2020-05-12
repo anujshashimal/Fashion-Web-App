@@ -7,10 +7,12 @@ import Hea from "../CommonComponents/header";
 import Foo from "../CommonComponents/footer";
 import {Link, Redirect} from "react-router-dom";
 import {MDBBtn, MDBCloseIcon} from "mdbreact";
+import {addBasket} from "../../Actions/addActions";
 
 
-const WatchList = ({watchListProps}) => {
+const WatchList = ({watchListProps, basketProps}) => {
     console.log(watchListProps)
+    console.log(basketProps)
 
     let watchListItems = []
     Object.keys(watchListProps.items).forEach( function (item) {
@@ -55,7 +57,7 @@ const WatchList = ({watchListProps}) => {
                         <div className='basketTotalContainer'>
                             <h4 className='basketTotalTitle'>Basket Total </h4>
                             <h4 className='basketTotal'>{watchListProps.cartCost},00 </h4>
-                            <Link type="button" className="btn btn-secondary" to='PlaceOrder'  >Add Items To Cart
+                            <Link type="button" className="btn btn-secondary" to='PlaceOrder'>Add Items To Cart
                             </Link>
                         </div>
                     </div>
@@ -63,13 +65,12 @@ const WatchList = ({watchListProps}) => {
             </div>
             <Foo />
         </div>
-
-
     )
 }
 
 const mapStateToPropss = state => ({
-    watchListProps : state.watchListState
+    watchListProps : state.watchListState,
+    basketProps : state.basketState,
 })
 
-export default connect(mapStateToPropss)(WatchList);
+export default connect(mapStateToPropss)(WatchList, addBasket);

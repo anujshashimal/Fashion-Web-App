@@ -1,11 +1,11 @@
-import {CLEAR_PRODUCT} from './types';
+import {CLEAR_PRODUCT, INCREASE_QUANITY} from './types';
 
-export const clearProduct = (name) => {
+export const productQuntity = (action, name) => {
     return (dispatch) => {
-        console.log(name)
-
+        console.log('INCREASE', name)
+        console.log('this action is ', action)
         dispatch({
-            type: CLEAR_PRODUCT,
+            type: action === "increase",
             payload: name
         })
     }

@@ -3,6 +3,8 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput } 
 import axios from 'axios';
 import {Link, Redirect} from 'react-router-dom';
 import './Styles/OrderCompleteDet.css';
+import Header from '../CommonComponents/header';
+import Footer from '../CommonComponents/footer';
 
 const queryString = require('query-string');
 
@@ -31,9 +33,9 @@ class OrderCompleteDetails extends Component {
         var values = queryString.parse(this.props.location.search)
         console.log(this.props.location.search)
 
-        const response = axios({
+        axios({
             method: 'get',
-            url: 'http://localhost:5000/cart/findUserOrder/' + values.username,
+            url: 'http://localhost:5000/cart/findUserOrder/' + values.username
         }).then(response => {
             this.setState({
                 UserDetails :  response.data.map(product=>product),
@@ -55,7 +57,7 @@ render() {
 
     return (
 <div>
-
+    <Header />
     {this.state.UserDetails.map( val => (
                             <div className="container" style={{width: "40%", height:"50%", textAlign: "center"}}>
                                 <h1 style={{color: "#5e35b1"}} > ORDER DETAILS </h1>
@@ -85,6 +87,7 @@ render() {
                                 </div>
                             </div>
                         ))}
+<Footer />
 </div>
 
     );
