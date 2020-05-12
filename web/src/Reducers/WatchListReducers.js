@@ -4,7 +4,8 @@ const initialState = {
     backetNumbers: 0,
     cartCost: 0,
     items:[],
-    isAd:false
+    isAd:false,
+    show: false
 }
 
 export default (state = initialState, action) =>{
@@ -21,6 +22,7 @@ export default (state = initialState, action) =>{
                 backetNumbers: state.backetNumbers + 1,
                 cartCost: state.cartCost + payload.price,
                 isAd: true,
+                show: true,
                 items : [
                     ...state.items,
                     action.payload,

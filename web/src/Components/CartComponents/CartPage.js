@@ -8,8 +8,8 @@ import Foo from "../CommonComponents/footer";
 import PlaceOrder from '../CartComponents/PlaceOrder';
 import {Link, Redirect} from "react-router-dom";
 import { MDBBtn, MDBCloseIcon  } from "mdbreact";
-import {clearProduct} from '../../Actions/ProductQuantity'
-const CartPage = ({basketProps, clearProduct}) =>{
+import {productQuntity} from '../../Actions/ProductQuantity'
+const CartPage = ({basketProps, productQuntity}) =>{
     console.log(basketProps)
     let productInCart = [];
     let sg =[];
@@ -38,7 +38,10 @@ const CartPage = ({basketProps, clearProduct}) =>{
         return(
                 <tr key={product.name}>
                     <th> {index} </th>
-                    <MDBCloseIcon  onClick={() => {clearProduct(product.name)}}> Clear Product</MDBCloseIcon >
+                    <button type="button" className="close" aria-label="Close" onClick={() => productQuntity('increase', product.name)}>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
                     <tr/>
                     <img src={'http://localhost:5000/uploads/'+product.image} alt="Product" style={{height: "5%" }} />
                     <td>{product.name}</td>
@@ -92,4 +95,4 @@ const mapStateToPropss = state => ({
     watchListProps : state.watchListState
 })
 
-export default connect(mapStateToPropss, {clearProduct})(CartPage);
+export default connect(mapStateToPropss, {productQuntity})(CartPage);

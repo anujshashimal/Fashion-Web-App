@@ -1,4 +1,4 @@
-import {ADD_PRODUCT_TO_BACKET, CLEAR_PRODUCT, GET_NUMBERS_IN_BASKET} from "../Actions/types";
+import {ADD_PRODUCT_TO_BACKET, ADD_PRODUCT_TO_WATCHLIST, INCREASE_QUANITY, GET_NUMBERS_IN_BASKET, REMOVE_PRODUCT} from "../Actions/types";
 
 const initialState = {
     backetNumbers: 0,
@@ -7,14 +7,17 @@ const initialState = {
     getdiscount: 0,
     numbers: 0,
     items:[],
+    showItem: false,
     productSelected:[]
 }
 
 export default (state = initialState, action) =>{
     const {payload} = action
     switch(action.type) {
+
+        case ADD_PRODUCT_TO_WATCHLIST:
         case ADD_PRODUCT_TO_BACKET:
-            let addQuntity = [payload.numbers]
+            let addQuntity = {...state.items[action.payload]}
             console.log(addQuntity)
             addQuntity.numbers += 1;
             addQuntity.incart = true;
@@ -35,10 +38,19 @@ export default (state = initialState, action) =>{
                     return {
                         backetNumbers: state.backetNumbers + 1
                     }
-        case CLEAR_PRODUCT:
+        case REMOVE_PRODUCT:
                     return {
-                        ...state
-            }
+                        ...state,
+                        backetNumbers: state.backetNumbers - 1,
+
+                    }
+        case INCREASE_QUANITY:
+
+            let addQuntityy = [payload.numbers]
+
+            return {
+
+                    }
         default:
             return state;
     }
