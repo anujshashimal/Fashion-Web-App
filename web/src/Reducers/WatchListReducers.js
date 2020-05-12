@@ -3,8 +3,7 @@ import {GET_NUMBERS_TO_WATCHLIST, ADD_PRODUCT_TO_WATCHLIST} from "../Actions/typ
 const initialState = {
     backetNumbers: 0,
     cartCost: 0,
-    items:[],
-    isAd:false,
+    WatchListitems:[],
     show: false
 }
 
@@ -23,8 +22,8 @@ export default (state = initialState, action) =>{
                 cartCost: state.cartCost + payload.price,
                 isAd: true,
                 show: true,
-                items : [
-                    ...state.items,
+                WatchListitems : [
+                    ...state.WatchListitems,
                     action.payload,
                 ]
             };
