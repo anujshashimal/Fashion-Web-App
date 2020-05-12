@@ -13,11 +13,11 @@ const initialState = {
 
 export default (state = initialState, action) =>{
     const {payload} = action
+
     switch(action.type) {
 
-        case ADD_PRODUCT_TO_WATCHLIST:
         case ADD_PRODUCT_TO_BACKET:
-            let addQuntity = {...state.items[action.payload]}
+            let addQuntity = [...state.items]
             console.log(addQuntity)
             addQuntity.numbers += 1;
             addQuntity.incart = true;
@@ -25,12 +25,12 @@ export default (state = initialState, action) =>{
             return{
                     ...state,
                     backetNumbers: state.backetNumbers + 1,
-                    cartCost: state.cartCost + payload.price,
+                    cartCost: state.cartCost + action.payload.price,
                     getdiscount: state.cartCost * payload.discount * (1/100),
-                    withDiscartCost : state.cartCost - ( (state.cartCost) * payload.discount * (1/100)),
+                    withDiscartCost : state.cartCost - ( (state.cartCost) * action.payload.discount * (1/100)),
                     items : [
                         ...state.items,
-                        action.payload,
+                        payload
                     ]
             };
 
@@ -46,7 +46,7 @@ export default (state = initialState, action) =>{
                     }
         case INCREASE_QUANITY:
 
-            let addQuntityy = [payload.numbers]
+            let addQuntityy = [action.payload.numbers]
 
             return {
 

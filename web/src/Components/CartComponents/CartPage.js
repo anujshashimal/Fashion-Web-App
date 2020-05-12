@@ -9,10 +9,11 @@ import PlaceOrder from '../CartComponents/PlaceOrder';
 import {Link, Redirect} from "react-router-dom";
 import { MDBBtn, MDBCloseIcon  } from "mdbreact";
 import {productQuntity} from '../../Actions/ProductQuantity'
+
+
 const CartPage = ({basketProps, productQuntity}) =>{
     console.log(basketProps)
     let productInCart = [];
-    let sg =[];
 
 
     Object.keys(basketProps.items).forEach( function (item) {
@@ -33,12 +34,13 @@ const CartPage = ({basketProps, productQuntity}) =>{
     }
 
 
+
     productInCart = productInCart.map( (product, index) => {
         console.log(product)
         return(
                 <tr key={product.name}>
                     <th> {index} </th>
-                    <button type="button" className="close" aria-label="Close" onClick={() => productQuntity('increase', product.name)}>
+                    <button type="button" className="close" aria-label="Close" onClick={() => productQuntity()}>
                         <span aria-hidden="true">&times;</span>
                     </button>
 
