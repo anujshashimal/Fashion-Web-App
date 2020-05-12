@@ -10,7 +10,7 @@ let  Category = require('../models/Category');
 // }
 
 exports.findCategory = (req,res,next)=>{
-    Category.find({'Category_ID':req.params.Category_ID})
+    Category.find({'MainCategory':req.params.MainCategory,'Admin':req.params.Admin})
         .then(category=>res.json(category))
         .catch(err=> res.status(400).json("error : "+err));
     // console.log(req.body.Category_ID);
@@ -83,4 +83,5 @@ exports.Delete_Category = (req,res,next)=>{
         .catch(err=>res.status(400).json('Error'+err))
 
 }
+
 

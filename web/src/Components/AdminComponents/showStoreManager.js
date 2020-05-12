@@ -12,7 +12,8 @@ export class showStoreManager extends Component {
             Email:[],
             Password:[],
             RePassword:"",
-            Admin:""
+            Admin:"",
+            storeManager:[]
 
         }
     }
@@ -22,16 +23,16 @@ export class showStoreManager extends Component {
             .then(response=>{
                 if(response.data.length>0){
                     this.setState({
-                        smId : response.data.map(storeManager=>storeManager.smId) ,
-                        UserName : response.data.map(storeManager=>storeManager.UserName),
-                        Email :  response.data.map(storeManager=>storeManager.Email),
-                        Password : response.data.map(storeManager=>storeManager.Password)
+                        storeManager : response.data.map(storeManager=>storeManager)
+                        // UserName : response.data.map(storeManager=>storeManager),
+                        // Email :  response.data.map(storeManager=>storeManager),
+                        // Password : response.data.map(storeManager=>storeManager)
 
 
 
 
                     })
-                    console.log(this.state.Email);
+
 
 
                 }
@@ -43,8 +44,8 @@ export class showStoreManager extends Component {
         return (
             <div>
 
-                {this.state.UserName.map(function(storeManager){
-                    return <li>{storeManager._id} {storeManager.UserName}
+                {this.state.storeManager.map(function(storeManager){
+                    return <li>
                         <div className="conatainer">
                             <div className="row">
                                 <div className="col-2"></div>
@@ -55,7 +56,7 @@ export class showStoreManager extends Component {
                             <div className="card-body">
 
 
-                                <h4 className="card-title"><a>Card title</a></h4>
+                                <h4 className="card-title"><a>{storeManager.UserName}</a></h4>
 
                                 <p className="card-text">Some quick example text to build on the card title and make up
                                     the bulk of the card's

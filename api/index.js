@@ -1,6 +1,9 @@
 const Category = require('./routes/Category');
 const StoreManager = require('./routes/StoreManager');
 const User = require('./routes/User');
+const StoreManagerID = require('./routes/storemanagerID');
+const CategoryID = require('./routes/CategoryID');
+
 
 const conn = require('./db/connection')
 const bodyParser = require('body-parser')
@@ -56,6 +59,9 @@ const ProductRouter = require('./routes/Products');
 // //User section
 app.use('/user',User);
 // //
+app.use('/smid',StoreManagerID);
+
+app.use('/categoryID',CategoryID);
 
 
 
