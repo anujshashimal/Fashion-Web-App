@@ -11,6 +11,7 @@ const Product = props =>(
         <td className="tabletext">{props.product.subcategory}</td>
         <td className="tabletext">{props.product.price}</td>
         <td className="tabletext">{props.product.quantity}</td>
+        <td className="tabletext">{props.product.discount}</td>
         <td className="tabletext">{props.product.image}</td>
         <td className="tabletext">{props.product.stockmanagerid}</td>
         <td>
@@ -79,7 +80,7 @@ export class ProductList extends Component {
         <h3 className="header">Product List</h3>
         <br></br>
            <div className="jumbotron" >
-             <table className="table table-bordered">
+             <table id="dtBasicExample" className="table table-striped table-bordered table-responsive-md" cellspacing="0" width="100%">
               <thead className="thead-light">
                 <tr>
                   <th className="tabletext">Description</th>
@@ -87,6 +88,7 @@ export class ProductList extends Component {
                   <th className="tabletext">SubCategory</th>
                   <th className="tabletext">Price</th>
                   <th className="tabletext">Quantity</th>
+                  <th className="tabletext">Discount</th>
                   <th className="tabletext">Image</th>
                   <th className="tabletext">Stock Manager Id</th>
                   <th className="tabletext">Edit</th>

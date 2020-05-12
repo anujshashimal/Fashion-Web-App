@@ -2,7 +2,9 @@ const router = require('express').Router();
 const UserControlller = require('../controllers/User');
 
 
-router.get('/find/:userid',UserControlller.Find_User);   // Find the User---------------------------------------
+router.get('/find',UserControlller.Find_All_Users);    // display the all the products
+
+router.get('/finds/:username',UserControlller.Find_User);   // Find the User---------------------------------------
 
 router.post('/add',UserControlller.Add_User);    // Add the User------------------------------------------------
 

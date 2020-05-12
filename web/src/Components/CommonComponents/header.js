@@ -29,35 +29,25 @@ import React, {Component, useState} from 'react'; import {connect} from 'react-r
                                 </li>
                             </ul>
                             <ul className="nav navbar-nav nav-flex-icons ml-auto">
-                                <li className="nav-item"><a href="" className="nav-link waves-effect"><span
-                                    className="badge red z-depth-1 mr-1"> 2 </span><i id="navbar-static-cart" alt="Cart"
-                                                                                      className="fas fa-list"></i><span
-                                    className="sr-only"> Cart </span></a></li>
+                                <li className="nav-item"><a  className="nav-link waves-effect"><span
+                                    className="badge red z-depth-1 mr-1"> {props.WatchListState.backetNumbers} </span> <Link to='/watchlist'> <i id="navbar-static-cart" alt="Cart" className="fas fa-heart"></i><span
+                                    className="sr-only"> Cart </span>  </Link></a> </li>
 
-                                <li className="nav-item"><a href="" className="nav-link waves-effect"><Link to='/cartpage'> Click </Link>
-
+                                <li className="nav-item"><a  className="nav-link waves-effect">
                                     <span
-                                        className="badge red z-depth-1 mr-1"> {props.basketProps.backetNumbers} </span><i
-                                        id="navbar-static-cart" alt="Cart" className="fas fa-shopping-cart"></i><span
-                                        className="sr-only"> Cart </span></a></li>
-                                <li className="nav-item"><a href="" className="nav-link waves-effect"> <span
+                                        className="badge red z-depth-1 mr-1"> {props.basketProps.backetNumbers} </span><Link to='/cartpage'><i
+                                        id="navbar-static-cart" alt="Cart" className="fas fa-shopping-cart"></i></Link></a></li>
+                                {/* <li className="nav-item"><a href="" className="nav-link waves-effect"> <span
                                     className="badge red z-depth-1 mr-1"> {props.basketProps.backetNumbers} </span><i
                                     id="navbar-static-cart" alt="Cart" className="fas fa-shopping-cart"></i><span
-                                    className="sr-only"> Cart </span></a></li>
+                                    className="sr-only"> Cart </span></a></li> */}
 
 
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
-                                       data-toggle="dropdown"
-                                       aria-haspopup="true" aria-expanded="false"><i className="fas fa-user"> </i><span
-                                        className="d-none d-xl-inline-block ml-1"></span></a>
-                                    <div className="dropdown-menu dropdown-primary dropdown-menu-right"
-                                         aria-labelledby="navbarDropdownMenuLink">
-                                        <div className="dropdown-item">UserName</div>
-                                        <a className="dropdown-item" href="#">Profile</a>
-                                        <a className="dropdown-item" href="#">SignOut</a>
-                                    </div>
-                                </li>
+                                <li className="nav-item">
+                                    <div className="nav-link waves-effect"> 
+                                        <i id="navbar-static-cart" alt="Cart" className="fas fa-user"></i>
+                                        {props.username}
+                                        <span className="sr-only"> Cart </span></div></li> 
                             </ul>
                         </div>
                     </nav>
@@ -67,7 +57,9 @@ import React, {Component, useState} from 'react'; import {connect} from 'react-r
 
     }
     const mapStatetoProps = (state) => ({
-        basketProps: state.basketState
+        basketProps: state.basketState,
+        WatchListState : state.watchListState
     })
+
 
 export default connect(mapStatetoProps, {getNumbers}) (header);

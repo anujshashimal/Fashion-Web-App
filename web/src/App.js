@@ -31,6 +31,8 @@ import AddCategory from './Components/CategoryComponents/AddCategory';
  import Register from './Components/UserComponents/Register'
  import viewProduct from './Components/UserComponents/viewProduct'
  import ProductDetails from './Components/UserComponents/ProductDetails'
+ import Comments from './Components/UserComponents/comments'
+//  import Home from './Components/UserComponents/Home'
  //---------------------------------------------------------------------
 //
 //
@@ -42,7 +44,9 @@ import AddCategory from './Components/CategoryComponents/AddCategory';
 // {/*Anuj Import Here*/}
 import CartRoute from './Components/CartComponents/CartRoute';
 import Cartpage from "./Components/CartComponents/CartPage";
-
+import PlaceOrder from "./Components/CartComponents/PlaceOrder";
+import WatchList from "./Components/CartComponents/WatchList"
+import OrderCompleteDetails from "./Components/CartComponents/OrderCompleteDetails";
 
 
 
@@ -184,7 +188,9 @@ class App extends React.Component {
                         {/*Access authorized for - (Anuj)*/}
                         <Route path = {'/CartRoute'} exact component={CartRoute} />
                         <Route path = {'/cartpage'} exact component={Cartpage} />
-
+                        <Route path = {'/PlaceOrder'} exact component={PlaceOrder} />
+                        <Route path = {'/watchlist'} exact component={WatchList} />
+                        <Route path = {'/orderDetails'} exact component={OrderCompleteDetails} />
 
 
 
@@ -200,6 +206,8 @@ class App extends React.Component {
                         <Route path = {'/Register'} exact component={Register}/>
                         <Route path = {'/viewProduct'} exact component={viewProduct}/>
                         <Route path = {'/ProductDetails'} exact component={ProductDetails}/>
+                        <Route path = {'/Comments'} exact component={Comments}/>
+                        {/* <Route path = {'/Home'} exact component={Home}/> */}
 
 
 

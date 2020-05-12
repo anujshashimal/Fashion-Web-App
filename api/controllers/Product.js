@@ -56,7 +56,8 @@ var uuid = require('uuid');
    });
 
    if(req.file){
-       newProduct.image = req.file.path
+       newProduct.image = req.file.filename
+      // console.log(req.file.filename)
    }
    newProduct.save()
    .then(()=>res.json('Product Added!'))
@@ -83,9 +84,10 @@ var uuid = require('uuid');
             
          if(req.file){
             product.image = req.file.path
+          
         }
          console.log(product)
-
+      
          product.save()
          .then(()=>res.json('Product Updated'))
          .catch(err=>res.status(400).json('Error'+err));
