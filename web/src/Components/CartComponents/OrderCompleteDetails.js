@@ -5,6 +5,10 @@ import {Link, Redirect} from 'react-router-dom';
 import './Styles/OrderCompleteDet.css';
 import Header from '../CommonComponents/header';
 import Footer from '../CommonComponents/footer';
+import {connect} from "react-redux";
+import {productQuntity} from "../../Actions/ProductQuantity";
+import {removeItem} from "../../Actions/addActions";
+import {clearDetails } from "../../Actions/addActions";
 
 const queryString = require('query-string');
 
@@ -48,7 +52,9 @@ myFun = () =>{
     this.setState({
         success: true
     })
-}
+this.props.clearDetails()
+
+    }
 
 render() {
         if( this.state.success){
@@ -94,4 +100,10 @@ render() {
 }
 };
 
-export default OrderCompleteDetails;
+
+const mapStateToPropss = state => ({
+    basketProps : state.basketState,
+    watchListProps : state.watchListState
+})
+
+export default connect(mapStateToPropss, {clearDetails})(OrderCompleteDetails);

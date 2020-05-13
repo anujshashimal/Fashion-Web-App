@@ -6,12 +6,13 @@ import './Styles/Style..css';
 import Hea from "../CommonComponents/header";
 import Foo from "../CommonComponents/footer";
 import {Link, Redirect} from "react-router-dom";
-import {MDBBtn, MDBCloseIcon} from "mdbreact";
-import {addBasket} from "../../Actions/addActions";
+import {MDBBtn, MDBCloseIcon, MDBTable, MDBTableHead,MDBTableBody} from "mdbreact";
+import {removeItemFromWathList} from "../../Actions/addWatchList";
+import {addBasket, removeItem} from "../../Actions/addActions";
 import {addToWatchList} from "../../Actions/addWatchList";
+import {productQuntity} from "../../Actions/ProductQuantity";
 
-
-const WatchList = ({watchListProps, basketProps}) => {
+const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
     console.log(watchListProps)
     console.log(basketProps)
 
@@ -26,17 +27,23 @@ const WatchList = ({watchListProps, basketProps}) => {
     watchListItems = watchListItems.map( (product, index) => {
         console.log(product)
         return(
+            <MDBTable>
+                <MDBTableHead color="deep-purple" textWhite>
             <tr key={product.name}>
-                <th> {index} </th>
-                <tr/>
+                <th> {index+1} </th>
+                <button type="button" className="close" aria-label="Close" onClick={() => removeItemFromWathList(index, product.price)}>
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 <img src={'http://localhost:5000/uploads/'+product.image} alt="Product" style={{height: "5%" }} />
                 <td>{product.name}</td>
                 <td>{product.price}</td>
                 <td>{product.avaliable}</td>
                 <td>{product.discount}% discount</td>
-                <MDBBtn rounded color="secondary" >Edit</MDBBtn>
-                <MDBBtn rounded color="secondary" >Delete</MDBBtn>
+                {/*<MDBBtn rounded color="secondary" >Edit</MDBBtn>*/}
+                {/*<MDBBtn rounded color="secondary" >Delete</MDBBtn>*/}
             </tr>
+                </MDBTableHead>
+            </MDBTable>
         )
     })
 
@@ -66,7 +73,7 @@ const WatchList = ({watchListProps, basketProps}) => {
                             </table>
                         </div>
                         <div className='basketTotalContainer'>
-                            <h4 className='basketTotalTitle'>Basket Total </h4>
+                            <h4 className='basketTotalTitle'>Total Cost Of the Watch List Items </h4>
                             <h4 className='basketTotal'>{watchListProps.cartCost},00 </h4>
                             <Link type="button" className="btn btn-secondary" onClick={ () => addCost()}>Add Items To Cart
                             </Link>
@@ -84,4 +91,9 @@ const mapStateToPropss = state => ({
     basketProps : state.basketState,
 })
 
-export default connect(mapStateToPropss)(WatchList, addBasket);
+export default connect(mapStateToPropss, {removeItemFromWathList})(WatchList);
+
+
+
+
+

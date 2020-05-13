@@ -9,9 +9,10 @@ import PlaceOrder from '../CartComponents/PlaceOrder';
 import {Link, Redirect} from "react-router-dom";
 import { MDBBtn, MDBCloseIcon  } from "mdbreact";
 import {productQuntity} from '../../Actions/ProductQuantity'
+import {removeItem }from '../../Actions/addActions'
+import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 
-
-const CartPage = ({basketProps, productQuntity}) =>{
+const CartPage = ({basketProps, productQuntity, removeItem}) =>{
     console.log(basketProps)
     let productInCart = [];
 
@@ -35,24 +36,27 @@ const CartPage = ({basketProps, productQuntity}) =>{
 
 
 
+
     productInCart = productInCart.map( (product, index) => {
         console.log(product)
         return(
+            <MDBTable>
+                <MDBTableHead color="deep-purple" textWhite>
                 <tr key={product.name}>
-                    <th> {index} </th>
-                    <button type="button" className="close" aria-label="Close" onClick={() => productQuntity()}>
+                    <th> {index + 1} </th>
+                    <button type="button" className="close" aria-label="Close" onClick={() => removeItem(index, product.price)}>
                         <span aria-hidden="true">&times;</span>
                     </button>
-
-                    <tr/>
                     <img src={'http://localhost:5000/uploads/'+product.image} alt="Product" style={{height: "5%" }} />
                     <td>{product.name}</td>
                     <td>{product.price}</td>
                     <td>{product.avaliable}</td>
                     <td>{product.discount}% discount</td>
-                    <MDBBtn rounded color="secondary" onClick={() =>ItemEdit()}>Edit</MDBBtn>
-                    <MDBBtn rounded color="secondary" onClick={() =>ItemDelete()}>Delete</MDBBtn>
+                    {/*<MDBBtn rounded color="secondary" onClick={() =>ItemEdit()}>Edit</MDBBtn>*/}
+                    {/*<MDBBtn rounded color="secondary" onClick={() =>ItemDelete()}>Delete</MDBBtn>*/}
                 </tr>
+                </MDBTableHead>
+            </MDBTable>
 
         )
     })
@@ -67,6 +71,7 @@ const CartPage = ({basketProps, productQuntity}) =>{
             <Hea />
 
             <div className='container'>
+
                 <header>
                     <div className='container-products'>
                     <div className='product-header'>
@@ -79,8 +84,9 @@ const CartPage = ({basketProps, productQuntity}) =>{
                         </table>
                     </div>
                     <div className='basketTotalContainer'>
-                        <h4 className='basketTotalTitle'>Basket Total </h4>
-                        <h4 className='basketTotal'>{basketProps.cartCost},00 </h4>
+                        <hr/>
+                        <h4 className='basketTotalTitle'>Total Amount to Pay: </h4>
+                        <h4 className='basketTotal'>Rs. {basketProps.cartCost},00 </h4>
                             <Link type="button" className="btn btn-secondary" to='PlaceOrder'  >Place Order
                             </Link>
                     </div>
@@ -97,4 +103,4 @@ const mapStateToPropss = state => ({
     watchListProps : state.watchListState
 })
 
-export default connect(mapStateToPropss, {productQuntity})(CartPage);
+export default connect(mapStateToPropss, {productQuntity, removeItem})(CartPage);
