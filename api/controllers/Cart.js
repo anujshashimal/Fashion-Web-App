@@ -5,8 +5,8 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 let transporter = nodeailer.createTransport({
     service: "gmail",
     auth: {
-        user: "sanduntharaka258@gmail.com",
-        pass: "sandun258"
+        user: "sliitfashionwebapp@gmail.com",
+        pass: "sliit@123"
     },
 });
 
