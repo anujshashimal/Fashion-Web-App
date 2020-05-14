@@ -18,7 +18,7 @@ export class viewProduct extends Component {
             subcategory: 'All',
             maincategory: 'Men',
             products: [],
-            username:'',
+            username: '',
             // redirect: false,
         }
         // this.Logout = this.Logout.bind(this);
@@ -46,6 +46,7 @@ export class viewProduct extends Component {
         console.log(values.username)
         this.setState({
             username: values.username,
+            maincategory: values.maincategory,
         })
     
         axios.get('http://localhost:5000/category/:id')
@@ -68,6 +69,7 @@ export class viewProduct extends Component {
           }
         })
         console.log('products', this.state.products);
+        console.log('username',this.state.username);
     }
 
     OnChangesubcategory = event => {
@@ -108,9 +110,9 @@ export class viewProduct extends Component {
                             onChange = {this.OnChangemaincategory}
                             multiple= {false}>
                                 <option key ="Men" value="Men">Men</option>
-                                <option key ="Weman" value="Weman">Weman</option>
-                                <option key ="Kid" value="Kid">Kid</option>
-                                <option key ="Baby" value="Baby">Baby</option>
+                                <option key ="Women" value="Women">Women</option>
+                                <option key ="Kid" value="Kids">Kids</option>
+                                <option key ="Other" value="Other">Other</option>
                             </select>
                         </div>
                     </div>
