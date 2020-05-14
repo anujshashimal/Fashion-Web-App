@@ -1,6 +1,7 @@
 
 const  StoreManager = require('../models/StoreManager');
 
+
 exports.Find_StoreManager = (req,res,next)=>{
     StoreManager.find({'smId':req.params.smId})
         .then(storeManager => res.json(storeManager))
@@ -86,4 +87,13 @@ exports.Delete_StoreManager = (req,res,next)=>{
 
 }
 
+
+
+exports.Find_StoreManager_byname = (req,res,next)=>{
+   
+    StoreManager.find({'UserName':req.params.storemanagerusername})
+    .then(storeManager => res.json(storeManager))
+    .catch(err=>res.status(400).json("Error:"+err))
+
+}
 
