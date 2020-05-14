@@ -9,6 +9,7 @@ export class addStoreManager extends Component {
     constructor(props) {
         super(props);
         this.state={
+            smid:"",
             name:"",
             email:"",
             admin:"",
@@ -30,32 +31,59 @@ export class addStoreManager extends Component {
                 if( this.state.email != ""){
                     if (this.state.password ==  this.state.rePassword && this.state. password != "" &&  this.state.rePassword !=""){
 
-                        // let fdata = new FormData();
-                        //
-                        // fdata.set('smId',"001");
-                        // fdata.set('UserName',this.state.name);
-                        // fdata.set('Email', this.state.email);
-                        // fdata.set('Password',this.state.password);
-                        // fdata.set('RePassword',this.state.rePassword);
-                        // fdata.set('Admin',this.state.admin);
+                        axios.get('http://localhost:5000/smid/storemanagerID')
+                            .then(response=>{
+                                if(response.data.length>0){
+                                    this.setState({
+                                        smid : response.data[0].smId
+                                        // UserName : response.data.map(storeManager=>storeManager),
+                                        // Email :  response.data.map(storeManager=>storeManager),
+                                        // Password : response.data.map(storeManager=>storeManager)
 
-                        const storeManager ={
-                            "smId":"004",
-                            "UserName":this.state.name,
-                            "Email":this.state.email,
-                            "Password":this.state.password,
-                            "RePassword":this.state.rePassword,
-                            "Admin":this.state.admin
-                        }
 
-                        // console.log(fdata);
 
-                        // alert(fdata);
-                        axios.post('http://localhost:5000/storemanager/addStoreManager',storeManager)
-                            .then(res=>console.log(res.data));
 
-                        alert( this.state.name+" "+  this.state.email+" "+ this.state.admin+" "+ this.state.password+" "+ this.state.rePassword);
-                        // this.refs.myform.reset();
+                                    })
+
+
+
+                                }
+                                console.log(this.state.smid);
+                                const storeManager ={
+                                    "smId":this.state.smid,
+                                    "UserName":this.state.name,
+                                    "Email":this.state.email,
+                                    "Password":this.state.password,
+                                    "RePassword":this.state.rePassword,
+                                    "Admin":this.state.admin
+                                }
+
+
+                                axios.post('http://localhost:5000/storemanager/addStoreManager',storeManager)
+                                    .then(res=>console.log(res.data));
+
+                                const storeManagerID ={
+                                    "smId":this.state.smid+1
+
+                                }
+                                axios.post('http://localhost:5000/smid/updatestoremanagerID',storeManagerID)
+                                    .then(res=>console.log(res.data));
+
+
+
+                               this.setState({
+                                   smid: "",
+                                   name: "",
+                                   email: "",
+                                   admin: "",
+                                   password: "",
+                                   rePasswprd: ""
+
+                               } )
+
+                            })
+
+
                     }else{
                         this.refs.password.focus();
                     }

@@ -99,7 +99,7 @@ export default class header extends Component{
     
     render() {
         if(this.state.success) {
-            return <Redirect to={"/viewProduct?username="+this.state.user.username} />
+            return <Redirect to={"/Home?username="+this.state.user.username} />
         } else if(this.state.register){
             return <Redirect to={"/Register"} />
         }
@@ -110,22 +110,18 @@ export default class header extends Component{
             
         const {username, password} =this.state
         return(
-            <div className="container" >
-                <div className="raw">
-                    <div className="rowalign">
-                        <div className="col-md-6">
-                            <p align="center">
+            <div className="" style={{marginLeft: "5%", marginRight: "5%", marginTop: "5%"}}>
+                <div className="row">
+                    <div className="col-md-6">
+                    <div style={{textAlign: "center"}}>
                                 <img src={logo} width="50%" />
-                            </p>
-                            <br />
-                            {/* <img src={back} width="100%"/> */}
-                        </div>
-
-                        <div className="col-md-5">
-                            <div className="centeralign">
-                                <br /><br /><br /><br /><br />
-
-                                <form onSubmit={this.handleLoginSubmit}>
+                            </div>
+                            
+                            <img src={back} width="100%"/>
+                    </div>
+                    <div className="col-md-6">
+                        <br/><br/><br/>
+                    <form onSubmit={this.handleLoginSubmit}>
                                     <div className="formalign">
                                         <h1 align="center">
                                             <i class="fa fa-lock icon"></i> User Login
@@ -165,8 +161,6 @@ export default class header extends Component{
                                         </p>
                                     </div>
                                 </form>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

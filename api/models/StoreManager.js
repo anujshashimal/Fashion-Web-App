@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const SMDetailss = new mongoose.Schema({
 
     smId: {
-        type: String,
+        type: Number,
         required: true
     },
     UserName: {

@@ -2,7 +2,7 @@
 .flip-card {
     background-color: transparent;
     width: 100%;
-    height: 400px;
+    height: 450px;
     border: 0px solid #f1f1f1;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
   }
@@ -40,26 +40,26 @@
   
   /* Style the back side */
   .flip-card-back1 {
-    background-image: url("../Men.gif");
+    background-image: url("./img/Men.gif");
     color: white;
     transform: rotateY(180deg);
   }
 
   .flip-card-back2 {
-    background-image: url("../Women.gif");
+    background-image: url("./img/Women.gif");
     color: white;
     transform: rotateY(180deg);
   }
 
   .flip-card-back3 {
-    background-image: url("../Kids.gif");
+    background-image: url("./img/Kids.gif");
     color: white;
     transform: rotateY(180deg);
   }
 
   .flip-card-back4 {
     /*background-color: rgb(34, 23, 59); */
-    background-image: url("../Other.gif");
+    background-image: url("./img/Other.gif");
     color: white;
     transform: rotateY(180deg);
   }
@@ -107,6 +107,4 @@
     }
   }
 
-  .wow {
-    visibility: hidden;
-  }
+  

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import  {Link}  from  'react-router-dom';
+import  {Link, Redirect}  from  'react-router-dom';
 import Header from "../CommonComponents/header.js";
 import Footer from '../CommonComponents/footer';
 import {addBasket} from "../../Actions/addActions";
@@ -19,6 +19,7 @@ export class ProductDetails extends Component {
              product: [],
              Cprice : '',
             counter: 0
+             ragister: false
         }
         console.log(props)
     }
@@ -48,7 +49,10 @@ export class ProductDetails extends Component {
         this.setState({counter: this.state.counter - 1})
     }
     render() {
-        const {itemid, product, Cprice} =this.state
+        const {itemid, product, Cprice, username} =this.state
+        if(this.state.ragister) {
+            return <Redirect to={"/Login"} />
+        }
         return (
             <div>
                 <Header username={this.state.username} />
@@ -58,19 +62,21 @@ export class ProductDetails extends Component {
                             <div className="row"> {console.log(val)}
 
                                 <div className="col-md">
-                            <img src={'http://localhost:5000/uploads/'+val.image} alt="Product" style={{width: "50%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
+                            <img src={'http://localhost:5000/uploads/'+val.image} alt="Product" style={{width: "60%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                             </div>
                             <div className="col-md" style={{textAlign: "left"}}>
                             <h2><b>{val.description}</b></h2>
                 
-                            <p> Product ID : {val.productid}<br/>
+                            <h2> Product ID : {val.productid}<br/>
                                 Price : {val.price}<br/>
-                                Available : {val.quantity}</p>
+
+                                Available : {val.quantity}</h2>
                                 <i onClick={this.increament} className="fas fa-angle-right"></i>
                                 <h4> {this.state.counter}</h4>
                                 <i onClick={this.decrement} className="fas fa-angle-left"></i>
-                                <button type="button" className="btn btn-deep-purple" onClick={() =>this.props.addBasket(val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)}><i class="fa fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Add to Cart</button>
+                                <button type="button" className="btn btn-deep-purple" onClick={() =>{((username != '' && username != "undefined")) ? (this.props.addBasket((val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i class="fa fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Add to Cart</button>
                                 <button type="button" className="btn btn-danger" onClick={() =>this.props.addToWatchList(val.description, val.price, val.quantity, val.discount , val.image)}><i class="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>
+
                                 </div>
                                 </div>
                         </div>

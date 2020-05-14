@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var Categories = new Schema({
 
     Category_ID:{
-        type:String,
+        type:Number,
         required:true
     },
     CategoryName:{
