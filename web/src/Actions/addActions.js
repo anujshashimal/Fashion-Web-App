@@ -12,7 +12,7 @@ export const removeItem = (name, price)=>{
     }
 }
 
-export const addBasket = (ID,productName, price, avaliable, discount, image) => {
+export const addBasket = (ID,productName, price, avaliable, discount, image, counter) => {
 
     return function (dispatch) {
         console.log("Adding to the Backet")
@@ -20,10 +20,11 @@ export const addBasket = (ID,productName, price, avaliable, discount, image) => 
         console.log("price", price)
         console.log("avaliable", avaliable)
         console.log("avaliable", discount)
+        console.log('Counter is ', counter)
 
         dispatch({
             type: ADD_PRODUCT_TO_BACKET,
-            payload: {productID: ID,name :productName, price: price, avaliable: avaliable, discount: discount, image: image }
+            payload: {productID: ID,name :productName, price: price, avaliable: avaliable, discount: discount, image: image, counter: counter }
         })
     }
 }

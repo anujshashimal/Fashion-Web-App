@@ -30,11 +30,13 @@ export default (state = initialState, action) =>{
             addQuntity.incart = true;
             console.log(addQuntity)
             console.log(payload)
-
+            if(payload.counter == 0){
+                payload.counter =1
+            }
             return{
                     ...state,
                     backetNumbers: state.backetNumbers + 1,
-                    cartCost: state.cartCost + action.payload.price,
+                    cartCost: state.cartCost + (action.payload.price * action.payload.counter),
                     getdiscount: state.cartCost * action.payload.discount * (1/100),
                     withDiscartCost : state.cartCost - ( (state.cartCost) * action.payload.discount * (1/100)),
                     items : [
