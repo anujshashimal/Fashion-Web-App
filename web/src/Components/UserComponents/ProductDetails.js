@@ -18,7 +18,7 @@ export class ProductDetails extends Component {
              username: '',
              product: [],
              Cprice : '',
-            counter: 0
+            counter: 0,
              ragister: false
         }
         console.log(props)
@@ -74,7 +74,7 @@ export class ProductDetails extends Component {
                                 <i onClick={this.increament} className="fas fa-angle-right"></i>
                                 <h4> {this.state.counter}</h4>
                                 <i onClick={this.decrement} className="fas fa-angle-left"></i>
-                                <button type="button" className="btn btn-deep-purple" onClick={() =>{((username != '' && username != "undefined")) ? (this.props.addBasket((val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i class="fa fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Add to Cart</button>
+                                <button type="button" className="btn btn-deep-purple" onClick={() =>{((username != '' && username != "undefined")) ? (this.props.addBasket(val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i class="fa fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Add to Cart</button>
                                 <button type="button" className="btn btn-danger" onClick={() =>this.props.addToWatchList(val.description, val.price, val.quantity, val.discount , val.image)}><i class="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>
 
                                 </div>
