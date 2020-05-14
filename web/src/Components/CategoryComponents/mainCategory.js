@@ -58,7 +58,7 @@ export class MainCategory extends Component {
 
                                             <p class="card-text">Hey Sir, To add subcategories under the women category.</p>
 
-                                            <a href="mainCategory.js" class="btn deep-purple darken-1" id="btnName">Women</a>
+                                            <a href="AddCategory" class="btn deep-purple darken-1" id="btnName">Women</a>
 
                                         </div>
 

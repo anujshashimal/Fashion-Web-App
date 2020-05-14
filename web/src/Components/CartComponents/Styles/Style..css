@@ -71,15 +71,17 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    padding: 10px 0;
+    padding: 30px 12px;
 }
 
 .basketTotalTitle{
-    width: 30%;
+    width: 22%;
+    padding-right: 1%;
+
 }
 
 .basketTotal{
-    width: 10%;
+    width: 15%;
 }
 
 @media all {
@@ -96,7 +98,7 @@
         justify-content: center;
     }
     .basketTotalContainer{
-        padding-right: 8%;
+        padding-right: 0%;
     }
 }
 
@@ -109,24 +111,23 @@
 #students {
     text-align: center;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    border: 3px solid #ddd;
     width: 100%;
 }
 
 #students td, #students th {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 0px solid #9725ff;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
-#students tr:nth-child(even){background-color: #f2f2f2;}
+#students tr:nth-child(even){background-color: #f2252d;}
 
-#students tr:hover {background-color: #ddd;}
+#students tr:hover {background-color: #a643dd;}
 
 #students th {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     text-align: center;
-    background-color: blueviolet;
+    background-color: #9725ff;
     color: white;
 }

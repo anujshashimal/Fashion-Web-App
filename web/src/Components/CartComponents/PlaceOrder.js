@@ -1,9 +1,16 @@
 import React, {Component} from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBTabPane, MDBTabContent,MDBNav,MDBNavItem,MDBNavLink } from 'mdbreact';
-import axios from 'axios'
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBTabPane, MDBTabContent,MDBNav,MDBNavItem,MDBNavLink,MDBCard,MDBCardBody,MDBCardImage,MDBCardTitle,MDBCardText } from 'mdbreact';
+import axios from 'axios';
+import {Link} from "react-router-dom";
+import Header from "../CommonComponents/header";
+import Footer from '../CommonComponents/footer'
 import { PaymentInputsWrapper, usePaymentInputs } from 'react-payment-inputs';
 import  { Redirect } from 'react-router-dom'
 import {connect} from 'react-redux';
+import './Styles/PlaceOrder.css';
+import paymentLogo from '../../img/paymentlogo.jpg';
+import CashOnDelivery from '../../img/Cash-On-Delivery.png'
+import {Button} from "semantic-ui-react";
 
 class PlaceOrder extends Component {
      constructor(props) {
@@ -19,7 +26,8 @@ class PlaceOrder extends Component {
              activeItem: "1",
              cardNumber:'',
              cvv: '',
-             expireDate: ''
+             expireDate: '',
+             success: false
 
          }
          console.log(props);
@@ -59,17 +67,15 @@ class PlaceOrder extends Component {
          })
      }
 
-     handleOrderIDNoChange = event => {
-         this.setState({
-             OrderId: event.target.value
-         })
-     }
 
-
-     handleRegisterSubmit = event => {
+      handleRegisterSubmit = event => {
             event.preventDefault()
             this.sendOrderData();
-     }
+            this.setState({
+                success: true
+            })
+
+          }
 
     handleCardNumberChange = event => {
         this.setState({
@@ -113,58 +119,108 @@ class PlaceOrder extends Component {
 
 
      render() {
+
          const {fullname, email, address, contactNo, OrderId, cardNumber,cvv,expireDate} =this.state
 
+         if( this.state.success){
+             return <Redirect to={'orderDetails?username='+ this.state.fullname} />
+         }
+
      return(
-        <MDBContainer>
-            <MDBRow>
+         <div>
+         <Header />
+         <div className='total'>
+             <MDBCol>
+                 <MDBCard style={{ width: "26rem" }}>
+                     <MDBCardImage className="img-fluid" src={paymentLogo}  />
+                     <MDBCardBody>
+                         <MDBCardTitle>Total Amount You Have To Pay :</MDBCardTitle>
+                         <MDBCardTitle>
+                             Rs {this.props.basketProps.cartCost}.00
+                         </MDBCardTitle>
+                     </MDBCardBody>
+                 </MDBCard>
+             </MDBCol>
+
+         </div>
+             {/*<div className='total1'>*/}
+             {/*    <MDBCol>*/}
+             {/*        <MDBCard style={{ width: "26rem" }}>*/}
+             {/*            <MDBCardImage className="img-fluid" src={CashOnDelivery}  />*/}
+             {/*            <MDBCardBody>*/}
+             {/*                <MDBCardTitle>Now We Are Avaliable On Cash On Dilevery</MDBCardTitle>*/}
+             {/*            </MDBCardBody>*/}
+             {/*        </MDBCard>*/}
+             {/*    </MDBCol>*/}
+
+             {/*</div>*/}
+
+         <MDBContainer>
+             <MDBRow>
                 <MDBCol md="6">
-                    <form onClick={this.handleRegisterSubmit}>
+                    <form className='myform' onSubmit={this.handleRegisterSubmit} >
                         <p className="h4 text-center mb-4">Add Order Details</p>
                         <label htmlFor="defaultFormContactNameEx" className="grey-text">
                             Full Name
                         </label>
+                        <div className="input-container">
+                            <i className="fa fa-user icon fa-lg"></i>
                         <input
+                            class="input-field1"
                             type="text"
-                            id="defaultFormContactNameEx"
-                            className="form-control"
+                            placeholder="Fulll Name"
                             value={fullname}
                             onChange={this.handleFullnameChange}
                             required/>
+                        </div>
                         <br />
                         <label htmlFor="defaultFormContactEmailEx" className="grey-text">
                             Your email
                         </label>
+
+                        <div className="input-container">
+                            <i className="fa fa-user-plus icon fa-lg"></i>
                         <input
+                            class="input-field1"
                             type="email"
+                            placeholder="Email"
                             id="defaultFormContactEmailEx"
-                            className="form-control"
                             value={email}
-                            onChange={this.handleEmailChange}
+                            onChange={ this.handleEmailChange}
                             required/>
+                        </div>
                         <br />
+
                         <label htmlFor="defaultFormContactSubjectEx" className="grey-text">
                             Address
                         </label>
-                        <input
-                            type="text"
-                            id="defaultFormContactSubjectEx"
-                            className="form-control"
-                            value={address}
-                            onChange={this.handleAddressChange}
-                            required/>
 
+                        <div className="input-container">
+                            <i className="fa fa-address-book icon fa-lg"></i>
+                        <input
+                            class="input-field1"
+                            type="text"
+                            placeholder="Address"
+                            id="defaultFormContactSubjectEx"
+                            value={address}
+                            onChange={ this.handleAddressChange}
+                            required/>
+                        </div>
                         <br />
                         <label htmlFor="defaultFormContactSubjectEx" className="grey-text">
                             Contact No
                         </label>
+                        <div className="input-container">
+                            <i className="fa fa-phone icon fa-lg"></i>
                         <input
+                            class="input-field1"
                             type="text"
+                            placeholder="Contact No"
                             id="defaultFormContactSubjectEx"
-                            className="form-control"
                             value={contactNo}
-                            onChange={this.handleContactNoChange}
+                            onChange={ this.handleContactNoChange}
                             required/>
+                        </div>
                         <br />
                         {/*<label htmlFor="defaultFormContactMessageEx" className="grey-text">*/}
                         {/*    Order ID*/}
@@ -180,12 +236,15 @@ class PlaceOrder extends Component {
                         <label htmlFor="defaultFormContactMessageEx" className="grey-text">
                             Total Amount
                         </label>
+                        <div className="input-container">
+                            <i className="fa fa-cart-plus icon fa-lg"></i>
                         <input
+                            class="input-field1"
                             type='static'
                             id="defaultFormContactSubjectEx"
                             className="form-control"
-                            placeholder={this.props.basketProps.cartCost} />
-
+                            placeholder={ this.props.basketProps.cartCost} />
+                        </div>
                         <MDBNav className="nav-tabs mt-5">
                             <MDBNavItem>
                                 <MDBNavLink link to="#" active={this.state.activeItem === "1"} onClick={this.toggle("1")} role="tab" >
@@ -203,36 +262,50 @@ class PlaceOrder extends Component {
                                 <label htmlFor="defaultFormContactSubjectEx" className="grey-text">
                                     Card Number
                                 </label>
+
+                                <div className="input-container">
+                                    <i className="fa fa-credit-card icon fa-lg"></i>
                                 <input
+                                    class="input-field1"
                                     type="text"
+                                    placeholder="Card Number"
                                     id="defaultFormContactSubjectEx"
-                                    className="form-control"
                                     onChange={this.handleCardNumberChange}
                                     value={cardNumber}
                                     required/>
+                                </div>
                                 <br />
 
                                 <label htmlFor="defaultFormContactSubjectEx" className="grey-text">
                                     CVV
                                 </label>
+
+                                <div className="input-container">
+                                    <i className="fa fa-credit-card icon fa-lg"></i>
                                 <input
+                                    class="input-field1"
                                     type="text"
+                                    placeholder="CVV"
                                     id="defaultFormContactSubjectEx"
-                                    className="form-control"
                                     onChange={this.handleCVVChange}
                                     value={cvv}
                                     required/>
+                                </div>
 
                                 <label htmlFor="defaultFormContactSubjectEx" className="grey-text">
                                     Expire Date
                                 </label>
+
+                                <div className="input-container">
+                                    <i className="fa fa-calendar icon fa-lg"></i>
                                 <input
+                                    class="input-field1"
                                     type="date"
                                     id="defaultFormContactSubjectEx"
-                                    className="form-control"
                                     onChange={this.handleExpireDateChange}
                                     value={expireDate}
                                     required/>
+                                </div>
                                     <br />
                             </MDBTabPane>
 
@@ -240,15 +313,18 @@ class PlaceOrder extends Component {
                         </MDBTabContent>
 
                         <div className="text-center mt-4">
-                            <MDBBtn color="warning" outline type="submit">
+                            <Button type="button" className="btn btn-secondary" type="submit" >
                                 Send
-                                <MDBIcon far icon="paper-plane" className="ml-2" />
-                            </MDBBtn>
+                            </Button>
                         </div>
                     </form>
                 </MDBCol>
             </MDBRow>
-        </MDBContainer>
+
+         </MDBContainer>
+             <Footer />
+
+         </div>
 
 )}
 }

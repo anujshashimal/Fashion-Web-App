@@ -4,19 +4,14 @@ export default class footer extends Component{
         return(
             <div>
             
-            <footer className="page-footer fixed-bottem font-small mdb-color pt-4  deep-purple darken-1">
+            <footer  className="page-footer  font-small mdb-color pt-4  deep-purple darken-1">
+                <div className="container text-center text-md-left">
+                <div className="row text-center text-md-left mt-3 pb-3">
+                  <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
 
-    
-    <div className="container text-center text-md-left">
-  
-      
-      <div className="row text-center text-md-left mt-3 pb-3">
-  
-        
-        <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h6 className="text-uppercase mb-4 font-weight-bold">Online Shopping Cart System for a Fashion Store </h6>
-          <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-            consectetur
+                    <h6 className="text-uppercase mb-4 font-weight-bold">Online Shopping Cart System for a Fashion Store </h6>
+                    <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
+                    consectetur
             adipisicing elit.</p>
         </div>
         

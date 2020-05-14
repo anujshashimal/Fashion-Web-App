@@ -46,7 +46,8 @@ import AddCategory from './Components/CategoryComponents/AddCategory';
 import CartRoute from './Components/CartComponents/CartRoute';
 import Cartpage from "./Components/CartComponents/CartPage";
 import PlaceOrder from "./Components/CartComponents/PlaceOrder";
-
+import WatchList from "./Components/CartComponents/WatchList"
+import OrderCompleteDetails from "./Components/CartComponents/OrderCompleteDetails";
 
 
 
@@ -189,6 +190,8 @@ class App extends React.Component {
                         <Route path = {'/CartRoute'} exact component={CartRoute} />
                         <Route path = {'/cartpage'} exact component={Cartpage} />
                         <Route path = {'/PlaceOrder'} exact component={PlaceOrder} />
+                        <Route path = {'/watchlist'} exact component={WatchList} />
+                        <Route path = {'/orderDetails'} exact component={OrderCompleteDetails} />
 
 
 
