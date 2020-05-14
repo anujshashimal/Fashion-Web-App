@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {connect} from 'react-redux';
 import img from '../../img/sample1.jpg'
 import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
@@ -15,6 +15,7 @@ import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 const CartPage = ({basketProps, productQuntity, removeItem}) =>{
     console.log(basketProps)
     let productInCart = [];
+    const [count, setCount] = useState(0);
 
 
     Object.keys(basketProps.items).forEach( function (item) {
@@ -34,11 +35,13 @@ const CartPage = ({basketProps, productQuntity, removeItem}) =>{
 
     }
 
-
-
+    const myFun = () =>{
+       setCount(count+1)
+    }
 
     productInCart = productInCart.map( (product, index) => {
         console.log(product)
+
         return(
             <MDBTable>
                 <MDBTableHead color="deep-purple" textWhite>
@@ -51,6 +54,9 @@ const CartPage = ({basketProps, productQuntity, removeItem}) =>{
                     <td>{product.name}</td>
                     <td>{product.price}</td>
                     <td>{product.avaliable}</td>
+                    <i onClick={()=> setCount(count+1)} className="fas fa-angle-left"></i>
+                    <td>{product.counter}</td>
+                    <i onClick={()=> myFun()} className="fas fa-angle-right"></i>
                     <td>{product.discount}% discount</td>
                     {/*<MDBBtn rounded color="secondary" onClick={() =>ItemEdit()}>Edit</MDBBtn>*/}
                     {/*<MDBBtn rounded color="secondary" onClick={() =>ItemDelete()}>Delete</MDBBtn>*/}
@@ -90,7 +96,6 @@ const CartPage = ({basketProps, productQuntity, removeItem}) =>{
                             <Link type="button" className="btn btn-secondary" to='PlaceOrder'  >Place Order
                             </Link>
                     </div>
-
                 </div>
             </header>
         </div>

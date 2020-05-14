@@ -17,7 +17,8 @@ export class ProductDetails extends Component {
              itemid: '',
              username: '',
              product: [],
-             Cprice : ''
+             Cprice : '',
+            counter: 0
         }
         console.log(props)
     }
@@ -39,7 +40,13 @@ export class ProductDetails extends Component {
         })
       })
     }
-    
+    increament = () =>{
+        this.setState({counter: this.state.counter + 1})
+    }
+
+    decrement = () =>{
+        this.setState({counter: this.state.counter - 1})
+    }
     render() {
         const {itemid, product, Cprice} =this.state
         return (
@@ -59,7 +66,10 @@ export class ProductDetails extends Component {
                             <p> Product ID : {val.productid}<br/>
                                 Price : {val.price}<br/>
                                 Available : {val.quantity}</p>
-                                <button type="button" className="btn btn-deep-purple" onClick={() =>this.props.addBasket(val.productid, val.description, val.price, val.quantity, val.discount, val.image)}><i class="fa fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Add to Cart</button>
+                                <i onClick={this.increament} className="fas fa-angle-right"></i>
+                                <h4> {this.state.counter}</h4>
+                                <i onClick={this.decrement} className="fas fa-angle-left"></i>
+                                <button type="button" className="btn btn-deep-purple" onClick={() =>this.props.addBasket(val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)}><i class="fa fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Add to Cart</button>
                                 <button type="button" className="btn btn-danger" onClick={() =>this.props.addToWatchList(val.description, val.price, val.quantity, val.discount , val.image)}><i class="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>
                                 </div>
                                 </div>
