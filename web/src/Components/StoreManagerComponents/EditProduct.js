@@ -310,7 +310,7 @@ class EditProduct extends Component {
                           
                           <div className="texboxwidth">
                               <label htmlFor="exampleInput">Stock Manager Id</label>
-                             <input  ref="" type="text" id="exampleInput" className="form-control" value={this.state.stockmanagerid} onChange={this.OnChangestockmanagerid} placeholder="Stock Manager Id" />
+                             <input  ref="" type="text" id="exampleInput" className="form-control" value={this.state.stockmanagerid} onChange={this.OnChangestockmanagerid} placeholder="Stock Manager Id" disabled/>
                            </div>
                           <br/>
 

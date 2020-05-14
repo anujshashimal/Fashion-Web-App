@@ -171,3 +171,24 @@ margin-top: -.3rem;
   text-align : center;
 }
 
+.productlistbuttoncolor{
+  background-color:  #5e35b1 ;
+}
+
+.navbarcolor{
+ 
+  color: black;
+  margin-left: 2%;
+}
+
+.navaddproduct{
+  color: black;
+  margin-left: 8%;
+  margin-right: 3%;
+}
+
+.navlistproduct{
+  color: black;
+  margin-left: 9%;
+}
+

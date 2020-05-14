@@ -12,13 +12,13 @@ const Product = props =>(
         <td className="tabletext">{props.product.price}</td>
         <td className="tabletext">{props.product.quantity}</td>
         <td className="tabletext">{props.product.discount}</td>
-        <td className="tabletext">{props.product.image}</td>
+        <td className="tabletext"><img src={'http://localhost:5000/uploads/'+props.product.image} alt="Product" style={{width: "25%" , marginTop: "2.5%" , marginBottom: "2.5%" }} /></td>
         <td className="tabletext">{props.product.stockmanagerid}</td>
         <td>
-         <Link  to= {'/Product/edit/'+props.product.productid}><button><img  src={editimage} alt="logo"/></button></Link>
+         <Link  to= {'/Product/edit/'+props.product.productid}><button  className ="productlistbuttoncolor"><img  src={editimage} alt="logo"/></button></Link>
         </td>  
         <td>
-         <button><img  src={deleteimage} alt="logo" onClick ={()=>{if(window.confirm('Delete the Item?')){props.deletedproduct(props.product.productid)}}}/></button>
+         <button className ="productlistbuttoncolor"><img  src={deleteimage} alt="logo" onClick ={()=>{if(window.confirm('Delete the Item?')){props.deletedproduct(props.product.productid)}}}/></button>
         </td>
       </tr>
 
@@ -80,7 +80,7 @@ export class ProductList extends Component {
         <h3 className="header">Product List</h3>
         <br></br>
            <div className="jumbotron" >
-             <table id="dtBasicExample" className="table table-striped table-bordered table-responsive-md" cellspacing="0" width="100%">
+             <table id="dtBasicExample" className="table table-striped table-bordered table-responsive-md" cellSpacing="0" width="100%">
               <thead className="thead-light">
                 <tr>
                   <th className="tabletext">Description</th>

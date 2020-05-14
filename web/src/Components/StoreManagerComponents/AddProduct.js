@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import Footer from '../CommonComponents/footer';
 import { MDBContainer, MDBInputGroup ,MDBBtn} from "mdbreact";
 import './Product.css';
 import axios from 'axios'
+const queryString = require('query-string');
 
 
 
@@ -42,14 +44,24 @@ class AddProduct extends Component {
 
   componentDidMount(){
 
+  //  var values = queryString.parse(this.props.location.search)
+  //  console.log(values.storenamagerusername)
+  //  console.log(values.storemanagerid)
+
+     this.setState({
+      stockmanagerid : this.props.match.params.storemanagerid,
+     
+       })
+
+
       axios.get('http://localhost:5000/category/:id')
       .then(response=>{
         if(response.data.length>0){
           this.setState({
-            maincategorys : response.data.map(product=>product.CategoryName) ,
-            maincategory : response.data[0].CategoryName,
-            subcategorys :  response.data.map(product=>product.MainCategory),
-            subcategory : response.data[0].MainCategory
+            maincategorys : response.data.map(product=>product.MainCategory) ,
+            maincategory : response.data[0].MainCategory,
+            subcategorys :  response.data.map(product=>product.CategoryName),
+            subcategory : response.data[0].CategoryName
        })
   
         }
@@ -161,6 +173,7 @@ class AddProduct extends Component {
         stockmanagerid : '',
        
     })
+
          window.location = '/';
   } 
 
@@ -209,7 +222,7 @@ class AddProduct extends Component {
 
                          <div className="texboxwidth">
                               <label htmlFor="exampleInput">Product Main Category</label>
-                             <select ref = "userInput" required className="form-control" value ={this.state.maincategory} onChange={this.OnChangemaincatrgory} multiple= {false}>
+                              <select ref = "userInput" required className="form-control" value ={this.state.maincategory} onChange={this.OnChangemaincatrgory} multiple= {false}>
                                {
                                  this.state.maincategorys.map(function(product){
                                  return <option key={product} value={product} >{product}</option>;
@@ -291,7 +304,7 @@ class AddProduct extends Component {
                           
                           <div className="texboxwidth">
                               <label htmlFor="exampleInput">Stock Manager Id</label>
-                             <input type="text" id="exampleInput" className="form-control" value={this.state.stockmanagerid} onChange={this.OnChangestockmanagerid} placeholder="Stock Manager Id" />
+                             <input type="text" id="exampleInput" className="form-control" defaultValue={this.state.stockmanagerid} onChange={this.OnChangestockmanagerid} placeholder="Stock Manager Id" disabled/>
                            </div>
                           <br/>
 
@@ -304,6 +317,7 @@ class AddProduct extends Component {
                    </div>
               </div>
            </form>
+           <Footer/>
       </div>
     )
   }
