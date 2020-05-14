@@ -59,9 +59,21 @@ export class comments extends Component {
         }
     }
 
+    deleteComment(comment_id) {
+        axios.delete('http://localhost:5000/Comments/delete/'+comment_id)
+        .then(res=>console.log(res.data))
+        // this.setState({
+        // Products : this.state.Products.filter(product=>product.productid != product_id)
+        // })
+        window.location.reload(false);
+    }
+
+    EditComments() {
         
+    }
 
     render() {
+
         return (
             <div className="container" style={{width: '60%'}}>
                 <h2>Comments</h2><hr/>
@@ -70,7 +82,7 @@ export class comments extends Component {
                     {(Comments.username === this.props.username) ? (
                     <div style={{marginLeft: '2%'}}>
                         <b>{Comments.username}</b><br/>
-                        {Comments.Comment}
+                        &nbsp;{Comments.Comment}
                         <br/>
                         <div style={{textAlign: 'right'}}>
                         <button 
@@ -79,17 +91,20 @@ export class comments extends Component {
                             <i class="fa fa-edit"></i>
                         </button>
 
-                        <button 
-                        type="button" 
+                        <button
+                        onClick ={()=>{if(window.confirm('Delete the Comment?')){this.deleteComment(Comments._id)}}}
+                        // onClick={() => this.deleteComment(Comments._id)}
+                        type="button"
                         class="btn btn-danger btn-sm">
                             <i class="fa fa-trash"></i>
+                            
                         </button>
                         </div>
                     </div>
                     ):(
                         <div style={{marginLeft: '2%'}}>
                         <b>{Comments.username}</b><br/>
-                        {Comments.Comment}
+                        &nbsp;{Comments.Comment}
                         <br/>
                         
                     </div>
@@ -100,7 +115,7 @@ export class comments extends Component {
                 }
                 <br/>
                 <form onSubmit={this.handleCommentSubmit}>
-                {(this.props.username !== '') ? (
+                {(this.props.username !== '' && this.props.username !== 'undefined') ? (
                     <div className="form-group">
                         <label for="exampleFormControlTextarea1">Enter Your Comment</label>
                         <textarea

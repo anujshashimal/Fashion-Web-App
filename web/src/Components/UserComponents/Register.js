@@ -86,6 +86,7 @@ export default class header extends Component{
                 return false;
             } else{
                 this.sendData();
+                alert("register successfully");
                 this.setState({
                     username:'',
                     email:'',
@@ -137,21 +138,16 @@ export default class header extends Component{
         // const {data} = this.props;
         const {username, email, contactno, address, password, conformpassword, gender} =this.state
         return(
-            <div class="container" >
-                <div class="raw">
-                    <div className="rowalign">
-                        <div class="col-md-6"><br/>
-                            <p align="center">
-                            <img src={logo} width="50%" />
-                            </p>
-                            {/* <img src={back} width="100%"/> */}
-                        </div>
-
-                        <div class="col-md-5">
-                            <div className="centeralign">
-                                <br />
-
-                                <form onSubmit={this.handleRegisterSubmit}>
+            <div class="" style={{marginLeft: "5%", marginRight: "5%", marginTop: "5%"}}>
+                <div className="row" style={{marginBottom:"7%"}}>
+                <div className="col-md-6">
+                    <div style={{textAlign: "center"}}>
+                                <img src={logo} width="50%" />
+                            </div>
+                            <img src={back} width="100%"/>
+                            </div>
+                            <div className="col-md-5">
+                            <form onSubmit={this.handleRegisterSubmit}>
                                     <h2 align="center">
                                         <i class="fa fa-user-plus icon"></i> User Register
                                     </h2>
@@ -255,11 +251,9 @@ export default class header extends Component{
                                     class="btn1" 
                                     onclick="javascript: return myFunction();">Register</button>
                                 </form>
-                                <br />
                             </div>
-                        </div>
-                    </div>
                 </div>
+                
             </div>
         )
     }
