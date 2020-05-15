@@ -10,28 +10,17 @@ export default class header extends Component{
         super(props)
     
         this.state = {
+            storemanageruserid : '',
             storemanagerusername: '',
             storemanagerpassword: '',
             storemanagers : [],
             storemanager : [],
-            //users: [],
-            //user: [],
             success: false,
             register: false,
         }
     }
 
-    // componentDidMount(){
-    //     axios.get('http://localhost:5000/user/find')
-    //     .then(response=>{
-    //       if(response.data.length>0){
-    //         this.setState({
-    //             users :  response.data.map(users=>users),
-    //         //   subcategory : response.data[0].CategoryName
-    //      })
-    //       }
-    //     })
-    // }
+    
 
     handleStoreManagerUsernameChange = event => {
         this.setState({
@@ -48,18 +37,7 @@ export default class header extends Component{
     handleLoginSubmit = event => {
         event.preventDefault();
         this.getStoremanager();
-        // if(this.state.user.length != 1){
-        //     alert("invalid");
-        // } else{
-            // this.setState({
-            //     user: this.state.users.filter(users => users.username === this.state.username).map(users => users)
-            // })
-            
-            // console.log(this.state.user)
-            // console.log(this.state.users)
-            
-        // }
-        
+      
     }
 
     async getStoremanager(){
@@ -77,10 +55,17 @@ export default class header extends Component{
             this.setState({
                 storemanager: response.data[0]
             },()=>{
+
+                    
+                console.log('storemanager',this.state.storemanager)
                 console.log('password',this.state.storemanagerpassword)
                 console.log('storenamager password',this.state.storemanager.Password)
-                console.log('storenamager username',this.state.storemanager.Username)
+                console.log('storenamager username',this.state.storemanager.UserName)
                 console.log('storemanager id',this.state.storemanager.smId)
+                if(this.state. storemanagerusername === "Vishaka" && this.state.storemanagerpassword === "apple123")
+                {
+
+                }
                 if(this.state.storemanagerpassword == this.state.storemanager.Password){
                     // sessionStorage.setItem('userData', this.state.user);
                     alert("Login Success");
@@ -111,7 +96,8 @@ export default class header extends Component{
             
         const { storemanagerusername,storemanagerpassword} =this.state
         return(
-            <div className="container" >
+
+            <div className="" style={{marginLeft: "5%", marginRight: "5%", marginTop: "5%"}}>
                 <div className="raw">
                     <div className="rowalign">
                         <div className="col-md-6">
@@ -119,17 +105,17 @@ export default class header extends Component{
                                 <img src={logo} width="50%" />
                             </p>
                             <br />
-                            {/* <img src={back} width="100%"/> */}
+                             <img src={back} width="100%"/> 
                         </div>
 
-                        <div className="col-md-5">
+                        <div className="col-md-6">
                             <div className="centeralign">
-                                <br /><br /><br /><br /><br />
+                                <br /><br /><br />
 
                                 <form onSubmit={this.handleLoginSubmit}>
                                     <div className="formalign">
                                         <h1 align="center">
-                                            <i class="fa fa-lock icon"></i> Store Manager Login
+                                            <i class="fa fa-lock icon"></i> Store Manager/Admin Login
                                         </h1>
 
                                         <div className="input-container">

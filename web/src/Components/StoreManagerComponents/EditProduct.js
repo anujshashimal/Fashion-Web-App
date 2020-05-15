@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { MDBContainer, MDBInputGroup ,MDBBtn} from "mdbreact";
 import './Product.css';
+import Footer from '../CommonComponents/footer';
 import axios from 'axios'
 
 
@@ -52,7 +53,7 @@ class EditProduct extends Component {
              price  : response.data.map(product=>product.price),
              quantity : response.data.map(product=>product.quantity),
              discount : response.data.map(product=>product.discount),
-             image : response.data.map(product=>product.image),
+          //   image : response.data.map(product=>product.image),
              stockmanagerid : response.data.map(product=>product.stockmanagerid)
          })
           
@@ -63,8 +64,8 @@ class EditProduct extends Component {
      .then(response=>{
        if(response.data.length>0){
          this.setState({
-           maincategorys : response.data.map(product=>product.CategoryName),
-           subcategorys :  response.data.map(product=>product.MainCategory),
+           maincategorys : response.data.map(product=>product.MainCategory),
+           subcategorys :  response.data.map(product=>product.CategoryName),
         
       })
  
@@ -197,15 +198,20 @@ class EditProduct extends Component {
         formIsValid = false;    
         formErrors["descriptionErr"] = "Description is required.";    
     }
-    else if(description.length < 10)    
+    else if(description.length<2)    
    {
         formIsValid = false;    
-        formErrors["descriptionErr"] = "Description characters id more than 10 required."; 
+        formErrors["descriptionErr"] = "Description characters more than 2 required."; 
 
    }
    if (image === null) {
     formIsValid = false;    
     formErrors["imageErr"] = "Please select image"; 
+  }
+  if(quantity < 0)
+  {
+    formIsValid = false;    
+    formErrors["quantityErr"] = "Please Enter Valid quantity"; 
   }
 
     this.setState({ formErrors: formErrors });    
@@ -228,6 +234,9 @@ class EditProduct extends Component {
 
                          <div className="texboxwidth">
                               <label htmlFor="exampleInput">Product Main Category</label>
+                               <div className="icons">
+                                <i class="fas fa-list-ol fa-lg"></i>
+                                </div>
                              <select ref = "userInputMaincate" required className="form-control" value ={this.state.maincategory} onChange={this.OnChangemaincatrgory} multiple= {false}>
                                {
                                  this.state.maincategorys.map(function(maincategorys){
@@ -240,6 +249,9 @@ class EditProduct extends Component {
                              <h1></h1>
                           <div className="texboxwidth">
                               <label htmlFor="exampleInput">Product Sub Category</label>
+                                         <div className="icons">
+                                              <i class="fas fa-list fa-lg"></i>
+                                          </div>
                                  <select ref="userInputSubcate" required className="form-control" value = {this.state.subcategory} onChange = {this.OnChangesubcategory} multiple= {false}>
                                    {
                                       this.state.subcategorys.map(function(subcategorys){
@@ -256,6 +268,9 @@ class EditProduct extends Component {
                           <div className="texboxwidth">
                           <div className="form-group">
                             <label htmlFor="exampleFormControlTextarea1">Product Description</label>
+                            <div className="icons">
+                               <i class="fas fa-pen fa-lg"></i>
+                            </div>
                            <textarea ref ="textarea" className="form-control ${descriptionErr ? 'showError' : ''}" id="exampleFormControlTextarea1"  defaultValue={this.state.description} onChange={this.OnChangedescription} rows="5"  />
                          </div>
                          {descriptionErr &&    
@@ -266,9 +281,12 @@ class EditProduct extends Component {
 
                           <div className="texboxwidth">
                                <label htmlFor="exampleInput">Price</label>
+                               <div className="icons">
+                                  <i class="fas fa-dollar-sign fa-lg"></i>
+                                </div>
                                <div className="input-group mb-3">
                                   <div className="input-group-prepend">
-                                      <span className="input-group-text">$</span>
+                                      
                                   </div>
                                   <input ref="" pattern ='^[0-9]{0,5}' type="text" className="form-control ${priceErr ? 'showError' : ''}" value={this.state.price}  onChange={this.OnChangeprice} aria-label="Amount (to the nearest dollar)" />
                                   <div className="input-group-append">
@@ -282,8 +300,16 @@ class EditProduct extends Component {
                           <br/>
 
                           <div className="texboxwidth">
-                          <label htmlFor="exampleInput">Quantity</label> <br/>                              
-                              <input  ref="" className="quantity" name="quantity" value = {this.state.quantity} onChange={this.OnChangequantity} type="number"/>
+                          <label htmlFor="exampleInput">Quantity</label> <br/>    
+                               <div className="icons">
+                                  <i class="fa">&#xf067;</i>
+                                </div>   
+                                <input  className="quantity ${quantityErr ? 'showError' : ''}" name="quantity" value = {this.state.quantity} onChange={(e)=>this.OnChangequantity(e)} type="number"/>
+                               <div>
+                                   {quantityErr &&    
+                                <div style={{ color: "red", paddingBottom: 10 }}>{quantityErr}</div>    
+                                  }  
+                                 </div>
                           </div>
                           <br/>
                            <div className="texboxwidth">
@@ -301,6 +327,9 @@ class EditProduct extends Component {
 
                           <div className="texboxwidth">
                           <label htmlFor="exampleInput">Image</label>
+                                <div className="icons">
+                                     <i class="fas fa-image fa-lg"></i>
+                                </div>
                            <input ref=" " type="file" className="form-control-file ${imageErr ? 'showError' : ''}" id="exampleFormControlFile1"  onChange={(e)=>this.OnChangeImage(e)} />
                            {imageErr &&    
                                 <div style={{ color: "red", paddingBottom: 10 }}>{imageErr}</div>    
@@ -310,6 +339,9 @@ class EditProduct extends Component {
                           
                           <div className="texboxwidth">
                               <label htmlFor="exampleInput">Stock Manager Id</label>
+                                <div className="icons">
+                                 <i class="fas fa-id-badge fa-lg"></i>
+                                </div>
                              <input  ref="" type="text" id="exampleInput" className="form-control" value={this.state.stockmanagerid} onChange={this.OnChangestockmanagerid} placeholder="Stock Manager Id" disabled/>
                            </div>
                           <br/>
@@ -323,6 +355,7 @@ class EditProduct extends Component {
                    </div>
               </div>
            </form>
+           <Footer/>
       </div>
     )
   }

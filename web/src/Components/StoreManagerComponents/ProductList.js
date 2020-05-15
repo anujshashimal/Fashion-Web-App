@@ -2,15 +2,19 @@ import React, { Component } from 'react'
 import  {Link}  from  'react-router-dom'
 import axios from 'axios'
 import editimage from './edit.png'
+import Footer from '../CommonComponents/footer';
 import deleteimage from './delete.png'
 
-const Product = props =>(
+const Product = props =>{
+   if(props.product.quantity == 0)
+   {
+    return(
       <tr>
         <td className="tabletext">{props.product.description}</td>
         <td className="tabletext">{props.product.maincategory}</td>
         <td className="tabletext">{props.product.subcategory}</td>
         <td className="tabletext">{props.product.price}</td>
-        <td className="tabletext">{props.product.quantity}</td>
+        <td className="tabletext"><div className="quantitycolor">Out of Stock</div></td>
         <td className="tabletext">{props.product.discount}</td>
         <td className="tabletext"><img src={'http://localhost:5000/uploads/'+props.product.image} alt="Product" style={{width: "25%" , marginTop: "2.5%" , marginBottom: "2.5%" }} /></td>
         <td className="tabletext">{props.product.stockmanagerid}</td>
@@ -18,11 +22,32 @@ const Product = props =>(
          <Link  to= {'/Product/edit/'+props.product.productid}><button  className ="productlistbuttoncolor"><img  src={editimage} alt="logo"/></button></Link>
         </td>  
         <td>
-         <button className ="productlistbuttoncolor"><img  src={deleteimage} alt="logo" onClick ={()=>{if(window.confirm('Delete the Item?')){props.deletedproduct(props.product.productid)}}}/></button>
+         <button className ="deletebuttoncolor"><img  src={deleteimage} alt="logo" onClick ={()=>{if(window.confirm('Delete the Item?')){props.deletedproduct(props.product.productid)}}}/></button>
         </td>
       </tr>
-
-)
+       )
+   }
+   else
+   { return(
+      <tr>
+        <td className="tabletext">{props.product.description}</td>
+        <td className="tabletext">{props.product.maincategory}</td>
+        <td className="tabletext">{props.product.subcategory}</td>
+        <td className="tabletext">{props.product.price}</td>
+        <td className="tabletext"> {props.product.quantity}</td>
+        <td className="tabletext">{props.product.discount}</td>
+        <td className="tabletext"><img src={'http://localhost:5000/uploads/'+props.product.image} alt="Product" style={{width: "25%" , marginTop: "2.5%" , marginBottom: "2.5%" }} /></td>
+        <td className="tabletext">{props.product.stockmanagerid}</td>
+        <td>
+         <Link  to= {'/Product/edit/'+props.product.productid}><button  className ="productlistbuttoncolor"><img  src={editimage} alt="logo"/></button></Link>
+        </td>  
+        <td>
+         <button className ="deletebuttoncolor"><img  src={deleteimage} alt="logo" onClick ={()=>{if(window.confirm('Delete the Item?')){props.deletedproduct(props.product.productid)}}}/></button>
+        </td>
+      </tr>
+       )
+     }
+    }
 
 
 export class ProductList extends Component {
@@ -80,7 +105,7 @@ export class ProductList extends Component {
         <h3 className="header">Product List</h3>
         <br></br>
            <div className="jumbotron" >
-             <table id="dtBasicExample" className="table table-striped table-bordered table-responsive-md" cellSpacing="0" width="100%">
+             <table id="dtBasicExample" className="table table-striped table-bordered table-responsive-md" color="deep-purple" cellSpacing="0" width="100%">
               <thead className="thead-light">
                 <tr>
                   <th className="tabletext">Description</th>
@@ -100,7 +125,7 @@ export class ProductList extends Component {
              </tbody>
             </table>
           </div>  
-        
+        <Footer/>
       </div>
     )
   }
