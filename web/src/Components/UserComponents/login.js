@@ -3,7 +3,8 @@ import './LoginRegister.css';
 import back from './shopping.gif'
 import logo from './logo.gif'
 import  { Redirect } from 'react-router-dom'
-
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 const axios = require('axios');
 
@@ -82,9 +83,11 @@ export default class header extends Component{
                 console.log('user password',this.state.user.username)
                 if(this.state.password == this.state.user.password){
                     // sessionStorage.setItem('userData', this.state.user);
-                    alert("Login Success");
+                    
+                    // alert("Login Success");
                     this.setState({success: true});
                 } else{
+                    // NotificationManager.success('Success message', 'Title here');
                     alert("Password incorect");
                 }
             });

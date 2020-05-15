@@ -27,11 +27,13 @@ let  Comments = require('../models/Comments');
     const username = req.body.username;
     const productId = req.body.productId;
     const Comment = req.body.Comment;
+    const rate = Number(req.body.rate);
 
     const newComments = new Comments({
         username,
         productId,
         Comment,
+        rate,
     });
     console.log('newComments',newComments);
 
@@ -49,7 +51,7 @@ let  Comments = require('../models/Comments');
     Comments.findByIdAndUpdate(req.params._id)
      .then(Comments =>{
         Comments.Comment = req.body.Comment;
-
+        Comments.rate = req.body.rate;
         Comments.save()
         .then(()=>res.json('Comment Updated'))
         .catch(err=>res.status(400).json('Error'+err));

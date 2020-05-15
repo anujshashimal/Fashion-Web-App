@@ -8,6 +8,7 @@ import logo from './logo.gif'
 import Header from "../CommonComponents/header.js";
 import Footer from '../CommonComponents/footer';
 import  {Link}  from  'react-router-dom'
+import Page from 'react-page-loading'
 
 const queryString = require('query-string');
 
@@ -37,6 +38,7 @@ export class Home extends Component {
         
         return (
             <div>
+                <Page loader={"bubble-spin"} color={"#5e35b1"} size={10} duration={2}>
                 <Header username={this.state.username} />
                 <br/><br/><br/>
                 <div style={{textAlign: 'center'}}>
@@ -113,6 +115,7 @@ export class Home extends Component {
                     </div>
                 </div>
                 <Footer />
+                </Page>
             </div>
         )
     }

@@ -19,6 +19,7 @@ export class viewProduct extends Component {
             maincategory: 'Men',
             products: [],
             username: '',
+            search: '',
             // redirect: false,
         }
         // this.Logout = this.Logout.bind(this);
@@ -86,6 +87,12 @@ export class viewProduct extends Component {
         })
         console.log(this.state.maincategory);
        }
+
+       OnChangesearch = event => {
+           this.setState({
+               search: event.target.value,
+           })
+       }
     
     render() {
         
@@ -96,11 +103,11 @@ export class viewProduct extends Component {
         return (
             <div>
                 <Header username={this.state.username} />
-                <br/><br/><br/>
+                <br/><br/>
                 {/* <button type="button" className="button" onClick={this.Logout}>Logout</button> */}
-                <div className="row" style={{marginLeft: "5%", marginTop: "1%"}}>
-                    <div className="col-md" style={{}}>
-                        <div className="texboxwidth" style={{width: "50%"}}>
+                <div className="row" style={{marginLeft: "", marginTop: "", marginRight: '', backgroundColor: '#ede7f6'}}>
+                    <div className="col-md" style={{marginTop: "2%"}}>
+                        <div className="texboxwidth" style={{width: "70%"}}>
                             <label htmlFor="exampleInput">Product Main Category</label>
                             <select 
                             ref="userInput" 
@@ -116,8 +123,8 @@ export class viewProduct extends Component {
                             </select>
                         </div>
                     </div>
-                    <div className="col-md" style={{}}>
-                        <div className="texboxwidth" style={{width: "50%"}}>
+                    <div className="col-md" style={{marginTop: "2%"}}>
+                        <div className="texboxwidth" style={{width: "70%"}}>
                             <label htmlFor="exampleInput">Product Sub Category</label>
                             <select 
                             ref="userInput" 
@@ -138,12 +145,28 @@ export class viewProduct extends Component {
                             </select>   
                         </div>
                     </div>
+
+                    <div className="col-md" style={{marginTop: "2%"}}>
+                        <div className="texboxwidth" style={{width: "70%"}}>
+                            <div class="md-form">
+                                <i class="fas fa-search prefix"></i>
+                                <input 
+                                type="text" 
+                                id="inputValidationEx" 
+                                class="form-control validate"
+                                value = {this.state.search}
+                                onChange = {this.OnChangesearch}
+                                placeholder="search" />
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 {(this.state.subcategory === 'All') ? (
 
                         <div className="row" style={{textAlign: "center" , marginLeft: "1%" , marginRight: "1%" , marginTop: "1%"}}>
-                            {this.state.products.filter(products => products.maincategory === maincategory).map(products => (
+                            {this.state.products.filter(products => products.maincategory === maincategory && products.description.includes(this.state.search)).map(products => (
                                <div className="col-md-3">
                                <Link to={'/ProductDetails?item='+products.productid+'&username='+this.state.username}>
                           <div class="card1">
@@ -155,7 +178,9 @@ export class viewProduct extends Component {
                                   <div class="container1">
                                       <h4><b>{products.description}</b></h4>
                                       <p>Product ID : {products.productid}<br/>
-                                      Price : {products.price}<br/>
+                                      <div className="raw" style={{backgroundColor: "red", color: "white"}}>
+                                      <h3>Price : {products.price}</h3>
+                                      </div>
                                       Available : {products.quantity}</p>
                                   </div>
                           </div></Link>
@@ -167,7 +192,7 @@ export class viewProduct extends Component {
                     
                 ) : (
                     <div className="row" style={{textAlign: "center" , marginLeft: "1%" , marginRight: "1%" , marginTop: "1%"}}>
-                        {this.state.products.filter(products => products.maincategory === maincategory && products.subcategory === subcategory).map(products => (
+                        {this.state.products.filter(products => products.maincategory === maincategory && products.subcategory === subcategory && products.description.includes(this.state.search)).map(products => (
                             <div className="col-md-3">
                             <Link to={'/ProductDetails?item='+products.productid+'&username='+this.state.username}>
                        <div class="card1">
@@ -176,7 +201,9 @@ export class viewProduct extends Component {
                                <div class="container1">
                                    <h4><b>{products.description}</b></h4> 
                                    <p>Product ID : {products.productid}<br/>
-                                   Price : {products.price}<br/>
+                                   <div className="raw" style={{backgroundColor: "red", color: "white"}}>
+                                      <h3>Price : {products.price}</h3>
+                                    </div>
                                    Available : {products.quantity}</p>
                                </div>
                        </div></Link>
@@ -185,7 +212,7 @@ export class viewProduct extends Component {
                         }
                     </div>
                 )}
-            
+            <Footer />
             </div>
         )
     }

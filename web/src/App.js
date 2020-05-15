@@ -32,7 +32,7 @@ import AddCategory from './Components/CategoryComponents/AddCategory';
  import viewProduct from './Components/UserComponents/viewProduct'
  import ProductDetails from './Components/UserComponents/ProductDetails'
  import Comments from './Components/UserComponents/comments'
-//  import Rating from './Components/UserComponents/Rating'
+ import Rating from './Components/UserComponents/Rating'
  import Home from './Components/UserComponents/Home'
  //---------------------------------------------------------------------
 //
@@ -208,7 +208,7 @@ class App extends React.Component {
                         <Route path = {'/viewProduct'} exact component={viewProduct}/>
                         <Route path = {'/ProductDetails'} exact component={ProductDetails}/>
                         <Route path = {'/Comments'} exact component={Comments}/>
-                        {/* <Route path = {'/Rating'} exact component={Rating}/> */}
+                        <Route path = {'/Rating'} exact component={Rating}/>
                         <Route path = {'/Home'} exact component={Home}/>
 
 
