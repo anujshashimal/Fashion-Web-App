@@ -25,3 +25,22 @@
 li{
     list-style-type: none;
 }
+#registre{
+    border: 2px solid #5e35b1;
+    border-radius: 5px;
+}
+#card-body {
+    background-image: linear-gradient(120deg,#ba96ff 0%, #5E35B1 100%);
+}
+#card-body:hover {
+    background-image: linear-gradient(120deg,white 0%, #cab0ff 100%);
+}
+#button{
+
+    background-color: #ba96ff;
+
+
+}
+#button:hover{
+    background-image: linear-gradient(120deg,white 0%, #cab0ff 100%);
+}

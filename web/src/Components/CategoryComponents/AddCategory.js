@@ -3,6 +3,9 @@ import women from "../../img/women.jpg";
 import  './Styles/style.css';
 import  './Styles/AddCategory.css';
 import axios from "axios";
+import swal from 'sweetalert';
+const queryString = require('query-string');
+
 export class Addcategory extends Component {
 
     constructor(props) {
@@ -11,13 +14,15 @@ export class Addcategory extends Component {
             CategoryID:"",
             CategoryName:"",
             MainCategory:"",
-            Admin:"",
+            Admin:"Vishaka",
+            SaveBtnName:"Save",
             SubCategoryNames:[]
 
         }
+
     }
     componentDidUpdate() {
-        axios.get('http://localhost:5000/category/findCategory/men/Vishaka')
+        axios.get('http://localhost:5000/category/findCategory/'+this.state.MainCategory+'/'+this.state.Admin)
             .then(response=>{
                 if(response.data.length>0){
                     this.setState({
@@ -34,7 +39,17 @@ export class Addcategory extends Component {
             })
     }
     componentDidMount() {
-        axios.get('http://localhost:5000/category/findCategory/men/Vishaka')
+
+        var values = queryString.parse(this.props.location.search)
+        // console.log(this.props.location.search)
+        // console.log(values.item)
+        // console.log(values.username)
+        this.setState({
+            MainCategory: values.mainCategory,
+
+        })
+        console.log(this.state.MainCategory);
+        axios.get('http://localhost:5000/category/findCategory/'+this.state.MainCategory+'/'+this.state.Admin)
             .then(response=>{
                 if(response.data.length>0){
                     this.setState({
@@ -52,15 +67,7 @@ export class Addcategory extends Component {
             })
     }
 
-    deleteCategory =(e,categoryID)=>{
 
-        console.log(categoryID);
-
-        e.preventDefault();
-        axios.delete('http://localhost:5000/category/deletecategory/'+categoryID)
-            .then(res=>console.log(res.data));
-
-    }
 
 
     saveCategory =(e)=> {
@@ -104,10 +111,17 @@ export class Addcategory extends Component {
                             this.setState({
                                 CategoryID: "",
                                 CategoryName: "",
-                                MainCategory: "",
-                                Admin: ""
+
+
 
                             } )
+                            swal({
+                                title: "Success!",
+                                text: "You added new category!",
+                                icon: "success",
+                                button: "Done",
+                            });
+                            this.refs.myform.reset();
 
                         })
 
@@ -128,7 +142,9 @@ export class Addcategory extends Component {
 
     render() {
         return (
-            <div><br/>
+            <div>
+                {/*<Header username='Vishaka' />*/}
+                <br/> <br/> <br/> <br/>
                 <div className="conatainer">
                     <div className="row">
                         <div className="col-1"></div>
@@ -137,7 +153,7 @@ export class Addcategory extends Component {
                                 <div className="col-5">
 
                                     <div class="row" id="row">
-                                        <h4 id="section1"><strong className="head">Sub Categories of Women</strong></h4>
+                                        <h4 id="section1"><strong className="head">Sub Categories of {this.state.MainCategory}</strong></h4>
                                             <div class="card example-1 scrollbar-ripe-malinka" >
                                                 <div class="card-body">
 
@@ -146,20 +162,43 @@ export class Addcategory extends Component {
 
                                                     {this.state.SubCategoryNames.map(function(SubCategoryNames){
 
-                                                        return <li>
+
+
+                                                        return <li key={SubCategoryNames.Category_ID} value={SubCategoryNames.Category_ID}>
 
                                                             <div className="chip chip-lg" id="tag">
                                                                 {SubCategoryNames.CategoryName}
                                                                 <i className="close fas fa-trash-alt" id="delete"
-                                                                   onClick={(e) =>this.deleteCategory(e,SubCategoryNames.Category_ID)} ></i>
+                                                                   onClick={() =>{
 
-                                                                <i className="close fas far fa-edit" id="delete"></i>
+                                                                       swal({
+                                                                           title: "Do you want to remove "+SubCategoryNames.CategoryName,
+                                                                           text: "Once deleted, you will not be able to recover !",
+                                                                           icon: "warning",
+                                                                           buttons: true,
+                                                                           dangerMode: true,
+                                                                       })
+                                                                           .then((willDelete) => {
+                                                                               if (willDelete) {
+                                                                                   swal("Poof! "+SubCategoryNames.CategoryName+" has been deleted!", {
+                                                                                       icon: "success",
+
+
+                                                                                   });
+                                                                                   axios.delete('http://localhost:5000/category/deletecategory/'+SubCategoryNames.Category_ID)
+                                                                                       .then(res=>console.log(res.data));
+                                                                               } else {
+                                                                                   swal("Category is safe!");
+                                                                               }
+                                                                           });
+
+
+
+
+                                                                   }} ></i>
+
+                                                                {/*<i className="close fas far fa-edit" id="delete" onClick={()=>this.updateBt(SubCategoryNames.Category_ID,SubCategoryNames.CategoryName)}></i>*/}
                                                             </div> <br/>
-
-
-
-
-
 
                                                         </li>
 
@@ -188,12 +227,12 @@ export class Addcategory extends Component {
 
                                                 <div className="md-form">
                                                     <i className="fa fa-american-sign-language-interpreting prefix grey-text"></i>
-                                                    <input type="text" id="materialFormCardPasswordEx" className="form-control" placeholder="Main Category" ref="MainCategory" name="MainCategory"/>
+                                                    <input type="text" id="materialFormCardPasswordEx" className="form-control" value={this.state.MainCategory} disabled="disabled" contentEditable="false" ref="MainCategory" name="MainCategory"/>
                                                     {/*<label for="materialFormCardPasswordEx" class="font-weight-light" id="placeholder">password</label>*/}
                                                 </div>
                                                 <div className="md-form">
                                                     <i className="fa fa-user prefix grey-text"></i>
-                                                    <input type="text" id="materialFormCardNameEx" className="form-control" placeholder="Admin Name" ref="AdminName" name="AdminName"/>
+                                                    <input type="text" id="materialFormCardNameEx" className="form-control" value={this.state.Admin} disabled="disabled" ref="AdminName" name="AdminName"/>
                                                     {/*<label for="materialFormCardNameEx" class="font-weight-light" id="placeholder">Stock Manager Name</label>*/}
                                                 </div>
 
@@ -201,7 +240,7 @@ export class Addcategory extends Component {
                                                 <div className="text-center py-4 mt-3">
 
                                                     <button className="btn" id="btn" type="submit"
-                                                            onClick={(e) => this.saveCategory(e)}>Save
+                                                            onClick={(e) => this.saveCategory(e)}>{this.state.SaveBtnName}
                                                     </button>
 
                                                 </div>
@@ -214,6 +253,8 @@ export class Addcategory extends Component {
                         <div className="col-1"></div>
                     </div>
                 </div>
+
+
             </div>
         )
     }

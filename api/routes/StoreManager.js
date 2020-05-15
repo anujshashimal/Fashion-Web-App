@@ -13,7 +13,7 @@ router.get('/getallstoremanagers',StoreManagerControlller.getAllStoreManager);
 
 router.post('/addstoremanager',StoreManagerControlller.SaveStoreManager);
 
-router.put('/updatestoreManager/:smId',StoreManagerControlller.Update_StoreManger);
+router.post('/updatestoreManager',StoreManagerControlller.Update_StoreManger);
 
 router.delete('/deletestoreManager/:smId',StoreManagerControlller.Delete_StoreManager);
 
