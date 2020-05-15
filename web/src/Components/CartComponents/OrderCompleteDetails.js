@@ -18,6 +18,7 @@ class OrderCompleteDetails extends Component {
         super(props);
 
         this.state = {
+            userID:'',
             username: '',
             UserDetails:[],
             OrderID: '',

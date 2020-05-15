@@ -7,13 +7,11 @@ var uuid = require('uuid');
 router.route('/addToCart').post((req,res)=>{
 
     const Product_ID = req.body.Product_ID;
-    const User_ID = req.body.User_ID;
     const Quntity = req.body.Quntity;
     const Price = req.body.Price;
 
     const Cartdet = new Cart({
         Product_ID,
-        User_ID,
         Quntity,
         Price
     });
@@ -36,7 +34,7 @@ router.route('/PlaceOrder').post((req,res)=>{
     const cardNumber = req.body.cardNumber;
     const cvv = req.body.cvv;
     const expireDate = req.body.expireDate;
-
+    const deliverHome = req.body.deliverHome;
 
     const Cartdet = new PlaceOrder({
         fullname,
@@ -48,7 +46,8 @@ router.route('/PlaceOrder').post((req,res)=>{
         cardNumber,
         cvv,
         expireDate,
-        TrackingNum
+        TrackingNum,
+        deliverHome
     });
 
     Cartdet.save()

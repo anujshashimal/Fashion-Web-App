@@ -4,7 +4,8 @@ import {
     INCREASE_QUANITY,
     GET_NUMBERS_IN_BASKET,
     REMOVE_PRODUCT,
-    CLEAT_ALL_DETAILS
+    CLEAT_ALL_DETAILS,
+    DECREASE_QUANITY
 } from "../Actions/types";
 
 const initialState = {
@@ -26,41 +27,68 @@ export default (state = initialState, action) =>{
         case ADD_PRODUCT_TO_BACKET:
             let addQuntity = {...state.items[payload]}
             console.log(addQuntity)
-            addQuntity.numbers += 1;
-            addQuntity.incart = true;
+            addQuntity.numbers++;
             console.log(addQuntity)
             console.log(payload)
             if(payload.counter == 0){
                 payload.counter =1
             }
-            return{
-                    ...state,
-                    backetNumbers: state.backetNumbers + 1,
-                    cartCost: state.cartCost + (action.payload.price * action.payload.counter),
-                    getdiscount: state.cartCost * action.payload.discount * (1/100),
-                    withDiscartCost : state.cartCost - ( (state.cartCost) * action.payload.discount * (1/100)),
-                    items : [
-                        ...state.items,
-                        {...payload, ...addQuntity}
-                    ]
-            };
+                    return {
+                        ...state,
+                        backetNumbers: state.backetNumbers + 1,
+                        cartCost: state.cartCost + (action.payload.price * action.payload.counter),
+                        getdiscount: state.cartCost * action.payload.discount * (1 / 100),
+                        withDiscartCost: state.cartCost - ((state.cartCost) * action.payload.discount * (1 / 100)),
+                        items: [
+                            ...state.items,
+                            {...payload, ...addQuntity.numbers++}
+                        ]
+                    }
 
             case GET_NUMBERS_IN_BASKET:
                     return {
                         backetNumbers: state.backetNumbers + 1
                     }
         case REMOVE_PRODUCT:
-                    return {
-                        ...state,
-                        ...state.items,
-                        backetNumbers: state.backetNumbers - 1,
-                        items: state.items.filter((item, index) => index !== action.payload.name),
-                        cartCost: state.cartCost - payload.price
-                    }
-        case INCREASE_QUANITY:
-            let addQuntityy = [action.payload.numbers]
+            const id = action.payload.id
+            let deletedItem = state.items.findIndex(item => item.id === action.id);
+            state.items.splice(deletedItem, 1)
+
             return {
-                    }
+                ...state,
+                ...state.items,
+                backetNumbers: state.backetNumbers - 1,
+                cartCost: state.cartCost - payload.price
+
+            }
+
+        case INCREASE_QUANITY:
+            console.log(payload)
+            state.items.map((itemss, index)=>{
+                console.log(itemss.productID)
+                console.log(action.payload.ID)
+                if(itemss.productID == payload.ID){
+                    itemss.counter = itemss.counter +1;
+                }
+            })
+            return {
+                ...state
+            }
+
+        case DECREASE_QUANITY:
+            console.log(payload)
+            state.items.map((itemss, index)=>{
+                console.log(itemss.productID)
+                console.log(action.payload.ID)
+                if(itemss.productID == payload.ID){
+                    itemss.counter = itemss.counter -1;
+                    console.log(itemss.counter)
+                }
+
+            })
+            return {
+                ...state
+            }
 
         case CLEAT_ALL_DETAILS:
             return{

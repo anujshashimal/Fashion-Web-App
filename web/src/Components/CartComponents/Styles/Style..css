@@ -42,6 +42,7 @@
     border-bottom: 1px solid lightgray;
     display: flex;
     align-items: center;
+
 }
 
 .product{
@@ -71,7 +72,9 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    padding: 30px 12px;
+    padding-top: 50px;
+    padding-bottom: 100px;
+
 }
 
 .basketTotalTitle{
@@ -95,7 +98,12 @@
     }
     .products,
     .product-header{
-        justify-content: center;
+        text-align: right;
+        font-size: 30px;
+        color: #5e35b1;
+        font-family: arial, sans-serif;
+        padding-top: 5px;
+        padding-bottom: 25px;
     }
     .basketTotalContainer{
         padding-right: 0%;

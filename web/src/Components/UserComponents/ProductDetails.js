@@ -94,7 +94,7 @@ export class ProductDetails extends Component {
                         </div>
 
                     )
-
+</div>
                 )} </div>
                 <div style={{backgroundColor: "#ef9a9a", color: ""}}>
                     <Comments productid={this.state.itemid} username={this.state.username} />
