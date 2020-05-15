@@ -8,10 +8,12 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
     "jquery": "^3.5.0",
     "mdbreact": "^4.25.6",
     "query-string": "^6.12.1",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-id-generator": "^3.0.0",
     "react-notifications": "^1.6.0",
@@ -28,6 +30,7 @@
     "redux-thunk": "^2.3.0",
     "semantic-ui-react": "^0.88.2",
     "styled-components": "^5.1.0",
+    "sweetalert": "^2.1.2",
     "uuid": "^7.0.3"
   },
   "scripts": {
