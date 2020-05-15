@@ -15,6 +15,9 @@ const Comments_Schema  =  mongoose.Schema({
         type: String,
         required:true
     },
+    rate  : {
+        type :Number,
+    },
 });
 
 const Comments = mongoose.model('Comments',Comments_Schema);

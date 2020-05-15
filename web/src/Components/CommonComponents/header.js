@@ -35,7 +35,7 @@ import React, {Component, useState} from 'react'; import {connect} from 'react-r
                             </ul>
                             <ul className="nav navbar-nav nav-flex-icons ml-auto">
                                 <li className="nav-item"><a  className="nav-link waves-effect"><span
-                                    className="badge red z-depth-1 mr-1"> {props.WatchListState.backetNumbers} </span> <Link to='/watchlist'> <i id="navbar-static-cart" alt="Cart" className="fas fa-heart"></i><span
+                                    className="badge red z-depth-1 mr-1"> {props.WatchListState.backetNumbers} </span> <Link to='/watchlist' style={{color: "white"}}> <i id="navbar-static-cart" alt="Cart" className="fas fa-heart"></i><span
                                     className="sr-only"> Cart </span>  </Link></a> </li>
 
                                 <li className="nav-item"><a  className="nav-link waves-effect">
