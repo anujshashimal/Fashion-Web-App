@@ -172,7 +172,7 @@ margin-top: -.3rem;
 }
 
 .productlistbuttoncolor{
-  background-color:  #5e35b1 ;
+  background-color:  green;
 }
 
 .navbarcolor{
@@ -192,3 +192,27 @@ margin-top: -.3rem;
   margin-left: 9%;
 }
 
+.icons{
+  margin-left: -6%;
+  margin-bottom: -6%;
+}
+
+.quantitycolor{
+  color: red;
+}
+
+.deletebuttoncolor{
+  background-color: red;
+}
+
+.detailswidth{
+  width: 45%;
+  height: 20%;
+  margin-left: -1%;
+}
+
+.mainwidth{
+  width: 80%;
+  height: 60%;
+  margin-left: 5%;
+}
