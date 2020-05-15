@@ -171,3 +171,48 @@ margin-top: -.3rem;
   text-align : center;
 }
 
+.productlistbuttoncolor{
+  background-color:  green;
+}
+
+.navbarcolor{
+ 
+  color: black;
+  margin-left: 2%;
+}
+
+.navaddproduct{
+  color: black;
+  margin-left: 8%;
+  margin-right: 3%;
+}
+
+.navlistproduct{
+  color: black;
+  margin-left: 9%;
+}
+
+.icons{
+  margin-left: -6%;
+  margin-bottom: -6%;
+}
+
+.quantitycolor{
+  color: red;
+}
+
+.deletebuttoncolor{
+  background-color: red;
+}
+
+.detailswidth{
+  width: 45%;
+  height: 20%;
+  margin-left: -1%;
+}
+
+.mainwidth{
+  width: 80%;
+  height: 60%;
+  margin-left: 5%;
+}

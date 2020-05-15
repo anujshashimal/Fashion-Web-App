@@ -81,7 +81,6 @@ export class ProductDetails extends Component {
                                 <i onClick={this.decrement} className="fas fa-angle-left"></i> &nbsp;
                                 {this.state.counter} &nbsp;
                                 <i onClick={this.increament} className="fas fa-angle-right"></i>
-                                </h4>
 
                                 <div style={{textAlign: "", marginTop:"5%"}}>
                                 <button type="button" className="btn btn-deep-purple" onClick={() =>{((username != '' && username != "undefined")) ? (this.props.addBasket(val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i class="fa fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Add to Cart</button>

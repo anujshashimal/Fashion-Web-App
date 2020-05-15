@@ -1,7 +1,6 @@
 {
   "name": "fashion-web-app",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,6 +12,7 @@
     "body-parser": "^1.19.0",
     "bootstrap-icons": "^1.0.0-alpha3",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.5",
@@ -21,5 +21,8 @@
     "nodemon": "^2.0.2",
     "routes": "^2.1.0",
     "uuid": "^7.0.3"
-  }
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "description": ""
 }

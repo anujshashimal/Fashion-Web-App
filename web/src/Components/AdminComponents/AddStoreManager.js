@@ -3,6 +3,10 @@ import React, { Component } from 'react'
 import  './Styles/style.css';
 import { MDBContainer, MDBInputGroup ,MDBBtn} from "mdbreact";
 import axios from "axios";
+import swal from "sweetalert";
+import Header from '../CommonComponents/header';
+import Footer from "../CommonComponents/footer";
+import showStoreManager from "./showStoreManager";
 
 export class addStoreManager extends Component {
 
@@ -12,7 +16,7 @@ export class addStoreManager extends Component {
             smid:"",
             name:"",
             email:"",
-            admin:"",
+            admin:"Vishaka",
             password:"",
             rePasswprd:""
         }
@@ -75,11 +79,21 @@ export class addStoreManager extends Component {
                                    smid: "",
                                    name: "",
                                    email: "",
-                                   admin: "",
+
                                    password: "",
                                    rePasswprd: ""
 
                                } )
+
+                                swal({
+                                    title: "Success!",
+                                    text: "You added new Store Manager!",
+                                    icon: "success",
+                                    button: "Done",
+                                });
+                                this.refs.myform.reset();
+
+                                // window.location.href=showStoreManager;
 
                             })
 
@@ -100,12 +114,13 @@ export class addStoreManager extends Component {
     render() {
         return (
             <div>
+                <Header username='Vishaka' /><br/><br/>
                 <div className="conatainer">
                     <div className="row">
                         <div className="col-4"></div>
                         <div className="col-4"><br/>
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-body" id="registre">
                                     <form ref="myform" >
                                         <p class="h4 text-center py-4" id="topic">Store Manager Registration</p>
                                         <div class="md-form">
@@ -132,12 +147,12 @@ export class addStoreManager extends Component {
                                         <div className="md-form">
                                             <i className="fa fa-exclamation-triangle prefix grey-text"></i>
                                             <input type="text" id="materialFormCardNameEx" className="form-control"
-                                                   placeholder="Admin" ref="admin" name="admin"/>
+                                                  value={this.state.admin} disabled="disabled" ref="admin" name="admin"/>
                                             {/*<label for="materialFormCardConfirmEx" class="font-weight-" lightid="placeholder">Confirm the email</label>*/}
                                         </div>
                                         <div class="text-center py-4 mt-3">
 
-                                            <button class="btn" id="btn" type="submit" onClick={(e)=>this.handleSubmit(e)}>Register</button>
+                                            <button class="btn"  id="btn" type="submit" onClick={(e)=>this.handleSubmit(e)}>Register</button>
 
                                         </div>
                                     </form>
@@ -147,6 +162,7 @@ export class addStoreManager extends Component {
                         <div className="col-4"></div>
                     </div>
                 </div>
+                <Footer/>
             </div>
         )
     }
