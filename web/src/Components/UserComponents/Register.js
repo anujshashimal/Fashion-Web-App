@@ -138,7 +138,7 @@ export default class header extends Component{
         // const {data} = this.props;
         const {username, email, contactno, address, password, conformpassword, gender} =this.state
         return(
-            <div class="" style={{marginLeft: "5%", marginRight: "5%", marginTop: "5%"}}>
+            <div class="" style={{marginLeft: "5%", marginRight: "5%", marginTop: "3%"}}>
                 <div className="row" style={{marginBottom:"7%"}}>
                 <div className="col-md-6">
                     <div style={{textAlign: "center"}}>

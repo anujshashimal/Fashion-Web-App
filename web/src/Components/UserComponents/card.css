@@ -3,12 +3,19 @@
     margin-bottom: 10%;
     transition: 0.3s;
     /* width: 10px; */
-    color: black;
-    background-color: #b388ff   ;
+    color: rgb(255, 255, 255);
+    /* background-image: linear-gradient(120deg,#e57373 0%, #e57373     100%); */
+    background-color: #ef9a9a ;
+    border-radius: 0px;
+    /* border: 2px solid #82b1ff ; */
   }
   
   .card1:hover {
     box-shadow: 0 8px 16px 0 #5e35b1;
+    /* border: 2px solid #5e35b1; */
+    background-color: #e57373  ;
+    /* background-image: linear-gradient(120deg,#F5F5F5 0%, #e91e63      100%); */
+    /* color: white; */
   }
   
   .container1 {

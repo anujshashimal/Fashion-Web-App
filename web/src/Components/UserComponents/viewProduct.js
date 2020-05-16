@@ -103,9 +103,9 @@ export class viewProduct extends Component {
         return (
             <div>
                 <Header username={this.state.username} />
-                <br/><br/>
+                <br/>
                 {/* <button type="button" className="button" onClick={this.Logout}>Logout</button> */}
-                <div className="row" style={{marginLeft: "", marginTop: "", marginRight: '', backgroundColor: '#ede7f6'}}>
+                <div className="row" style={{marginLeft: "", marginTop: "", marginRight: '', backgroundColor: '#ffcdd2'}}>
                     <div className="col-md" style={{marginTop: "2%"}}>
                         <div className="texboxwidth" style={{width: "70%"}}>
                             <label htmlFor="exampleInput">Product Main Category</label>
@@ -177,8 +177,9 @@ export class viewProduct extends Component {
                             <img src={'http://localhost:5000/uploads/'+products.image} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                                   <div class="container1">
                                       <h4><b>{products.description}</b></h4>
-                                      <p>Product ID : {products.productid}<br/>
-                                      <div className="raw" style={{backgroundColor: "red", color: "white"}}>
+                                      <p>
+                                          {/* Product ID : {products.productid}<br/> */}
+                                      <div className="raw" style={{backgroundColor: "#ff4444", color: "white"}}>
                                       <h3>Price : {products.price}</h3>
                                       </div>
                                       Available : {products.quantity}</p>
@@ -200,8 +201,9 @@ export class viewProduct extends Component {
                        <img src={'http://localhost:5000/uploads/'+products.image} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                                <div class="container1">
                                    <h4><b>{products.description}</b></h4> 
-                                   <p>Product ID : {products.productid}<br/>
-                                   <div className="raw" style={{backgroundColor: "red", color: "white"}}>
+                                   <p>
+                                       {/* Product ID : {products.productid}<br/> */}
+                                   <div className="raw" style={{backgroundColor: "#ff4444", color: "white"}}>
                                       <h3>Price : {products.price}</h3>
                                     </div>
                                    Available : {products.quantity}</p>

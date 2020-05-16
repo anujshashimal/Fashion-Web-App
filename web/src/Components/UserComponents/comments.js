@@ -171,7 +171,7 @@ export class comments extends Component {
                             <button type="button" class="btn btn-danger btn-md" onClick={()=>this.HandleCancel()}>Cancel</button>
                             </div>
                         ) : (
-                            <button type="submit" class="btn btn-primary btn-md">Post</button>
+                            <button type="submit" class="btn btn-purple btn-md">Post</button>
                         )}
                         
                     </div>
@@ -183,7 +183,7 @@ export class comments extends Component {
                 </div>
 
                 {this.state.Comments.filter(Comments => Comments.productId === this.props.productid).map(Comments => (
-                <div className="border border-primary" style={{marginTop: '2%', backgroundColor: "white"}}>
+                <div className="border border-primary" style={{marginTop: '2%', backgroundColor: "#ffebee"}}>
                     {(Comments.username === this.props.username) ? (
                     <div style={{marginLeft: '2%'}}>
                         <b>{Comments.username}</b><br/>

@@ -54,7 +54,7 @@ export class ProductDetails extends Component {
             return <Redirect to={"/Login"} />
         }
         return (
-            <div style={{backgroundColor: "#ede7f6"}}>
+            <div style={{backgroundColor: "#ffcdd2"}}>
                 <Header username={this.state.username} />
                 <br />
                 <div className="" style={{backgroundColor: "#ffffff", color: ""}}>
@@ -66,22 +66,25 @@ export class ProductDetails extends Component {
                             <img src={'http://localhost:5000/uploads/'+val.image} alt="Product" style={{width: "60%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                             </div>
                             <div className="col-md" style={{textAlign: "left"}}>
+                            <div className="raw" style={{marginTop: "2%", marginBottom: "2%", backgroundColor: "#9c27b0", color: "white"}}>
                             <h1><b>{val.description}</b></h1>
-                
-                             Product ID : {val.productid}<br/>
-                                <div className="raw" style={{marginTop: "2%", marginBottom: "2%", backgroundColor: "red", color: "white"}}>
+                            </div>
+                            Catogary :<b> {val.maincategory} / {val.subcategory}</b><br/>
+                             Product ID : <b>{val.productid}</b><br/>
+                             Discount :<b> {val.discount} %</b><br />
+                                <div className="raw" style={{marginTop: "2%", marginBottom: "2%", backgroundColor: "#ff4444", color: "white"}}>
                                 <h2>Price : {val.price}</h2>
                                 </div>
 
                                 <h4>Available : {val.quantity}</h4>
 
-                                <h4>
+                                <h1>
                                 
                                  
                                 <i onClick={this.decrement} className="fas fa-angle-left"></i> &nbsp;
                                 {this.state.counter} &nbsp;
                                 <i onClick={this.increament} className="fas fa-angle-right"></i>
-
+</h1>
                                 <div style={{textAlign: "", marginTop:"5%"}}>
                                 <button type="button" className="btn btn-deep-purple" onClick={() =>{((username != '' && username != "undefined")) ? (this.props.addBasket(val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i class="fa fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Add to Cart</button>
                                 <button type="button" className="btn btn-danger" onClick={() =>this.props.addToWatchList(val.description, val.price, val.quantity, val.discount , val.image)}><i class="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>
@@ -93,7 +96,7 @@ export class ProductDetails extends Component {
                     )
 
                 )} </div>
-                <div style={{backgroundColor: "#d1c4e9", color: ""}}>
+                <div style={{backgroundColor: "#ef9a9a", color: ""}}>
                     <Comments productid={this.state.itemid} username={this.state.username} />
                     </div>
 

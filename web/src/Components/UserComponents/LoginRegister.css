@@ -10,7 +10,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 .icon {
   padding: 12px;
-  background: #5e35b1;
+  background: #c62828  ;
   color: white;
   min-width: 50px;
   text-align: center;
@@ -23,12 +23,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 .input-field1:focus {
-  border: 2px solid #5e35b1;
+  border: 2px solid #c62828  ;
 }
 
 /* Set a style for the submit button */
 .btn1 {
-  background-color: #5e35b1;
+  background-color: #c62828  ;
   color: white;
   padding: 15px 20px;
   border: none;
@@ -43,7 +43,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 a:link {
     text-decoration: none;
-    color: #5e35b1;
+    color: #c62828  ;
   }
   
   a:visited {

@@ -38,9 +38,9 @@ export class Home extends Component {
         
         return (
             <div>
-                <Page loader={"bubble-spin"} color={"#5e35b1"} size={10} duration={2}>
+                <Page loader={"bubble-spin"} color={"#c62828"} size={20} duration={2}>
                 <Header username={this.state.username} />
-                <br/><br/><br/>
+                <br/><br/>
                 <div style={{textAlign: 'center'}}>
                 <img src={logo} alt="Avatar" style={{width:'20%'}}/>
                 </div>
