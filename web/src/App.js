@@ -17,6 +17,7 @@ import MainCategory from './Components/CategoryComponents/mainCategory';
 import AddStoreManager from './Components/AdminComponents/AddStoreManager';
 import showStoreManager from './Components/AdminComponents/showStoreManager';
 import AddCategory from './Components/CategoryComponents/AddCategory';
+import homePage from './Components/AdminHomePage/homePage';
 //
 //
 //
@@ -220,6 +221,7 @@ class App extends React.Component {
                         <Route  path = {'/addstoremanager'}  exact component={AddStoreManager} />
                         <Route  path = {'/showstoremanager'}  exact component={showStoreManager} />
                         <Route  path = {'/addCategory'}  exact component={AddCategory} />
+                        <Route  path = {'/adminhome'}  exact component={homePage} />
 
 
 

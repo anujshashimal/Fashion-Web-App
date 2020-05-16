@@ -7,7 +7,7 @@ import others from '../../img/others.jpg'
 import  './Styles/style.css';
 import {Link} from "react-router-dom";
 
-import Header from '../CommonComponents/header';
+import Header from '../CommonComponents/adiminHeader';
 import Footer from "../CommonComponents/footer";
 
 
@@ -66,7 +66,7 @@ export class MainCategory extends Component {
 
                                             <p class="card-text">Hey Sir, To add subcategories under the women category.</p>
 
-                                            <a  class="btn deep-purple darken-1" id="btnName"> <Link to={'/AddCategory?mainCategory=women'}>
+                                            <a  class="btn red darken-3 darken-1" id="btnName"> <Link to={'/AddCategory?mainCategory=women'}>
                                                 <text className="font">Women</text></Link></a>
 
                                         </div>
@@ -98,7 +98,7 @@ export class MainCategory extends Component {
 
                                             <p className="card-text">Hey Sir, To add subcategories under the men category.</p>
 
-                                            <a className="btn deep-purple darken-1" id="btnName"><Link to={'/AddCategory?mainCategory=men'}>
+                                            <a className="btn red darken-3 darken-1" id="btnName"><Link to={'/AddCategory?mainCategory=men'}>
                                                 <text className="font">Men</text></Link></a>
 
                                         </div>
@@ -129,7 +129,7 @@ export class MainCategory extends Component {
 
                                             <p className="card-text">Hey Sir, To add subcategories under the kids category.</p>
 
-                                            <a  className="btn deep-purple darken-1" id="btnName"><Link to={'/AddCategory?mainCategory=kids'}>
+                                            <a  className="btn red darken-3 darken-1" id="btnName"><Link to={'/AddCategory?mainCategory=kids'}>
                                                 <text className="font">Kids</text></Link></a>
 
                                         </div>
@@ -160,7 +160,7 @@ export class MainCategory extends Component {
 
                                             <p className="card-text">Hey Sir, To add subcategories under the other category. </p>
 
-                                            <a className="btn deep-purple darken-1" id="btnName"><Link to={'/AddCategory?mainCategory=others'}><text class="font">Others</text></Link> </a>
+                                            <a className="btn  red darken-3 darken-1" id="btnName"><Link to={'/AddCategory?mainCategory=others'}><text class="font">Others</text></Link> </a>
 
                                         </div>
 

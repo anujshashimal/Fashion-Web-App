@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import women from "../../img/women.jpg";
+import Header from '../CommonComponents/adiminHeader';
+import Footer from "../CommonComponents/footer";
 import  './Styles/style.css';
 import  './Styles/AddCategory.css';
 import axios from "axios";
 import swal from 'sweetalert';
 const queryString = require('query-string');
+
 
 export class Addcategory extends Component {
 
@@ -143,7 +146,7 @@ export class Addcategory extends Component {
     render() {
         return (
             <div>
-                {/*<Header username='Vishaka' />*/}
+                <Header username={this.state.Admin} />
                 <br/> <br/> <br/> <br/>
                 <div className="conatainer">
                     <div className="row">
@@ -214,24 +217,25 @@ export class Addcategory extends Component {
                                 </div>
                                 <div className="col-2"></div>
                                 <div className="col-5">
-                                    <div className="card">
+                                    <div className="card" >
                                         <div className="card-body" id="row">
                                             <form ref="myform">
                                                 <p className="h4 text-center py-4" id="topic">Sub Category Adding </p>
 
                                                 <div className="md-form">
-                                                    <i className="fa fa-id-card prefix grey-text"></i>
+                                                    
+                                                    {/*<i className="fa fa-id-card prefix grey-text" id="icon"></i>*/}
                                                     <input type="text" id="materialFormCardEmailEx" className="form-control" placeholder="Sub Category" ref="SubCategory" name="SubCategory"/>
                                                     {/*<label for="materialFormCardEmailEx" class="font-weight-light" id="placeholder">Enter  email</label>*/}
                                                 </div>
 
                                                 <div className="md-form">
-                                                    <i className="fa fa-american-sign-language-interpreting prefix grey-text"></i>
+                                                    {/*<i className="fa fa-american-sign-language-interpreting prefix grey-text"></i>*/}
                                                     <input type="text" id="materialFormCardPasswordEx" className="form-control" value={this.state.MainCategory} disabled="disabled" contentEditable="false" ref="MainCategory" name="MainCategory"/>
                                                     {/*<label for="materialFormCardPasswordEx" class="font-weight-light" id="placeholder">password</label>*/}
                                                 </div>
                                                 <div className="md-form">
-                                                    <i className="fa fa-user prefix grey-text"></i>
+                                                    {/*<i className="fa fa-user prefix grey-text"></i>*/}
                                                     <input type="text" id="materialFormCardNameEx" className="form-control" value={this.state.Admin} disabled="disabled" ref="AdminName" name="AdminName"/>
                                                     {/*<label for="materialFormCardNameEx" class="font-weight-light" id="placeholder">Stock Manager Name</label>*/}
                                                 </div>
@@ -252,8 +256,8 @@ export class Addcategory extends Component {
                         </div>
                         <div className="col-1"></div>
                     </div>
-                </div>
-
+                </div><br/><br/><br/>
+<Footer/>
 
             </div>
         )

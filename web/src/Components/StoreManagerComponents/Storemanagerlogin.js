@@ -10,17 +10,18 @@ export default class header extends Component{
         super(props)
     
         this.state = {
-            storemanageruserid : '',
             storemanagerusername: '',
             storemanagerpassword: '',
             storemanagers : [],
             storemanager : [],
+            //users: [],
+            //user: [],
             success: false,
             register: false,
         }
     }
 
-    
+
 
     handleStoreManagerUsernameChange = event => {
         this.setState({
@@ -37,7 +38,7 @@ export default class header extends Component{
     handleLoginSubmit = event => {
         event.preventDefault();
         this.getStoremanager();
-      
+
     }
 
     async getStoremanager(){
@@ -55,9 +56,6 @@ export default class header extends Component{
             this.setState({
                 storemanager: response.data[0]
             },()=>{
-
-                    
-                console.log('storemanager',this.state.storemanager)
                 console.log('password',this.state.storemanagerpassword)
                 console.log('storenamager password',this.state.storemanager.Password)
                 console.log('storenamager username',this.state.storemanager.UserName)
@@ -105,7 +103,7 @@ export default class header extends Component{
                                 <img src={logo} width="50%" />
                             </p>
                             <br />
-                             <img src={back} width="100%"/> 
+                             <img src={back} width="100%"/>
                         </div>
 
                         <div className="col-md-6">
