@@ -61,7 +61,7 @@ export class ProductDetails extends Component {
                     {this.state.product.map( val => (
                         <div className="container" style={{textAlign: "center"}}>
                             <div className="row"> {console.log(val)}
-
+                                {console.log(val)}
                                 <div className="col-md">
                             <img src={'http://localhost:5000/uploads/'+val.image} alt="Product" style={{width: "60%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                             </div>
@@ -79,14 +79,14 @@ export class ProductDetails extends Component {
                                 <h4>Available : {val.quantity}</h4>
 
                                 <h1>
-                                
-                                 
+
+
                                 <i onClick={this.decrement} className="fas fa-angle-left"></i> &nbsp;
                                 {this.state.counter} &nbsp;
                                 <i onClick={this.increament} className="fas fa-angle-right"></i>
-</h1>
+                                </h1>
                                 <div style={{textAlign: "", marginTop:"5%"}}>
-                                <button type="button" className="btn btn-deep-purple" onClick={() =>{((username != '' && username != "undefined")) ? (this.props.addBasket(val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i class="fa fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Add to Cart</button>
+                                <button type="button" className="btn btn-deep-purple" onClick={() =>{((username != '' && username != "undefined")) ? (this.props.addBasket(val._id,val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i class="fa fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Add to Cart</button>
                                 <button type="button" className="btn btn-danger" onClick={() =>this.props.addToWatchList(val.description, val.price, val.quantity, val.discount , val.image)}><i class="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>
                                 </div>
                                 </div>
@@ -94,7 +94,6 @@ export class ProductDetails extends Component {
                         </div>
 
                     )
-
                 )} </div>
                 <div style={{backgroundColor: "#ef9a9a", color: ""}}>
                     <Comments productid={this.state.itemid} username={this.state.username} />

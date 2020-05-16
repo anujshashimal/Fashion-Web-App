@@ -29,9 +29,9 @@ exports.Find_All_OrderDetails_User = (req,res,next)=>{
                     to: key.email,
                     subject: "Your Order Delivered",
                     html:
-                        '<form style="background-color: #f9edff " ' +
-                        '<h1> Hi '+ key.fullname + ', </h1>' +' <img src="cid:uniqueID@create.ee" style="width: 500px" /> ' +
-                        '<p> Thank you very much for the Order. Your payment is successfully completed. Your Ordered Item will receive Asap </p>' +
+                        '<form style="background-color: #a643dd " ' +
+                        '<h5> Hi '+ key.fullname + ', </h5>' +' <img src="cid:uniqueID@create.ee" style="width: 500px" /> ' +
+                        '<p> Thank you very much for the Order. Your payment is successfully completed. Your Ordered Item will receive Asap. Below include the Order informations you confirmed! Thank you very much!  </p>' +
                         '<h3> Your Total Amount of Payment is: : ' + key.TotalCost + '</h3>'+
                         '<h3> Your Order ID is : ' + key.OrderId + '</h3>'+
                         '<h3> Your Tracking ID is : ' + key.TrackingNum  + '</h3>' +
