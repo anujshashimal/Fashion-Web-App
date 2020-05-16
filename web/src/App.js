@@ -6,7 +6,7 @@ import Footer from './Components/CommonComponents/footer';
 import logo from './img/logo.gif'
 // {/*Lahiru Import Here*/}
     import MainProductPage from './Components/StoreManagerComponents/MainProduct'
-
+    import StoreManagerLogin from './Components/StoreManagerComponents/Storemanagerlogin';
    
 //
 //
@@ -32,7 +32,8 @@ import AddCategory from './Components/CategoryComponents/AddCategory';
  import viewProduct from './Components/UserComponents/viewProduct'
  import ProductDetails from './Components/UserComponents/ProductDetails'
  import Comments from './Components/UserComponents/comments'
-//  import Home from './Components/UserComponents/Home'
+ import Rating from './Components/UserComponents/Rating'
+ import Home from './Components/UserComponents/Home'
  //---------------------------------------------------------------------
 //
 //
@@ -196,7 +197,7 @@ class App extends React.Component {
 
                         {/*Access authorized for - (Laka)*/}
                         <Route  path = {'/Product'}  exact component={MainProductPage} />
-
+                        <Route path = {'/Storemanagerlogin'} exact component={StoreManagerLogin}/> 
 
 
 
@@ -207,7 +208,8 @@ class App extends React.Component {
                         <Route path = {'/viewProduct'} exact component={viewProduct}/>
                         <Route path = {'/ProductDetails'} exact component={ProductDetails}/>
                         <Route path = {'/Comments'} exact component={Comments}/>
-                        {/* <Route path = {'/Home'} exact component={Home}/> */}
+                        <Route path = {'/Rating'} exact component={Rating}/>
+                        <Route path = {'/Home'} exact component={Home}/>
 
 
 

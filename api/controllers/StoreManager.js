@@ -1,5 +1,7 @@
-
+require('dotenv').config();
 const  StoreManager = require('../models/StoreManager');
+var nodemailer = require('nodemailer');
+
 
 exports.Find_StoreManager = (req,res,next)=>{
     StoreManager.find({'smId':req.params.smId})
@@ -41,6 +43,31 @@ exports.SaveStoreManager = (req,res,next)=>{
     const  RePassword = req.body.RePassword;
     const  Admin = req.body.Admin;
 
+
+
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'sliitfashionwebapp@gmail.com',
+            pass: 'sliit@123'
+        }
+    });
+
+    var mailOptions = {
+        from: 'sliitfashionwebapp@gmail.com',
+        to: 'it18126020@my.sliit.lk',
+        subject: 'Congratulation !! You were added as a Store Manager in SLIIT Fashion Web app by '+Admin,
+        text: ' Email :'+Email+' Password : '+Password
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+
     const  newStoreManager = new StoreManager({
         smId,
         UserName,
@@ -59,24 +86,22 @@ exports.SaveStoreManager = (req,res,next)=>{
 
 exports.Update_StoreManger = (req,res,next)=>{
 
-    StoreManager.findByIdAndUpdate(req.params.smId)
-        .then(storeManager =>{
-            storeManager.UserName = req.body.UserName;
-            storeManager.Email =  req.body.Email;
-           storeManager.Password = req.body.Password;
-            storeManager.RePassword = req.body.RePassword
-            storeManager.Admin  =   req.body.Admin;
+    StoreManager.findOne({'smId':req.body.smId})
+        .then(storemanager =>{
+            storemanager.UserName = req.body.UserName;
+            storemanager.Email =  req.body.Email;
+            storemanager.Password = req.body.Password;
+            storemanager.RePassword = req.body.RePassword;
+            storemanager.Admin  =   req.body.Admin;
 
-
-
-
-            StoreManager.save()
+            storemanager.save()
                 .then(()=>res.json('store Manger Updated'))
                 .catch(err=>res.status(400).json('Error'+err));
         })
         .catch(err=> res.status(400).json('Err'+err));
 
 }
+
 
 exports.Delete_StoreManager = (req,res,next)=>{
 
@@ -86,4 +111,13 @@ exports.Delete_StoreManager = (req,res,next)=>{
 
 }
 
+
+
+exports.Find_StoreManager_byname = (req,res,next)=>{
+   
+    StoreManager.find({'UserName':req.params.storemanagerusername})
+    .then(storeManager => res.json(storeManager))
+    .catch(err=>res.status(400).json("Error:"+err))
+
+}
 

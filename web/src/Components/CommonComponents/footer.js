@@ -4,7 +4,7 @@ export default class footer extends Component{
         return(
             <div>
             
-            <footer  className="page-footer  font-small mdb-color pt-4  deep-purple darken-1">
+            <footer  className="page-footer  font-small mdb-color pt-4  red darken-3">
                 <div className="container text-center text-md-left">
                 <div className="row text-center text-md-left mt-3 pb-3">
                   <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">

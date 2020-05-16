@@ -18,7 +18,8 @@ export class viewProduct extends Component {
             subcategory: 'All',
             maincategory: 'Men',
             products: [],
-            username:'',
+            username: '',
+            search: '',
             // redirect: false,
         }
         // this.Logout = this.Logout.bind(this);
@@ -46,6 +47,7 @@ export class viewProduct extends Component {
         console.log(values.username)
         this.setState({
             username: values.username,
+            maincategory: values.maincategory,
         })
     
         axios.get('http://localhost:5000/category/:id')
@@ -68,6 +70,7 @@ export class viewProduct extends Component {
           }
         })
         console.log('products', this.state.products);
+        console.log('username',this.state.username);
     }
 
     OnChangesubcategory = event => {
@@ -84,6 +87,12 @@ export class viewProduct extends Component {
         })
         console.log(this.state.maincategory);
        }
+
+       OnChangesearch = event => {
+           this.setState({
+               search: event.target.value,
+           })
+       }
     
     render() {
         
@@ -94,11 +103,11 @@ export class viewProduct extends Component {
         return (
             <div>
                 <Header username={this.state.username} />
-                <br/><br/><br/>
+                <br/>
                 {/* <button type="button" className="button" onClick={this.Logout}>Logout</button> */}
-                <div className="row" style={{marginLeft: "5%", marginTop: "1%"}}>
-                    <div className="col-md" style={{}}>
-                        <div className="texboxwidth" style={{width: "50%"}}>
+                <div className="row" style={{marginLeft: "", marginTop: "", marginRight: '', backgroundColor: '#ffcdd2'}}>
+                    <div className="col-md" style={{marginTop: "2%"}}>
+                        <div className="texboxwidth" style={{width: "70%"}}>
                             <label htmlFor="exampleInput">Product Main Category</label>
                             <select 
                             ref="userInput" 
@@ -108,14 +117,14 @@ export class viewProduct extends Component {
                             onChange = {this.OnChangemaincategory}
                             multiple= {false}>
                                 <option key ="Men" value="Men">Men</option>
-                                <option key ="Weman" value="Weman">Weman</option>
-                                <option key ="Kid" value="Kid">Kid</option>
-                                <option key ="Baby" value="Baby">Baby</option>
+                                <option key ="Women" value="Women">Women</option>
+                                <option key ="Kid" value="Kids">Kids</option>
+                                <option key ="Other" value="Other">Other</option>
                             </select>
                         </div>
                     </div>
-                    <div className="col-md" style={{}}>
-                        <div className="texboxwidth" style={{width: "50%"}}>
+                    <div className="col-md" style={{marginTop: "2%"}}>
+                        <div className="texboxwidth" style={{width: "70%"}}>
                             <label htmlFor="exampleInput">Product Sub Category</label>
                             <select 
                             ref="userInput" 
@@ -136,12 +145,28 @@ export class viewProduct extends Component {
                             </select>   
                         </div>
                     </div>
+
+                    <div className="col-md" style={{marginTop: "2%"}}>
+                        <div className="texboxwidth" style={{width: "70%"}}>
+                            <div class="md-form">
+                                <i class="fas fa-search prefix"></i>
+                                <input 
+                                type="text" 
+                                id="inputValidationEx" 
+                                class="form-control validate"
+                                value = {this.state.search}
+                                onChange = {this.OnChangesearch}
+                                placeholder="search" />
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 {(this.state.subcategory === 'All') ? (
 
                         <div className="row" style={{textAlign: "center" , marginLeft: "1%" , marginRight: "1%" , marginTop: "1%"}}>
-                            {this.state.products.filter(products => products.maincategory === maincategory).map(products => (
+                            {this.state.products.filter(products => products.maincategory === maincategory && products.description.includes(this.state.search)).map(products => (
                                <div className="col-md-3">
                                <Link to={'/ProductDetails?item='+products.productid+'&username='+this.state.username}>
                           <div class="card1">
@@ -152,8 +177,11 @@ export class viewProduct extends Component {
                             <img src={'http://localhost:5000/uploads/'+products.image} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                                   <div class="container1">
                                       <h4><b>{products.description}</b></h4>
-                                      <p>Product ID : {products.productid}<br/>
-                                      Price : {products.price}<br/>
+                                      <p>
+                                          {/* Product ID : {products.productid}<br/> */}
+                                      <div className="raw" style={{backgroundColor: "#ff4444", color: "white"}}>
+                                      <h3>Price : {products.price}</h3>
+                                      </div>
                                       Available : {products.quantity}</p>
                                   </div>
                           </div></Link>
@@ -165,7 +193,7 @@ export class viewProduct extends Component {
                     
                 ) : (
                     <div className="row" style={{textAlign: "center" , marginLeft: "1%" , marginRight: "1%" , marginTop: "1%"}}>
-                        {this.state.products.filter(products => products.maincategory === maincategory && products.subcategory === subcategory).map(products => (
+                        {this.state.products.filter(products => products.maincategory === maincategory && products.subcategory === subcategory && products.description.includes(this.state.search)).map(products => (
                             <div className="col-md-3">
                             <Link to={'/ProductDetails?item='+products.productid+'&username='+this.state.username}>
                        <div class="card1">
@@ -173,8 +201,11 @@ export class viewProduct extends Component {
                        <img src={'http://localhost:5000/uploads/'+products.image} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                                <div class="container1">
                                    <h4><b>{products.description}</b></h4> 
-                                   <p>Product ID : {products.productid}<br/>
-                                   Price : {products.price}<br/>
+                                   <p>
+                                       {/* Product ID : {products.productid}<br/> */}
+                                   <div className="raw" style={{backgroundColor: "#ff4444", color: "white"}}>
+                                      <h3>Price : {products.price}</h3>
+                                    </div>
                                    Available : {products.quantity}</p>
                                </div>
                        </div></Link>
@@ -183,7 +214,7 @@ export class viewProduct extends Component {
                         }
                     </div>
                 )}
-            
+            <Footer />
             </div>
         )
     }

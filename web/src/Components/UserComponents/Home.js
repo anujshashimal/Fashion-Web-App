@@ -1,32 +1,58 @@
 import React, { Component } from 'react'
 import './Home.css'
+import Men from './img/Men.gif'
+import Women from './img/Women.gif'
+import Kids from './img/Kids.gif'
+import Other from './img/Other.gif'
+import logo from './logo.gif'
+import Header from "../CommonComponents/header.js";
+import Footer from '../CommonComponents/footer';
+import  {Link}  from  'react-router-dom'
+import Page from 'react-page-loading'
+
+const queryString = require('query-string');
 
 export class Home extends Component {
+
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             username: '',
+
+        }
+    }
+
+    componentDidMount(){
+
+        var values = queryString.parse(this.props.location.search)
+        console.log(this.props.location.search)
+        console.log(values.username)
+        this.setState({
+            username: values.username,
+        })
+    }
+    
     render() {
-        // $('.carousel').carousel({
-        //     interval: 3000
-        // })
-         
-        //  $( document ).ready(function() {
-        //   new WOW().init();
-        // });
         
-        // $( ".wow" ).addClass( "flipInY" );
         
         return (
             <div>
-                <br/><br/><br/>
-                {/* <p align="center"><img src="img/Webp.net-gifmaker.gif" width="20%"/></p> */}
-
-
-                <div style={{margin: '10px'}}>
+                <Page loader={"bubble-spin"} color={"#c62828"} size={20} duration={2}>
+                <Header username={this.state.username} />
+                <br/><br/>
+                <div style={{textAlign: 'center'}}>
+                <img src={logo} alt="Avatar" style={{width:'20%'}}/>
+                </div>
+                <div style={{margin: "10px"}}>
                     <div className="row">
 
                         <div className="column">
+                            <Link to={'/viewProduct?maincategory=Men&username='+this.state.username}>
                             <div className="flip-card">
                                 <div className="flip-card-inner">
                                     <div className="flip-card-front">
-                                        <img src="Men.gif" alt="Avatar" style={{width:'100%', height:'100%'}}/>
+                                    <img src={Men} alt="Avatar" style={{width:'100%', height:'100%'}}/>
                                     </div>
                                     <div className="flip-card-back1">
                                         <br/><br/><br/><br/><br/><br/><br/>
@@ -34,13 +60,15 @@ export class Home extends Component {
                                     </div>
                                 </div>
                             </div>
+                            </Link>
                         </div>
 
                         <div className="column">
+                            <Link to={'/viewProduct?maincategory=Women&username='+this.state.username}>
                             <div className="flip-card">
                                 <div className="flip-card-inner">
                                     <div className="flip-card-front">
-                                        <img src="Women.gif" alt="Avatar" style={{width:'100%', height:'100%'}}/>
+                                    <img src={Women} alt="Avatar" style={{width:'100%', height:'100%'}}/>
                                     </div>
                                     <div className="flip-card-back2">
                                         <br/><br/><br/><br/><br/><br/><br/>
@@ -48,13 +76,15 @@ export class Home extends Component {
                                     </div>
                                 </div>
                             </div>
+                            </Link>
                         </div>
 
                         <div className="column">
+                            <Link to={'/viewProduct?maincategory=Kids&username='+this.state.username}>
                             <div className="flip-card">
                                 <div className="flip-card-inner">
                                     <div className="flip-card-front">
-                                        <img src="Kids.gif" alt="Avatar" style={{width:"100%",height:"100%"}}/>
+                                    <img src={Kids} alt="Avatar" style={{width:'100%', height:'100%'}}/>
                                     </div>
                                     <div className="flip-card-back3">
                                         <br/><br/><br/><br/><br/><br/><br/>
@@ -62,13 +92,15 @@ export class Home extends Component {
                                     </div>
                                 </div>
                             </div>
+                            </Link>
                         </div>
 
                         <div className="column">
+                            <Link to={'/viewProduct?maincategory=Other&username='+this.state.username}>
                             <div className="flip-card">
                                 <div className="flip-card-inner">
                                     <div className="flip-card-front">
-                                        <img src="Other.gif" alt="Avatar" style={{width:"100%",height:"100%"}}/>
+                                    <img src={Other} alt="Avatar" style={{width:'100%', height:'100%'}}/>
                                     </div>
                                     <div className="flip-card-back4">
                                         <br/><br/><br/><br/><br/><br/><br/>
@@ -76,99 +108,14 @@ export class Home extends Component {
                                     </div>
                                 </div>
                             </div>
+                            </Link>
                         </div>
+
 
                     </div>
                 </div>
-
-
-                <br/><br/>
-
-                <h4 align="center">Brands Available</h4>
-                <div>
-                
-                <!--Section: Content-->
-                <section className="text-center dark-grey-text">
-
-                    <!-- Grid row -->
-                    <div className="row">
-
-                    <!-- Grid column -->
-                    <div className="col-md-12 mb-4">
-
-                        <div className="wrapper-carousel-fix">
-                        
-                        <!-- Carousel Wrapper -->
-                        <div id="carousel-example-1" className="carousel no-flex testimonial-carousel slide" data-ride="carousel width"
-                            data-interval="false">
-                            <!--Slides-->
-                            <div className="carousel-inner" role="listbox">
-                            <!--First slide-->
-                            <div className="carousel-item active">
-                                
-                                <div className="view card-img-100 mx-auto mt-0 mb-0">
-                                <img src="Amani_Fashion_Bug_Logo.png" className="img-fluid z-depth-1" alt="smaple image"/>
-                                </div>
-                                
-                            </div>
-
-                            <!--First slide-->
-                            <!--Second slide-->
-                            <div className="carousel-item">
-                                
-                                <div className="view card-img-100 mx-auto mt-0 mb-0">
-                                <img src="amante_Fashion_Bug_Logo.png" className="img-fluid z-depth-1" alt="smaple image">
-                                </div>
-                                
-                            </div>
-                            
-                            <div className="carousel-item">
-                                
-                                <div className="view card-img-100 mx-auto mt-0 mb-0">
-                                <img src="Bigg-Boss_Fashion_Bug_Logo.png" className="img-fluid z-depth-1" alt="smaple image">
-                                </div>
-                                
-                            </div>
-                            <!--Second slide-->
-                            <!--Third slide-->
-                            <div className="carousel-item">
-                                
-                                <div className="view card-img-100 mx-auto mt-0 mb-0">
-                                <img src="Amazing-Lanka_Fashion_Bug_Logo.png" className="img-fluid z-depth-1" alt="smaple image">
-                                </div>
-                                
-                            </div>
-                            <!--Third slide-->
-                            </div>
-                            <!--Slides-->
-                            <!--Controls-->
-                            <a className="carousel-control-prev left carousel-control" href="#carousel-example-1" role="button"
-                            data-slide="prev">
-                            <span className="icon-prev" aria-hidden="true"></span>
-                            <span className="sr-only">Previous</span>
-                            </a>
-                            <a className="carousel-control-next right carousel-control" href="#carousel-example-1" role="button"
-                            data-slide="next">
-                            <span className="icon-next" aria-hidden="true"></span>
-                            <span className="sr-only">Next</span>
-                            </a>
-                            <!--Controls-->
-                        </div>
-                        <!-- Carousel Wrapper -->
-                        
-                        </div>
-                        
-                    </div>
-                    <!-- Grid column -->
-
-                    </div>
-                    <!-- Grid row -->
-                    
-                </section>
-                <!--Section: Content--> */}
-
-
-                {/* </div>      
+                <Footer />
+                </Page>
             </div>
         )
     }

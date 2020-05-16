@@ -83,7 +83,7 @@ var uuid = require('uuid');
 
             
          if(req.file){
-            product.image = req.file.path
+            product.image = req.file.filename
           
         }
          console.log(product)
