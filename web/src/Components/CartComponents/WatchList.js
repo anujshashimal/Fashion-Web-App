@@ -11,12 +11,15 @@ import {removeItemFromWathList} from "../../Actions/addWatchList";
 import {addBasket, removeItem} from "../../Actions/addActions";
 import {addToWatchList} from "../../Actions/addWatchList";
 import {productQuntity} from "../../Actions/ProductQuantity";
-
+import './Styles/WatchList.css'
 const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
     console.log(watchListProps)
     console.log(basketProps)
 
-    let watchListItems = []
+    let watchListItems = [];
+    let filteredArr = [];
+
+
     Object.keys(watchListProps.WatchListitems).forEach( function (item) {
         console.log(item)
         watchListItems.push(watchListProps.WatchListitems[item])
@@ -24,30 +27,41 @@ const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
     })
 
 
-    watchListItems = watchListItems.map( (product, index) => {
+    filteredArr = watchListItems.reduce((acc, current) => {
+        const x = acc.find(item => item.productID === current.productID);
+        if (!x) {
+            return acc.concat([current]);
+        } else {
+            return acc;
+        }
+    }, [])
+
+
+
+    console.log(filteredArr)
+    filteredArr = filteredArr.map( (product, index) => {
         console.log(product)
         return(
-            <MDBTable>
-                <MDBTableHead color="deep-purple" textWhite>
-            <tr key={product.name}>
-                <th> {index+1} </th>
-                <button type="button" className="close" aria-label="Close" onClick={() => removeItemFromWathList(index, product.price)}>
-                    <span aria-hidden="true">&times;</span>
+            <tr>
+                <button type="button" className="close" aria-label="Close" onClick={() => removeItem(index, product.price)}>
+                <span aria-hidden="true">&times;</span>
                 </button>
-                <img src={'http://localhost:5000/uploads/'+product.image} alt="Product" style={{height: "5%" }} />
-                <td>{product.name}</td>
-                <td>{product.price}</td>
-                <td>{product.avaliable}</td>
-                <td>{product.discount}% discount</td>
-                {/*<MDBBtn rounded color="secondary" >Edit</MDBBtn>*/}
-                {/*<MDBBtn rounded color="secondary" >Delete</MDBBtn>*/}
+                <img src={'http://localhost:5000/uploads/'+product.image} alt="Product" style={{height: "100px" }} />
+                <td className="tabletext">{product.name}</td>
+                <td className="tabletext">
+                    {/*<i onClick={() =>productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>*/}
+                    {product.counter}
+                    {/*<i onClick={() =>productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>*/}
+                </td>
+                <td className="tabletext">{product.avaliable}</td>
+                <td className="tabletext">{product.discount}</td>
+                <td className="tabletext">{product.price}</td>
             </tr>
-                </MDBTableHead>
-            </MDBTable>
-        )
-    })
+        )})
 
-    const addCost = () =>{
+
+    const addToCartForPayment = () => {
+
         Object.keys(watchListProps.WatchListitems).forEach( function (item) {
             console.log(item)
             basketProps.items.push(watchListProps.WatchListitems[item])
@@ -55,34 +69,42 @@ const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
             basketProps.cartCost = watchListProps.cartCost
             console.log(basketProps)
         })
-    }
 
+    }
     return(
-        <div>
-            <Hea />
-            <div className='container'>
-                <header>
-                    <div className='container-products'>
+            <div>
+                <Hea />
+                <div className='container'>
+                    <header>
                         <div className='product-header'>
+                            Cart Page
                         </div>
-                        <div className='products'>
-                            <table id='students'>
-                                <tbody>
-                                {watchListItems}
-                                </tbody>
-                            </table>
-                        </div>
+                        <MDBTable>
+                            <MDBTableHead color="red darken-3" textWhite>
+                                <tr>
+                                    <th className="tabletext">Image</th>
+                                    <th className="tabletext">Name</th>
+                                    <th className="tabletext">Quantity</th>
+                                    <th className="tabletext">Avaliable</th>
+                                    <th className="tabletext">Discount</th>
+                                    <th className="tabletext">Price</th>
+                                </tr>
+                            </MDBTableHead>
+                            <MDBTableBody>
+                                {filteredArr}
+                            </MDBTableBody>
+                        </MDBTable>
                         <div className='basketTotalContainer'>
-                            <h4 className='basketTotalTitle'>Total Cost Of the Watch List Items </h4>
-                            <h4 className='basketTotal'>{watchListProps.cartCost},00 </h4>
-                            <Link type="button" className="btn btn-secondary" onClick={ () => addCost()}>Add Items To Cart
+                            <hr/>
+                            <h4 className='basketTotalTitle'>Total Amount to Pay: </h4>
+                            <h4 className='basketTotal'>Rs. {basketProps.cartCost},00 </h4>
+                            <Link type="button" className="btn red darken-3" onClick={() => addToCartForPayment()} >Add to Cart
                             </Link>
                         </div>
-                    </div>
-                </header>
+                    </header>
+                </div>
+                <Foo />
             </div>
-            <Foo />
-        </div>
     )
 }
 

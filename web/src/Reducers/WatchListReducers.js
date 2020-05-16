@@ -11,22 +11,19 @@ export default (state = initialState, action) =>{
     const {payload} = action
     switch(action.type) {
         case ADD_PRODUCT_TO_WATCHLIST:
-            let addQuntity = {...state}
 
-            addQuntity.numbers += 1;
-            addQuntity.incart = true;
-            console.log(addQuntity);
-            return{
+            if(payload.counter == 0){
+                payload.counter =1
+            }
+            return {
                 ...state,
                 backetNumbers: state.backetNumbers + 1,
-                cartCost: state.cartCost + payload.price,
-                isAd: true,
-                show: true,
-                WatchListitems : [
+                cartCost: state.cartCost + (action.payload.price * action.payload.counter),
+                WatchListitems: [
                     ...state.WatchListitems,
-                    action.payload,
+                    {...payload}
                 ]
-            };
+            }
 
         case GET_NUMBERS_TO_WATCHLIST:
             return {

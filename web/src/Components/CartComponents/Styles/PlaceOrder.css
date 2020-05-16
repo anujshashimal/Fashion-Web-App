@@ -4,6 +4,7 @@
     top: 50%;
     left: 70%;
 }
+
 .total{
     position: absolute;
     right: 25%;
@@ -12,9 +13,43 @@
     position: absolute;
 
 }
+
 .total1{
     top: 70%;
     position: absolute;
     right: 10%;
     text-align: center;
+}
+
+.icon {
+background-color: #c62828  ;
+}
+
+.btn1{
+    background-color: #c62828 ;
+    width: 200px;
+    height: 50px;
+    border-radius: 2px;
+}
+
+.myclass1{
+    padding-bottom: 100px;
+    text-align: center;
+}
+
+.myclass2{
+    background-color: #c62828 ;
+
+}
+
+.mainClass {
+    background-color: #ef9a9a;
+    text-align: center;
+}
+
+.mainClass h1{
+    color: #ffffff;
+}
+.mainClass h3{
+    color: #ffffff;
 }

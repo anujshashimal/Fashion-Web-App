@@ -79,8 +79,8 @@ export class ProductDetails extends Component {
                                 <h4>Available : {val.quantity}</h4>
 
                                 <h1>
-                                
-                                 
+
+
                                 <i onClick={this.decrement} className="fas fa-angle-left"></i> &nbsp;
                                 {this.state.counter} &nbsp;
                                 <i onClick={this.increament} className="fas fa-angle-right"></i>

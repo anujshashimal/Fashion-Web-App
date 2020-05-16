@@ -16,13 +16,15 @@
  }
 
 .product-header{
+    solid-color: #e91e63;
     width: 100%;
-    max-width: 650px;
     display: flex;
-    justify-content: flex-start;
     border-bottom: 4px solid lightgray;
     margin-top: 15%;
     padding: 13px;
+    justify-content: center;
+    color: #e91e63;
+    background-color: #ffebee ;
 }
 
 .product-title{
@@ -100,7 +102,6 @@
     .product-header{
         text-align: right;
         font-size: 30px;
-        color: #5e35b1;
         font-family: arial, sans-serif;
         padding-top: 5px;
         padding-bottom: 25px;

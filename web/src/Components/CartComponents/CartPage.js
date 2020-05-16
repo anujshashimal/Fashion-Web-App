@@ -50,22 +50,14 @@ const CartPage = ({basketProps, productQuntity, removeItem}) =>{
                     <td className="tabletext">{product.name}</td>
                     <td className="tabletext">
                     <i onClick={() =>productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>
-
                         {product.counter}
-                        <i onClick={() =>productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>
-
+                    <i onClick={() =>productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>
                     </td>
                     <td className="tabletext">{product.avaliable}</td>
                     <td className="tabletext">{product.discount}</td>
-                    <td className="tabletext">{product.price}</td>
-
+                     <td className="tabletext">{product.price}</td>
             </tr>
-
-
-
-
-        )
-    })
+        )})
 
 
     const red = () =>{
@@ -84,7 +76,7 @@ const CartPage = ({basketProps, productQuntity, removeItem}) =>{
                         Cart Page
                     </div>
                         <MDBTable>
-                            <MDBTableHead color="deep-purple" textWhite>
+                            <MDBTableHead color="red darken-3" textWhite>
                             <tr>
                                 <th className="tabletext">Image</th>
                                 <th className="tabletext">Name</th>
@@ -102,7 +94,7 @@ const CartPage = ({basketProps, productQuntity, removeItem}) =>{
                         <hr/>
                         <h4 className='basketTotalTitle'>Total Amount to Pay: </h4>
                         <h4 className='basketTotal'>Rs. {basketProps.cartCost},00 </h4>
-                            <Link type="button" className="btn btn-secondary" to='PlaceOrder'  >Place Order
+                            <Link type="button" className="btn red darken-3" to='PlaceOrder'  >Place Order
                             </Link>
                 </div>
             </header>
