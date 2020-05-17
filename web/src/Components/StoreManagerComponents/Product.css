@@ -2,7 +2,7 @@
 
  /* margin-left: 40%; */
  text-align: center;
-
+ font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .quantitybox{
@@ -169,6 +169,8 @@ margin-top: -.3rem;
 
 .tabletext{
   text-align : center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: ;
 }
 
 .productlistbuttoncolor{
@@ -213,6 +215,16 @@ margin-top: -.3rem;
 
 .mainwidth{
   width: 80%;
-  height: 60%;
+  height: 10%;
+  margin-left: 10%;
+ 
+}
+.details{
+  margin-left: -35%;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-top: -1%;
+}
+
+.textbox{
   margin-left: 5%;
 }

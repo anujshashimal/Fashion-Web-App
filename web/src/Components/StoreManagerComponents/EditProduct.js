@@ -230,7 +230,7 @@ class EditProduct extends Component {
            <h2 className="header">Edit Product</h2>
            <form  onSubmit={this.onSubmit}>
               <div >
-                   <div className="jumbotron" >
+                   <div className="jumbotron"  style={{fontFamily:"Cambria, Cochin, Georgia, Times, 'Times New Roman', serif",fontSize:"medium"}}>
 
                          <div className="texboxwidth">
                               <label htmlFor="exampleInput">Product Main Category</label>
@@ -347,7 +347,7 @@ class EditProduct extends Component {
                           <br/>
 
                           <div className="text-center mt-4">
-                            <MDBBtn color="#5e35b1 deep-purple darken-1" type="submit">
+                            <MDBBtn color="#c62828 red darken-3" type="submit">
                               Update Product
                             </MDBBtn>
                         </div>
