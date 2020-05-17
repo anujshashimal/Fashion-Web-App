@@ -34,6 +34,7 @@ import AddCategory from './Components/CategoryComponents/AddCategory';
  import Comments from './Components/UserComponents/comments'
  import Rating from './Components/UserComponents/Rating'
  import Home from './Components/UserComponents/Home'
+//  import Notification from './Components/UserComponents/notification'
  //---------------------------------------------------------------------
 //
 //
@@ -210,6 +211,7 @@ class App extends React.Component {
                         <Route path = {'/Comments'} exact component={Comments}/>
                         <Route path = {'/Rating'} exact component={Rating}/>
                         <Route path = {'/Home'} exact component={Home}/>
+                        {/* <Route path = {'/Noti'} exact component={Notification}/> */}
 
 
 

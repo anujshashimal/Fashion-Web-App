@@ -3,6 +3,9 @@ import './Comments.css'
 import axios from 'axios'
 import { FaStar } from "react-icons/fa"
 import './Rating.css'
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import swal from 'sweetalert';
 
 export class comments extends Component {
     constructor(props) {
@@ -19,7 +22,8 @@ export class comments extends Component {
     }
     
 
-    componentDidMount(){
+    
+    componentDidUpdate(){
     
         axios.get('http://localhost:5000/Comments/find')
         .then(response=>{
@@ -44,8 +48,10 @@ export class comments extends Component {
         this.sendData();
         this.setState({
             comment:'',
+            rating: null,
         })
-        window.location.reload(false);
+        // window.location.reload(false);
+        NotificationManager.success('', 'Comment Post Success');
     }
 
     async sendData () {
@@ -72,11 +78,8 @@ export class comments extends Component {
         // this.setState({
         // Products : this.state.Products.filter(product=>product.productid != product_id)
         // })
-        window.location.reload(false);
-    }
-
-    EditComments() {
-        
+        // window.location.reload(false);
+        NotificationManager.success('', 'Comment Delete Success');
     }
 
     HandleRateing = ratingValue => {
@@ -98,6 +101,7 @@ export class comments extends Component {
             rating: rate,
             edit: true,
         })
+        NotificationManager.info('', 'Now you can edit comment');
         console.log('id',this.state.id);
         console.log('comment',this.state.comment);
         console.log('editrate',this.state.editrate);
@@ -112,12 +116,26 @@ export class comments extends Component {
 
         axios.post('http://localhost:5000/Comments/update/'+this.state.editid,Comments)
        .then(res=>console.log(res.data));
+       this.setState({
+        editid: '',
+        comment: '',
+        rating: null,
+        edit: false,
+    })
 
-       window.location.reload(false);
+    //    window.location.reload(false);
+    NotificationManager.success('', 'Comment Update Success');
     }
 
     HandleCancel = () => {
-        window.location.reload(false);
+        this.setState({
+            editid: '',
+            comment: '',
+            rating: null,
+            edit: false,
+        })
+        NotificationManager.warning('', 'Cancaled');
+        // window.location.reload(false);
     }
 
     render() {
@@ -151,7 +169,20 @@ export class comments extends Component {
                         </label>
                     );
                 })}
-                <p>The rating is {rating}.</p>
+                <p>
+                    {/* The rating is {rating}. */}
+                    The rating is <font color="#ffffff">
+                {(() => {
+        switch (rating) {
+          case 1:   return " Useless";
+          case 2: return " Poor";
+          case 3:  return " Ok";
+          case 4: return " Good";
+          case 5:  return " Excellent";
+          default:  return " Null";
+        }
+      })()} </font>
+                </p>
                 </div>
 
 
@@ -167,11 +198,14 @@ export class comments extends Component {
                         </textarea>
                         {(this.state.edit) ? (
                             <div>
-                            <button type="button" class="btn btn-warning btn-md" onClick={()=>this.HandleUpdate()}>Update</button>
+                            <button type="button" class="btn btn-warning btn-md" onClick={()=>this.HandleUpdate()}><i class="fa fa-pencil-alt fa-spin fa-lg"></i>&nbsp; Update &nbsp;</button>
                             <button type="button" class="btn btn-danger btn-md" onClick={()=>this.HandleCancel()}>Cancel</button>
                             </div>
                         ) : (
-                            <button type="submit" class="btn btn-purple btn-md">Post</button>
+                            <div>
+                            <button type="submit" class="btn btn-purple btn-md"><i class="fa fa-star fa-spin fa-lg"></i>&nbsp; Post &nbsp;</button>
+                            <button type="button" class="btn btn-danger btn-md" onClick={()=>this.HandleCancel()}>Cancel</button>
+                            </div>
                         )}
                         
                     </div>
@@ -182,11 +216,11 @@ export class comments extends Component {
                 </form>
                 </div>
 
-                {this.state.Comments.filter(Comments => Comments.productId === this.props.productid).map(Comments => (
+                {this.state.Comments.filter(Comments => Comments.productId === this.props.productid).reverse().map(Comments => (
                 <div className="border border-primary" style={{marginTop: '2%', backgroundColor: "#ffebee"}}>
                     {(Comments.username === this.props.username) ? (
                     <div style={{marginLeft: '2%'}}>
-                        <b>{Comments.username}</b><br/>
+                        <i id="" alt="" className="fas fa-user"> </i><b> {Comments.username}</b><br/>
                         &nbsp;{Comments.Comment}
                         {/* {Comments._id} */}
                         {(Comments.rate == 0) ? (
@@ -243,8 +277,34 @@ export class comments extends Component {
                         </button>
 
                         <button
-                        onClick ={()=>{if(window.confirm('Delete the Comment?')){this.deleteComment(Comments._id)}}}
+                        // onClick ={()=>{if(window.confirm('Delete the Comment?')){this.deleteComment(Comments._id)}}}
                         // onClick={() => this.deleteComment(Comments._id)}
+                        onClick={() =>{
+
+                            swal({
+                                title: "Do you want to remove comment",
+                                text: "Once deleted, you will not be able to recover !",
+                                icon: "warning",
+                                buttons: true,
+                                dangerMode: true,
+                            })
+                                .then((willDelete) => {
+                                    if (willDelete) {
+                                        swal("Poof! comment has been deleted!", {
+                                            icon: "success",
+
+
+                                        });
+                                        this.deleteComment(Comments._id)
+                                    } else {
+                                        swal("Comment is safe!");
+                                    }
+                                });
+
+
+
+
+                        }}
                         type="button"
                         class="btn btn-danger btn-sm">
                             <i class="fa fa-trash"></i>
@@ -254,7 +314,7 @@ export class comments extends Component {
                     </div>
                     ):(
                         <div style={{marginLeft: '2%'}}>
-                        <b>{Comments.username}</b><br/>
+                        <i id="" alt="" className="fas fa-user"> </i><b> {Comments.username}</b><br/>
                         &nbsp;{Comments.Comment}
                         
                         {(Comments.rate == 0) ? (
@@ -311,7 +371,7 @@ export class comments extends Component {
                 }
                 <br/>
                 
-                    
+                <NotificationContainer/>
             </div>
         )
     }

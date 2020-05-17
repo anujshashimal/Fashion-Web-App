@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import  {Link, Redirect}  from  'react-router-dom';
+import  {Link, Redirect}  from 'react-router-dom';
 import Header from "../CommonComponents/header.js";
 import Footer from '../CommonComponents/footer';
 import {addBasket} from "../../Actions/addActions";
 import {addToWatchList} from "../../Actions/addWatchList";
 import {connect} from 'react-redux';
 import Comments from "./comments";
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import swal from 'sweetalert';
+import { MDBBadge, MDBContainer, MDBIcon } from "mdbreact";
+
 import {placeOrder} from "../../Actions/placeOrderDir";
 
 const queryString = require('query-string');
+
 
 export class ProductDetails extends Component {
     constructor(props) {
@@ -53,6 +59,11 @@ export class ProductDetails extends Component {
     decrement = () =>{
         this.setState({counter: this.state.counter - 1})
     }
+
+    AvarageRate = (productid) =>{
+        
+    }
+
     render() {
         const {itemid, product, Cprice, username} =this.state
         console.log(this.state)
@@ -72,6 +83,12 @@ export class ProductDetails extends Component {
                             <div className="row"> {console.log(val)}
                                 {console.log(val)}
                                 <div className="col-md">
+                                    {/* {(val.maincategory == "Men") ? (
+                                        <MDBBadge tag="a" color="danger"> <MDBIcon icon="male" /> </MDBBadge>
+                                    ) : (
+                                        <MDBBadge tag="a" color="danger"> <MDBIcon icon="female" /> </MDBBadge>
+                                    )} */}
+                                <MDBBadge tag="a" color="danger"> NEW </MDBBadge>
                             <img src={'http://localhost:5000/uploads/'+val.image} alt="Product" style={{width: "60%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                             </div>
                             <div className="col-md" style={{textAlign: "left"}}>
@@ -80,14 +97,34 @@ export class ProductDetails extends Component {
                             </div>
                             Catogary :<b> {val.maincategory} / {val.subcategory}</b><br/>
                              Product ID : <b>{val.productid}</b><br/>
-                             Discount :<b> {val.discount} %</b><br />
+                             {/* Discount :<b> {val.discount} %</b><br /> */}
+                             {(val.discount == "0") ? (
+                                 <div> </div>
+                             ) : (
+                                <h3><MDBBadge pill color="red"> Discount :<b> {val.discount} %</b> </MDBBadge></h3>
+                             )}
+                             {/* <h3><MDBBadge tag="a" color="red"> Discount :<b> {val.discount} %</b> </MDBBadge></h3> */}
+
+                             
                                 <div className="raw" style={{marginTop: "2%", marginBottom: "2%", backgroundColor: "#ff4444", color: "white"}}>
-                                <h2>Price : {val.price}</h2>
+                                <h2>Rs: {val.price}.00</h2>
                                 </div>
 
-                                <h4>Available : {val.quantity}</h4>
+                                {(val.quantity == 0) ? (
+                                    <div></div>
+                                ) : (
+                                    <h4>Available : {val.quantity}</h4>
+                                )}
+                                
 
-                                <h1>
+                                
+                                <div style={{textAlign: "", marginTop:"5%"}}>
+                                    {(val.quantity == 0) ? (
+                                        <h3><MDBBadge tag="a" color="danger"> Out of Stock </MDBBadge></h3>
+                                    ) : (
+                                        <div>
+                                            <h1>
+
 
 
                                 <i onClick={this.decrement} className="fas fa-angle-left"></i> &nbsp;
@@ -111,6 +148,7 @@ export class ProductDetails extends Component {
                     </div>
 
                 <Footer />
+                <NotificationContainer/>
             </div>
         )
     }
