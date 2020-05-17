@@ -50,7 +50,7 @@ const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
                 <td className="tabletext">{product.name}</td>
                 <td className="tabletext">
                     {/*<i onClick={() =>productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>*/}
-                    {product.counter}
+                    {product.qty}
                     {/*<i onClick={() =>productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>*/}
                 </td>
                 <td className="tabletext">{product.avaliable}</td>

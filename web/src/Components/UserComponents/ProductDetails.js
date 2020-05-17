@@ -7,6 +7,8 @@ import {addBasket} from "../../Actions/addActions";
 import {addToWatchList} from "../../Actions/addWatchList";
 import {connect} from 'react-redux';
 import Comments from "./comments";
+import {placeOrder} from "../../Actions/placeOrderDir";
+
 const queryString = require('query-string');
 
 export class ProductDetails extends Component {
@@ -19,7 +21,8 @@ export class ProductDetails extends Component {
              product: [],
              Cprice : '',
             counter: 0,
-             ragister: false
+             ragister: false,
+            place: false
         }
         console.log(props)
     }
@@ -41,6 +44,8 @@ export class ProductDetails extends Component {
         })
       })
     }
+
+
     increament = () =>{
         this.setState({counter: this.state.counter + 1})
     }
@@ -50,9 +55,13 @@ export class ProductDetails extends Component {
     }
     render() {
         const {itemid, product, Cprice, username} =this.state
+        console.log(this.state)
         if(this.state.ragister) {
             return <Redirect to={"/Login"} />
+        }else if(this.state.place){
+            return <Redirect  to={"/PlaceOrder"} />
         }
+
         return (
             <div style={{backgroundColor: "#ffcdd2"}}>
                 <Header username={this.state.username} />
@@ -86,8 +95,10 @@ export class ProductDetails extends Component {
                                 <i onClick={this.increament} className="fas fa-angle-right"></i>
                                 </h1>
                                 <div style={{textAlign: "", marginTop:"5%"}}>
-                                <button type="button" className="btn btn-deep-purple" onClick={() =>{((username != '' && username != "undefined")) ? (this.props.addBasket(val._id,val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i class="fa fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Add to Cart</button>
-                                <button type="button" className="btn btn-danger" onClick={() =>this.props.addToWatchList(val.description, val.price, val.quantity, val.discount , val.image)}><i class="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>
+                                <button type="button" className="btn btn-deep-purple" onClick={() =>{((username != '' && username != "undefined")) ? (this.props.addBasket(val._id,val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i class="fas fa-cart-arrow-down"></i>&nbsp;&nbsp; Add to Cart</button>
+                                <button type="button" className="btn btn-red darken-3" onClick={() =>this.props.addToWatchList(val._id,val.productid,val.description, val.price, val.quantity, val.discount , val.image, this.state.counter )}><i class="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>
+                                <button type="button" className="btn btn-red darken-3" onClick={() => {((username != '' && username != "undefined")) ? (this.props.placeOrder(val.productid, val.description, val.price, val.quantity, val.discount, this.state.counter)) : (this.setState({ragister:true})) ; (this.setState({place:true})) }}><i className="fas fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Place Order</button>
+
                                 </div>
                                 </div>
                                 </div>
@@ -104,4 +115,4 @@ export class ProductDetails extends Component {
         )
     }
 }
-export default connect(null, {addBasket,addToWatchList})(ProductDetails);
+export default connect(null, {addBasket,addToWatchList,placeOrder})(ProductDetails);

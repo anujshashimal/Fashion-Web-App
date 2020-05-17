@@ -49,8 +49,8 @@ const CartPage = ({basketProps, productQuntity, removeItem}) =>{
                     <img src={'http://localhost:5000/uploads/'+product.image} alt="Product" style={{height: "100px" }} />
                     <td className="tabletext">{product.name}</td>
                     <td className="tabletext">
-                    <i onClick={() =>productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>
-                        {product.counter}
+                    <i onClick={() =>productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>&nbsp;&nbsp;
+                        {product.counter}&nbsp;&nbsp;
                     <i onClick={() =>productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>
                     </td>
                     <td className="tabletext">{product.avaliable}</td>
