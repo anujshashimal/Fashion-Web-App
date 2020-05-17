@@ -125,12 +125,15 @@ export class ProductDetails extends Component {
                                         <div>
                                             <h1>
 
-
-
                                 <i onClick={this.decrement} className="fas fa-angle-left"></i> &nbsp;
                                 {this.state.counter} &nbsp;
                                 <i onClick={this.increament} className="fas fa-angle-right"></i>
                                 </h1>
+
+                                        </div>)
+                                    }
+                                        </div>
+
                                 <div style={{textAlign: "", marginTop:"5%"}}>
                                 <button type="button" className="btn btn-deep-purple" onClick={() =>{((username != '' && username != "undefined")) ? (this.props.addBasket(val._id,val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i class="fas fa-cart-arrow-down"></i>&nbsp;&nbsp; Add to Cart</button>
                                 <button type="button" className="btn btn-red darken-3" onClick={() =>this.props.addToWatchList(val._id,val.productid,val.description, val.price, val.quantity, val.discount , val.image, this.state.counter )}><i class="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>
@@ -141,8 +144,8 @@ export class ProductDetails extends Component {
                                 </div>
                         </div>
 
-                    )
-                )} </div>
+
+                ))} </div>
                 <div style={{backgroundColor: "#ef9a9a", color: ""}}>
                     <Comments productid={this.state.itemid} username={this.state.username} />
                     </div>
