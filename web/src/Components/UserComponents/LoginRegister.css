@@ -27,7 +27,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* Set a style for the submit button */
-.btn1 {
+.btn2 {
   background-color: #c62828  ;
   color: white;
   padding: 15px 20px;
@@ -37,7 +37,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   opacity: 0.9;
 }
 
-.btn1:hover {
+.btn2:hover {
   opacity: 1;
 }
 
