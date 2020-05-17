@@ -15,6 +15,15 @@ const PlaceOrderr = new Schema({
         type:String,
         required:true
     },
+    address1:{
+        type:String,
+    },
+    state:{
+        type:String,
+    },
+    postalCode:{
+        type:String,
+    },
     contactNo:{
         type:String,
         required:true

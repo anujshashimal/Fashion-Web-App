@@ -35,11 +35,17 @@ router.route('/PlaceOrder').post((req,res)=>{
     const cvv = req.body.cvv;
     const expireDate = req.body.expireDate;
     const deliverHome = req.body.deliverHome;
+    const address1 = req.body.address1;
+    const state = req.body.state;
+    const postalCode = req.body.pos
 
     const Cartdet = new PlaceOrder({
         fullname,
         email,
         address,
+        address1,
+        state,
+        postalCode,
         contactNo,
         OrderId,
         TotalCost,

@@ -1,7 +1,11 @@
 let Order = require('../models/PlaceOrder');
 const nodeailer = require("nodemailer");
+const process = require('process');
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
+const path = require('path');
+const ABSPATH = path.dirname(process.mainModule.filename)
+console.log(ABSPATH)
 let transporter = nodeailer.createTransport({
     service: "gmail",
     auth: {
@@ -29,17 +33,17 @@ exports.Find_All_OrderDetails_User = (req,res,next)=>{
                     to: key.email,
                     subject: "Your Order Delivered",
                     html:
-                        '<form style="background-color: #a643dd " ' +
-                        '<h5> Hi '+ key.fullname + ', </h5>' +' <img src="cid:uniqueID@create.ee" style="width: 500px" /> ' +
+                        '<form style="background-color: #ffebee" ' +
+                        '<h1> Hi '+ key.fullname + ', </h1> <br /> <br />' +' <img src="cid:Design01" style="width: 500px" /> ' +' <br /> <br />'+
                         '<p> Thank you very much for the Order. Your payment is successfully completed. Your Ordered Item will receive Asap. Below include the Order informations you confirmed! Thank you very much!  </p>' +
                         '<h3> Your Total Amount of Payment is: : ' + key.TotalCost + '</h3>'+
                         '<h3> Your Order ID is : ' + key.OrderId + '</h3>'+
                         '<h3> Your Tracking ID is : ' + key.TrackingNum  + '</h3>' +
                         '</form>',
                     attachments: [{
-                        filename: 'shop.gif',
-                        path: 'C:/shop.gif',
-                        cid: 'uniqueID@create.ee'
+                        filename: 'Design01.png',
+                        path: ABSPATH + "/Design01.png",
+                        cid: 'Design01'
                     }]
                 }
                 transporter.sendMail(sentinfo, (err, object) => {
@@ -58,13 +62,7 @@ exports.Find_All_OrderDetails_User = (req,res,next)=>{
                 }
 
 
-            ))
-            }
-
-
-
-        )
-        .catch(err=>res.status(400).json("Error:"+err))
+            ))}).catch(err=>res.status(400).json("Error:"+err))
 
 
 }
