@@ -32,7 +32,7 @@ export class StoreManagerNavbar extends Component {
   render() {
     return (
       
-     <nav className = "navbar fixed-top navbar-expand-lg navbar-dark  deep-purple darken-1 scrolling-navbar">
+     <nav className = "navbar fixed-top navbar-expand-lg navbar-dark  red darken-3 scrolling-navbar">
        <Link to ="" className="navbar-brand">Product Store</Link>
        <div className="collpase navbar-collapse">
          <ul className="navbar-nav mr-auto" >
@@ -46,7 +46,7 @@ export class StoreManagerNavbar extends Component {
           </ul>  
 
                                <li className="nav-item">
-                                    <div className="nav-link waves-effect"> 
+                                    <div className="nav-link waves-effect" style={{color:"#ffffff"}}> 
                                         
                                         {(this.props.managername != '' && this.props.managername != undefined && this.props.managername != "undefined") ?(
                                             <span>
