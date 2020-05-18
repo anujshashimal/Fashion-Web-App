@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const UserControlller = require('../controllers/User');
+const UserControlller = require('../controllers/user');
 
 
 router.get('/find',UserControlller.Find_All_Users);    // display the all the products
