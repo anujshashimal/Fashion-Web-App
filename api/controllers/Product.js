@@ -103,14 +103,17 @@ cloudinary.config({
 
             
          if(req.file){
-            product.image = req.file.filename
-          
-        }
-         console.log(product)
-      
-         product.save()
-         .then(()=>res.json('Product Updated'))
-         .catch(err=>res.status(400).json('Error'+err));
+
+            cloudinary.uploader.upload(req.file.path,function(err,result){
+                console.log(result)
+             
+                 product.image=result.url;
+                 console.log(product.image);
+                 product.save()
+             .then(()=>res.json('Product Updated!'))
+              .catch(err=>res.status(400).json("Error:"+err));
+                })
+             }
      })
      .catch(err=> res.status(400).json('Err'+err)) 
      

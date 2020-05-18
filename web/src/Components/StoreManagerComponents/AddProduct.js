@@ -171,7 +171,6 @@ class AddProduct extends Component {
         quantity : 0,
         discount : '',
         image  : null,
-        stockmanagerid : '',
        
     })
 
@@ -337,7 +336,7 @@ class AddProduct extends Component {
                               <div className="icons">
                                  <i class="fas fa-id-badge fa-lg"></i>
                                 </div>
-                             <input type="text" id="exampleInput" className="form-control" defaultValue={this.state.stockmanagerid} onChange={this.OnChangestockmanagerid} placeholder="Stock Manager Id" disabled/>
+                             <input type="text" id="exampleInput" className="form-control" value={this.state.stockmanagerid} onChange={this.OnChangestockmanagerid}  disabled/>
                            </div>
                           <br/>
 
