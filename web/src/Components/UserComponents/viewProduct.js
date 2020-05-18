@@ -175,7 +175,7 @@ export class viewProduct extends Component {
                              
                                {/* <img src= {item} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} /> */}
                                {/* <img src={products.image}/> */}
-                            <img src={'http://localhost:5000/uploads/'+products.image} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
+                            <img src={products.image} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                                   <div class="container1" style={{color: "#000000"}}>
                                       <h4><b>{products.description}</b></h4>
                                       <p>
@@ -207,7 +207,7 @@ export class viewProduct extends Component {
                             <Link to={'/ProductDetails?item='+products.productid+'&username='+this.state.username}>
                        <div class="card1">
                        {/* {products.image} */}
-                       <img src={'http://localhost:5000/uploads/'+products.image} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
+                       <img src={products.image} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                                <div class="container1" style={{color: "#000000"}}>
                                    <h4><b>{products.description}</b></h4> 
                                    <p>

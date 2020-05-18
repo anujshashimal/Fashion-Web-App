@@ -89,7 +89,7 @@ export class ProductDetails extends Component {
                                         <MDBBadge tag="a" color="danger"> <MDBIcon icon="female" /> </MDBBadge>
                                     )} */}
                                 <MDBBadge tag="a" color="danger"> NEW </MDBBadge>
-                            <img src={'http://localhost:5000/uploads/'+val.image} alt="Product" style={{width: "60%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
+                            <img src={val.image} alt="Product" style={{width: "60%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                             </div>
                             <div className="col-md" style={{textAlign: "left"}}>
                             <div className="raw" style={{marginTop: "2%", marginBottom: "2%", backgroundColor: "#9c27b0", color: "white"}}>
