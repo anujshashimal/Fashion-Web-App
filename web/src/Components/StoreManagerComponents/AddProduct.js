@@ -234,11 +234,10 @@ class AddProduct extends Component {
                               <i class="fas fa-list-ol fa-lg"></i>
                               </div>
                               <select ref = "userInput" required className="form-control" value ={this.state.maincategory} onChange={this.OnChangemaincatrgory} multiple= {false}>
-                               {
-                                 this.state.maincategorys.map(function(product){
-                                 return <option key={product} value={product} >{product}</option>;
-                                 })   
-                               }
+                                <option key ="Men" value="Men">Men</option>
+                                <option key ="Women" value="Women">Women</option>
+                                <option key ="Kid" value="Kids">Kids</option>
+                                <option key ="Other" value="Other">Other</option>
                               </select>   
                            </div>
                           <br/>
