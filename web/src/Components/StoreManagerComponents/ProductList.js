@@ -36,7 +36,7 @@ const Product = props =>{
         <td className="tabletext"><b>{props.product.price}</b></td>
         <td className="tabletext"><b>{props.product.quantity}</b></td>
         <td className="tabletext"><b>{props.product.discount}</b></td>
-        <td className="tabletext"><img src={props.product.image} alt="Product" style={{width: "25%" , marginTop: "2.5%" , marginBottom: "2.5%" }} /></td>
+        <td className="tabletext"><img src={props.product.image} alt="Product" style={{width: "15%" , marginTop: "2.5%" , marginBottom: "2.5%" }} /></td>
         <td className="tabletext"><b>{props.product.stockmanagerid}</b></td>
         <td>
          <Link  to= {'/Product/edit/'+props.product.productid}><button  className ="productlistbuttoncolor"><img  src={editimage} alt="logo"/></button></Link>

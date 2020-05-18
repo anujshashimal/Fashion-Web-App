@@ -31,7 +31,7 @@ class MainProduct extends Component {
         <StorManagerNavBar  managerid = {values.storemanagerid} managername ={values.storenamagerusername} /> 
          <div className="jumbotron">
               <h2 className="header" style={{fontFamily:"Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"}}><b>Welcome {values.storenamagerusername} !!!!!</b></h2>
-                  <img src={Storemanager} alt="Avatar" style={{width:'5%', height:'5%',marginLeft:'80%',marginTop:'-8%'}}/>
+                  {/* <img src={Storemanager} alt="Avatar" style={{width:'5%', height:'5%',marginLeft:'80%',marginTop:'-8%'}}/> */}
                 <div className ="details" >
                      <div className="texboxwidth">
                                <label htmlFor="exampleInput">Id</label>   
@@ -41,8 +41,9 @@ class MainProduct extends Component {
                                <label htmlFor="exampleInput">Name</label>
                                <input type="text" id="exampleInput" className="" value ={values.storenamagerusername} disabled/>          
                       </div>
-                    {/* <b>You can Add Product Details In Click Navigation Bar Add Product link.And also You can See Your All Add Product Details in Product list link</b> */}
+                    {/* <b>You can go Add Product Page In Click Navigation Bar Add Product link.And also You can See Your All Add Product Details in click Product list in navigation bar</b> */}
                 </div>
+                <b>You can go Add Product Page In Click Navigation Bar Add Product link.And also You can See Your All Add Product Details in click Product list in navigation bar</b>
           </div>
       </div>
       </div>
