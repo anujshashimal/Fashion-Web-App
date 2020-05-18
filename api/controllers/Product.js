@@ -1,5 +1,18 @@
 let  Product = require('../models/Product');
 var uuid = require('uuid');
+const express =  require('express')
+const app = express();
+var fileupload = require('express-fileupload');
+var  cloudinary = require('cloudinary').v2;
+
+app.use(fileupload({useTempFiles:true}));
+
+cloudinary.config({
+
+   cloud_name : 'zerobugs',
+   api_key : '563784119216219',
+   api_secret : 'rfY6hZAkyurP3oJRGkDNMt8DzeU'
+});
 
 //find   Store Manager  Products
  exports.Find_Product = (req,res,next)=>{
@@ -56,13 +69,20 @@ var uuid = require('uuid');
    });
 
    if(req.file){
-       newProduct.image = req.file.filename
-      // console.log(req.file.filename)
-   }
-   newProduct.save()
-   .then(()=>res.json('Product Added!'))
-   .catch(err=>res.status(400).json("Error:"+err));
 
+  cloudinary.uploader.upload(req.file.path,function(err,result){
+      console.log(result)
+   
+       newProduct.image=result.url;
+       console.log(newProduct.image);
+       newProduct.save()
+   .then(()=>res.json('Product Added!'))
+    .catch(err=>res.status(400).json("Error:"+err));
+      })
+   }
+   console.log(newProduct);
+  
+   
 }
 
 
