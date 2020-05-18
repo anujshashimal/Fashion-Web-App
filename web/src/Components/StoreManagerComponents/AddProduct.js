@@ -171,7 +171,6 @@ class AddProduct extends Component {
         quantity : 0,
         discount : '',
         image  : null,
-        stockmanagerid : '',
        
     })
 
@@ -226,7 +225,7 @@ class AddProduct extends Component {
            <h2 className="header">Add Product</h2>
            <form  onSubmit={this.onSubmit}>
               <div >
-                   <div className="jumbotron" >
+                   <div className="jumbotron" style={{fontFamily:"Cambria, Cochin, Georgia, Times, 'Times New Roman', serif",fontSize:"medium"}}>
 
                          <div className="texboxwidth">
                               <label htmlFor="exampleInput">Product Main Category</label>
@@ -234,11 +233,10 @@ class AddProduct extends Component {
                               <i class="fas fa-list-ol fa-lg"></i>
                               </div>
                               <select ref = "userInput" required className="form-control" value ={this.state.maincategory} onChange={this.OnChangemaincatrgory} multiple= {false}>
-                               {
-                                 this.state.maincategorys.map(function(product){
-                                 return <option key={product} value={product} >{product}</option>;
-                                 })   
-                               }
+                                <option key ="Men" value="Men">Men</option>
+                                <option key ="Women" value="Women">Women</option>
+                                <option key ="Kid" value="Kids">Kids</option>
+                                <option key ="Other" value="Other">Other</option>
                               </select>   
                            </div>
                           <br/>
@@ -338,12 +336,12 @@ class AddProduct extends Component {
                               <div className="icons">
                                  <i class="fas fa-id-badge fa-lg"></i>
                                 </div>
-                             <input type="text" id="exampleInput" className="form-control" defaultValue={this.state.stockmanagerid} onChange={this.OnChangestockmanagerid} placeholder="Stock Manager Id" disabled/>
+                             <input type="text" id="exampleInput" className="form-control" value={this.state.stockmanagerid} onChange={this.OnChangestockmanagerid}  disabled/>
                            </div>
                           <br/>
 
                           <div className="text-center mt-4">
-                            <MDBBtn color="#5e35b1 deep-purple darken-1" type="submit">
+                            <MDBBtn color="#c62828 red darken-3" type="submit">
                               Add Product
                             </MDBBtn>
                         </div>

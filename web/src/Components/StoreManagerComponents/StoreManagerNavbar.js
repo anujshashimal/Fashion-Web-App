@@ -1,5 +1,6 @@
 import React ,{Component}  from 'react';
 import  {Link}  from  'react-router-dom';
+import Logo from '../CommonComponents/img/logoHeader.gif'
 const queryString = require('query-string');
 
 
@@ -32,21 +33,22 @@ export class StoreManagerNavbar extends Component {
   render() {
     return (
       
-     <nav className = "navbar fixed-top navbar-expand-lg navbar-dark  deep-purple darken-1 scrolling-navbar">
-       <Link to ="" className="navbar-brand">Product Store</Link>
+     <nav className = "navbar fixed-top navbar-expand-lg navbar-dark  red darken-3 scrolling-navbar">
+       <img src={Logo} width="7%" />
+       <Link to ="" className="navbar-brand"></Link>
        <div className="collpase navbar-collapse">
          <ul className="navbar-nav mr-auto" >
              <li className="navbar-item">
             
-              <Link to ={"/Products/"+this.state.storemanagerid} className="nav-link">Products List</Link>
+              <Link to ={"/Products/"+this.state.storemanagerid} style={{color:"#ffffff",fontSize:'large'}} className="nav-link">Products List</Link>
              </li>
              <li className="navbar-item">
-               <Link to ={"/Product/Add/"+this.state.storemanagerid}className="nav-link">Add Product</Link>
+               <Link to ={"/Product/Add/"+this.state.storemanagerid}style={{color:"#ffffff",fontSize:'large'}}  className="nav-link">Add Product</Link>
              </li>
           </ul>  
 
                                <li className="nav-item">
-                                    <div className="nav-link waves-effect"> 
+                                    <div className="nav-link waves-effect" style={{color:"#ffffff"}}> 
                                         
                                         {(this.props.managername != '' && this.props.managername != undefined && this.props.managername != "undefined") ?(
                                             <span>

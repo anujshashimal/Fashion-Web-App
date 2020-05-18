@@ -23,6 +23,9 @@ class PlaceOrder extends Component {
             fullname: '',
             email: '',
             address: '',
+            address1:'',
+            state:'',
+            postalCode:'',
             contactNo: '',
             OrderId: '',
             TotalCost: this.props.basketProps.cartCost,
@@ -61,6 +64,23 @@ class PlaceOrder extends Component {
     handleAddressChange = event => {
         this.setState({
             address: event.target.value
+        })
+    }
+//
+    handleAddress1Change = event => {
+        this.setState({
+            address1: event.target.value
+        })
+    }
+
+    handleState1Change = event => {
+        this.setState({
+            state: event.target.value
+        })
+    }
+    handlePostalCodeChange = event => {
+        this.setState({
+            postalCode: event.target.value
         })
     }
 
@@ -110,6 +130,9 @@ class PlaceOrder extends Component {
              fullname: this.state.fullname,
              email: this.state.email,
              address: this.state.address,
+             address1: this.state.address1,
+             state: this.state.state,
+             postalCode: this.state.postalCode,
              contactNo: this.state.contactNo,
              OrderId: this.state.OrderId,
              TotalCost: this.state.TotalCost,
@@ -133,7 +156,7 @@ class PlaceOrder extends Component {
 
      render() {
 
-         const {fullname, email, address, contactNo, OrderId, cardNumber,cvv,expireDate} =this.state
+         const {fullname, email, address, contactNo, OrderId, cardNumber,cvv,expireDate,address1,state,postalCode} =this.state
 
          if( this.state.success){
              return <Redirect to={'orderDetails?username='+ this.state.fullname} />
@@ -248,8 +271,8 @@ class PlaceOrder extends Component {
                              type="text"
                              placeholder="Address line 2 (Optional)"
                              id="defaultFormContactSubjectEx"
-                             value={address}
-                             // onChange={this.handleAddressChange}
+                             value={address1}
+                             onChange={this.handleAddress1Change}
                              required/>
                      </div>
                  </Form.Group>
@@ -263,8 +286,8 @@ class PlaceOrder extends Component {
                                  className="input-field1"
                                  type="text"
                                  placeholder="State / Province / Region"
-                                 value={fullname}
-                                 // onChange={this.handleFullnameChange}
+                                 value={state}
+                                 onChange={this.handleState1Change}
                                  required/>
                          </div>
                      </Form.Group>
@@ -274,11 +297,11 @@ class PlaceOrder extends Component {
                              <i className="fa fa-user-plus icon fa-lg"></i>
                              <input
                                  className="input-field1"
-                                 type="email"
+                                 type="text"
                                  placeholder="Postal Code"
                                  id="defaultFormContactEmailEx"
-                                 // onChange={this.handleEmailChange}
-                                 value={email}
+                                 onChange={this.handlePostalCodeChange}
+                                 value={postalCode}
                                  required/>
                          </div>
                      </Form.Group>
@@ -340,12 +363,12 @@ class PlaceOrder extends Component {
                  <MDBNav className="nav-tabs mt-5">
                      <MDBNavItem>
                          <MDBNavLink link to="#" active={this.state.activeItem === "1"} onClick={this.toggle("1")} role="tab" >
-                             Card Payment
+                            <h5> Card Payment</h5>
                          </MDBNavLink>
                      </MDBNavItem>
                      <MDBNavItem>
                          <MDBNavLink link to="#" active={this.state.activeItem === "2"} onClick={this.toggle("2")} role="tab" >
-                             Cash On Delivery
+                            <h5> Cash On Delivery</h5>
                          </MDBNavLink>
                      </MDBNavItem>
                  </MDBNav>

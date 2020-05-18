@@ -46,11 +46,11 @@ const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
                 <button type="button" className="close" aria-label="Close" onClick={() => removeItem(index, product.price)}>
                 <span aria-hidden="true">&times;</span>
                 </button>
-                <img src={'http://localhost:5000/uploads/'+product.image} alt="Product" style={{height: "100px" }} />
+                <img src={product.image} alt="Product" style={{height: "100px" }} />
                 <td className="tabletext">{product.name}</td>
                 <td className="tabletext">
                     {/*<i onClick={() =>productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>*/}
-                    {product.counter}
+                    {product.qty}
                     {/*<i onClick={() =>productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>*/}
                 </td>
                 <td className="tabletext">{product.avaliable}</td>
@@ -69,8 +69,8 @@ const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
             basketProps.cartCost = watchListProps.cartCost
             console.log(basketProps)
         })
-
     }
+
     return(
             <div>
                 <Hea />
@@ -105,8 +105,7 @@ const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
                 </div>
                 <Foo />
             </div>
-    )
-}
+    )}
 
 const mapStateToPropss = state => ({
     watchListProps : state.watchListState,
