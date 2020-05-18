@@ -1,6 +1,6 @@
 const Category = require('./routes/Category');
 const StoreManager = require('./routes/StoreManager');
-const User = require('./routes/User');
+const User = require('./routes/user');
 const StoreManagerID = require('./routes/storemanagerID');
 const CategoryID = require('./routes/CategoryID');
 
