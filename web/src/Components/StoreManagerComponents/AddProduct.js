@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Footer from '../CommonComponents/footer';
 import { MDBContainer, MDBInputGroup ,MDBBtn} from "mdbreact";
-import './Product.css';
+import './css/Product.css';
 import '../UserComponents/LoginRegister.css'
 import axios from 'axios'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
@@ -352,7 +352,7 @@ class AddProduct extends Component {
                    </div>
               </div>
            </form>
-           <Footer/>
+           
            <NotificationContainer/>
       </div>
     )

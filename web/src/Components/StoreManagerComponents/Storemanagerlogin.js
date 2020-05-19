@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './StoreLoginRegister.css';
+import './css/StoreLoginRegister.css';
 import back from './shopping.gif'
 import logo from './images/logo.gif'
 import Header from '../CommonComponents/header'
@@ -68,9 +68,9 @@ export default class header extends Component{
               //  console.log('storemanager id',this.state.storemanager.smId)
                 if(this.state.storemanagerusername === "Vishaka" && this.state.storemanagerpassword === "apple123")
                 {
+                   
 
-
-                if(this.state.storemanagerpassword == this.state.storemanager.Password){
+                }if(this.state.storemanagerpassword == this.state.storemanager.Password){
                     // sessionStorage.setItem('userData', this.state.user);
                    // alert("Login Success");
                     swal("Login Success", "Hi "+this.state.storemanagerusername, "success");
@@ -101,14 +101,14 @@ export default class header extends Component{
          else if(this.state.register){
             return <Redirect to={"/adminhome"} />
         }
-         }
+         
         // if(sessionStorage.getItem("userData")) {
         //     return <Redirect to={"/viewProduct"} />
         // }
-            
-        const { storemanagerusername,storemanagerpassword} =this.state
+       
+            const { storemanagerusername,storemanagerpassword} =this.state
         return(
-           
+                
             <div className="" style={{marginLeft: "5%", marginRight: "5%", marginTop: "2%"}}>
                  <Header/>
                 <div className="row">
@@ -155,7 +155,7 @@ export default class header extends Component{
                                             required />
                                         </div>
 
-                                        <button type="submit" className="btn1">Login</button>
+                                        <button type="submit" className="btn2">Login</button>
 
                                         <br /><br />
 
@@ -170,5 +170,6 @@ export default class header extends Component{
                 <NotificationContainer/>
             </div>
         )
+
     }
 }

@@ -27,8 +27,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* Set a style for the submit button */
-.btn1 {
-  background-color: #5e35b1;
+.btn2 {
+  background-color: #c62828  ;
   color: white;
   padding: 15px 20px;
   border: none;
@@ -37,13 +37,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
   opacity: 0.9;
 }
 
-.btn1:hover {
+.btn2:hover {
   opacity: 1;
 }
 
 a:link {
     text-decoration: none;
-    color: #5e35b1;
+    color: #c62828  ;
   }
   
   a:visited {

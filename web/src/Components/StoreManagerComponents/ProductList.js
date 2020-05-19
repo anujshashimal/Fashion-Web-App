@@ -125,7 +125,6 @@ export class ProductList extends Component {
              </tbody>
             </table>
           </div>  
-        <Footer/>
       </div>
     )
   }
