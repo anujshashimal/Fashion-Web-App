@@ -42,10 +42,10 @@ export default (state = initialState, action) =>{
             }
                     return {
                         ...state,
-                        // backetNumbers: state.backetNumbers + 1,
-                        // cartCost: state.cartCost + (action.payload.price * action.payload.counter),
-                        backetNumbers: state.backetNumbers +1,
-                        cartCost: action.payload.price * 1,
+                        backetNumbers: state.backetNumbers + 1,
+                        cartCost: state.cartCost + (action.payload.price * action.payload.counter),
+                        // backetNumbers: state.backetNumbers +1,
+                        // cartCost: action.payload.price * 1,
                         getdiscount: state.cartCost * action.payload.discount * (1 / 100),
                         withDiscartCost: state.cartCost - ((state.cartCost) * action.payload.discount * (1 / 100)),
                         items: [
@@ -78,9 +78,8 @@ export default (state = initialState, action) =>{
                 console.log(action.payload.ID)
                 if(itemss.productID == payload.ID){
                     itemss.counter = itemss.counter +1;
-                }
+                }})
 
-            })
             return {
                 ...state,
                 backetNumbers: state.backetNumbers + 1,
@@ -92,10 +91,11 @@ export default (state = initialState, action) =>{
                 console.log(itemss.productID)
                 console.log(action.payload.ID)
                 if(itemss.productID == payload.ID){
+                    if(itemss.counter >= 0){
                     itemss.counter = itemss.counter -1;
+                    }
                     console.log(itemss.counter)
                 }
-
             })
             return {
                 ...state,

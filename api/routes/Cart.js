@@ -3,6 +3,7 @@ const Cart = require('../models/Cart');
 const PlaceOrder = require('../models/PlaceOrder')
 const CartControlller = require('../controllers/Cart')
 var uuid = require('uuid');
+const WatchList = require('../models/WatchList')
 
 router.route('/addToCart').post((req,res)=>{
 
@@ -60,6 +61,36 @@ router.route('/PlaceOrder').post((req,res)=>{
         .then(()=>res.json('Order Plased!'))
         .catch(err=>res.status(400).json("Error:"+err));
 });
+
+
+
+router.route('/WatchList').post((req,res)=>{
+
+    const userID = req.body.userID;
+    const qty = req.body.qty;
+    const avaliable = req.body.avaliable;
+    const Product_ID = req.body.Product_ID;
+    const price = req.body.price;
+    const name = req.body.name;
+    const image = req.body.image;
+    const discount = req.body.discount;
+
+    const WatchItems = new WatchList({
+        userID,
+        qty,
+        avaliable,
+        Product_ID,
+        price,
+        name,
+        image,
+        discount,
+    });
+
+    WatchItems.save()
+        .then(()=>res.json('Added to watchlist'))
+        .catch(err=>res.status(400).json("Error:"+err));
+});
+
 
 router.get('/findOrder',CartControlller.Find_All_OrderDetails);
 router.get('/findUserOrder/:fullname',CartControlller.Find_All_OrderDetails_User);
