@@ -45,6 +45,7 @@ export class StoreManagerNavbar extends Component {
              <li className="navbar-item">
                <Link to ={"/Product/Add/"+this.state.storemanagerid}style={{color:"#ffffff",fontSize:'large'}}  className="nav-link">Add Product</Link>
              </li>
+
           </ul>  
 
                                <li className="nav-item">
@@ -53,7 +54,7 @@ export class StoreManagerNavbar extends Component {
                                         {(this.props.managername != '' && this.props.managername != undefined && this.props.managername != "undefined") ?(
                                             <span>
                                                 <i id="navbar-static-cart" alt="Cart" className="fas fa-user"></i>
-                                             <b>{this.props.managername}</b>
+                                             <Link to ={"/storemagerDetails?id="+this.state.storemanagerid}>{this.props.managername}</Link>
                                             &nbsp;&nbsp;&nbsp;&nbsp;
                                             {/* <Link to={"/viewProduct?username="+""} style={{color: "white"}}><i id="navbar-static-cart" alt="Cart" className="fas fa-sign-out-alt"></i>Logout</Link> */}
                                             <button  onClick ={this.Onsubmit} style={{color: "black" }}><i id="navbar-static-cart" alt="Cart" className="fas fa-sign-out-alt"></i>Logout</button>

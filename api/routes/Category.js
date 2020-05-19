@@ -37,6 +37,8 @@ const categoryController = require('../controllers/Category');
 
 router.get('/findCategory/:MainCategory/:Admin',categoryController.findCategory);
 
+router.get('/findCategorybyname/:MainCategory/:CategoryName',categoryController.findCategoryByName);
+
 router.post('/addCategory',categoryController.SaveCategory);
 
 router.post('/updateCategory/:Category_ID',categoryController.Update_Category);

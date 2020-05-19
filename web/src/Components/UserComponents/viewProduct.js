@@ -21,6 +21,7 @@ export class viewProduct extends Component {
             products: [],
             username: '',
             search: '',
+            
             // redirect: false,
         }
         // this.Logout = this.Logout.bind(this);
@@ -181,7 +182,7 @@ export class viewProduct extends Component {
                                       <p>
                                           {/* Product ID : {products.productid}<br/> */}
                                       <div className="raw" style={{backgroundColor: "#ff4444", color: "white"}}>
-                                      <h3>Rs : {products.price}.00</h3>
+                                      <h3>LKR {products.price}.00</h3>
                                       </div>
                                       {(products.quantity == 0) ? (
                                         <h5><MDBBadge tag="a" color="red"> Out of Stock </MDBBadge></h5>
@@ -213,7 +214,7 @@ export class viewProduct extends Component {
                                    <p>
                                        {/* Product ID : {products.productid}<br/> */}
                                    <div className="raw" style={{backgroundColor: "#ff4444", color: "white"}}>
-                                      <h3>Rs : {products.price}.00</h3>
+                                      <h3>LKR {products.price}.00</h3>
                                     </div>
                                    {/* Available : {products.quantity}</p> */}
                                    {(products.quantity == 0) ? (
