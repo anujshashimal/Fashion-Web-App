@@ -29,8 +29,7 @@ export class ProductDetails extends Component {
             counter: 0,
              ragister: false,
             place: false,
-            // Comments: [],
-            // rate1: {}
+            avaliable: ''
         }
         console.log(props)
     }
@@ -55,11 +54,15 @@ export class ProductDetails extends Component {
 
 
     increament = () =>{
+        if(this.state.avaliable > this.state.counter){
         this.setState({counter: this.state.counter + 1})
+        }
     }
 
     decrement = () =>{
-        this.setState({counter: this.state.counter - 1})
+        this.setState(prevState =>
+            ({counter: prevState.counter? prevState.counter-1: 0})
+        )
     }
 
     AvarageRate = (productid) =>{
@@ -82,6 +85,8 @@ export class ProductDetails extends Component {
                 <div className="" style={{backgroundColor: "#ffffff", color: ""}}>
                     {this.state.product.map( val => (
                         <div className="container" style={{textAlign: "center"}}>
+                            {this.state.avaliable = val.quantity}
+
                             <div className="row"> {console.log(val)}
                                 {console.log(val)}
                                 <div className="col-md">

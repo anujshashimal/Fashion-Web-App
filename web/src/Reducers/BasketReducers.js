@@ -37,6 +37,7 @@ export default (state = initialState, action) =>{
 
             })
 
+
             if(payload.counter == 0){
                 payload.counter =1
             }
@@ -78,6 +79,8 @@ export default (state = initialState, action) =>{
                 console.log(action.payload.ID)
                 if(itemss.productID == payload.ID){
                     itemss.counter = itemss.counter +1;
+
+
                 }})
 
             return {
