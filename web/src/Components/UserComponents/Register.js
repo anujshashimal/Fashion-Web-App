@@ -215,12 +215,12 @@ export default class header extends Component{
                                         <input 
                                         class="input-field1" 
                                         type="text" 
-                                        placeholder="Telephone No" 
+                                        placeholder="Telephone No (+94xxxxxxxxx)" 
                                         value={contactno}
                                         onChange={this.handleContactNoChange}
-                                        maxlength="10" 
+                                        maxlength="12" 
                                         required 
-                                        pattern="[0]{1}[0-9]{9}" />
+                                        pattern="[+]{1}[0-9]{11}" />
                                     </div>
             
                                     <div class="input-container">

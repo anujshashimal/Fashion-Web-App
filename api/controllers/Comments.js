@@ -9,6 +9,14 @@ let  Comments = require('../models/Comments');
 }
 
 
+//Find Comment--------------------------------------------------
+exports.Find_CommentsByProducts = (req,res,next)=>{
+   User.find({
+     'productId': req.params.productId})
+   .then(User => res.json(User))
+   .catch(err=>res.status(400).json("Error:"+err))
+}
+
 
   //find all Comments------------------------------------------
   exports.Find_All_Comments = (req,res,next)=>{
