@@ -42,7 +42,9 @@ import Logo from './img/logoHeader.gif'
 
                                 <li className="nav-item"><a  className="nav-link waves-effect">
                                     <span
-                                        className="badge red z-depth-1 mr-1"> {props.basketProps.backetNumbers} </span><Link to='/cartpage' style={{color: "white"}}><i
+                                        className="badge red z-depth-1 mr-1"> {props.basketProps.backetNumbers} </span>
+
+                                    <Link to='/cartpage' style={{color: "white"}}><i
                                         id="navbar-static-cart" alt="Cart" className="fas fa-shopping-cart"></i></Link><span
                                         className="sr-only"> Cart </span></a></li>
 

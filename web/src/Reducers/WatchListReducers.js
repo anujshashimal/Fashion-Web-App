@@ -12,13 +12,13 @@ export default (state = initialState, action) =>{
     switch(action.type) {
         case ADD_PRODUCT_TO_WATCHLIST:
 
-            if(payload.counter == 0){
-                payload.counter =1
+            if(payload.qty == 0){
+                payload.qty =1
             }
             return {
                 ...state,
                 backetNumbers: state.backetNumbers + 1,
-                cartCost: state.cartCost + (action.payload.price * action.payload.counter),
+                cartCost: state.cartCost + (action.payload.price * action.payload.qty),
                 WatchListitems: [
                     ...state.WatchListitems,
                     {...payload}

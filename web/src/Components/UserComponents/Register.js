@@ -4,7 +4,10 @@ import back from './shop2.gif'
 import logo from './logo.gif'
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import  { Redirect } from 'react-router-dom'
+import swal from 'sweetalert';
 const axios = require('axios');
+const queryString = require('query-string');
 
 export default class header extends Component{
 
@@ -20,7 +23,17 @@ export default class header extends Component{
              conformpassword: '',
              gender: '',
              UserAlreadyTaken: [],
+             success: false,
         }
+    }
+
+    componentDidMount(){
+        var values = queryString.parse(this.props.location.search)
+        console.log(this.props.location.search)
+        console.log(values.username)
+        this.setState({
+            username: values.username,
+        })
     }
 
     handleUsernameChange = event => {
@@ -68,8 +81,8 @@ export default class header extends Component{
     handleRegisterSubmit = event => {
         event.preventDefault();
         if(this.state.password !== this.state.conformpassword){
-            alert("Conforn Password not match");
-            // NotificationManager.error('pleace correct', 'Confirm Password not matched');
+            // alert("Conforn Password not match");
+            NotificationManager.error('pleace correct', 'Confirm Password not matched');
             return false;
         } else{
             // this.sendData();
@@ -81,22 +94,22 @@ export default class header extends Component{
             // console.log(this.state.conformpassword);
             // console.log(this.state.gender);
             this.getUsers();
-            if(this.state.UserAlreadyTaken.length > 0){
-                alert("User Already Taken");
-                return false;
-            } else{
-                this.sendData();
-                alert("register successfully");
-                this.setState({
-                    username:'',
-                    email:'',
-                    contactno:'',
-                    address:'',
-                    password:'',
-                    conformpassword:'',
-                    gender:'',
-                })
-            }
+            // if(this.state.UserAlreadyTaken.length > 0){
+            //     alert("User Already Taken");
+            //     return false;
+            // } else{
+            //     this.sendData();
+            //     alert("register successfully");
+            //     this.setState({
+            //         username:'',
+            //         email:'',
+            //         contactno:'',
+            //         address:'',
+            //         password:'',
+            //         conformpassword:'',
+            //         gender:'',
+            //     })
+            // }
         }
     }
 
@@ -121,12 +134,32 @@ export default class header extends Component{
         }
     }
 
-    getUsers (){
+    async getUsers (){
         console.log(this.state.username)
-        axios.get('http://localhost:5000/user//find/'+this.state.username)
+        axios.get('http://localhost:5000/user/finds/'+this.state.username)
         .then(response=>{
             this.setState({
                 UserAlreadyTaken : response.data.map(user=>user),
+            },()=>{
+                if(this.state.UserAlreadyTaken.length > 0){
+                    // alert("User Already Taken");
+                    NotificationManager.error('pleace register using deferent username', 'User Already Taken');
+                    return false;
+                } else{
+                    this.sendData();
+                    // alert("register successfully");
+                    swal("Register Success", "", "success");
+                    this.setState({success: true});
+                    // this.setState({
+                    //     username:'',
+                    //     email:'',
+                    //     contactno:'',
+                    //     address:'',
+                    //     password:'',
+                    //     conformpassword:'',
+                    //     gender:'',
+                    // })
+                }
             })
             console.log(response)
             console.log('users',this.state.UserAlreadyTaken)
@@ -135,6 +168,9 @@ export default class header extends Component{
     }
     
     render() {
+        if(this.state.success) {
+            return <Redirect to={"/Home?username="+this.state.username} />
+        }
         // const {data} = this.props;
         const {username, email, contactno, address, password, conformpassword, gender} =this.state
         return(
@@ -248,12 +284,12 @@ export default class header extends Component{
                                     <br/>
                                     <button 
                                     type="submit" 
-                                    class="btn1" 
+                                    class="btn2" 
                                     onclick="javascript: return myFunction();">Register</button>
                                 </form>
                             </div>
                 </div>
-                
+                <NotificationContainer/>
             </div>
         )
     }
