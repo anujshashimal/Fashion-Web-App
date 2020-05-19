@@ -1,6 +1,5 @@
 
 const router = require('express').Router();
-
 const StoreManagerControlller = require('../controllers/StoreManager');
 
 

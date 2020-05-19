@@ -8,7 +8,6 @@ import  AddProduct  from  './AddProduct';
 import Home  from '../UserComponents/Home'
 import Footer  from  '../CommonComponents/footer'
 import './Product.css';
-import  Storemanager from  './storemanager.png'
 const queryString = require('query-string');
 
 class MainProduct extends Component {
