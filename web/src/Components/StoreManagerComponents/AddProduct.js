@@ -4,6 +4,8 @@ import { MDBContainer, MDBInputGroup ,MDBBtn} from "mdbreact";
 import './Product.css';
 import '../UserComponents/LoginRegister.css'
 import axios from 'axios'
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import swal from 'sweetalert';
 const queryString = require('query-string');
 
 
@@ -175,7 +177,8 @@ class AddProduct extends Component {
     })
 
         // window.location = '/';
-        alert('Product Details Added Successfully')
+       // alert('Product Details Added Successfully')
+        NotificationManager.success('Product Added Successfully', 'Success');
   } 
 
    }
@@ -350,6 +353,7 @@ class AddProduct extends Component {
               </div>
            </form>
            <Footer/>
+           <NotificationContainer/>
       </div>
     )
   }

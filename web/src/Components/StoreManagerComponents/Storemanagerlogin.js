@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import './StoreLoginRegister.css';
 import back from './shopping.gif'
-import logo from './logo.gif'
+import logo from './images/logo.gif'
+import Header from '../CommonComponents/header'
 import  { Redirect } from 'react-router-dom'
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import swal from 'sweetalert';
 const axios = require('axios');
 
 export default class header extends Component{
@@ -49,30 +52,37 @@ export default class header extends Component{
             console.log(response.data.length)
             console.log('res',response.data[0])
             if(response.data.length != 1){
-               // alert("Please Ragister");
-                if(this.state. storemanagerusername === "admin" && this.state.storemanagerpassword === "admin")
-                {
-                    this.setState({register: true});
-                }else{
-                    alert("Please Ragister");
-                }
+                alert("Please Register");
 
             }
 
             this.setState({
                 storemanager: response.data[0]
             },()=>{
-                console.log('password',this.state.storemanagerpassword)
-                console.log('storenamager password',this.state.storemanager.Password)
-                console.log('storenamager username',this.state.storemanager.UserName)
-                console.log('storemanager id',this.state.storemanager.smId)
+
+                    
+              //  console.log('storemanager',this.state.storemanager)
+              //  console.log('password',this.state.storemanagerpassword)
+              //  console.log('storenamager password',this.state.storemanager.Password)
+              //  console.log('storenamager username',this.state.storemanager.UserName)
+              //  console.log('storemanager id',this.state.storemanager.smId)
+                if(this.state.storemanagerusername === "Vishaka" && this.state.storemanagerpassword === "apple123")
+                {
+
 
                 if(this.state.storemanagerpassword == this.state.storemanager.Password){
                     // sessionStorage.setItem('userData', this.state.user);
-                    alert("Login Success");
+                   // alert("Login Success");
+                    swal("Login Success", "Hi "+this.state.storemanagerusername, "success");
+                    
                     this.setState({success: true});
                 } else{
-                    alert("Password incorect");
+                   // alert("Password  Incorect!!.Please Re-enter");
+                   NotificationManager.error(' Please enter correct password', 'Password incorect');
+                    this.setState({
+                        storemanagerusername : '',
+                        storemanagerpassword : ''
+                    })
                 }
             });
             
@@ -87,24 +97,26 @@ export default class header extends Component{
     render() {
         if(this.state.success) {
             return <Redirect to={'/Product?storenamagerusername='+this.state.storemanagerusername+'&storemanagerid='+this.state.storemanager.smId} />
-        } else if(this.state.register){
+        }
+         else if(this.state.register){
             return <Redirect to={"/adminhome"} />
         }
-
+         }
         // if(sessionStorage.getItem("userData")) {
         //     return <Redirect to={"/viewProduct"} />
         // }
             
         const { storemanagerusername,storemanagerpassword} =this.state
         return(
-
-            <div className="" style={{marginLeft: "5%", marginRight: "5%", marginTop: "5%"}}>
-                <div className="raw">
-                    <div className="rowalign">
+           
+            <div className="" style={{marginLeft: "5%", marginRight: "5%", marginTop: "2%"}}>
+                 <Header/>
+                <div className="row">
+                        <br/>
                         <div className="col-md-6">
-                            <p align="center">
+                            <div  style={{textAlign: "center"}} >
                                 <img src={logo} width="50%" />
-                            </p>
+                            </div >
                             <br />
                              <img src={back} width="100%"/>
                         </div>
@@ -148,15 +160,14 @@ export default class header extends Component{
                                         <br /><br />
 
                                         <p align="center">
-                                            {/* <a href="reset.html">Lost your password?</a><br/> */}
-                                            <a href="/Register">Don't have an account?</a>
                                         </p>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                    </div>
+                
                 </div>
+                <NotificationContainer/>
             </div>
         )
     }

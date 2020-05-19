@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import  {Link}  from  'react-router-dom'
 import axios from 'axios'
-import editimage from './edit.png'
+import  editimage from './images/edit.png';
 import Footer from '../CommonComponents/footer';
-import deleteimage from './delete.png'
+import deleteimage from  './images/delete.png';
 
 const Product = props =>{
    if(props.product.quantity == 0)
@@ -16,8 +16,8 @@ const Product = props =>{
         <td className="tabletext"><b>{props.product.price}</b></td>
         <td className="tabletext"><b><div className="quantitycolor">Out of Stock</div></b></td>
         <td className="tabletext"><b>{props.product.discount}</b></td>
-        <td className="tabletext"><img src={props.product.image} alt="Product" style={{width: "25%" , marginTop: "2.5%" , marginBottom: "2.5%" }} /></td>
-        <td className="tabletext"><b>{props.product.stockmanagerid}</b></td>
+        <td className="tabletext"><img src={props.product.image} alt="Product" style={{width: "10%" , marginTop: "0.5%" , marginBottom: "0.5%" }} /></td>
+        {/* <td className="tabletext"><b>{props.product.stockmanagerid}</b></td> */}
         <td>
          <Link  to= {'/Product/edit/'+props.product.productid}><button  className ="productlistbuttoncolor"><img  src={editimage} alt="logo"/></button></Link>
         </td>  
@@ -36,8 +36,8 @@ const Product = props =>{
         <td className="tabletext"><b>{props.product.price}</b></td>
         <td className="tabletext"><b>{props.product.quantity}</b></td>
         <td className="tabletext"><b>{props.product.discount}</b></td>
-        <td className="tabletext"><img src={props.product.image} alt="Product" style={{width: "15%" , marginTop: "2.5%" , marginBottom: "2.5%" }} /></td>
-        <td className="tabletext"><b>{props.product.stockmanagerid}</b></td>
+        <td className="tabletext"><img src={props.product.image} alt="Product" style={{width: "10%" , marginTop: "0.5%" , marginBottom: "0.5%" }} /></td>
+        {/* <td className="tabletext"><b>{props.product.stockmanagerid}</b></td> */}
         <td>
          <Link  to= {'/Product/edit/'+props.product.productid}><button  className ="productlistbuttoncolor"><img  src={editimage} alt="logo"/></button></Link>
         </td>  
@@ -115,7 +115,7 @@ export class ProductList extends Component {
                   <th className="tabletext">Quantity</th>
                   <th className="tabletext">Discount</th>
                   <th className="tabletext">Image</th>
-                  <th className="tabletext">Stock Manager Id</th>
+                  {/* <th className="tabletext">Stock Manager Id</th> */}
                   <th className="tabletext">Edit</th>
                   <th className="tabletext">Delete</th>
                 </tr>
