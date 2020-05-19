@@ -3,7 +3,7 @@ import axios from "axios";
 import  './Styles/style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import swal from 'sweetalert';
-import Header from '../CommonComponents/header';
+import Header from '../CommonComponents/adiminHeader';
 import Footer from "../CommonComponents/footer";
 
 
@@ -85,7 +85,7 @@ export class showStoreManager extends Component {
 
     render() {
 
-        return (    <div> <Header username='Vishaka' /><br/><br/>
+        return (    <div> <Header username="admin" /><br/><br/>
                 {this.state.storeManager.map(function(storeManager){
 
                     return <li key={storeManager.smId} value={storeManager.smId}>
@@ -163,14 +163,14 @@ export class showStoreManager extends Component {
                                                             <div className="input-group-text fa fa-envelope"></div>
                                                         </div>
                                                         <input type="text" className="form-control py-0"
-                                                               id="inlineFormInputGroup" ref="UpdateEmail" placeholder={storeManager.Email} />
+                                                               id="inlineFormInputGroup"  disabled="disabled" ref="UpdateEmail" placeholder={storeManager.Email} />
                                                     </div>
                                                     <div className="input-group mb-2">
                                                         <div className="input-group-prepend">
                                                             <div className="input-group-text fa fa-key"></div>
                                                         </div>
                                                         <input type="password" className="form-control py-0"
-                                                               id="inlineFormInputGroup" ref="updatePassword" placeholder={storeManager.Password}/>
+                                                               id="inlineFormInputGroup"  disabled="disabled" ref="updatePassword" placeholder={storeManager.Password}/>
                                                     </div>
                                                     <div className="input-group mb-2">
                                                         <div className="input-group-prepend">

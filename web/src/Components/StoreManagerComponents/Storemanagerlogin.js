@@ -10,17 +10,18 @@ export default class header extends Component{
         super(props)
     
         this.state = {
-            storemanageruserid : '',
             storemanagerusername: '',
             storemanagerpassword: '',
             storemanagers : [],
             storemanager : [],
+            //users: [],
+            //user: [],
             success: false,
             register: false,
         }
     }
 
-    
+
 
     handleStoreManagerUsernameChange = event => {
         this.setState({
@@ -37,35 +38,35 @@ export default class header extends Component{
     handleLoginSubmit = event => {
         event.preventDefault();
         this.getStoremanager();
-      
+
     }
 
     async getStoremanager(){
         console.log(this.state.storemanagerusername)
-        axios.get('http://localhost:5000/storemanager/findstoreManager/'+this.state.storemanagerusername)
+        axios.get('http://localhost:5000/storemanager/storemanager/'+this.state.storemanagerusername)
         .then(response=>{
 
             console.log(response.data.length)
             console.log('res',response.data[0])
             if(response.data.length != 1){
-                alert("Please Ragister");
-                this.setState({register: true});
+               // alert("Please Ragister");
+                if(this.state. storemanagerusername === "admin" && this.state.storemanagerpassword === "admin")
+                {
+                    this.setState({register: true});
+                }else{
+                    alert("Please Ragister");
+                }
+
             }
 
             this.setState({
                 storemanager: response.data[0]
             },()=>{
-
-                    
-                console.log('storemanager',this.state.storemanager)
                 console.log('password',this.state.storemanagerpassword)
                 console.log('storenamager password',this.state.storemanager.Password)
                 console.log('storenamager username',this.state.storemanager.UserName)
                 console.log('storemanager id',this.state.storemanager.smId)
-                if(this.state. storemanagerusername === "Vishaka" && this.state.storemanagerpassword === "apple123")
-                {
 
-                }
                 if(this.state.storemanagerpassword == this.state.storemanager.Password){
                     // sessionStorage.setItem('userData', this.state.user);
                     alert("Login Success");
@@ -87,7 +88,7 @@ export default class header extends Component{
         if(this.state.success) {
             return <Redirect to={'/Product?storenamagerusername='+this.state.storemanagerusername+'&storemanagerid='+this.state.storemanager.smId} />
         } else if(this.state.register){
-            return <Redirect to={"/Register"} />
+            return <Redirect to={"/adminhome"} />
         }
 
         // if(sessionStorage.getItem("userData")) {
@@ -105,7 +106,7 @@ export default class header extends Component{
                                 <img src={logo} width="50%" />
                             </p>
                             <br />
-                             <img src={back} width="100%"/> 
+                             <img src={back} width="100%"/>
                         </div>
 
                         <div className="col-md-6">
