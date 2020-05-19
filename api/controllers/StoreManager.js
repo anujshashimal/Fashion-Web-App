@@ -46,6 +46,9 @@ exports.SaveStoreManager = (req,res,next)=>{
 
 
     var transporter = nodemailer.createTransport({
+        host:'smtp.gmail.com',
+        port:456,
+
         service: 'gmail',
         auth: {
             user: 'sliitfashionwebapp@gmail.com',
@@ -55,10 +58,12 @@ exports.SaveStoreManager = (req,res,next)=>{
 
     var mailOptions = {
         from: 'sliitfashionwebapp@gmail.com',
-        to: 'it18126020@my.sliit.lk',
+        to: Email,
         subject: 'Congratulation !! You were added as a Store Manager in SLIIT Fashion Web app by '+Admin,
-        text: ' Email :'+Email+' Password : '+Password
+        text: ' Email :'+Email+' User Name :'+UserName+' Password : '+Password
     };
+
+    console.log(Email);
 
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {
