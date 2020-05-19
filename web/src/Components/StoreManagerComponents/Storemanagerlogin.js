@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
-import './StoreLoginRegister.css';
+import './css/StoreLoginRegister.css';
 import back from './shopping.gif'
-import logo from './logo.gif'
+import logo from './images/logo.gif'
+import Header from '../CommonComponents/header'
 import  { Redirect } from 'react-router-dom'
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import swal from 'sweetalert';
 const axios = require('axios');
 
 export default class header extends Component{
@@ -10,17 +13,18 @@ export default class header extends Component{
         super(props)
     
         this.state = {
-            storemanageruserid : '',
             storemanagerusername: '',
             storemanagerpassword: '',
             storemanagers : [],
             storemanager : [],
+            //users: [],
+            //user: [],
             success: false,
             register: false,
         }
     }
 
-    
+
 
     handleStoreManagerUsernameChange = event => {
         this.setState({
@@ -37,19 +41,19 @@ export default class header extends Component{
     handleLoginSubmit = event => {
         event.preventDefault();
         this.getStoremanager();
-      
+
     }
 
     async getStoremanager(){
         console.log(this.state.storemanagerusername)
-        axios.get('http://localhost:5000/storemanager/findstoreManager/'+this.state.storemanagerusername)
+        axios.get('http://localhost:5000/storemanager/storemanager/'+this.state.storemanagerusername)
         .then(response=>{
 
             console.log(response.data.length)
             console.log('res',response.data[0])
             if(response.data.length != 1){
-                alert("Please Ragister");
-                this.setState({register: true});
+                alert("Please Register");
+
             }
 
             this.setState({
@@ -57,21 +61,28 @@ export default class header extends Component{
             },()=>{
 
                     
-                console.log('storemanager',this.state.storemanager)
-                console.log('password',this.state.storemanagerpassword)
-                console.log('storenamager password',this.state.storemanager.Password)
-                console.log('storenamager username',this.state.storemanager.UserName)
-                console.log('storemanager id',this.state.storemanager.smId)
-                if(this.state. storemanagerusername === "Vishaka" && this.state.storemanagerpassword === "apple123")
+              //  console.log('storemanager',this.state.storemanager)
+              //  console.log('password',this.state.storemanagerpassword)
+              //  console.log('storenamager password',this.state.storemanager.Password)
+              //  console.log('storenamager username',this.state.storemanager.UserName)
+              //  console.log('storemanager id',this.state.storemanager.smId)
+                if(this.state.storemanagerusername === "Vishaka" && this.state.storemanagerpassword === "apple123")
                 {
+                   
 
-                }
-                if(this.state.storemanagerpassword == this.state.storemanager.Password){
+                }if(this.state.storemanagerpassword == this.state.storemanager.Password){
                     // sessionStorage.setItem('userData', this.state.user);
-                    alert("Login Success");
+                   // alert("Login Success");
+                    swal("Login Success", "Hi "+this.state.storemanagerusername, "success");
+                    
                     this.setState({success: true});
                 } else{
-                    alert("Password incorect");
+                   // alert("Password  Incorect!!.Please Re-enter");
+                   NotificationManager.error(' Please enter correct password', 'Password incorect');
+                    this.setState({
+                        storemanagerusername : '',
+                        storemanagerpassword : ''
+                    })
                 }
             });
             
@@ -86,26 +97,28 @@ export default class header extends Component{
     render() {
         if(this.state.success) {
             return <Redirect to={'/Product?storenamagerusername='+this.state.storemanagerusername+'&storemanagerid='+this.state.storemanager.smId} />
-        } else if(this.state.register){
-            return <Redirect to={"/Register"} />
         }
-
+         else if(this.state.register){
+            return <Redirect to={"/adminhome"} />
+        }
+         
         // if(sessionStorage.getItem("userData")) {
         //     return <Redirect to={"/viewProduct"} />
         // }
-            
-        const { storemanagerusername,storemanagerpassword} =this.state
+       
+            const { storemanagerusername,storemanagerpassword} =this.state
         return(
-
-            <div className="" style={{marginLeft: "5%", marginRight: "5%", marginTop: "5%"}}>
-                <div className="raw">
-                    <div className="rowalign">
+                
+            <div className="" style={{marginLeft: "5%", marginRight: "5%", marginTop: "2%"}}>
+                 <Header/>
+                <div className="row">
+                        <br/>
                         <div className="col-md-6">
-                            <p align="center">
+                            <div  style={{textAlign: "center"}} >
                                 <img src={logo} width="50%" />
-                            </p>
+                            </div >
                             <br />
-                             <img src={back} width="100%"/> 
+                             <img src={back} width="100%"/>
                         </div>
 
                         <div className="col-md-6">
@@ -142,21 +155,21 @@ export default class header extends Component{
                                             required />
                                         </div>
 
-                                        <button type="submit" className="btn1">Login</button>
+                                        <button type="submit" className="btn2">Login</button>
 
                                         <br /><br />
 
                                         <p align="center">
-                                            {/* <a href="reset.html">Lost your password?</a><br/> */}
-                                            <a href="/Register">Don't have an account?</a>
                                         </p>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                    </div>
+                
                 </div>
+                <NotificationContainer/>
             </div>
         )
+
     }
 }

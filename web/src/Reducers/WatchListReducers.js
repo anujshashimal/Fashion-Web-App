@@ -1,4 +1,5 @@
 import {GET_NUMBERS_TO_WATCHLIST, ADD_PRODUCT_TO_WATCHLIST, REMOVE_PRODUCT_FROM_WATCHLIST} from "../Actions/types";
+import axios from "axios";
 
 const initialState = {
     backetNumbers: 0,
@@ -15,6 +16,21 @@ export default (state = initialState, action) =>{
             if(payload.qty == 0){
                 payload.qty =1
             }
+
+            axios({
+                url: 'http://localhost:5000/cart/WatchList',
+                method: 'post',
+                data: payload
+            })
+                .then(function (response) {
+                    // your action after success
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    // your action on error success
+                    console.log(error);
+                });
+
             return {
                 ...state,
                 backetNumbers: state.backetNumbers + 1,

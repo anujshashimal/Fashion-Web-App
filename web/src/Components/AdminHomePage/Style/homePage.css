@@ -1,0 +1,15 @@
+#background1{
+    background-image: url("../../../img/stomanager.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#background2{
+    background-image: url("../../../img/category.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+#font{
+    color: #ced4da;
+}

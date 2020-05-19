@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import {connect} from 'react-redux';
 import img from '../../img/sample1.jpg'
 import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
@@ -12,6 +12,7 @@ import {addBasket, removeItem} from "../../Actions/addActions";
 import {addToWatchList} from "../../Actions/addWatchList";
 import {productQuntity} from "../../Actions/ProductQuantity";
 import './Styles/WatchList.css'
+import axios from "axios";
 const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
     console.log(watchListProps)
     console.log(basketProps)
@@ -19,13 +20,20 @@ const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
     let watchListItems = [];
     let filteredArr = [];
 
-
     Object.keys(watchListProps.WatchListitems).forEach( function (item) {
         console.log(item)
         watchListItems.push(watchListProps.WatchListitems[item])
         console.log(watchListItems)
     })
 
+
+            // axios.post('http://localhost:5000/cart/WatchList')
+            //     .then(function (response) {
+            //         console.log(response)
+            //     })
+            //     .catch(function (error) {
+            //         console.log(error)
+            //     })
 
     filteredArr = watchListItems.reduce((acc, current) => {
         const x = acc.find(item => item.productID === current.productID);
@@ -38,10 +46,13 @@ const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
 
 
 
+
     console.log(filteredArr)
     filteredArr = filteredArr.map( (product, index) => {
         console.log(product)
+
         return(
+
             <tr>
                 <button type="button" className="close" aria-label="Close" onClick={() => removeItem(index, product.price)}>
                 <span aria-hidden="true">&times;</span>
@@ -72,7 +83,20 @@ const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
     }
 
     return(
+
+
             <div>
+                {/*{*/}
+                {/*filteredArr.map( (product, index) => {*/}
+
+                {/*    this.state.userID = product.user,*/}
+                {/*        this.state.avaliable = product.avaliable,*/}
+                {/*        this.state.Product_ID = product.productID,*/}
+                {/*        this.state.price = product.price,*/}
+                {/*        this.state.name = product.name,*/}
+                {/*        this.state.image = product.image,*/}
+                {/*        this.state.discount = product.discount*/}
+                {/*})}*/}
                 <Hea />
                 <div className='container'>
                     <header>

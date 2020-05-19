@@ -5,10 +5,10 @@ import  Storemanagerlogin   from  './Storemanagerlogin';
 import  ProductList from './ProductList';
 import  EditProduct from './EditProduct';
 import  AddProduct  from  './AddProduct';
+import  storemanagerDetails  from  './storeManagerDetails';
 import Home  from '../UserComponents/Home'
 import Footer  from  '../CommonComponents/footer'
-import './Product.css';
-import  Storemanager from  './storemanager.png'
+import './css/Product.css';
 const queryString = require('query-string');
 
 class MainProduct extends Component {
@@ -53,7 +53,9 @@ class MainProduct extends Component {
          <Route path = "/Product/edit/:id" exact component={EditProduct}></Route>
          <Route path ="/Product/Add/:storemanagerid" exact component={AddProduct}></Route>
          <Route path = "/Storemanagerlogin" exact component={Storemanagerlogin}></Route>
-         
+        <Route path = "/storemagerDetails" exact component={storemanagerDetails}></Route>
+         <Footer/>
+
     </Router>
   )
   }
