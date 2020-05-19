@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { MDBContainer, MDBInputGroup ,MDBBtn} from "mdbreact";
-import './Product.css';
+import './css/Product.css';
 import Footer from '../CommonComponents/footer';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import axios from 'axios'
