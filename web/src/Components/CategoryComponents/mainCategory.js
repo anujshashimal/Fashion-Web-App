@@ -51,7 +51,7 @@ export class MainCategory extends Component {
                                             <div class="inner">
                                                 <img class="card-img-top" src={women} alt="Card image cap"/>
 
-                                                <a  ><Link to={'/AddCategory?mainCategory=women'}>
+                                                <a  ><Link to={'/AddCategory?mainCategory=Women'}>
                                                     <div class="mask rgba-white-slight "></div>
                                                 </Link>
                                                 </a>
@@ -66,7 +66,7 @@ export class MainCategory extends Component {
 
                                             <p class="card-text">Hey Sir, To add subcategories under the women category.</p>
 
-                                            <a  class="btn red darken-3 darken-1" id="btnName"> <Link to={'/AddCategory?mainCategory=women'}>
+                                            <a  class="btn red darken-3 darken-1" id="btnName"> <Link to={'/AddCategory?mainCategory=Women'}>
                                                 <text className="font">Women</text></Link></a>
 
                                         </div>
@@ -83,7 +83,7 @@ export class MainCategory extends Component {
                                             <img className="card-img-top"
                                                  src={men}
                                                  alt="Card image cap"/>
-                                                <a><Link to={'/AddCategory?mainCategory=men'}>
+                                                <a><Link to={'/AddCategory?mainCategory=Men'}>
                                                     <div className="mask rgba-white-slight "></div>
                                                 </Link>
                                                 </a>
@@ -98,7 +98,7 @@ export class MainCategory extends Component {
 
                                             <p className="card-text">Hey Sir, To add subcategories under the men category.</p>
 
-                                            <a className="btn red darken-3 darken-1" id="btnName"><Link to={'/AddCategory?mainCategory=men'}>
+                                            <a className="btn red darken-3 darken-1" id="btnName"><Link to={'/AddCategory?mainCategory=Men'}>
                                                 <text className="font">Men</text></Link></a>
 
                                         </div>
@@ -114,7 +114,7 @@ export class MainCategory extends Component {
                                             <img className="card-img-top"
                                                  src={kids}
                                                  alt="Card image cap"/>
-                                                <a><Link to={'/AddCategory?mainCategory=kids'}>
+                                                <a><Link to={'/AddCategory?mainCategory=Kids'}>
                                                     <div className="mask rgba-white-slight "></div>
                                                 </Link>
                                                 </a>
@@ -129,7 +129,7 @@ export class MainCategory extends Component {
 
                                             <p className="card-text">Hey Sir, To add subcategories under the kids category.</p>
 
-                                            <a  className="btn red darken-3 darken-1" id="btnName"><Link to={'/AddCategory?mainCategory=kids'}>
+                                            <a  className="btn red darken-3 darken-1" id="btnName"><Link to={'/AddCategory?mainCategory=Kids'}>
                                                 <text className="font">Kids</text></Link></a>
 
                                         </div>
@@ -145,7 +145,7 @@ export class MainCategory extends Component {
                                             <img className="card-img-top"
                                                  src={others}
                                                  alt="Card image cap"/>
-                                                <a><Link to={'/AddCategory?mainCategory=others'}>
+                                                <a><Link to={'/AddCategory?mainCategory=Others'}>
                                                     <div className="mask rgba-white-slight "></div>
                                                 </Link>
                                                 </a>
@@ -160,7 +160,7 @@ export class MainCategory extends Component {
 
                                             <p className="card-text">Hey Sir, To add subcategories under the other category. </p>
 
-                                            <a className="btn  red darken-3 darken-1" id="btnName"><Link to={'/AddCategory?mainCategory=others'}><text class="font">Others</text></Link> </a>
+                                            <a className="btn  red darken-3 darken-1" id="btnName"><Link to={'/AddCategory?mainCategory=Others'}><text class="font">Others</text></Link> </a>
 
                                         </div>
 

@@ -84,49 +84,65 @@ export class Addcategory extends Component {
             if(this.state.MainCategory !=""){
                 if(this.state.Admin != ""){
 
-                    axios.get('http://localhost:5000/categoryID/CategoryID')
-                        .then(response=>{
-                            if(response.data.length>0){
-                                this.setState({
-                                    CategoryID : response.data[0].Category_ID
-                                })
+                    axios.get('http://localhost:5000/category/findCategorybyname/'+this.state.MainCategory+'/'+this.state.CategoryName)
+                        .then(response=> {
+                            if (response.data.length == 0) {
+
+                                axios.get('http://localhost:5000/categoryID/CategoryID')
+                                    .then(response=>{
+                                        if(response.data.length>0){
+                                            this.setState({
+                                                CategoryID : response.data[0].Category_ID
+                                            })
+                                        }
+                                        const Category ={
+                                            "Category_ID":this.state.CategoryID,
+                                            "CategoryName":this.state.CategoryName,
+                                            "MainCategory":this.state.MainCategory,
+                                            "Admin":this.state.Admin
+                                        }
+
+
+                                        axios.post('http://localhost:5000/category/addCategory',Category)
+                                            .then(res=>console.log(res.data));
+
+                                        const CategoryID ={
+                                            "Category_ID":this.state.CategoryID+1
+
+                                        }
+                                        axios.post('http://localhost:5000/categoryID/updateCategoryID',CategoryID)
+                                            .then(res=>console.log(res.data));
+
+
+
+                                        this.setState({
+                                            CategoryID: "",
+                                            CategoryName: "",
+
+
+
+                                        } )
+                                        swal({
+                                            title: "Success!",
+                                            text: "You added new category!",
+                                            icon: "success",
+                                            button: "Done",
+                                        });
+                                        this.refs.myform.reset();
+
+                                    })
+
+
+                            }else{
+                                swal({
+                                    title: "Failed !",
+                                    text: "You entered category already exist !",
+                                    icon: "warning",
+                                    button: "OK",
+                                });
                             }
-                            const Category ={
-                                "Category_ID":this.state.CategoryID,
-                                "CategoryName":this.state.CategoryName,
-                                "MainCategory":this.state.MainCategory,
-                                "Admin":this.state.Admin
-                            }
-
-
-                            axios.post('http://localhost:5000/category/addCategory',Category)
-                                .then(res=>console.log(res.data));
-
-                            const CategoryID ={
-                                "Category_ID":this.state.CategoryID+1
-
-                            }
-                            axios.post('http://localhost:5000/categoryID/updateCategoryID',CategoryID)
-                                .then(res=>console.log(res.data));
-
-
-
-                            this.setState({
-                                CategoryID: "",
-                                CategoryName: "",
-
-
-
-                            } )
-                            swal({
-                                title: "Success!",
-                                text: "You added new category!",
-                                icon: "success",
-                                button: "Done",
-                            });
-                            this.refs.myform.reset();
-
                         })
+
 
                 }else{
                     this.refs.AdminName.focus();

@@ -35,67 +35,84 @@ export class addStoreManager extends Component {
                 if( this.state.email != ""){
                     if (this.state.password ==  this.state.rePassword && this.state. password != "" &&  this.state.rePassword !=""){
 
-                        axios.get('http://localhost:5000/smid/storemanagerID')
+
+                        axios.get('http://localhost:5000/storemanager/storemanager/'+this.state.name)
                             .then(response=>{
-                                if(response.data.length>0){
-                                    this.setState({
-                                        smid : response.data[0].smId
-                                        // UserName : response.data.map(storeManager=>storeManager),
-                                        // Email :  response.data.map(storeManager=>storeManager),
-                                        // Password : response.data.map(storeManager=>storeManager)
+                                if(response.data.length==0){
+
+                                    axios.get('http://localhost:5000/smid/storemanagerID')
+                                        .then(response => {
+                                            if (response.data.length > 0) {
+                                                this.setState({
+                                                    smid: response.data[0].smId
+                                                    // UserName : response.data.map(storeManager=>storeManager),
+                                                    // Email :  response.data.map(storeManager=>storeManager),
+                                                    // Password : response.data.map(storeManager=>storeManager)
+
+
+                                                })
+
+
+                                            }
+                                            console.log(this.state.smid);
+                                            const storeManager = {
+                                                "smId": this.state.smid,
+                                                "UserName": this.state.name,
+                                                "Email": this.state.email,
+                                                "Password": this.state.password,
+                                                "RePassword": this.state.rePassword,
+                                                "Admin": this.state.admin
+                                            }
+
+
+                                            axios.post('http://localhost:5000/storemanager/addStoreManager', storeManager)
+                                                .then(res => console.log(res.data));
+
+                                            const storeManagerID = {
+                                                "smId": this.state.smid + 1
+
+                                            }
+                                            axios.post('http://localhost:5000/smid/updatestoremanagerID', storeManagerID)
+                                                .then(res => console.log(res.data));
+
+
+                                            this.setState({
+                                                smid: "",
+                                                name: "",
+                                                email: "",
+
+                                                password: "",
+                                                rePasswprd: ""
+
+                                            })
+
+                                            swal({
+                                                title: "Success!",
+                                                text: "You added new Store Manager!",
+                                                icon: "success",
+                                                button: "Done",
+                                            });
+                                            this.refs.myform.reset();
+
+                                            // window.location.href=showStoreManager;
+
+                                        })
 
 
 
-
-                                    })
-
-
-
+                                }else{
+                                    swal({
+                                        title: "Failed !",
+                                        text: "You entered user name already exist !",
+                                        icon: "warning",
+                                        button: "OK",
+                                    });
                                 }
-                                console.log(this.state.smid);
-                                const storeManager ={
-                                    "smId":this.state.smid,
-                                    "UserName":this.state.name,
-                                    "Email":this.state.email,
-                                    "Password":this.state.password,
-                                    "RePassword":this.state.rePassword,
-                                    "Admin":this.state.admin
-                                }
-
-
-                                axios.post('http://localhost:5000/storemanager/addStoreManager',storeManager)
-                                    .then(res=>console.log(res.data));
-
-                                const storeManagerID ={
-                                    "smId":this.state.smid+1
-
-                                }
-                                axios.post('http://localhost:5000/smid/updatestoremanagerID',storeManagerID)
-                                    .then(res=>console.log(res.data));
-
-
-
-                               this.setState({
-                                   smid: "",
-                                   name: "",
-                                   email: "",
-
-                                   password: "",
-                                   rePasswprd: ""
-
-                               } )
-
-                                swal({
-                                    title: "Success!",
-                                    text: "You added new Store Manager!",
-                                    icon: "success",
-                                    button: "Done",
-                                });
-                                this.refs.myform.reset();
-
-                                // window.location.href=showStoreManager;
-
                             })
+
+
+
+
 
 
                     }else{

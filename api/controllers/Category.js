@@ -16,6 +16,13 @@ exports.findCategory = (req,res,next)=>{
     // console.log(req.body.Category_ID);
 }
 
+exports.findCategoryByName = (req,res,next)=>{
+    Category.find({'MainCategory':req.params.MainCategory,'CategoryName':req.params.CategoryName})
+        .then(category=>res.json(category))
+        .catch(err=> res.status(400).json("error : "+err));
+    // console.log(req.body.Category_ID);
+}
+
 // router.route('/addCategory').post((req,res)=>{
 //     const Category_ID = req.body.Category_ID;
 //     const CategoryName = req.body.CategoryName;
