@@ -33,8 +33,7 @@ export class comments extends Component {
          })}
         })
         
-        
-        console.log('Comments', this.state.Comments);
+
     }
 
     handleCommentsChange = event => {
