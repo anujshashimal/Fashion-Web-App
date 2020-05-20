@@ -131,7 +131,7 @@ export class addStoreManager extends Component {
     render() {
         return (
             <div>
-                <Header username={this.state.admin} /><br/><br/>
+                <Header username="admin" /><br/><br/>
                 <div className="conatainer">
                     <div className="row">
                         <div className="col-4"></div>

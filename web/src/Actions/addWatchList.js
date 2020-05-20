@@ -13,7 +13,11 @@ export const addToWatchList = (userID,ID,productName, price, avaliable, discount
             type: ADD_PRODUCT_TO_WATCHLIST,
             payload: {userID: userID, productID: ID,name :productName, price: price, avaliable: avaliable, discount: discount, image:image, qty: qty}
         })
+
+
     }
+
+
 }
 
 

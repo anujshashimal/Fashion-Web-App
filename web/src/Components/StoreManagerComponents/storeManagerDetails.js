@@ -103,7 +103,9 @@ export class StoreManagerDetails extends Component {
 
                     });
                     axios.put('http://localhost:5000/storemanager/updatestoreManager',storeManagerUpdate)
-                        .then(res => console.log(res.data));
+                        .then(res => {
+                             window.location.reload(false);
+                        });
                     this.setState({
 
                         Name: "",
@@ -113,7 +115,7 @@ export class StoreManagerDetails extends Component {
 
 
                     })
-                    window.location.reload(false);
+
 
                 } else {
                     swal("Canceled");

@@ -11,8 +11,7 @@ import { MDBBtn, MDBCloseIcon  } from "mdbreact";
 import {productQuntity} from '../../Actions/ProductQuantity'
 import {removeItem }from '../../Actions/addActions'
 import { MDBTable, MDBTableBody, MDBTableHead ,MDBCardTitle} from 'mdbreact';
-import editimage from "../StoreManagerComponents/edit.png";
-import deleteimage from "../StoreManagerComponents/delete.png";
+
 
 const CartPage = ({basketProps, productQuntity, removeItem}) =>{
     console.log(basketProps)

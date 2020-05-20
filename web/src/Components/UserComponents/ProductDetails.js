@@ -30,8 +30,7 @@ export class ProductDetails extends Component {
             counter: 0,
              ragister: false,
             place: false,
-            // Comments: [],
-            // rate1: {}
+            avaliable: ''
         }
         console.log(props)
     }
@@ -56,47 +55,20 @@ export class ProductDetails extends Component {
 
 
     increament = () =>{
+        if(this.state.avaliable > this.state.counter){
         this.setState({counter: this.state.counter + 1})
+        }
     }
 
     decrement = () =>{
-        this.setState({counter: this.state.counter - 1})
+        this.setState(prevState =>
+            ({counter: prevState.counter? prevState.counter-1: 0})
+        )
     }
 
-//     getComments = () => {
-//         axios.get('http://localhost:5000/Comments/findByProduct/:'+this.state.itemid)
-//         .then(response=>{
-          
-// console.log('data',response.date)
-//             this.setState({
-//                 Comments :  response.data.map(Comments=>Comments),
-//          })
-//         })
+    AvarageRate = (productid) =>{
         
-        
-//         console.log('Comments111', this.state.Comments);
-//     }
-
-//     AvarageRate = (productid) =>{
-//         this.getComments();
-        
-//         var c = this.state.Comments.length;
-//         var i;
-//         let rate1;
-//         console.log('c',c)
-//         console.log('rate', this.state.Comments.rate)
-//         for (i=0; i<= c; i++){
-            
-//         }
-//         // let c = 0;
-//         // {this.state.Comments.filter(Comments => Comments.productId === this.productid).reverse().map(Comments => (
-//         //     {Comment.rate}
-                
-//         // ))}
-//         // return(
-//         //     <div>Comments.rate</div> 
-//         // )
-//     }
+    }
 
     render() {
         const {itemid, product, Cprice, username} =this.state
@@ -114,6 +86,8 @@ export class ProductDetails extends Component {
                 <div className="" style={{backgroundColor: "#ffffff", color: ""}}>
                     {this.state.product.map( val => (
                         <div className="container" style={{textAlign: "center"}}>
+                            {this.state.avaliable = val.quantity}
+
                             <div className="row"> {console.log(val)}
                                 {console.log(val)}
                                 <div className="col-md">
@@ -141,7 +115,7 @@ export class ProductDetails extends Component {
 
                              
                                 <div className="raw" style={{marginTop: "2%", marginBottom: "2%", backgroundColor: "#ff4444", color: "white"}}>
-                                <h2>LKR {val.price}.00</h2>
+                                <h2>Rs: {val.price}.00</h2>
                                 </div>
 
                                 {(val.quantity == 0) ? (
@@ -150,10 +124,9 @@ export class ProductDetails extends Component {
                                     <h4>Available : {val.quantity}</h4>
                                 )}
                                 
-                                {/* {this.AvarageRate(val.productid)} */}
 
                                 
-                                <div style={{textAlign: "", marginTop:"3%"}}>
+                                <div style={{textAlign: "", marginTop:"5%"}}>
                                     {(val.quantity == 0) ? (
                                         <h3><MDBBadge tag="a" color="danger"> Out of Stock </MDBBadge></h3>
                                     ) : (
@@ -183,11 +156,12 @@ export class ProductDetails extends Component {
                                     </div>
                                 </div>
 
+
                                         </div>)
                                     }
                                         </div>
 
-                                
+                               
                                 </div>
                                 </div>
                         </div>

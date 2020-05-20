@@ -1,12 +1,13 @@
 import React, {Component, useState} from 'react'; import {connect} from 'react-redux'; import {getNumbers} from "../../Actions/getActions";import{Link} from "react-router-dom";
 import './adminHome.css'
+import Logo from "./img/logoHeader.gif";
 const header = (props) => {
     console.log(props)
     return (
         <div>
             <header>
                 <nav className="navbar fixed-top navbar-expand-lg navbar-dark  red darken-3  darken-1 scrolling-navbar">
-                    <Link to={'/adminhome'} className=" nav-link" id="font"><strong>Faction Store</strong></Link>
+                    <Link to={'/adminhome'} className=" nav-link" id="font"><strong><img src={Logo} width="100px" /></strong></Link>
                     <button
                         className="navbar-toggler"
                         type="button" data-toggle="collapse"
