@@ -212,7 +212,7 @@ class App extends React.Component {
                         <Route path = {'/ProductDetails'} exact component={ProductDetails}/>
                         <Route path = {'/Comments'} exact component={Comments}/>
                         <Route path = {'/Rating'} exact component={Rating}/>
-                        <Route path = {'/Home'} exact component={Home}/>
+                        <Route path = {'/'} exact component={Home}/>
                         {/* <Route path = {'/Noti'} exact component={Notification}/> */}
 
 

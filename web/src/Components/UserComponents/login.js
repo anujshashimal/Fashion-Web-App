@@ -111,7 +111,7 @@ export default class header extends Component{
     
     render() {
         if(this.state.success) {
-            return <Redirect to={"/Home?username="+this.state.user.username} />
+            return <Redirect to={"/?username="+this.state.user.username} />
         } else if(this.state.register){
             return <Redirect to={"/Register?username="+this.state.username} />
         }

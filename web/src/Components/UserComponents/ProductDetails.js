@@ -11,6 +11,7 @@ import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import swal from 'sweetalert';
 import { MDBBadge, MDBContainer, MDBIcon } from "mdbreact";
+import Payment from './payment.png'
 
 import {placeOrder} from "../../Actions/placeOrderDir";
 
@@ -122,7 +123,7 @@ export class ProductDetails extends Component {
                                         <MDBBadge tag="a" color="danger"> <MDBIcon icon="female" /> </MDBBadge>
                                     )} */}
                                 <MDBBadge tag="a" color="danger"> NEW </MDBBadge>
-                            <img src={val.image} alt="Product" style={{width: "60%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
+                            <img src={val.image} alt="Product" style={{width: "65%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                             </div>
                             <div className="col-md" style={{textAlign: "left"}}>
                             <div className="raw" style={{marginTop: "2%", marginBottom: "2%", backgroundColor: "#9c27b0", color: "white"}}>
@@ -175,7 +176,7 @@ export class ProductDetails extends Component {
                                     <div className="row" style={{marginTop: "3%", marginBottom: "3%"}}>
                                         <div className="col">
                                             <button type="button" className="btn btn-pink btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.placeOrder(val.productid, val.description, val.price, val.quantity, val.discount, this.state.counter)) : (this.setState({ragister:true})) ; (this.setState({place:true})) }}><i className="fas fa-shopping-bag fa-lg"></i>&nbsp;&nbsp; Place Order</button>
-                                        
+                                            <img src={Payment} style={{width:'100%'}}/>
                                         
                                         </div>
                                         
