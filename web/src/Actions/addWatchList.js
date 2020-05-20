@@ -22,6 +22,8 @@ export const addToWatchList = (userID,ID,productName, price, avaliable, discount
 
 
 export const removeItemFromWathList = ( name, price) => {
+
+    console.log(name)
     return function (dispatch) {
         dispatch({
             type: REMOVE_PRODUCT_FROM_WATCHLIST,

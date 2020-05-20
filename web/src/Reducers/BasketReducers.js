@@ -46,7 +46,7 @@ export default (state = initialState, action) =>{
                         backetNumbers: state.backetNumbers + 1,
                         cartCost: state.cartCost + (action.payload.price * action.payload.counter),
                         // backetNumbers: state.backetNumbers +1,
-                        // cartCost: action.payload.price * 1,
+                        // cartCost: state.cartCost + action.payload.price * 1,
                         getdiscount: state.cartCost * action.payload.discount * (1 / 100),
                         withDiscartCost: state.cartCost - ((state.cartCost) * action.payload.discount * (1 / 100)),
                         items: [

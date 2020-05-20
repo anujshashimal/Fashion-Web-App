@@ -37,14 +37,14 @@ import Logo from './img/logoHeader.gif'
 
                                 <li className="nav-item"><a  className="nav-link waves-effect"><span
                                     className="badge red z-depth-1 mr-1"> {props.WatchListState.backetNumbers} </span>
-                                    <Link to= '/watchlist' style={{color: "white"}}> <i id="navbar-static-cart" alt="Cart" className="fas fa-heart"></i><span
+                                    <Link to= {'/watchlistItems?username=' + props.username} style={{color: "white"}}> <i id="navbar-static-cart" alt="Cart" className="fas fa-heart"></i><span
                                     className="sr-only"> Cart </span>  </Link> </a> </li>
 
                                 <li className="nav-item"><a  className="nav-link waves-effect">
                                     <span
                                         className="badge red z-depth-1 mr-1"> {props.basketProps.backetNumbers} </span>
 
-                                    <Link to='/cartpage' style={{color: "white"}}><i
+                                    <Link to={'/cartpage?username=' + props.username} style={{color: "white"}}><i
                                         id="navbar-static-cart" alt="Cart" className="fas fa-shopping-cart"></i></Link><span
                                         className="sr-only"> Cart </span></a></li>
 
