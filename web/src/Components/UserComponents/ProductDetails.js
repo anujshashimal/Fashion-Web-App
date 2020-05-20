@@ -110,7 +110,7 @@ export class ProductDetails extends Component {
                             </div>
                             
                             Catogary :<b> {val.maincategory} / {val.subcategory}</b><br/>
-                             Product ID : <b>                            {this.state.avaliable = val.quantity}
+                             Product ID : <b>{this.state.itemid}                    
                             </b><br/>
                              {/* Discount :<b> {val.discount} %</b><br /> */}
                              <AvgRate productid={this.state.itemid} />
@@ -129,7 +129,7 @@ export class ProductDetails extends Component {
                                 {(val.quantity == 0) ? (
                                     <div></div>
                                 ) : (
-                                    <h4>Available : {val.quantity}</h4>
+                                    <h4>Available : {this.state.avaliable = val.quantity}</h4>
                                 )}
                                 
 
@@ -153,14 +153,20 @@ export class ProductDetails extends Component {
                                 <div style={{textAlign: "", marginTop:""}}>
                                     <div className="row">
                                         <div className="col">
-                                            <button type="button" className="btn btn-deep-purple" onClick={() => {((username != '' && username != "undefined")) ? (this.props.addBasket(val._id, val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i className="fas fa-cart-arrow-down"></i>&nbsp;&nbsp; Add to Cart</button>                                        </div>
+                                            <button type="button" className="btn btn-deep-purple btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.addBasket(val._id, val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i className="fas fa-cart-arrow-down"></i>&nbsp;&nbsp; Add to Cart</button>                                        </div>
                                         <div className="col">
-                                            <button type="button" className="btn btn-red darken-3" onClick={() => this.props.addToWatchList(this.state.username, val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)}><i className="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>                                        </div>
+                                            <button type="button" className="btn btn-red darken-3 btn-block" onClick={() => this.props.addToWatchList(this.state.username, val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)}><i className="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>                                        </div>
                                     </div>
-                                    <div className="row" style={{marginTop: "3%", marginBottom: "3%"}}>
+                                    {/* <div className="row" style={{marginTop: "3%", marginBottom: "3%"}}>
                                         <div className="col">
                                             <button type="button" className="btn btn-red darken-3" onClick={() => {((username != '' && username != "undefined")) ? (this.props.placeOrder(val.productid, val.description, val.price, val.quantity, val.discount, this.state.counter)) : (this.setState({ragister:true})) ; (this.setState({place:true})) }}><i className="fas fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Place Order</button>                                            <img src={Payment} style={{width:'100%'}}/>
 
+                                        </div> */}
+                                        <div className="row" style={{marginTop: "3%", marginBottom: "3%"}}>
+                                        <div className="col">
+                                            <button type="button" className="btn btn-pink btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.placeOrder(val.productid, val.description, val.price, val.quantity, val.discount, this.state.counter)) : (this.setState({ragister:true})) ; (this.setState({place:true})) }}><i className="fas fa-shopping-bag fa-lg"></i>&nbsp;&nbsp; Place Order</button>
+                                            <img src={Payment} style={{width:'100%'}}/>
+                                        
                                         </div>
 
                                     </div>
