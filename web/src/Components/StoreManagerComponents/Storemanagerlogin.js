@@ -42,7 +42,7 @@ export default class header extends Component{
     }
 
     async getStoremanager(){
-        console.log(this.state.storemanagerusername)
+        console.log(this.state.storemanagerusername);
         axios.get('http://localhost:5000/storemanager/storemanager/'+this.state.storemanagerusername)
         .then(response=>{
 
