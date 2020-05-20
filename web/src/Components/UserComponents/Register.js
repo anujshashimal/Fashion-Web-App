@@ -169,7 +169,7 @@ export default class header extends Component{
     
     render() {
         if(this.state.success) {
-            return <Redirect to={"/Home?username="+this.state.username} />
+            return <Redirect to={"/?username="+this.state.username} />
         }
         // const {data} = this.props;
         const {username, email, contactno, address, password, conformpassword, gender} =this.state

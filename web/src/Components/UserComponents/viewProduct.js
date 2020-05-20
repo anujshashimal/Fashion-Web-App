@@ -7,6 +7,7 @@ import  { Redirect } from 'react-router-dom'
 import Header from "../CommonComponents/header.js";
 import Footer from '../CommonComponents/footer';
 import { MDBBadge, MDBContainer, MDBIcon } from "mdbreact";
+import './viewProduct.css';
 
 const queryString = require('query-string');
 
@@ -107,6 +108,7 @@ export class viewProduct extends Component {
                 <Header username={this.state.username} />
                 <br/>
                 {/* <button type="button" className="button" onClick={this.Logout}>Logout</button> */}
+                
                 <div className="row" style={{marginLeft: "", marginTop: "", marginRight: '', backgroundColor: '#ffcdd2'}}>
                     <div className="col-md" style={{marginTop: "2%"}}>
                         <div className="texboxwidth" style={{width: "70%"}}>
@@ -164,10 +166,10 @@ export class viewProduct extends Component {
                     </div>
 
                 </div>
-
+                             
                 {(this.state.subcategory === 'All') ? (
-
-                        <div className="row" style={{textAlign: "center" , marginLeft: "1%" , marginRight: "1%" , marginTop: "1%"}}>
+                    
+                        <div1 className="row" style={{textAlign: "center" , marginLeft: "1%" , marginRight: "1%" , marginTop: "1%"}}>
                             {this.state.products.filter(products => products.maincategory === maincategory && products.description.includes(this.state.search)).map(products => (
                                <div className="col-md-3">
                                <Link to={'/ProductDetails?item='+products.productid+'&username='+this.state.username}>
@@ -198,11 +200,11 @@ export class viewProduct extends Component {
                           </div>
                             ))}
         
-                        </div>
+                        </div1>
                          
                     
                 ) : (
-                    <div className="row" style={{textAlign: "center" , marginLeft: "1%" , marginRight: "1%" , marginTop: "1%"}}>
+                    <div1 className="row" style={{textAlign: "center" , marginLeft: "1%" , marginRight: "1%" , marginTop: "1%"}}>
                         {this.state.products.filter(products => products.maincategory === maincategory && products.subcategory === subcategory && products.description.includes(this.state.search)).map(products => (
                             <div className="col-md-3">
                             <Link to={'/ProductDetails?item='+products.productid+'&username='+this.state.username}>
@@ -231,8 +233,9 @@ export class viewProduct extends Component {
                        </div>
                         ))
                         }
-                    </div>
+                    </div1>
                 )}
+                
             <Footer />
             </div>
         )

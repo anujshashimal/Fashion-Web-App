@@ -2,10 +2,17 @@ let  Comments = require('../models/Comments');
 
 //Find Comment--------------------------------------------------
  exports.Find_Comments = (req,res,next)=>{
-    Comments.find({
-      'username': req.params.username})
-    .then(Comments => res.json(Comments))
-    .catch(err=>res.status(400).json("Error:"+err))
+   try{
+      const rate = Comments.findOne({productId: req.params.productId});
+      let sum = 0;
+      let count = 0;
+      for(let rate of rate.rate){
+         sum = sum + value.rate
+      }
+      console.log(sum)
+   } catch(e){
+      console.log("reeor")
+   }
 }
 
 
