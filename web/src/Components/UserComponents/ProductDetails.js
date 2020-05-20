@@ -86,7 +86,6 @@ export class ProductDetails extends Component {
                 <div className="" style={{backgroundColor: "#ffffff", color: ""}}>
                     {this.state.product.map( val => (
                         <div className="container" style={{textAlign: "center"}}>
-                            {this.state.avaliable = val.quantity}
 
                             <div className="row"> {console.log(val)}
                                 {console.log(val)}
@@ -104,7 +103,8 @@ export class ProductDetails extends Component {
                             <h1><b>{val.description}</b></h1>
                             </div>
                             Catogary :<b> {val.maincategory} / {val.subcategory}</b><br/>
-                             Product ID : <b>{val.productid}</b><br/>
+                             Product ID : <b>                            {this.state.avaliable = val.quantity}
+                            </b><br/>
                              {/* Discount :<b> {val.discount} %</b><br /> */}
                              {(val.discount == "0") ? (
                                  <div> </div>
@@ -150,9 +150,9 @@ export class ProductDetails extends Component {
                                         <div className="col">
                                             <button type="button" className="btn btn-pink btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.placeOrder(val.productid, val.description, val.price, val.quantity, val.discount, this.state.counter)) : (this.setState({ragister:true})) ; (this.setState({place:true})) }}><i className="fas fa-shopping-bag fa-lg"></i>&nbsp;&nbsp; Place Order</button>
                                             <img src={Payment} style={{width:'100%'}}/>
-                                        
+
                                         </div>
-                                        
+
                                     </div>
                                 </div>
 
@@ -161,7 +161,7 @@ export class ProductDetails extends Component {
                                     }
                                         </div>
 
-                               
+
                                 </div>
                                 </div>
                         </div>

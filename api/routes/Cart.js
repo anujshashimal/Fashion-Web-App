@@ -94,6 +94,8 @@ router.route('/WatchList').post((req,res)=>{
 
 router.get('/findOrder',CartControlller.Find_All_OrderDetails);
 router.get('/findUserOrder/:fullname',CartControlller.Find_All_OrderDetails_User);
-
+router.get('/findWatchlistItems/:userID', CartControlller.Find_Watchlist_Items)
+router.delete('/deleteItem/:_id',CartControlller.Delete_WatchList_Items);
+router.put('/update/:productid',CartControlller.Update_WatchList_Items);   // Update  the Comment-------------------------------
 
 module.exports = router;

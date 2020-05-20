@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import img from '../../img/sample1.jpg'
 import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
@@ -11,19 +11,32 @@ import { MDBBtn, MDBCloseIcon  } from "mdbreact";
 import {productQuntity} from '../../Actions/ProductQuantity'
 import {removeItem }from '../../Actions/addActions'
 import { MDBTable, MDBTableBody, MDBTableHead ,MDBCardTitle} from 'mdbreact';
+const queryString = require('query-string');
 
-
-const CartPage = ({basketProps, productQuntity, removeItem}) =>{
-    console.log(basketProps)
+const CartPage = (props) =>{
+    // console.log(basketProps)
+    console.log(props)
     let productInCart = [];
     let filteredArr = [];
 
     let prody = []
-    const [count, setCount] = useState(0);
+    const [username, setUsername] = useState('');
 
+    var values = queryString.parse(props.location.search)
+    console.log(props.location.search)
+    console.log(values.item)
+    console.log(values.username)
+    // this.setState({
+    //     itemid: values.item,
+    //     username: values.username,
+    // })
 
-    Object.keys(basketProps.items).forEach( function (item, index) {
-            productInCart.push(basketProps.items[item])
+    useEffect(() => {
+            setUsername(values.username)
+    }, []);
+
+    Object.keys(props.basketProps.items).forEach( function (item, index) {
+        productInCart.push(props.basketProps.items[item])
 
     })
 
@@ -37,24 +50,26 @@ const CartPage = ({basketProps, productQuntity, removeItem}) =>{
     }, [])
 
 
+
+
     filteredArr = filteredArr.map( (product, index) => {
         console.log(product)
         console.log(index)
         return(
-                <tr>
-                    <button type="button" className="close" aria-label="Close" onClick={() => removeItem(index, product.price)}>
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <img src={product.image} alt="Product" style={{height: "100px" }} />
-                    <td className="tabletext">{product.name}</td>
-                    <td className="tabletext">
-                    <i onClick={() =>productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>&nbsp;&nbsp;
-                        {product.counter}&nbsp;&nbsp;
-                    <i onClick={() =>productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>
-                    </td>
-                    <td className="tabletext">{product.avaliable}</td>
-                    <td className="tabletext">{product.discount}</td>
-                     <td className="tabletext">{product.price}</td>
+            <tr>
+                <button type="button" className="close" aria-label="Close" onClick={() => props.removeItem(index, product.price)}>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <img src={product.image} alt="Product" style={{height: "100px" }} />
+                <td className="tabletext">{product.name}</td>
+                <td className="tabletext">
+                    <i onClick={() =>props.productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>&nbsp;&nbsp;
+                    {product.counter}&nbsp;&nbsp;
+                    <i onClick={() =>props.productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>
+                </td>
+                <td className="tabletext">{product.avaliable}</td>
+                <td className="tabletext">{product.discount}</td>
+                <td className="tabletext">{product.price}</td>
             </tr>
         )})
 
@@ -64,8 +79,10 @@ const CartPage = ({basketProps, productQuntity, removeItem}) =>{
     }
 
     return (
+
         <div>
-            <Hea />
+            <Hea  username={username}/>
+            {console.log(username)}
 
             <div className='container'>
 
@@ -74,8 +91,8 @@ const CartPage = ({basketProps, productQuntity, removeItem}) =>{
                     <div className='product-header'>
                         Cart Page
                     </div>
-                        <MDBTable>
-                            <MDBTableHead color="red darken-3" textWhite>
+                    <MDBTable>
+                        <MDBTableHead color="red darken-3" textWhite>
                             <tr>
                                 <th className="tabletext">Image</th>
                                 <th className="tabletext">Name</th>
@@ -84,20 +101,20 @@ const CartPage = ({basketProps, productQuntity, removeItem}) =>{
                                 <th className="tabletext">Discount</th>
                                 <th className="tabletext">Price</th>
                             </tr>
-                            </MDBTableHead>
+                        </MDBTableHead>
                         <MDBTableBody>
                             {filteredArr}
-                            </MDBTableBody>
-                        </MDBTable>
+                        </MDBTableBody>
+                    </MDBTable>
                     <div className='basketTotalContainer'>
                         <hr/>
                         <h4 className='basketTotalTitle'>Total Amount to Pay: </h4>
-                        <h4 className='basketTotal'>Rs. {basketProps.cartCost},00 </h4>
-                            <Link type="button" className="btn red darken-3" to='PlaceOrder'  >Place Order
-                            </Link>
-                </div>
-            </header>
-        </div>
+                        <h4 className='basketTotal'>Rs. {props.basketProps.cartCost},00 </h4>
+                        <Link type="button" className="btn red darken-3" to='PlaceOrder'  >Place Order
+                        </Link>
+                    </div>
+                </header>
+            </div>
             <Foo />
         </div>
     )
