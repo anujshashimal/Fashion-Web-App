@@ -70,8 +70,8 @@ import Logo from './img/logoHeader.gif'
                                         ) : (
                                             <span>
                                             <Link to={'/Login'} style={{color: "white"}}><i id="navbar-static-cart" alt="Cart" className="fas fa-user"></i>Login</Link>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;
-                                            <Link to={'/Storemanagerlogin'} style={{color: "white"}}><i id="navbar-static-cart" alt="Cart" className="fas fa-user"></i>StoreManager/Admin Login</Link>
+                                            {/* &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <Link to={'/Storemanagerlogin'} style={{color: "white"}}><i id="navbar-static-cart" alt="Cart" className="fas fa-user"></i>StoreManager/Admin Login</Link> */}
                                             &nbsp;&nbsp;&nbsp;&nbsp;
                                             
                                             <Link to={'/Register'} style={{color: "white"}}><i id="navbar-static-cart" alt="Cart" className="fas fa-user-plus"></i>Singup</Link>

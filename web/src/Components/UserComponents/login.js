@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './LoginRegister.css';
 import back from './shopping.gif'
 import logo from './logo.gif'
-import  { Redirect } from 'react-router-dom'
+import  { Redirect, Link } from 'react-router-dom'
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import swal from 'sweetalert';
@@ -135,7 +135,10 @@ export default class header extends Component{
                             <img src={back} width="100%"/>
                     </div>
                     <div className="col-md-6">
-                        <br/><br/><br/><br/><br/><br/>
+                        
+                        <br/><br/><br/>
+                        
+                        <br/>
                     <form onSubmit={this.handleLoginSubmit}>
                                     <div className="formalign">
                                         <h1 align="center">
@@ -174,6 +177,11 @@ export default class header extends Component{
                                             {/* <a href="reset.html">Lost your password?</a><br/> */}
                                             <a href="/Register">Don't have an account?</a>
                                         </p>
+                                        <br/><br/>
+                                        <div style={{textAlign: "center"}}>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <Link to={'/Storemanagerlogin'} style={{color: "#ffffff"}} className="btn btn-red"><i id="navbar-static-cart" alt="Cart" className="fas fa-user"> </i> StoreManager/Admin Login</Link>
+                        </div>
                                     </div>
                                 </form>
                     </div>

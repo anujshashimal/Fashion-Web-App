@@ -8,6 +8,7 @@ import Header from "../CommonComponents/header.js";
 import Footer from '../CommonComponents/footer';
 import { MDBBadge, MDBContainer, MDBIcon } from "mdbreact";
 import './viewProduct.css';
+import AvgRate from "./AvgRating";
 
 const queryString = require('query-string');
 
@@ -181,7 +182,9 @@ export class viewProduct extends Component {
                             <img src={products.image} alt="Product" style={{width: "95%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                                   <div class="container1" style={{color: "#000000"}}>
                                       <h4><b>{products.description}</b></h4>
+                                      
                                       <p>
+                                      <AvgRate productid={products.productid} />
                                           {/* Product ID : {products.productid}<br/> */}
                                       <div className="raw" style={{backgroundColor: "#ff4444", color: "white"}}>
                                       <h3>LKR {products.price}.00</h3>
