@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style/homePage.css'
-import stomanager from '../../img/stomanager.png'
+
 import Header from '../CommonComponents/adiminHeader';
 import Footer from "../CommonComponents/footer";
 import {Link} from "react-router-dom";
@@ -11,11 +11,12 @@ export class homePage extends Component {
     render() {
         return (
             <div>
-                <Header username='Vishaka' /><br/><br/><br/>
+                <Header username='admin' /><br/><br/><br/>
                 <div className="conatainer">
                     <div className="row">
                         <div className="col-1"></div>
                         <div className="col-10">
+
 
                             <div className="row">
                                 <div className="col-5">
