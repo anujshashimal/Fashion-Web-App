@@ -30,8 +30,9 @@ class AddProduct extends Component {
      
 
      this.state = {
+          categorys : [],
           description : '',  
-          maincategory : '',
+          maincategory : 'Men',
           subcategory : '',
           price : 0,
           quantity : 0,
@@ -61,10 +62,11 @@ class AddProduct extends Component {
       .then(response=>{
         if(response.data.length>0){
           this.setState({
-            maincategorys : response.data.map(product=>product.MainCategory) ,
-            maincategory : response.data[0].MainCategory,
-            subcategorys :  response.data.map(product=>product.CategoryName),
-            subcategory : response.data[0].CategoryName
+            categorys  : response.data.map(categorys =>categorys),
+           // maincategorys : response.data.map(product=>product.MainCategory) ,
+           // maincategory : response.data[0].MainCategory,
+           // subcategorys :  response.data.map(product=>product.CategoryName),
+           // subcategory : response.data[0].CategoryName
        })
   
         }
@@ -251,9 +253,9 @@ class AddProduct extends Component {
                               </div>
                                  <select ref="userInput" required className="form-control" value = {this.state.subcategory} onChange = {this.OnChangesubcategory} multiple= {false}>
                                    {
-                                      this.state.subcategorys.map(function(subcategorys){
+                                      this.state.categorys.filter(categorys => categorys.MainCategory === this.state.maincategory).map(function(categorys){
                                            
-                                      return <option key ={subcategorys} value={subcategorys}>{subcategorys}</option>
+                                      return <option key ={categorys.CategoryName} value={categorys.CategoryName}>{categorys.CategoryName}</option>
 
                                       })
                                    }
@@ -311,6 +313,9 @@ class AddProduct extends Component {
                           <br/>
                            <div className="texboxwidth">
                                <label htmlFor="exampleInput">Discount</label>
+                               <div className="icons">
+                                <i class="fas fa-percent"></i>
+                               </div>
                                  <div className="input-group mb-3">
                                   <div className="input-group-prepend">
                                <input pattern ='^[0-9]{0,2}' type="text" id="exampleInput" className="form-control" value ={this.state.discount} onChange={this.OnChangediscount} placeholder=" Enter Discount" />

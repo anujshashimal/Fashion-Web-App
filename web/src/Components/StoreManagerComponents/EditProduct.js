@@ -27,6 +27,7 @@ class EditProduct extends Component {
      
 
      this.state = {
+          categorys : [],
           description : '',  
           maincategory : '',
           subcategory : '',
@@ -41,9 +42,10 @@ class EditProduct extends Component {
           
      }
    }
+ 
 
   componentDidMount(){
-       
+      
     axios.get('http://localhost:5000/products/finds/'+this.props.match.params.id)
     .then(response=>{
         
@@ -57,21 +59,34 @@ class EditProduct extends Component {
             // image : response.data.map(product=>product.image),
              stockmanagerid : response.data.map(product=>product.stockmanagerid)
          })
-          
+          console.log(this.state.subcategory);
     }).catch(err=>console.log("Error:"+err))
 
-
-     axios.get('http://localhost:5000/category/:id')
-     .then(response=>{
-       if(response.data.length>0){
-         this.setState({
-           maincategorys : response.data.map(product=>product.MainCategory),
-           subcategorys :  response.data.map(product=>product.CategoryName),
-        
-      })
+    axios.get('http://localhost:5000/category/:id')
+    .then(response=>{
+      if(response.data.length>0){
+        this.setState({
+          categorys  : response.data.map(categorys =>categorys),
+         // maincategorys : response.data.map(product=>product.MainCategory),
+          subcategorys :  response.data.map(product=>product.CategoryName),
+       
+     })
+      }
  
-       }
-     })   
+      // this.setState({
+      
+      //   subcategory : this.state.categorys.filter(categorys => categorys.MainCategory === this.state.maincategory)
+      // })
+  
+
+    })   
+
+
+
+
+
+
+
 
   }
 
@@ -224,7 +239,7 @@ class EditProduct extends Component {
 
    
   render() {
-
+    const {subcategory, maincategory} =this.state
     const { descriptionErr, priceErr, quantityErr, discountErr, imageErr } = this.state.formErrors;    
 
     return (
@@ -253,8 +268,8 @@ class EditProduct extends Component {
                                          <div className="icons">
                                               <i class="fas fa-list fa-lg"></i>
                                           </div>
-                                 <select ref="userInputSubcate" required className="form-control" value = {this.state.subcategory} onChange = {this.OnChangesubcategory} multiple= {false}>
-                                   {
+                                 <select ref="userInput"  required className="form-control" value = {this.state.subcategory} onChange = {this.OnChangesubcategory} multiple= {false}>
+                                 {
                                       this.state.subcategorys.map(function(subcategorys){
                                            
                                       return <option key ={subcategorys} value={subcategorys}>{subcategorys}</option>
@@ -315,6 +330,9 @@ class EditProduct extends Component {
                           <br/>
                            <div className="texboxwidth">
                                <label htmlFor="exampleInput">Discount</label>
+                               <div className="icons">
+                                <i class="fas fa-percent"></i>
+                               </div>
                                  <div className="input-group mb-3">
                                   <div className="input-group-prepend">
                                <input  pattern ='^[0-9]{0,2}' type="text" id="exampleInput" className="form-control" value ={this.state.discount} onChange={this.OnChangediscount} placeholder=" Enter Discount" />
@@ -356,7 +374,6 @@ class EditProduct extends Component {
                    </div>
               </div>
            </form>
-           <Footer/>
            <NotificationContainer/>
       </div>
     )
