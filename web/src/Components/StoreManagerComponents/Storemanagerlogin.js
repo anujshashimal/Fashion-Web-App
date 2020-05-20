@@ -51,9 +51,30 @@ export default class header extends Component{
 
             console.log(response.data.length)
             console.log('res',response.data[0])
-            if(response.data.length != 1){
-                alert("Please Register");
+            if(this.state.storemanagerusername === "admin" && this.state.storemanagerpassword === "admin")
+            {
 
+                this.setState({register: true});
+
+            }
+            if(response.data.length != 0){
+                if(this.state.storemanagerpassword == this.state.storemanager.Password){
+                    // sessionStorage.setItem('userData', this.state.user);
+                    // alert("Login Success");
+                    swal("Login Success", "Hi "+this.state.storemanagerusername, "success");
+
+                    this.setState({success: true});
+                } else{
+                    // alert("Password  Incorect!!.Please Re-enter");
+                    NotificationManager.error(' Please enter correct password', 'Password incorect');
+                    this.setState({
+                        storemanagerusername : '',
+                        storemanagerpassword : ''
+                    })
+                }
+
+            }else{
+                NotificationManager.error(' Error', 'You are not store Manager');
             }
 
             this.setState({
@@ -66,24 +87,8 @@ export default class header extends Component{
               //  console.log('storenamager password',this.state.storemanager.Password)
               //  console.log('storenamager username',this.state.storemanager.UserName)
               //  console.log('storemanager id',this.state.storemanager.smId)
-                if(this.state.storemanagerusername === "Vishaka" && this.state.storemanagerpassword === "apple123")
-                {
-                   
 
-                }if(this.state.storemanagerpassword == this.state.storemanager.Password){
-                    // sessionStorage.setItem('userData', this.state.user);
-                   // alert("Login Success");
-                    swal("Login Success", "Hi "+this.state.storemanagerusername, "success");
-                    
-                    this.setState({success: true});
-                } else{
-                   // alert("Password  Incorect!!.Please Re-enter");
-                   NotificationManager.error(' Please enter correct password', 'Password incorect');
-                    this.setState({
-                        storemanagerusername : '',
-                        storemanagerpassword : ''
-                    })
-                }
+
             });
             
            
