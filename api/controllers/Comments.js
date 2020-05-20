@@ -6,14 +6,14 @@ let  Comments = require('../models/Comments');
 
       const rate = await Comments.find({productId : req.params.productId});
 
-  console.log('item',rate)
+//   console.log('item',rate)
       let sum = 0;
       let noOfRatings = 0;
       let totrate = 0;
       let avg = 0;
       let avgRate = 0;
       for (let value of rate) {
-         console.log('value',value.rate)
+         // console.log('value',value.rate)
          noOfRatings++;
          sum = sum + value.rate;
       }
@@ -22,9 +22,9 @@ let  Comments = require('../models/Comments');
       totrate = noOfRatings * 5;
       avgRate = Math.round((sum / totrate) * 5)
       // console.log('avg',avg)
-      console.log('tot rate',totrate)
-      console.log('sum',sum)
-      console.log('a rate',avgRate)
+      // console.log('tot rate',totrate)
+      // console.log('sum',sum)
+      // console.log('a rate',avgRate)
   
       // const avgs = sum /item.ratings.length;
       // const avg = avgs.toFixed(2);
