@@ -117,7 +117,7 @@ export class comments extends Component {
        .then(res=>console.log(res.data));
        this.setState({
         editid: '',
-        comment: '',
+        comment: null,
         rating: null,
         edit: false,
     })

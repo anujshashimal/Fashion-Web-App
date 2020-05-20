@@ -7,11 +7,13 @@ import {addBasket} from "../../Actions/addActions";
 import {addToWatchList} from "../../Actions/addWatchList";
 import {connect} from 'react-redux';
 import Comments from "./comments";
+import AvgRate from "./AvgRating";
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import swal from 'sweetalert';
 import { MDBBadge, MDBContainer, MDBIcon } from "mdbreact";
 import Payment from './payment.png'
+
 
 import {placeOrder} from "../../Actions/placeOrderDir";
 
@@ -30,7 +32,8 @@ export class ProductDetails extends Component {
             counter: 0,
              ragister: false,
             place: false,
-            avaliable: ''
+            avaliable: '',
+            
         }
         console.log(props)
     }
@@ -51,6 +54,11 @@ export class ProductDetails extends Component {
                 product :  response.data.map(product=>product),
         })
       })
+
+
+
+
+      
     }
 
 
@@ -66,9 +74,7 @@ export class ProductDetails extends Component {
         )
     }
 
-    AvarageRate = (productid) =>{
-        
-    }
+    
 
     render() {
         const {itemid, product, Cprice, username} =this.state
@@ -103,9 +109,11 @@ export class ProductDetails extends Component {
                             <div className="raw" style={{marginTop: "2%", marginBottom: "2%", backgroundColor: "#9c27b0", color: "white"}}>
                             <h1><b>{val.description}</b></h1>
                             </div>
+                            
                             Catogary :<b> {val.maincategory} / {val.subcategory}</b><br/>
                              Product ID : <b>{val.productid}</b><br/>
                              {/* Discount :<b> {val.discount} %</b><br /> */}
+                             <AvgRate productid={this.state.itemid} />
                              {(val.discount == "0") ? (
                                  <div> </div>
                              ) : (
@@ -124,6 +132,11 @@ export class ProductDetails extends Component {
                                     <h4>Available : {val.quantity}</h4>
                                 )}
                                 
+
+
+
+
+
 
                                 
                                 <div style={{textAlign: "", marginTop:"5%"}}>
