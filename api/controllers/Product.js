@@ -7,7 +7,7 @@ var  cloudinary = require('cloudinary').v2;
 
 app.use(fileupload({useTempFiles:true}));
 
-cloudinary.config({
+cloudinary.config({                        //cloud configuration
 
    cloud_name : 'zerobugs',
    api_key : '563784119216219',
@@ -23,7 +23,8 @@ cloudinary.config({
 
 }
 
-  exports.Find_Edit_Product = (req,res,next)=>{
+    // find Product
+  exports.Find_Edit_Product = (req,res,next)=>{    
      Product.find({'productid':req.params.productid})
      .then(Productfind=>res.json(Productfind))
      .catch(err=>res.status(400).json("Error:"+err))
@@ -70,7 +71,8 @@ cloudinary.config({
 
    if(req.file){
 
-  cloudinary.uploader.upload(req.file.path,function(err,result){
+      //save images in cloud 
+  cloudinary.uploader.upload(req.file.path,function(err,result){    //save images in cloud 
       console.log(result)
    
        newProduct.image=result.url;
