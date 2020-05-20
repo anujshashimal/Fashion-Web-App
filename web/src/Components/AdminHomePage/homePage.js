@@ -26,7 +26,7 @@ export class homePage extends Component {
 
                                         <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-3">
                                             <div>
-                                                <h5 ><i className="fas fa-user"></i>  >Store Manager</h5>
+                                                <h5 ><i className="fas fa-user"></i> Store Manager</h5>
                                                 <h3 className="card-title pt-2"><strong>Store Manager Section</strong></h3>
                                                 <p>To Add new store Managers , details of store managers, remove store managers done by here !.</p>
                                                 <Link to={'/showstoremanager'} className="btn btn-red darken-3"><i className="fas fa-clone left"></i> View</Link>
