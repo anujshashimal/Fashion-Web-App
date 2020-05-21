@@ -22,38 +22,39 @@ export default (state = initialState, action) =>{
 
     switch(action.type) {
         case ADD_PRODUCT_TO_BACKET:
-            let addQuntity = {...state.items[payload]}
-            console.log(addQuntity)
-            addQuntity.numbers++;
-            console.log(addQuntity)
-            console.log(payload)
-
+            // let addQuntity = {...state.items[payload]}
+            // console.log(addQuntity)
+            // addQuntity.numbers++;
+            // console.log(addQuntity)
+            // console.log(payload)
             state.items.map((itemss, index)=>{
-                console.log(itemss.productID)
-                console.log(action.payload.ID)
-                if(itemss.productID == payload.ID){
-                    state.backetNumbers = state.backetNumbers +1
+                console.log(itemss)
+                console.log(payload.productID)
+                if(payload.productID === itemss.productID){
+                        itemss.counter++
+                        // state.backetNumbers = itemss.counter
                 }
 
             })
 
-
             if(payload.counter == 0){
                 payload.counter =1
             }
+
                     return {
                         ...state,
-                        backetNumbers: state.backetNumbers + 1,
-                        cartCost: state.cartCost + (action.payload.price * action.payload.counter),
+                        backetNumbers:  state.backetNumbers+1,
+                        // cartCost: state.cartCost + (action.payload.price * action.payload.counter),
                         // backetNumbers: state.backetNumbers +1,
-                        // cartCost: state.cartCost + action.payload.price * 1,
+                        cartCost: state.cartCost + action.payload.price * 1,
                         getdiscount: state.cartCost * action.payload.discount * (1 / 100),
                         withDiscartCost: state.cartCost - ((state.cartCost) * action.payload.discount * (1 / 100)),
                         items: [
                             ...state.items,
-                            {...payload, ...addQuntity.numbers++}
+                            {...payload}
                         ]
                     }
+
 
             case GET_NUMBERS_IN_BASKET:
                     return {

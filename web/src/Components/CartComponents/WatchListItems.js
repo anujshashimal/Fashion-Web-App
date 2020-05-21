@@ -7,28 +7,43 @@ import {removeItem} from "../../Actions/addActions";
 import img from "../../img/sample1.jpg";
 import {connect} from "react-redux";
 import {removeItemFromWathList} from "../../Actions/addWatchList";
+import {productQuntity} from '../../Actions/ProductQuantity'
+
 const queryString = require('query-string');
 
 class WatchListItems extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            userID : '',
+            userID: '',
             avaliable: '',
-            product_ID:'',
+            product_ID: '',
             price: '',
-            name:'',
-            image:'',
-            discount:'',
-            Items : [],
-            username :'',
-            productid:''
+            name: '',
+            image: '',
+            discount: '',
+            Items: [],
+            username: '',
+            productid: ''
 
         }
-    console.log(props)
+        console.log(props)
 
     }
 
+componentDidUpdate() {
+    var values = queryString.parse(this.props.location.search)
+
+    axios({
+        method: 'get',
+        url: 'http://localhost:5000/cart/findWatchlistItems/' + values.username,
+    }).then(response => {
+        this.setState({
+            Items: response.data.map(Items => Items)
+        })
+    })
+
+}
 
     componentDidMount() {
 
@@ -39,34 +54,44 @@ class WatchListItems extends Component {
             username: values.username,
         })
 
-            const data ={
-                userID : this.state.userID,
-                avaliable: this.state.avaliable,
-                product_ID:this.state.productID,
-                price: this.state.price,
-                name:this.state.name,
-                image:this.state.image,
-                discount:this.state.discount
+        const data = {
+            userID: this.state.userID,
+            avaliable: this.state.avaliable,
+            product_ID: this.state.productID,
+            price: this.state.price,
+            name: this.state.name,
+            image: this.state.image,
+            discount: this.state.discount
 
-            }
-            try{
-                const responce = axios({
-                    method: 'get',
-                    url: 'http://localhost:5000/cart/findWatchlistItems/' + values.username,
-                    data: data,
-                }).then(response => {
-                    this.setState({
-                        Items: response.data.map(Items=>Items)
-                    })
+        }
+        try {
+            const responce = axios({
+                method: 'get',
+                url: 'http://localhost:5000/cart/findWatchlistItems/' + values.username,
+                data: data,
+            }).then(response => {
+                this.setState({
+                    Items: response.data.map(Items => Items)
                 })
-            }catch(ex){
+            })
+        } catch (ex) {
 
-            }
         }
 
+        this.removeItemFromWatch()
+
+    }
 
 
-        render() {
+    removeItemFromWatch = (id) => {
+        axios({
+            method: 'delete',
+            url: 'http://localhost:5000/cart/deleteItem/' + id,
+        })
+    }
+
+
+    render() {
 
             const addToCartForPayment = () => {
 
@@ -81,20 +106,15 @@ class WatchListItems extends Component {
 
 
                 this.state.Items.map((item, index) => {
+                    console.log(item)
                     this.props.basketProps.items.push(this.state.Items[index])
-                    this.props.basketProps.backetNumbers = this.props.basketProps.backetNumbers+1
-                    this.props.basketProps.cartCost = this.props.watchListProps.cartCost
-
+                    // this.props.basketProps.backetNumbers = this.props.basketProps.backetNumbers+1
+                    // this.props.basketProps.cartCost = this.props.watchListProps.cartCost
+                    this.removeItemFromWatch(item._id)
                 })
             }
 
-            const  removeItemFromWatch = (id) =>{
-                const responce = axios({
-                    method: 'delete',
-                    url: 'http://localhost:5000/cart/deleteItem/' + id,
-                    data: data,
-                })
-            }
+
 
             let filteredArr = [];
             filteredArr = this.state.Items.map( (product, index) => {
@@ -103,16 +123,16 @@ class WatchListItems extends Component {
                 return(
 
                     <tr>
-                        <button type="button" className="close" aria-label="Close" onClick={() => removeItemFromWatch(product._id)}>
+                        <button type="button" className="close" aria-label="Close" onClick={() => this.removeItemFromWatch(product._id)}>
                             <span aria-hidden="true">&times;</span>
                         </button>
                         {/*{this.setState({productid: product._id})}*/}
                         <img src={product.image} alt="Product" style={{height: "100px" }} />
                         <td className="tabletext">{product.name}</td>
                         <td className="tabletext">
-                            {/*<i onClick={() =>productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>*/}
-                            {product.qty}
-                            {/*<i onClick={() =>productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>*/}
+                            <i onClick={() =>this.props.productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>&nbsp;&nbsp;
+                            {product.counter}&nbsp;&nbsp;
+                            <i onClick={() =>this.props.productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>
                         </td>
                         <td className="tabletext">{product.avaliable}</td>
                         <td className="tabletext">{product.discount}</td>
@@ -159,7 +179,7 @@ class WatchListItems extends Component {
                     <div className='container'>
                         <header >
                             <div className='product-header'>
-                                Cart Page
+                                Watch-list Items
                             </div>
                             <MDBTable>
                                 <MDBTableHead color="red darken-3" textWhite>
@@ -179,11 +199,10 @@ class WatchListItems extends Component {
                             </MDBTable>
                             <div className='basketTotalContainer'>
                                 <hr/>
-                                <h4 className='basketTotalTitle'>Total Amount to Pay: </h4>
-                                <button type="button" className='btn red darken-3' onClick={() => addToCartForPayment()}>
+                                {/*<h4 className='basketTotalTitle'>Total Amount to Pay: </h4>*/}
+                                <button type="button" className='btn btn-red darken-3' onClick={() => addToCartForPayment()}> Add Product To Cart
                                     {/*<span aria-hidden="true">&times;</span>*/}
                                 </button>
-
                                 {/*<h4 className='basketTotal'>Rs. {basketProps.cartCost},00 </h4>*/}
                                 {/*<Link type="button" className="btn red darken-3" onClick={() => addToCartForPayment()} >Add to Cart*/}
                                 {/*</Link>*/}
@@ -202,4 +221,4 @@ const mapStateToPropss = state => ({
     basketProps : state.basketState,
 })
 
-export default connect(mapStateToPropss, {removeItemFromWathList})(WatchListItems);
+export default connect(mapStateToPropss, {removeItemFromWathList,productQuntity})(WatchListItems);
