@@ -65,9 +65,8 @@ exports.Find_All_OrderDetails_User = (req,res,next)=>{
 
 
             ))}).catch(err=>res.status(400).json("Error:"+err))
-
-
 }
+
 
 exports.Find_Watchlist_Items = (req,res,next)=>{
     WatchListItems.find({'userID':req.params.userID})
@@ -89,7 +88,14 @@ exports.Delete_WatchList_Items = (req,res,next)=>{
 exports.Update_WatchList_Items = (req,res,next)=>{
     Product.findOne({'productid':req.params.productid})
         .then(product =>{
-            product.quantity--
+            product.quantity = product.quantity - 1
         }).then(()=>res.json('Item Updated'))
-        .catch(err=> res.status(400).json('Err'+err))
+        .catch(err=> res.status(400).json('Err'+err))}
+
+
+exports.GET_Watchlist_Items = (req,res,next)=>{
+    WatchListItems.find()
+        .then(products => res.json(products))
+        .catch(err=>res.status(400).json('Error :'+err));
+
 }
