@@ -17,7 +17,7 @@ export class MainCategory extends Component {
 
 
             <div>
-                <Header username='Vishaka' />
+                <Header username='admin' />
                 <br/><br/><br/><br/>
                 {/*<div className="container-fluid">*/}
                 {/*    <div className="row">*/}

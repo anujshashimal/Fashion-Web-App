@@ -7,10 +7,13 @@ import {addBasket} from "../../Actions/addActions";
 import {addToWatchList} from "../../Actions/addWatchList";
 import {connect} from 'react-redux';
 import Comments from "./comments";
+import AvgRate from "./AvgRating";
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import swal from 'sweetalert';
 import { MDBBadge, MDBContainer, MDBIcon } from "mdbreact";
+import Payment from './payment.png'
+
 
 import {placeOrder} from "../../Actions/placeOrderDir";
 
@@ -29,7 +32,8 @@ export class ProductDetails extends Component {
             counter: 0,
              ragister: false,
             place: false,
-            avaliable: ''
+            avaliable: '',
+            
         }
         console.log(props)
     }
@@ -50,6 +54,11 @@ export class ProductDetails extends Component {
                 product :  response.data.map(product=>product),
         })
       })
+
+
+
+
+      
     }
 
 
@@ -65,9 +74,7 @@ export class ProductDetails extends Component {
         )
     }
 
-    AvarageRate = (productid) =>{
-        
-    }
+    
 
     render() {
         const {itemid, product, Cprice, username} =this.state
@@ -85,7 +92,6 @@ export class ProductDetails extends Component {
                 <div className="" style={{backgroundColor: "#ffffff", color: ""}}>
                     {this.state.product.map( val => (
                         <div className="container" style={{textAlign: "center"}}>
-                            {this.state.avaliable = val.quantity}
 
                             <div className="row"> {console.log(val)}
                                 {console.log(val)}
@@ -96,15 +102,18 @@ export class ProductDetails extends Component {
                                         <MDBBadge tag="a" color="danger"> <MDBIcon icon="female" /> </MDBBadge>
                                     )} */}
                                 <MDBBadge tag="a" color="danger"> NEW </MDBBadge>
-                            <img src={val.image} alt="Product" style={{width: "60%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
+                            <img src={val.image} alt="Product" style={{width: "65%" , marginTop: "2.5%" , marginBottom: "2.5%" }} />
                             </div>
                             <div className="col-md" style={{textAlign: "left"}}>
                             <div className="raw" style={{marginTop: "2%", marginBottom: "2%", backgroundColor: "#9c27b0", color: "white"}}>
                             <h1><b>{val.description}</b></h1>
                             </div>
+                            
                             Catogary :<b> {val.maincategory} / {val.subcategory}</b><br/>
-                             Product ID : <b>{val.productid}</b><br/>
+                             Product ID : <b>{this.state.itemid}                    
+                            </b><br/>
                              {/* Discount :<b> {val.discount} %</b><br /> */}
+                             <AvgRate productid={this.state.itemid} />
                              {(val.discount == "0") ? (
                                  <div> </div>
                              ) : (
@@ -120,9 +129,14 @@ export class ProductDetails extends Component {
                                 {(val.quantity == 0) ? (
                                     <div></div>
                                 ) : (
-                                    <h4>Available : {val.quantity}</h4>
+                                    <h4>Available : {this.state.avaliable = val.quantity}</h4>
                                 )}
                                 
+
+
+
+
+
 
                                 
                                 <div style={{textAlign: "", marginTop:"5%"}}>
@@ -136,17 +150,34 @@ export class ProductDetails extends Component {
                                 {this.state.counter} &nbsp;
                                 <i onClick={this.increament} className="fas fa-angle-right"></i>
                                 </h1>
+                                <div style={{textAlign: "", marginTop:""}}>
+                                    <div className="row">
+                                        <div className="col">
+                                            <button type="button" className="btn btn-deep-purple btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.addBasket(val._id, val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i className="fas fa-cart-arrow-down"></i>&nbsp;&nbsp; Add to Cart</button>                                        </div>
+                                        <div className="col">
+                                            <button type="button" className="btn btn-red darken-3 btn-block" onClick={() => this.props.addToWatchList(this.state.username, val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)}><i className="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>                                        </div>
+                                    </div>
+                                    {/* <div className="row" style={{marginTop: "3%", marginBottom: "3%"}}>
+                                        <div className="col">
+                                            <button type="button" className="btn btn-red darken-3" onClick={() => {((username != '' && username != "undefined")) ? (this.props.placeOrder(val.productid, val.description, val.price, val.quantity, val.discount, this.state.counter)) : (this.setState({ragister:true})) ; (this.setState({place:true})) }}><i className="fas fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Place Order</button>                                            <img src={Payment} style={{width:'100%'}}/>
+
+                                        </div> */}
+                                        <div className="row" style={{marginTop: "3%", marginBottom: "3%"}}>
+                                        <div className="col">
+                                            <button type="button" className="btn btn-pink btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.placeOrder(val.productid, val.description, val.price, val.quantity, val.discount, this.state.counter)) : (this.setState({ragister:true})) ; (this.setState({place:true})) }}><i className="fas fa-shopping-bag fa-lg"></i>&nbsp;&nbsp; Place Order</button>
+                                            <img src={Payment} style={{width:'100%'}}/>
+                                        
+                                        </div>
+
+                                    </div>
+                                </div>
+
 
                                         </div>)
                                     }
                                         </div>
 
-                                <div style={{textAlign: "", marginTop:"5%"}}>
-                                <button type="button" className="btn btn-deep-purple" onClick={() =>{((username != '' && username != "undefined")) ? (this.props.addBasket(val._id,val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i class="fas fa-cart-arrow-down"></i>&nbsp;&nbsp; Add to Cart</button>
-                                <button type="button" className="btn btn-red darken-3" onClick={() =>this.props.addToWatchList(val._id,val.productid,val.description, val.price, val.quantity, val.discount , val.image, this.state.counter )}><i class="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>
-                                <button type="button" className="btn btn-red darken-3" onClick={() => {((username != '' && username != "undefined")) ? (this.props.placeOrder(val.productid, val.description, val.price, val.quantity, val.discount, this.state.counter)) : (this.setState({ragister:true})) ; (this.setState({place:true})) }}><i className="fas fa-shopping-cart fa-lg"></i>&nbsp;&nbsp; Place Order</button>
 
-                                </div>
                                 </div>
                                 </div>
                         </div>

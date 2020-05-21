@@ -45,47 +45,41 @@ export default class header extends Component{
     }
 
     async getStoremanager(){
-        console.log(this.state.storemanagerusername)
+        console.log(this.state.storemanagerusername);
         axios.get('http://localhost:5000/storemanager/storemanager/'+this.state.storemanagerusername)
         .then(response=>{
 
             console.log(response.data.length)
             console.log('res',response.data[0])
-            if(response.data.length != 1){
-                alert("Please Register");
+            if(this.state.storemanagerusername === "admin" && this.state.storemanagerpassword === "admin")
+            {
+
+                this.setState({register: true});
 
             }
-
-            this.setState({
-                storemanager: response.data[0]
-            },()=>{
-
-                    
-              //  console.log('storemanager',this.state.storemanager)
-              //  console.log('password',this.state.storemanagerpassword)
-              //  console.log('storenamager password',this.state.storemanager.Password)
-              //  console.log('storenamager username',this.state.storemanager.UserName)
-              //  console.log('storemanager id',this.state.storemanager.smId)
-                if(this.state.storemanagerusername === "Vishaka" && this.state.storemanagerpassword === "apple123")
-                {
-                   
-
-                }if(this.state.storemanagerpassword == this.state.storemanager.Password){
+            if(response.data.length != 0){
+                this.setState({
+                    storemanager: response.data[0]
+                });
+                
+                if(this.state.storemanagerpassword == this.state.storemanager.Password){
                     // sessionStorage.setItem('userData', this.state.user);
-                   // alert("Login Success");
+                    // alert("Login Success");
                     swal("Login Success", "Hi "+this.state.storemanagerusername, "success");
-                    
+
                     this.setState({success: true});
                 } else{
-                   // alert("Password  Incorect!!.Please Re-enter");
-                   NotificationManager.error(' Please enter correct password', 'Password incorect');
+                    // alert("Password  Incorect!!.Please Re-enter");
+                    NotificationManager.error(' Please enter correct password', 'Password incorect');
                     this.setState({
                         storemanagerusername : '',
                         storemanagerpassword : ''
                     })
                 }
-            });
-            
+
+            }else{
+                NotificationManager.error(' Error', 'You are not store Manager');
+            }
            
             
         }).catch(err=>console.log("Error:"+err))

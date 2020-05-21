@@ -51,6 +51,7 @@ import Cartpage from "./Components/CartComponents/CartPage";
 import PlaceOrder from "./Components/CartComponents/PlaceOrder";
 import WatchList from "./Components/CartComponents/WatchList"
 import OrderCompleteDetails from "./Components/CartComponents/OrderCompleteDetails";
+import WatchListItems from "./Components/CartComponents/WatchListItems";
 
 
 
@@ -195,6 +196,7 @@ class App extends React.Component {
                         <Route path = {'/PlaceOrder'} exact component={PlaceOrder} />
                         <Route path = {'/watchlist'} exact component={WatchList} />
                         <Route path = {'/orderDetails'} exact component={OrderCompleteDetails} />
+                        <Route path = {'/watchlistItems'} exact component={WatchListItems} />
 
 
 
@@ -212,7 +214,7 @@ class App extends React.Component {
                         <Route path = {'/ProductDetails'} exact component={ProductDetails}/>
                         <Route path = {'/Comments'} exact component={Comments}/>
                         <Route path = {'/Rating'} exact component={Rating}/>
-                        <Route path = {'/Home'} exact component={Home}/>
+                        <Route path = {'/'} exact component={Home}/>
                         {/* <Route path = {'/Noti'} exact component={Notification}/> */}
 
 

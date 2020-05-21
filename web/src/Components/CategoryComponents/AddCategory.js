@@ -17,7 +17,7 @@ export class Addcategory extends Component {
             CategoryID:"",
             CategoryName:"",
             MainCategory:"",
-            Admin:"Vishaka",
+            Admin:"admin",
             SaveBtnName:"Save",
             SubCategoryNames:[]
 
@@ -162,7 +162,7 @@ export class Addcategory extends Component {
     render() {
         return (
             <div>
-                <Header username={this.state.Admin} />
+                <Header username="admin" />
                 <br/> <br/> <br/> <br/>
                 <div className="conatainer">
                     <div className="row">

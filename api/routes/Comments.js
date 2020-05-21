@@ -4,7 +4,7 @@ const CommentsControlller = require('../controllers/Comments');
 
 router.get('/find',CommentsControlller.Find_All_Comments);    // display the all the Comments
 
-router.get('/finds/:username',CommentsControlller.Find_Comments);   // Find the Comments---------------------------------------
+router.get('/finds/:productId',CommentsControlller.Find_Comments);   // Find the Comments---------------------------------------
 
 router.get('/findByProduct/:productId',CommentsControlller.Find_CommentsByProducts);   // Find the Comments---------------------------------------
 
