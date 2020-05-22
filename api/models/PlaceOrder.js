@@ -20,6 +20,7 @@ const PlaceOrderr = new Schema({
     },
     state:{
         type:String,
+        required:true
     },
     postalCode:{
         type:String,

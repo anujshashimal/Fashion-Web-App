@@ -68,6 +68,8 @@ render() {
     {this.state.UserDetails.map( val => (
                             <div className="container" style={{width: "40%", height:"50%", textAlign: "center"}}>
                                 <h1 style={{color: "#e91e63"}} > ORDER DETAILS </h1>
+                                <h3 style={{color: "#f2252d"}} > YOUR ORDER DETAILS IS SENT TO YOUR EMAIL :{val.email} </h3>
+
                                 <div className="table-bordered" style={{background: "#f8bbd0"}}>
                                     <div className="col-md" style={{textAlign: "left" }} >
                                         <label htmlFor="exampleDisabled" className="disabled" style={{color: "#e91e63", fontsize:"100px"}}>FULL NAME:</label>

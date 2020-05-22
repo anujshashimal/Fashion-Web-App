@@ -10,7 +10,6 @@
     right: 25%;
     text-align: center;
     top: 20%;
-    position: absolute;
 
 }
 
@@ -58,4 +57,12 @@ background-color: #c62828  ;
 }
 .mainClass h5 :hover{
     color: #b5310c;
+}
+
+
+.imgheader{
+    right: 80%;
+    position: center;
+    text-align: center;
+
 }

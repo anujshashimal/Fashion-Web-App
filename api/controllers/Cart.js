@@ -35,12 +35,22 @@ exports.Find_All_OrderDetails_User = (req,res,next)=>{
                     to: key.email,
                     subject: "Your Order Delivered",
                     html:
-                        '<form style="background-color: #ffebee" ' +
-                        '<h1> Hi '+ key.fullname + ', </h1> <br /> <br />' +' <img src="cid:Design01" style="width: 500px" /> ' +' <br /> <br />'+
-                        '<p> Thank you very much for the Order. Your payment is successfully completed. Your Ordered Item will receive Asap. Below include the Order informations you confirmed! Thank you very much!  </p>' +
+                        '<form style="background-color: #ffffff" ' +
+                        '<h2> Hi ' + key.fullname + '</h2>' +
+                        ', </h1> <br /> <br />' +' <img src="cid:Design01" style="width: 500px" /> ' +' <br /> <br />'+
+                        '<p> Thank you very much for the Order. Your payment is successfully completed. Your order has been received and is now being processed. Your Order details are shown below for your references Thank you very much!  </p>' +
+                        '<h2> Payment Info </h2>' +'</br>'+
                         '<h3> Your Total Amount of Payment is: : ' + key.TotalCost + '</h3>'+
-                        '<h3> Your Order ID is : ' + key.OrderId + '</h3>'+
+                        '<h3> Your Order ID is : #' + key.OrderId + '</h3>'+
                         '<h3> Your Tracking ID is : ' + key.TrackingNum  + '</h3>' +
+                        '<h2> Customer Details </h2>' +'</br>'+
+                        '<h3> Full Name :' + key.fullname+ '</h3>'+'</br>'+
+                        '<h3> Email :' + key.email+ '</h3>'+'</br>'+
+                        '<h3> Tel :' + key.contactNo+ '</h3>'+'</br>'+
+                        '<h2> Shipping Address </h2>' +'</br>'+
+                        '<h3> Full Name :' + key.state+ '</h3>'+'</br>'+
+                        '<h3> Email :' + key.address+ '</h3>'+'</br>'+
+                        '<h3> Tel :' + key.address1+ '</h3>'+'</br>'+
                         '</form>',
                     attachments: [{
                         filename: 'Design01.png',

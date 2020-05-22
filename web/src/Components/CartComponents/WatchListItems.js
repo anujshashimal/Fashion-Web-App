@@ -23,12 +23,12 @@ class WatchListItems extends Component {
             image: '',
             discount: '',
             Items: [],
+            Items1:[],
             username: '',
             productid: ''
 
         }
         console.log(props)
-
     }
 
 componentDidUpdate() {
@@ -55,7 +55,7 @@ componentDidUpdate() {
         })
 
         const data = {
-            userID: this.state.userID,
+            watchID: this.state.watchID,
             avaliable: this.state.avaliable,
             product_ID: this.state.productID,
             price: this.state.price,
@@ -104,13 +104,22 @@ componentDidUpdate() {
                 // })
                 console.log('hello')
 
-
+                console.log(this.props.basketProps)
                 this.state.Items.map((item, index) => {
                     console.log(item)
-                    this.props.basketProps.items.push(this.state.Items[index])
+                    let total = item.price
+                    total = total + item.price
+                    let newval = total - item.price
+
+                    this.props.basketProps.cartCost = newval
+                    this.props.basketProps.items.push(item)
+
+                    console.log(this.props.basketProps)
                     // this.props.basketProps.backetNumbers = this.props.basketProps.backetNumbers+1
                     // this.props.basketProps.cartCost = this.props.watchListProps.cartCost
+                    this.props.watchListProps.backetNumbers = this.props.watchListProps.backetNumbers -1
                     this.removeItemFromWatch(item._id)
+
                 })
             }
 
@@ -135,7 +144,7 @@ componentDidUpdate() {
                             <i onClick={() =>this.props.productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>
                         </td>
                         <td className="tabletext">{product.avaliable}</td>
-                        <td className="tabletext">{product.discount}</td>
+                        <td className="tabletext">{product.discount} %</td>
                         <td className="tabletext">{product.price}</td>
                     </tr>
                 )})
@@ -152,9 +161,9 @@ componentDidUpdate() {
                         <img src={this.state.image} alt="Product" style={{height: "100px" }} />
                         <td className="tabletext">{this.state.name}</td>
                         <td className="tabletext">
-                            {/*<i onClick={() =>productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>*/}
-                            {this.state.avaliable}
-                            {/*<i onClick={() =>productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>*/}
+                            <i onClick={() =>productQuntity("DECREASE", this.state.productID, this.state.price)} className="fas fa-angle-left"></i>
+                            {this.state.counter}
+                            <i onClick={() =>productQuntity("INCREASE",this.state.productID,this.state.price)} className="fas fa-angle-right"></i>
                         </td>
                         <td className="tabletext">{this.state.avaliable}</td>
                         <td className="tabletext">{this.state.discount}</td>
