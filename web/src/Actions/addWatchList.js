@@ -1,18 +1,21 @@
 import { ADD_PRODUCT_TO_WATCHLIST, REMOVE_PRODUCT_FROM_WATCHLIST} from "./types";
 import React from "react";
 
-export const addToWatchList = (userID,ID,productName, price, avaliable, discount, image, counter) => {
+export const addToWatchList = (watchID,userID,ID,productName, price, avaliable, discount, image, counter) => {
 
     return function (dispatch) {
-        console.log("Adding to the Backet")
-        console.log("Product", productName)
-        console.log("price", price)
+        console.log("Adding to the Backet",userID)
+        console.log("Product", ID)
+        console.log("price", productName)
+        console.log("avaliable", price)
         console.log("avaliable", avaliable)
         console.log("avaliable", discount)
+        console.log("avaliable", image)
+        console.log("avaliable", counter)
 
         dispatch({
             type: ADD_PRODUCT_TO_WATCHLIST,
-            payload: {userID: userID, productID: ID,name :productName, price: price, avaliable: avaliable, discount: discount, image:image, counter: counter}
+            payload: {watchID:watchID, userID: userID, productID: ID,name :productName, price: price, avaliable: avaliable, discount: discount, image:image, counter: counter}
         })
 
 

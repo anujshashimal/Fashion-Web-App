@@ -22,16 +22,13 @@ export default (state = initialState, action) =>{
 
     switch(action.type) {
         case ADD_PRODUCT_TO_BACKET:
-            // let addQuntity = {...state.items[payload]}
-            // console.log(addQuntity)
-            // addQuntity.numbers++;
-            // console.log(addQuntity)
-            // console.log(payload)
+
             state.items.map((itemss, index)=>{
                 console.log(itemss)
                 console.log(payload.productID)
                 if(payload.productID === itemss.productID){
                         itemss.counter++
+
                         // state.backetNumbers = itemss.counter
                 }
 
@@ -107,9 +104,13 @@ export default (state = initialState, action) =>{
                 cartCost: state.cartCost - payload.price
             }
         case PLACE_ORDER_DIR:
+            if(payload.counter == 0){
+                payload.counter =1
+            }
+
             return {
                 ...state,
-                cartCost: payload.price,
+                cartCost: payload.price * payload.counter,
                 getdiscount: payload.price * payload.discount * (1 / 100),
 
             }
@@ -124,8 +125,6 @@ export default (state = initialState, action) =>{
                 items:[],
                 showItem: false,
             }
-
-
 
         default:
             return state;

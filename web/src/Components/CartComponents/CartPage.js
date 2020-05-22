@@ -39,7 +39,7 @@ const CartPage = (props) =>{
         productInCart.push(props.basketProps.items[item])
 
     })
-
+    console.log(productInCart)
     filteredArr = productInCart.reduce((acc, current) => {
         const x = acc.find(item => item.productID === current.productID);
         if (!x) {
@@ -68,7 +68,7 @@ const CartPage = (props) =>{
                     <i onClick={() =>props.productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>
                 </td>
                 <td className="tabletext">{product.avaliable}</td>
-                <td className="tabletext">{product.discount}</td>
+                <td className="tabletext">{product.discount} %</td>
                 <td className="tabletext">{product.price}</td>
             </tr>
         )})
@@ -110,7 +110,7 @@ const CartPage = (props) =>{
                         <hr/>
                         <h4 className='basketTotalTitle'>Total Amount to Pay: </h4>
                         <h4 className='basketTotal'>Rs. {props.basketProps.cartCost},00 </h4>
-                        <Link type="button" className="btn red darken-3" to='PlaceOrder'  >Place Order
+                        <Link type="button" className="btn red darken-3" to={'PlaceOrder?username='+username}  >Place Order
                         </Link>
                     </div>
                 </header>

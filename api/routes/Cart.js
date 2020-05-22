@@ -65,21 +65,22 @@ router.route('/PlaceOrder').post((req,res)=>{
 
 
 router.route('/WatchList').post((req,res)=>{
-
+    const watchID = req.body.watchID;
     const userID = req.body.userID;
-    const qty = req.body.qty;
+    const counter = req.body.counter;
     const avaliable = req.body.avaliable;
-    const Product_ID = req.body.Product_ID;
+    const productID = req.body.productID;
     const price = req.body.price;
     const name = req.body.name;
     const image = req.body.image;
     const discount = req.body.discount;
 
     const WatchItems = new WatchList({
+        watchID,
         userID,
-        qty,
+        counter,
         avaliable,
-        Product_ID,
+        productID,
         price,
         name,
         image,

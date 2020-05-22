@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
         case PLACE_ORDER_DIR:
         return{
             ...state,
-            cartCost : state.cartCost + payload.price
+            cartCost : state.cartCost + payload.price * payload.counter
         }
 
         default :
