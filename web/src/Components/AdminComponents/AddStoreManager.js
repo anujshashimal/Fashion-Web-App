@@ -36,11 +36,11 @@ export class addStoreManager extends Component {
                     if (this.state.password ==  this.state.rePassword && this.state. password != "" &&  this.state.rePassword !=""){
 
 
-                        axios.get('http://167.172.155.186/storemanager/storemanager/'+this.state.name)
+                        axios.get('http://167.172.155.186:5000/storemanager/storemanager/'+this.state.name)
                             .then(response=>{
                                 if(response.data.length==0){
 
-                                    axios.get('http://167.172.155.186/smid/storemanagerID')
+                                    axios.get('http://167.172.155.186:5000/smid/storemanagerID')
                                         .then(response => {
                                             if (response.data.length > 0) {
                                                 this.setState({
@@ -65,14 +65,14 @@ export class addStoreManager extends Component {
                                             }
 
 
-                                            axios.post('http://167.172.155.186/storemanager/addStoreManager', storeManager)
+                                            axios.post('http://167.172.155.186:5000/storemanager/addStoreManager', storeManager)
                                                 .then(res => console.log(res.data));
 
                                             const storeManagerID = {
                                                 "smId": this.state.smid + 1
 
                                             }
-                                            axios.post('http://167.172.155.186/smid/updatestoremanagerID', storeManagerID)
+                                            axios.post('http://167.172.155.186:5000smid/updatestoremanagerID', storeManagerID)
                                                 .then(res => console.log(res.data));
 
 
