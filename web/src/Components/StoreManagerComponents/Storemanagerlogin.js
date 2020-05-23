@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './css/StoreLoginRegister.css';
 import back from './shopping.gif'
 import logo from './images/logo.gif'
-import Header from '../CommonComponents/header'
+import Header from '../CommonComponents/NavbarPage'
 import  { Redirect } from 'react-router-dom'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import swal from 'sweetalert';
