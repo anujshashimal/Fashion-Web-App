@@ -9,6 +9,7 @@ import Header from "../CommonComponents/header.js";
 import Footer from '../CommonComponents/footer';
 import  {Link}  from  'react-router-dom'
 import Page from 'react-page-loading'
+import Nav from '../CommonComponents/NavbarPage'
 import {connect} from "react-redux";
 import {removeItemFromWathList} from "../../Actions/addWatchList";
 import {productQuntity} from "../../Actions/ProductQuantity";
@@ -75,7 +76,8 @@ export class Home extends Component {
             <div>
 
                 <Page loader={"bubble-spin"} color={"#c62828"} size={20} duration={2}>
-                <Header username={this.state.username} />
+                <Nav username={this.state.username}/>
+                {/* <Header username={this.state.username} /> */}
                 <br/><br/>
                 <div style={{textAlign: 'center'}}>
                 <img src={logo} alt="Avatar" style={{width:'20%'}}/>
