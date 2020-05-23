@@ -8,6 +8,7 @@ import img from "../../img/sample1.jpg";
 import {connect} from "react-redux";
 import {removeItemFromWathList} from "../../Actions/addWatchList";
 import {productQuntity} from '../../Actions/ProductQuantity'
+import swal from "sweetalert";
 
 const queryString = require('query-string');
 
@@ -90,31 +91,32 @@ componentDidUpdate() {
             method: 'delete',
             url: 'http://54.84.43.211:5000/cart/deleteItem/' + id,
         })
+
     }
 
+    removeItemFromWatchPage = (id) => {
+        this.props.watchListProps.backetNumbers = this.props.watchListProps.backetNumbers -1
+        axios({
+            method: 'delete',
+            url: 'http://54.84.43.211:5000/cart/deleteItem/' + id,
+        })
+
+    }
 
     render() {
 
             const addToCartForPayment = () => {
 
-                // Object.keys(this.state.Items).forEach( function (item) {
-                //     console.log(item)
-                //     this.props.basketProps.items.push(this.state.Items[item])
-                    this.props.basketProps.backetNumbers = this.props.basketProps.backetNumbers+1
-                    this.props.basketProps.cartCost = this.props.watchListProps.cartCost
-                //     console.log(this.props.basketProps)
-                // })
-                console.log('hello')
-
                 console.log(this.props.basketProps)
                 this.state.Items.map((item, index) => {
                     console.log(item)
-                    let total = item.price
-                    total = total + item.price
-                    let newval = total - item.price
-                    this.props.basketProps.cartCost = newval - newval
-                    item.counter = 1
-                    this.props.basketProps.cartCost = this.props.basketProps.cartCost + newval
+                    // let nTotal;
+                    // let total = item.price
+                    // nTotal = total + item.price
+                    // let newval = total - item.price
+                    // this.props.basketProps.cartCost = newval - newval
+                    item.counter = 0
+                    // this.props.basketProps.cartCost = this.props.basketProps.cartCost + item.price
                     console.log(this.props.basketProps.cartCost)
                     this.props.basketProps.items.push(item)
 
@@ -145,16 +147,16 @@ componentDidUpdate() {
                 return(
 
                     <tr>
-                        <button type="button" className="close" aria-label="Close" onClick={() => this.removeItemFromWatch(product._id)}>
+                        <button type="button" className="close" aria-label="Close" onClick={() => this.removeItemFromWatchPage(product._id)}>
                             <span aria-hidden="true">&times;</span>
                         </button>
                         {/*{this.setState({productid: product._id})}*/}
                         <img src={product.image} alt="Product" style={{height: "100px" }} />
                         <td className="tabletext">{product.name}</td>
                         <td className="tabletext">
-                            <i onClick={() =>this.props.productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>&nbsp;&nbsp;
+                            {/*<i onClick={() =>this.props.productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>&nbsp;&nbsp;*/}
                             {product.counter}&nbsp;&nbsp;
-                            <i onClick={() =>this.props.productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>
+                            {/*<i onClick={() =>this.props.productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>*/}
                         </td>
                         <td className="tabletext">{product.avaliable}</td>
                         <td className="tabletext">{product.discount} %</td>
@@ -174,9 +176,9 @@ componentDidUpdate() {
                         <img src={this.state.image} alt="Product" style={{height: "100px" }} />
                         <td className="tabletext">{this.state.name}</td>
                         <td className="tabletext">
-                            <i onClick={() =>productQuntity("DECREASE", this.state.productID, this.state.price)} className="fas fa-angle-left"></i>
+                            {/*<i onClick={() =>productQuntity("DECREASE", this.state.productID, this.state.price)} className="fas fa-angle-left"></i>*/}
                             {this.state.counter}
-                            <i onClick={() =>productQuntity("INCREASE",this.state.productID,this.state.price)} className="fas fa-angle-right"></i>
+                            {/*<i onClick={() =>productQuntity("INCREASE",this.state.productID,this.state.price)} className="fas fa-angle-right"></i>*/}
                         </td>
                         <td className="tabletext">{this.state.avaliable}</td>
                         <td className="tabletext">{this.state.discount}</td>
@@ -216,13 +218,16 @@ componentDidUpdate() {
                                 </MDBTableHead>
                                 <MDBTableBody>
                                     {arr}
-
                                 </MDBTableBody>
                             </MDBTable>
                             <div className='basketTotalContainer'>
                                 <hr/>
                                 {/*<h4 className='basketTotalTitle'>Total Amount to Pay: </h4>*/}
-                                <button type="button" className='btn btn-red darken-3' onClick={() => addToCartForPayment()}> Add Product To Cart
+                                <button type="button" className='btn btn-red darken-3' onClick={() => {addToCartForPayment() ; swal({
+                                    title: "Your all item is added to the cart",
+                                    icon: "warning",
+                                    dangerMode: true,
+                                })}}> Add Product To Cart
                                     {/*<span aria-hidden="true">&times;</span>*/}
                                 </button>
                                 {/*<h4 className='basketTotal'>Rs. {basketProps.cartCost},00 </h4>*/}

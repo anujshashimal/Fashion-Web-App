@@ -80,7 +80,15 @@ export class ProductDetails extends Component {
         const {itemid, product, Cprice, username} =this.state
         console.log(this.state)
         if(this.state.ragister) {
+            swal({
+                title: "Please Login To the System",
+                text: "If your are not registered you can register",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
             return <Redirect to={"/Login"} />
+
         }else if(this.state.place){
             return <Redirect  to={"/PlaceOrder?username=" + this.state.username} />
         }
@@ -153,9 +161,19 @@ export class ProductDetails extends Component {
                                 <div style={{textAlign: "", marginTop:""}}>
                                     <div className="row">
                                         <div className="col">
-                                            <button type="button" className="btn btn-deep-purple btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.addBasket(val._id, val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i className="fas fa-cart-arrow-down"></i>&nbsp;&nbsp; Add to Cart</button>                                        </div>
+                                            <button type="button" className="btn btn-deep-purple btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.addBasket(val._id, val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true})) ; swal({
+                                                title: "Added to Cart",
+                                                text: "Your item is added to the Cart!",
+                                                icon: "warning",
+                                                dangerMode: true,
+                                            })}}><i className="fas fa-cart-arrow-down"></i>&nbsp;&nbsp; Add to Cart</button>                                        </div>
                                         <div className="col">
-                                            <button type="button" className="btn btn-red darken-3 btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.addToWatchList(val._id,this.state.username, val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i className="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>                                        </div>
+                                            <button type="button" className="btn btn-red darken-3 btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.addToWatchList(val._id,this.state.username, val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true})) ; swal({
+                                                title: "Added to WishList",
+                                                text: "Your item is added to the WishList!",
+                                                icon: "warning",
+                                                dangerMode: true,
+                                            }) }}><i className="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>                                        </div>
                                     </div>
                                     {/* <div className="row" style={{marginTop: "3%", marginBottom: "3%"}}>
                                         <div className="col">

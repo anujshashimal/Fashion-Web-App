@@ -14,6 +14,7 @@ const initialState = {
     withDiscartCost: 0,
     getdiscount: 0,
     items: [],
+    discount:0,
     showItem: false,
 }
 
@@ -28,9 +29,11 @@ export default (state = initialState, action) =>{
                 console.log(payload.productID)
                 if(payload.productID === itemss.productID){
                         itemss.counter++
-
+                        payload.price = itemss.price * itemss.counter
                         // state.backetNumbers = itemss.counter
                 }
+
+
 
             })
 
@@ -44,8 +47,8 @@ export default (state = initialState, action) =>{
                         // cartCost: state.cartCost + (action.payload.price * action.payload.counter),
                         // backetNumbers: state.backetNumbers +1,
                         cartCost: state.cartCost + action.payload.price * 1,
-                        getdiscount: state.cartCost * action.payload.discount * (1 / 100),
-                        withDiscartCost: state.cartCost - ((state.cartCost) * action.payload.discount * (1 / 100)),
+                        // getdiscount: state.cartCost * action.payload.discount * (1 / 100),
+                        getdiscount: state.cartCost - ((state.cartCost) * action.payload.discount * (1 / 100)),
                         items: [
                             ...state.items,
                             {...payload}
@@ -60,12 +63,20 @@ export default (state = initialState, action) =>{
         case REMOVE_PRODUCT:
             const id = action.payload.id
             let deletedItem = state.items.findIndex(item => item.id === action.id);
-            state.items.splice(deletedItem, 1)
+            state.items.map((item, index) =>{
+                if(index === deletedItem){
+                    let del = item.counter;
+                    console.log(del)
+                    payload.price = item.price * item.counter
+                    state.items.splice(deletedItem, 1)
+                    state.backetNumbers = state.backetNumbers - item.counter
+                }
+            })
 
             return {
                 ...state,
                 ...state.items,
-                backetNumbers: state.backetNumbers - 1,
+                // backetNumbers: state.backetNumbers - 1,
                 cartCost: state.cartCost - payload.price
 
             }
@@ -77,7 +88,6 @@ export default (state = initialState, action) =>{
                 console.log(action.payload.ID)
                 if(itemss.productID == payload.ID){
                     itemss.counter = itemss.counter +1;
-
 
                 }})
 
@@ -107,12 +117,10 @@ export default (state = initialState, action) =>{
             if(payload.counter == 0){
                 payload.counter =1
             }
-
             return {
                 ...state,
                 cartCost: payload.price * payload.counter,
-                getdiscount: payload.price * payload.discount * (1 / 100),
-
+                getdiscount: payload.price*payload.counter - (payload.price * payload.description * (1 / 100)) * payload.counter,
             }
 
         case CLEAT_ALL_DETAILS:

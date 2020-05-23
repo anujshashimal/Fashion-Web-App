@@ -57,7 +57,7 @@ const CartPage = (props) =>{
         console.log(index)
         return(
             <tr>
-                <button type="button" className="close" aria-label="Close" onClick={() => props.removeItem(index, product.price)}>
+                <button type="button" className="close" aria-label="Close" onClick={() => props.removeItem(index, product.price, product.counter)}>
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <img src={product.image} alt="Product" style={{height: "100px" }} />
@@ -110,7 +110,8 @@ const CartPage = (props) =>{
                         <hr/>
                         <h4 className='basketTotalTitle'>Total Amount to Pay: </h4>
                         <h4 className='basketTotal'>Rs. {props.basketProps.cartCost},00 </h4>
-                        <Link type="button" className="btn red darken-3" to={'PlaceOrder?username='+username}  >Place Order
+
+                        <Link type="button" className="btn btn-red darken-3" to={'PlaceOrder?username='+username}  >Place Order
                         </Link>
                     </div>
                 </header>
