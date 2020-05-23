@@ -142,29 +142,29 @@ export class comments extends Component {
                 <h2>Comments</h2><hr/>
 
                 <div>
-                <form onSubmit={this.handleCommentSubmit}>
-                {(this.props.username !== '' && this.props.username !== 'undefined') ? (
-                <div>
-                    <div>
-                    {[...Array(5)].map((star, i) =>{
-                    const ratingValue = i + 1;
-                    return (
-                        <label>
-                            <input type="radio"
-                             name="rating" 
-                             value={ratingValue} 
-                             onClick={()=>this.HandleRateing(ratingValue)} 
-                             style={{display : 'none'}}/>
+                    <form onSubmit={this.handleCommentSubmit}>
+                        {(this.props.username !== '' && this.props.username !== 'undefined') ? (
+                        <div>
+                            <div>
+                                {[...Array(5)].map((star, i) =>{
+                                const ratingValue = i + 1;
+                                return (
+                                    <label>
+                                        <input type="radio"
+                                        name="rating" 
+                                        value={ratingValue} 
+                                        onClick={()=>this.HandleRateing(ratingValue)} 
+                                        style={{display : 'none'}}/>
     
-                            <FaStar 
-                            className="star" 
-                            color={ratingValue <= (hover || rating) ? "#ffc107" : "#ffffff"} 
-                            size={30} 
-                            onMouseEnter={() => this.HandleHover(ratingValue)} 
-                            onMouseLeave={() => this.HandleHover(null)} />
-                        </label>
-                    );
-                })}
+                                        <FaStar 
+                                        className="star" 
+                                        color={ratingValue <= (hover || rating) ? "#ffc107" : "#ffffff"} 
+                                        size={30} 
+                                        onMouseEnter={() => this.HandleHover(ratingValue)} 
+                                        onMouseLeave={() => this.HandleHover(null)} />
+                                    </label>
+                                );
+                            })}
                 <p>
                     {/* The rating is {rating}. */}
                     The rating is <font color="#ffffff">
