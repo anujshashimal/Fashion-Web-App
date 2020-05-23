@@ -5,27 +5,28 @@ const WatchLists = new Schema({
 
     userID:{
         type:String,
-        required:true
     },
-    qty:{
+    watchID:{
         type:String,
-        required:true
+    },
+    counter:{
+        type:Number,
     },
     avaliable:{
-        type:String,
+        type:Number,
     },
-    Product_ID:{
+    productID:{
         type:String,
     },
     price:{
-        type:String,
+        type:Number,
     },name:{
         type:String,
     },
     image:{
         type:String,
     },discount:{
-        type:String,
+        type:Number,
     }
 });
 

@@ -10,6 +10,10 @@ import Footer from '../CommonComponents/footer';
 import  {Link}  from  'react-router-dom'
 import Page from 'react-page-loading'
 import Nav from '../CommonComponents/NavbarPage'
+import {connect} from "react-redux";
+import {removeItemFromWathList} from "../../Actions/addWatchList";
+import {productQuntity} from "../../Actions/ProductQuantity";
+import axios from "axios";
 
 const queryString = require('query-string');
 
@@ -20,6 +24,7 @@ export class Home extends Component {
     
         this.state = {
              username: '',
+            Items:[],
 
         }
     }
@@ -32,13 +37,44 @@ export class Home extends Component {
         this.setState({
             username: values.username,
         })
+
+        const data = {
+            watchID: this.state.watchID,
+            avaliable: this.state.avaliable,
+            product_ID: this.state.productID,
+            price: this.state.price,
+            name: this.state.name,
+            image: this.state.image,
+            discount: this.state.discount
+
+        }
+        try {
+            const responce = axios({
+                method: 'get',
+                url: 'http://localhost:5000/cart/findWatchlistItems/' + values.username,
+                data: data,
+            }).then(response => {
+                this.setState({
+                    Items: response.data.map(Items => Items)
+                })
+            })
+        } catch (ex) {
+
+        }
+
     }
-    
+
+
     render() {
-        
-        
+
+            this.state.Items.forEach((producy) => {
+                this.props.watchListProps.backetNumbers++
+
+        })
+
         return (
             <div>
+
                 <Page loader={"bubble-spin"} color={"#c62828"} size={20} duration={2}>
                 <Nav username={this.state.username}/>
                 {/* <Header username={this.state.username} /> */}
@@ -122,5 +158,9 @@ export class Home extends Component {
         )
     }
 }
+const mapStateToPropss = state => ({
+    watchListProps : state.watchListState,
+    basketProps : state.basketState,
+})
 
-export default Home
+export default connect(mapStateToPropss)(Home);

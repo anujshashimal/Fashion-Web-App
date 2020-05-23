@@ -2,14 +2,14 @@ import {ADD_PRODUCT_TO_BACKET, ADD_PRODUCT_TO_WATCHLIST, REMOVE_PRODUCT, CLEAT_A
 
 
 
-export const removeItem = (id, price)=>{
+export const removeItem = (id, price, counter)=>{
     return function (dispatch) {
         console.log("id is" , id)
         console.log("id is" , price)
 
         dispatch({
             type:REMOVE_PRODUCT,
-            payload: {id, price}
+            payload: {id, price, counter}
         })
     }
 }

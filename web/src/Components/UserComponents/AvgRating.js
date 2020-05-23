@@ -29,7 +29,6 @@ export class AvgRating extends Component {
             this.setState({
                 AvgRate : response.data.avg,
         })
-        console.log('avg', this.state.AvgRate)
       })
     }
     

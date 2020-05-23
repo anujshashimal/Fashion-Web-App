@@ -65,21 +65,22 @@ router.route('/PlaceOrder').post((req,res)=>{
 
 
 router.route('/WatchList').post((req,res)=>{
-
+    const watchID = req.body.watchID;
     const userID = req.body.userID;
-    const qty = req.body.qty;
+    const counter = req.body.counter;
     const avaliable = req.body.avaliable;
-    const Product_ID = req.body.Product_ID;
+    const productID = req.body.productID;
     const price = req.body.price;
     const name = req.body.name;
     const image = req.body.image;
     const discount = req.body.discount;
 
     const WatchItems = new WatchList({
+        watchID,
         userID,
-        qty,
+        counter,
         avaliable,
-        Product_ID,
+        productID,
         price,
         name,
         image,
@@ -94,8 +95,10 @@ router.route('/WatchList').post((req,res)=>{
 
 router.get('/findOrder',CartControlller.Find_All_OrderDetails);
 router.get('/findUserOrder/:fullname',CartControlller.Find_All_OrderDetails_User);
-router.get('/findWatchlistItems/:userID', CartControlller.Find_Watchlist_Items)
+router.get('/findWatchlistItems/:userID', CartControlller.Find_Watchlist_Items);
+router.get('/findWatchlistItems', CartControlller.GET_Watchlist_Items);
 router.delete('/deleteItem/:_id',CartControlller.Delete_WatchList_Items);
-router.put('/update/:productid',CartControlller.Update_WatchList_Items);   // Update  the Comment-------------------------------
+router.put('/update/:productid',CartControlller.Update_WatchList_Items);
+
 
 module.exports = router;

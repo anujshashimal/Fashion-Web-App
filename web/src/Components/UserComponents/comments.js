@@ -24,7 +24,6 @@ export class comments extends Component {
 
     
     componentDidUpdate(){
-    
         axios.get('http://localhost:5000/Comments/find')
         .then(response=>{
           if(response.data.length>0){
@@ -32,8 +31,6 @@ export class comments extends Component {
                 Comments :  response.data.map(Comments=>Comments),
          })}
         })
-        
-
     }
 
     handleCommentsChange = event => {

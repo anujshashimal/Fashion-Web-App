@@ -1,4 +1,4 @@
-const  StoreManagerID = require('../models/StoreManagerID');
+const  StoreManagerID = require('../models/storemanagerID');
 
 exports.Find_StoreManagerID = (req,res,next)=>{
     StoreManagerID.find()

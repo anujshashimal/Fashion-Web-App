@@ -58,6 +58,10 @@ export default class header extends Component{
 
             }
             if(response.data.length != 0){
+                this.setState({
+                    storemanager: response.data[0]
+                });
+                
                 if(this.state.storemanagerpassword == this.state.storemanager.Password){
                     // sessionStorage.setItem('userData', this.state.user);
                     // alert("Login Success");
@@ -76,21 +80,6 @@ export default class header extends Component{
             }else{
                 NotificationManager.error(' Error', 'You are not store Manager');
             }
-
-            this.setState({
-                storemanager: response.data[0]
-            },()=>{
-
-                    
-              //  console.log('storemanager',this.state.storemanager)
-              //  console.log('password',this.state.storemanagerpassword)
-              //  console.log('storenamager password',this.state.storemanager.Password)
-              //  console.log('storenamager username',this.state.storemanager.UserName)
-              //  console.log('storemanager id',this.state.storemanager.smId)
-
-
-            });
-            
            
             
         }).catch(err=>console.log("Error:"+err))

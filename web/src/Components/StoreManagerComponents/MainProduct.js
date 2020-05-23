@@ -30,20 +30,9 @@ class MainProduct extends Component {
       <div className="container">  
         <StorManagerNavBar  managerid = {values.storemanagerid} managername ={values.storenamagerusername} /> 
          <div className="jumbotron">
-              <h2 className="header" style={{fontFamily:"Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"}}><b>Welcome {values.storenamagerusername} !!!!!</b></h2>
+              <h2 className="header" style={{color: 'red',fontFamily:"Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"}}><b>Welcome {values.storenamagerusername} !!!!!</b></h2>
                   {/* <img src={Storemanager} alt="Avatar" style={{width:'5%', height:'5%',marginLeft:'80%',marginTop:'-8%'}}/> */}
-                <div className ="details" >
-                     <div className="texboxwidth">
-                               <label htmlFor="exampleInput">Id</label>   
-                               <input type="text" id="exampleInput" className="textbox" value ={values.storemanagerid} disabled/>            
-                      </div>
-                      <div className="texboxwidth">
-                               <label htmlFor="exampleInput">Name</label>
-                               <input type="text" id="exampleInput" className="" value ={values.storenamagerusername} disabled/>          
-                      </div>
-                    {/* <b>You can go Add Product Page In Click Navigation Bar Add Product link.And also You can See Your All Add Product Details in click Product list in navigation bar</b> */}
-                </div>
-                <b>You can go Add Product Page In Click Navigation Bar Add Product link.And also You can See Your All Add Product Details in click Product list in navigation bar</b>
+                <h3 style = {{ color: 'black', fontFamily: "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"}}>If You want to Add Product Details Please go to Add Product link in the Navigation bar.If You want to see Product details go to Product List link in the Navigation bar.</h3>
           </div>
       </div>
       </div>
