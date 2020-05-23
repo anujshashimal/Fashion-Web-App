@@ -1,0 +1,27 @@
+.fa.fa-shopping-bag:hover {  
+    transform: rotate(360deg);
+}
+.fa.fa-shopping-bag {
+    transition: transform 0.5s ease 0s;
+}
+
+.fa.fa-heart:hover {  
+    transform: rotate(360deg);
+}
+.fa.fa-heart {
+    transition: transform 0.5s ease 0s;
+}
+
+.fa.fa-cart-arrow-down:hover {  
+    transform: rotate(360deg);
+}
+.fa.fa-cart-arrow-down {
+    transition: transform 0.5s ease 0s;
+}
+
+.fa.fa-shopping-cart:hover {  
+    transform: rotate(360deg);
+}
+.fa.fa-shopping-cart {
+    transition: transform 0.5s ease 0s;
+}

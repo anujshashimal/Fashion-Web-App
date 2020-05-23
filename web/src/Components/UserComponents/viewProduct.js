@@ -9,6 +9,7 @@ import Footer from '../CommonComponents/footer';
 import { MDBBadge, MDBContainer, MDBIcon } from "mdbreact";
 import './viewProduct.css';
 import AvgRate from "./AvgRating";
+import Nav from '../CommonComponents/NavbarPage'
 
 const queryString = require('query-string');
 
@@ -106,7 +107,8 @@ export class viewProduct extends Component {
         const {subcategory, maincategory} =this.state
         return (
             <div>
-                <Header username={this.state.username} />
+                {/* <Header username={this.state.username} /> */}
+                <Nav username={this.state.username}/>
                 <br/>
                 {/* <button type="button" className="button" onClick={this.Logout}>Logout</button> */}
                 
@@ -167,7 +169,7 @@ export class viewProduct extends Component {
                     </div>
 
                 </div>
-                             
+                     
                 {(this.state.subcategory === 'All') ? (
                     
                         <div1 className="row" style={{textAlign: "center" , marginLeft: "1%" , marginRight: "1%" , marginTop: "1%"}}>
@@ -184,12 +186,17 @@ export class viewProduct extends Component {
                                       <h4><b>{products.description}</b></h4>
                                       
                                       <p>
-                                      <AvgRate productid={products.productid} />
+                                      
                                           {/* Product ID : {products.productid}<br/> */}
                                       <div className="raw" style={{backgroundColor: "#ff4444", color: "white"}}>
                                       <h3>LKR {products.price}.00</h3>
                                       </div>
-                                      {(products.quantity == 0) ? (
+                                      <div className="row" style={{textAlign: "center"}}>
+                                          <div className="col">
+                                          <AvgRate productid={products.productid} />
+                                              </div>
+                                              <div className="col">
+                                              {(products.quantity == 0) ? (
                                         <h5><MDBBadge tag="a" color="red"> Out of Stock </MDBBadge></h5>
                                     ) : (
                                         <div>
@@ -197,6 +204,9 @@ export class viewProduct extends Component {
                                         {/* Available : {products.quantity} */}
                                     </div>
                                     )}
+                                            </div>
+                                        </div>
+                                      
                                       </p>
                                   </div>
                           </div></Link>
@@ -221,8 +231,13 @@ export class viewProduct extends Component {
                                    <div className="raw" style={{backgroundColor: "#ff4444", color: "white"}}>
                                       <h3>LKR {products.price}.00</h3>
                                     </div>
-                                   {/* Available : {products.quantity}</p> */}
-                                   {(products.quantity == 0) ? (
+
+                                    <div className="row" style={{textAlign: "center"}}>
+                                          <div className="col">
+                                          <AvgRate productid={products.productid} />
+                                              </div>
+                                              <div className="col">
+                                              {(products.quantity == 0) ? (
                                         <h5><MDBBadge tag="a" color="red"> Out of Stock </MDBBadge></h5>
                                     ) : (
                                         <div>
@@ -230,6 +245,18 @@ export class viewProduct extends Component {
                                         {/* Available : {products.quantity} */}
                                     </div>
                                     )}
+                                            </div>
+                                        </div>
+
+                                   {/* Available : {products.quantity}</p> */}
+                                   {/* {(products.quantity == 0) ? (
+                                        <h5><MDBBadge tag="a" color="red"> Out of Stock </MDBBadge></h5>
+                                    ) : (
+                                        <div>
+                                            <h5><MDBBadge tag="a" color="dark"> Available : {products.quantity} </MDBBadge></h5> */}
+                                        {/* Available : {products.quantity} */}
+                                    {/* </div>
+                                    )} */}
                                       </p>
                                </div>
                        </div></Link>
