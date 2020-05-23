@@ -6,6 +6,8 @@ import  { Redirect, Link } from 'react-router-dom'
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import swal from 'sweetalert';
+import { MDBIcon } from "mdbreact";
+
 
 const axios = require('axios');
 
@@ -180,7 +182,7 @@ export default class header extends Component{
                                         <br/><br/>
                                         <div style={{textAlign: "center"}}>
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                                            <Link to={'/Storemanagerlogin'} style={{color: "#ffffff"}} className="btn btn-red"><i id="navbar-static-cart" alt="Cart" className="fas fa-user"> </i> StoreManager/Admin Login</Link>
+                                            <Link to={'/Storemanagerlogin'} style={{color: "#ffffff"}} className="btn btn-red"><h4><MDBIcon icon="user-tie" /> StoreManager/Admin Login</h4></Link>
                         </div>
                                     </div>
                                 </form>
