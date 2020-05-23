@@ -60,7 +60,7 @@ exports.SaveStoreManager = (req,res,next)=>{
         from: 'sliitfashionwebapp@gmail.com',
         to: Email,
         subject: 'Congratulation !! You were added as a Store Manager in SLIIT Fashion Web app by '+Admin,
-        text: ' Email :'+Email+' User Name :'+UserName+' Password : '+Password+' please click this link to go loging page http://localhost:3000/Storemanagerlogin'
+        text: ' Email :'+Email+' User Name :'+UserName+' Password : '+Password+' please click this link to go loging page http://54.84.43.211/Storemanagerlogin'
     };
 
     console.log(Email);
