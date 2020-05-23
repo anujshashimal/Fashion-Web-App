@@ -25,7 +25,7 @@ export class Addcategory extends Component {
 
     }
     componentDidUpdate() {
-        axios.get('http://54.84.43.211:5000/category/findCategory/'+this.state.MainCategory+'/'+this.state.Admin)
+        axios.get('http://167.172.155.186/category/findCategory/'+this.state.MainCategory+'/'+this.state.Admin)
             .then(response=>{
                 if(response.data.length>0){
                     this.setState({
@@ -52,7 +52,7 @@ export class Addcategory extends Component {
 
         })
         console.log(this.state.MainCategory);
-        axios.get('http://54.84.43.211:5000/category/findCategory/'+this.state.MainCategory+'/'+this.state.Admin)
+        axios.get('http://167.172.155.186/category/findCategory/'+this.state.MainCategory+'/'+this.state.Admin)
             .then(response=>{
                 if(response.data.length>0){
                     this.setState({
@@ -84,11 +84,11 @@ export class Addcategory extends Component {
             if(this.state.MainCategory !=""){
                 if(this.state.Admin != ""){
 
-                    axios.get('http://54.84.43.211:5000/category/findCategorybyname/'+this.state.MainCategory+'/'+this.state.CategoryName)
+                    axios.get('http://167.172.155.186/category/findCategorybyname/'+this.state.MainCategory+'/'+this.state.CategoryName)
                         .then(response=> {
                             if (response.data.length == 0) {
 
-                                axios.get('http://54.84.43.211:5000/categoryID/CategoryID')
+                                axios.get('http://167.172.155.186/categoryID/CategoryID')
                                     .then(response=>{
                                         if(response.data.length>0){
                                             this.setState({
@@ -103,14 +103,14 @@ export class Addcategory extends Component {
                                         }
 
 
-                                        axios.post('http://54.84.43.211:5000/category/addCategory',Category)
+                                        axios.post('http://167.172.155.186/category/addCategory',Category)
                                             .then(res=>console.log(res.data));
 
                                         const CategoryID ={
                                             "Category_ID":this.state.CategoryID+1
 
                                         }
-                                        axios.post('http://54.84.43.211:5000/categoryID/updateCategoryID',CategoryID)
+                                        axios.post('http://167.172.155.186/categoryID/updateCategoryID',CategoryID)
                                             .then(res=>console.log(res.data));
 
 
@@ -204,7 +204,7 @@ export class Addcategory extends Component {
 
 
                                                                                    });
-                                                                                   axios.delete('http://54.84.43.211:5000/category/deletecategory/'+SubCategoryNames.Category_ID)
+                                                                                   axios.delete('http://167.172.155.186/category/deletecategory/'+SubCategoryNames.Category_ID)
                                                                                        .then(res=>console.log(res.data));
                                                                                } else {
                                                                                    swal("Category is safe!");

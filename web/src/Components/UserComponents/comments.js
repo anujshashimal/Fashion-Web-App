@@ -24,7 +24,7 @@ export class comments extends Component {
 
     
     componentDidUpdate(){
-        axios.get('http://54.84.43.211:5000/Comments/find')
+        axios.get('hhttp://167.172.155.186/Comments/find')
         .then(response=>{
           if(response.data.length>0){
             this.setState({
@@ -60,7 +60,7 @@ export class comments extends Component {
         try{
             const responce = await axios({
                 method: 'post',
-                url: 'http://54.84.43.211:5000/Comments/add',
+                url: 'http://167.172.155.186/Comments/add',
                 data: data,
               });
               console.log(responce);
@@ -69,7 +69,7 @@ export class comments extends Component {
     }
 
     deleteComment(comment_id) {
-        axios.delete('http://54.84.43.211:5000/Comments/delete/'+comment_id)
+        axios.delete('http://167.172.155.186/Comments/delete/'+comment_id)
         .then(res=>console.log(res.data))
         // this.setState({
         // Products : this.state.Products.filter(product=>product.productid != product_id)
@@ -110,7 +110,7 @@ export class comments extends Component {
             rate: this.state.rating,
         }
 
-        axios.post('http://54.84.43.211:5000/Comments/update/'+this.state.editid,Comments)
+        axios.post('http://167.172.155.186/Comments/update/'+this.state.editid,Comments)
        .then(res=>console.log(res.data));
        this.setState({
         editid: '',
@@ -142,29 +142,29 @@ export class comments extends Component {
                 <h2>Comments</h2><hr/>
 
                 <div>
-                <form onSubmit={this.handleCommentSubmit}>
-                {(this.props.username !== '' && this.props.username !== 'undefined') ? (
-                <div>
-                    <div>
-                    {[...Array(5)].map((star, i) =>{
-                    const ratingValue = i + 1;
-                    return (
-                        <label>
-                            <input type="radio"
-                             name="rating" 
-                             value={ratingValue} 
-                             onClick={()=>this.HandleRateing(ratingValue)} 
-                             style={{display : 'none'}}/>
+                    <form onSubmit={this.handleCommentSubmit}>
+                        {(this.props.username !== '' && this.props.username !== 'undefined') ? (
+                        <div>
+                            <div>
+                                {[...Array(5)].map((star, i) =>{
+                                const ratingValue = i + 1;
+                                return (
+                                    <label>
+                                        <input type="radio"
+                                        name="rating" 
+                                        value={ratingValue} 
+                                        onClick={()=>this.HandleRateing(ratingValue)} 
+                                        style={{display : 'none'}}/>
     
-                            <FaStar 
-                            className="star" 
-                            color={ratingValue <= (hover || rating) ? "#ffc107" : "#ffffff"} 
-                            size={30} 
-                            onMouseEnter={() => this.HandleHover(ratingValue)} 
-                            onMouseLeave={() => this.HandleHover(null)} />
-                        </label>
-                    );
-                })}
+                                        <FaStar 
+                                        className="star" 
+                                        color={ratingValue <= (hover || rating) ? "#ffc107" : "#ffffff"} 
+                                        size={30} 
+                                        onMouseEnter={() => this.HandleHover(ratingValue)} 
+                                        onMouseLeave={() => this.HandleHover(null)} />
+                                    </label>
+                                );
+                            })}
                 <p>
                     {/* The rating is {rating}. */}
                     The rating is <font color="#ffffff">

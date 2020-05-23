@@ -68,7 +68,7 @@ export default class header extends Component{
 
     async getUser (){
         console.log(this.state.username)
-        axios.get('http://54.84.43.211:5000/user/finds/'+this.state.username)
+        axios.get('http://167.172.155.186/user/finds/'+this.state.username)
         .then(response=>{
 
             console.log(response.data.length)
@@ -131,7 +131,7 @@ export default class header extends Component{
                 <div className="row">
                     <div className="col-md-6">
                     <div style={{textAlign: "center"}}>
-                                <img src={logo} width="50%" />
+                    <a href="/"><img src={logo} width="50%" /></a>
                             </div>
                             
                             <img src={back} width="100%"/>
@@ -182,7 +182,7 @@ export default class header extends Component{
                                         <br/><br/>
                                         <div style={{textAlign: "center"}}>
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                                            <Link to={'/Storemanagerlogin'} style={{color: "#ffffff"}} className="btn btn-red"><h4><MDBIcon icon="user-tie" /> StoreManager/Admin Login</h4></Link>
+                                            <Link to={'/Storemanagerlogin'} style={{color: "#ffffff"}} className="btn btn-pink"><h5><MDBIcon icon="user-tie" /> StoreManager/Admin Login</h5></Link>
                         </div>
                                     </div>
                                 </form>

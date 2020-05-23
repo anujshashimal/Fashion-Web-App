@@ -82,9 +82,9 @@ render() {
       <MDBNavbar color="red darken-3" dark expand="md" fixed="top">
         <MDBNavbarBrand>
           {/* <strong className="white-text"><img src={Logo} width="7%" /></strong> */}
-          <a class="navbar-brand" href="#">
+          
     <img src={Logo} height="30" alt="mdb logo"/>
-  </a>
+  
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>

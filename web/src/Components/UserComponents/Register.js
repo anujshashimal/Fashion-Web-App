@@ -125,7 +125,7 @@ export default class header extends Component{
         try{
             const responce = await axios({
                 method: 'post',
-                url: 'http://54.84.43.211:5000/user/add',
+                url: 'http://167.172.155.186/user/add',
                 data: data,
               });
               console.log(responce);
@@ -136,7 +136,7 @@ export default class header extends Component{
 
     async getUsers (){
         console.log(this.state.username)
-        axios.get('http://54.84.43.211:5000/user/finds/'+this.state.username)
+        axios.get('http://167.172.155.186/user/finds/'+this.state.username)
         .then(response=>{
             this.setState({
                 UserAlreadyTaken : response.data.map(user=>user),
@@ -178,7 +178,7 @@ export default class header extends Component{
                 <div className="row" style={{marginBottom:"7%"}}>
                 <div className="col-md-6">
                     <div style={{textAlign: "center"}}>
-                                <img src={logo} width="50%" />
+                    <a href="/"><img src={logo} width="50%" /></a>
                             </div>
                             <img src={back} width="100%"/>
                             </div>
@@ -287,7 +287,14 @@ export default class header extends Component{
                                     class="btn2" 
                                     onclick="javascript: return myFunction();">Register</button>
                                 </form>
+                                <br />
+
+                                        <p align="center">
+                                            {/* <a href="reset.html">Lost your password?</a><br/> */}
+                                            <a href="/Login">Already have an account?</a>
+                                        </p>
                             </div>
+                            
                 </div>
                 <NotificationContainer/>
             </div>

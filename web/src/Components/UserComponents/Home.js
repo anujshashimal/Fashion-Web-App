@@ -14,6 +14,7 @@ import {connect} from "react-redux";
 import {removeItemFromWathList} from "../../Actions/addWatchList";
 import {productQuntity} from "../../Actions/ProductQuantity";
 import axios from "axios";
+import delivery from './img/delivery.gif'
 
 const queryString = require('query-string');
 
@@ -51,7 +52,7 @@ export class Home extends Component {
         try {
             const responce = axios({
                 method: 'get',
-                url: 'http://54.84.43.211:5000/cart/findWatchlistItems/' + values.username,
+                url: 'http://167.172.155.186/cart/findWatchlistItems/' + values.username,
                 data: data,
             }).then(response => {
                 this.setState({
@@ -76,11 +77,12 @@ export class Home extends Component {
             <div>
 
                 <Page loader={"bubble-spin"} color={"#c62828"} size={20} duration={2}>
-                <Nav username={this.state.username}/>
+                <Nav username={this.state.username}/><br/>
+                
                 {/* <Header username={this.state.username} /> */}
-                <br/><br/>
+                <br/>
                 <div style={{textAlign: 'center'}}>
-                <img src={logo} alt="Avatar" style={{width:'20%'}}/>
+                <img src={logo} alt="Avatar" style={{width:'15%'}}/>
                 </div>
                 <div style={{margin: "10px"}}>
                     <div className="row">
@@ -152,6 +154,7 @@ export class Home extends Component {
 
                     </div>
                 </div>
+                <img src={delivery} alt="Avatar" style={{width:'100%'}}/>
                 <Footer />
                 </Page>
             </div>
