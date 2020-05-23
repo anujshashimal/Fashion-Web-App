@@ -178,7 +178,7 @@ export default class header extends Component{
                 <div className="row" style={{marginBottom:"7%"}}>
                 <div className="col-md-6">
                     <div style={{textAlign: "center"}}>
-                                <img src={logo} width="50%" />
+                    <a href="/"><img src={logo} width="50%" /></a>
                             </div>
                             <img src={back} width="100%"/>
                             </div>
@@ -287,7 +287,14 @@ export default class header extends Component{
                                     class="btn2" 
                                     onclick="javascript: return myFunction();">Register</button>
                                 </form>
+                                <br />
+
+                                        <p align="center">
+                                            {/* <a href="reset.html">Lost your password?</a><br/> */}
+                                            <a href="/Login">Already have an account?</a>
+                                        </p>
                             </div>
+                            
                 </div>
                 <NotificationContainer/>
             </div>
