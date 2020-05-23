@@ -68,7 +68,7 @@ export default class header extends Component{
 
     async getUser (){
         console.log(this.state.username)
-        axios.get('http://54.84.43.211:5000/user/finds/'+this.state.username)
+        axios.get('http://167.172.155.186/user/finds/'+this.state.username)
         .then(response=>{
 
             console.log(response.data.length)
