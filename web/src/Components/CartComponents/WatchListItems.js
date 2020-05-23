@@ -67,7 +67,7 @@ componentDidUpdate() {
         try {
             const responce = axios({
                 method: 'get',
-                url: 'http://localhost:5000/cart/findWatchlistItems/' + values.username,
+                url: 'http://54.84.43.211:5000/findWatchlistItems/' + values.username,
                 data: data,
             }).then(response => {
                 this.setState({
@@ -83,10 +83,12 @@ componentDidUpdate() {
     }
 
 
+
+
     removeItemFromWatch = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:5000/cart/deleteItem/' + id,
+            url: 'http://54.84.43.211:5000/cart/deleteItem/' + id,
         })
     }
 
@@ -110,8 +112,10 @@ componentDidUpdate() {
                     let total = item.price
                     total = total + item.price
                     let newval = total - item.price
-
-                    this.props.basketProps.cartCost = newval
+                    this.props.basketProps.cartCost = newval - newval
+                    item.counter = 1
+                    this.props.basketProps.cartCost = this.props.basketProps.cartCost + newval
+                    console.log(this.props.basketProps.cartCost)
                     this.props.basketProps.items.push(item)
 
                     console.log(this.props.basketProps)
@@ -125,8 +129,17 @@ componentDidUpdate() {
 
 
 
-            let filteredArr = [];
-            filteredArr = this.state.Items.map( (product, index) => {
+            let arr = [];
+        arr = this.state.Items.reduce((acc, current) => {
+            const x = acc.find(item => item.productID === current.productID);
+            if (!x) {
+                return acc.concat([current]);
+            } else {
+                return acc;
+            }
+        }, [])
+
+                arr = arr.map( (product, index) => {
                 console.log(product)
 
                 return(
@@ -202,7 +215,7 @@ componentDidUpdate() {
                                     </tr>
                                 </MDBTableHead>
                                 <MDBTableBody>
-                                    {filteredArr}
+                                    {arr}
 
                                 </MDBTableBody>
                             </MDBTable>
