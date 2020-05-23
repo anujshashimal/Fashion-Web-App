@@ -58,7 +58,7 @@ class AddProduct extends Component {
        })
 
 
-      axios.get('http://localhost:5000/category/:id')
+      axios.get('http://54.84.43.211:5000/category/:id')
       .then(response=>{
         if(response.data.length>0){
           this.setState({
@@ -166,7 +166,7 @@ class AddProduct extends Component {
 
       console.log(formdata);
 
-      axios.post('http://localhost:5000/products/add',formdata)
+      axios.post('http://54.84.43.211:5000/products/add',formdata)
        .then(res=>console.log(res.data));
 
     this.setState({

@@ -162,7 +162,7 @@ class PlaceOrder extends Component {
          try{
              const responce = await axios({
                  method: 'post',
-                 url: 'http://localhost:5000/cart/PlaceOrder',
+                 url: 'http://54.84.43.211:5000/cart/PlaceOrder',
                  data: data,
              });
              console.log(responce);

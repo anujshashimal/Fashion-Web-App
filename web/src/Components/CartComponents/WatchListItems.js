@@ -37,7 +37,7 @@ componentDidUpdate() {
 
     axios({
         method: 'get',
-        url: 'http://localhost:5000/cart/findWatchlistItems/' + values.username,
+        url: 'http://54.84.43.211:5000/cart/findWatchlistItems/' + values.username,
     }).then(response => {
         this.setState({
             Items: response.data.map(Items => Items)

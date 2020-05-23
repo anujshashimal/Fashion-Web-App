@@ -40,7 +40,7 @@ class OrderCompleteDetails extends Component {
 
         axios({
             method: 'get',
-            url: 'http://localhost:5000/cart/findUserOrder/' + values.username
+            url: 'http://54.84.43.211:5000/cart/findUserOrder/' + values.username
         }).then(response => {
             this.setState({
                 UserDetails :  response.data.map(product=>product),

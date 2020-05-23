@@ -65,7 +65,7 @@ export class ProductList extends Component {
  
    componentDidMount()
    {
-      axios.get('http://localhost:5000/products/find/'+this.props.match.params.id)
+      axios.get('http://54.84.43.211:5000/products/find/'+this.props.match.params.id)
       .then(response =>{
           this.setState({Products : response.data})
       }).catch(error =>{
@@ -77,7 +77,7 @@ export class ProductList extends Component {
    
   deleteproduct(product_id)
   {
-    axios.delete('http://localhost:5000/products/delete/'+product_id)
+    axios.delete('http://54.84.43.211:5000/products/delete/'+product_id)
     .then(res=>console.log(res.data))
     this.setState({
       Products : this.state.Products.filter(product=>product.productid != product_id)
