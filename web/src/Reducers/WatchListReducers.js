@@ -16,6 +16,8 @@ export default (state = initialState, action) =>{
             if(payload.qty == 0){
                 payload.qty =1
             }
+
+
             console.log(payload)
             axios({
                 url: 'http://localhost:5000/cart/WatchList',

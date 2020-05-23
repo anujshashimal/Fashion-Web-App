@@ -307,10 +307,11 @@ class PlaceOrder extends Component {
                          <input
                              className="input-field1"
                              type="text"
-                             placeholder="Contact No"
+                             placeholder="Telephone No (+94xxxxxxxxx)"
                              id="defaultFormContactSubjectEx"
                              value={contactNo}
                              onChange={this.handleContactNoChange}
+                             pattern="[+]{1}[0-9]{11}"
                              required/>
                      </div>
                  </Form.Group>
@@ -446,7 +447,7 @@ class PlaceOrder extends Component {
                              <input
                                  className="input-field1"
                                  type="text"
-                                 placeholder="Card Number"
+                                 placeholder="Expire Date"
                                  id="defaultFormContactSubjectEx"
                                  onChange={this.handleExpireDateChange}
                                  value={expireDate}
