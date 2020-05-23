@@ -25,20 +25,19 @@ export default (state = initialState, action) =>{
         case ADD_PRODUCT_TO_BACKET:
             state.getdiscount= state.getdiscount + payload.price * payload.discount * (1 / 100)
             console.log(state.getdiscount)
-            state.items.map((itemss, index)=>{
-                console.log(itemss.discount)
+
+            if(state.items.map.length === 1){
                 console.log(state.getdiscount)
                 console.log(payload.productID)
-                if(payload.productID === itemss.productID){
-                        // state.cartCost = itemss.counter * itemss.price
-                        // console.log(state.cartCost)
-                }else{
-                    itemss.counter++
-                    console.log(itemss.counter);
-                    payload.price = itemss.price * itemss.counter
-                    state.backetNumbers = state.backetNumbers +itemss.counter
-                }
-            })
+                if(payload.counter === 0){payload.counter =1}
+                state.cartCost = state.cartCost + payload.price*payload.counter
+                console.log(state.cartCost)
+            }else{
+                state.items.map((items, index) =>{
+                    if(payload.productID === items.productID || items.length === 0){
+                        state.cartCost = state.cartCost + payload.price*payload.counter
+                    }})
+            }
 
             if(payload.counter === 0){
                 payload.counter =1
@@ -46,14 +45,13 @@ export default (state = initialState, action) =>{
                     return {
                         ...state,
                         backetNumbers:  state.backetNumbers+payload.counter,
-                        cartCost: state.cartCost + payload.price*payload.counter ,
+                        cartCost: state.cartCost ,
                         getdiscount: state.getdiscount,
                         items: [
                             ...state.items,
                             {...payload}
                         ]
                     }
-
 
             case GET_NUMBERS_IN_BASKET:
                     return {
