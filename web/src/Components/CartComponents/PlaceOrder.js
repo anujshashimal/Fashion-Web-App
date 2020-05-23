@@ -208,7 +208,7 @@ class PlaceOrder extends Component {
                                  cascade
                                  tag='div'>
                                  <h2 className='h2-responsive mb-2'> Rs {this.props.basketProps.cartCost}.00 <br /> <br/>
-                                     You got Rs {this.props.basketProps.getdiscount} .00 Discount <br /> <br />
+                                     You got Rs {this.props.basketProps.cartCost - this.props.basketProps.getdiscount} .00 Discount <br /> <br />
 
                                  </h2>
                              </MDBCardImage>
