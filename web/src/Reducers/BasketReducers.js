@@ -23,36 +23,31 @@ export default (state = initialState, action) =>{
 
     switch(action.type) {
         case ADD_PRODUCT_TO_BACKET:
-
+            state.getdiscount= state.getdiscount + payload.price * payload.discount * (1 / 100)
+            console.log(state.getdiscount)
             state.items.map((itemss, index)=>{
-                console.log(itemss)
+                console.log(itemss.discount)
+                console.log(state.getdiscount)
                 console.log(payload.productID)
                 if(payload.productID === itemss.productID){
-
+                        // state.cartCost = itemss.counter * itemss.price
+                        // console.log(state.cartCost)
                 }else{
                     itemss.counter++
-                    console.log(itemss.counter)
+                    console.log(itemss.counter);
                     payload.price = itemss.price * itemss.counter
                     state.backetNumbers = state.backetNumbers +itemss.counter
                 }
-
-
-
-
             })
 
             if(payload.counter === 0){
                 payload.counter =1
             }
-
                     return {
                         ...state,
                         backetNumbers:  state.backetNumbers+payload.counter,
-                        // cartCost: state.cartCost + (action.payload.price * action.payload.counter),
-                        // backetNumbers: state.backetNumbers +1,
                         cartCost: state.cartCost + payload.price*payload.counter ,
-                        // getdiscount: state.cartCost * action.payload.discount * (1 / 100),
-                        getdiscount: state.cartCost - ((state.cartCost) * action.payload.discount * (1 / 100)),
+                        getdiscount: state.getdiscount,
                         items: [
                             ...state.items,
                             {...payload}
@@ -87,6 +82,8 @@ export default (state = initialState, action) =>{
 
         case INCREASE_QUANITY:
             console.log(payload)
+            state.getdiscount= state.getdiscount + payload.price * payload.discount * (1 / 100)
+            console.log(state.getdiscount)
             state.items.map((itemss, index)=>{
                 console.log(itemss.productID)
                 console.log(action.payload.ID)
@@ -101,6 +98,9 @@ export default (state = initialState, action) =>{
                 cartCost: state.cartCost + payload.price
             }
         case DECREASE_QUANITY:
+            state.getdiscount= state.getdiscount - payload.price * payload.discount * (1 / 100)
+            console.log(state.getdiscount)
+
             console.log(payload)
             state.items.map((itemss, index)=>{
                 console.log(itemss.productID)
@@ -119,13 +119,19 @@ export default (state = initialState, action) =>{
                 ...state,
             }
         case PLACE_ORDER_DIR:
-            if(payload.counter == 0){
+
+            if(payload.counter === 0){
                 payload.counter =1
             }
+
+            state.getdiscount= (payload.price * payload.avaliable * (1 / 100)) * payload.counter
+            console.log(state.getdiscount)
+
+            console.log(payload)
             return {
                 ...state,
                 cartCost: payload.price * payload.counter,
-                getdiscount: payload.price*payload.counter - (payload.price * payload.description * (1 / 100)) * payload.counter,
+                getdiscount: state.getdiscount,
             }
 
         case CLEAT_ALL_DETAILS:

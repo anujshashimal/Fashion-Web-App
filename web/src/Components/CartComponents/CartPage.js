@@ -64,9 +64,9 @@ const CartPage = (props) =>{
                 <img src={product.image} alt="Product" style={{height: "100px" }} />
                 <td className="tabletext">{product.name}</td>
                 <td className="tabletext">
-                    <i onClick={() =>props.productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>&nbsp;&nbsp;
+                    <i onClick={() =>props.productQuntity("DECREASE", product.productID, product.price, product.discount)} className="fas fa-angle-left"></i>&nbsp;&nbsp;
                     {product.counter}&nbsp;&nbsp;
-                    <i onClick={() =>props.productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>
+                    <i onClick={() =>props.productQuntity("INCREASE",product.productID,product.price , product.discount)} className="fas fa-angle-right"></i>
                 </td>
                 <td className="tabletext">{product.avaliable}</td>
                 <td className="tabletext">{product.discount} %</td>
