@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBTabPane, MDBTabContent,MDBNav,MDBNavItem,MDBNavLink,MDBCard,MDBCardBody,MDBCardImage,MDBCardTitle,MDBCardText } from 'mdbreact';
 import axios from 'axios';
 import {Link} from "react-router-dom";
-import Header from "../CommonComponents/header";
+import Header from "../CommonComponents/NavbarPage";
 import Footer from '../CommonComponents/footer'
 import { PaymentInputsWrapper, usePaymentInputs } from 'react-payment-inputs';
 import  { Redirect } from 'react-router-dom'

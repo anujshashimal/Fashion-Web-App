@@ -29,9 +29,14 @@ export default (state = initialState, action) =>{
                 console.log(payload.productID)
                 if(payload.productID === itemss.productID){
                         itemss.counter++
+                        console.log(itemss.counter)
                         payload.price = itemss.price * itemss.counter
+                        state.backetNumbers = state.backetNumbers +itemss.counter
                         // state.backetNumbers = itemss.counter
                 }
+                console.log(itemss.counter)
+                payload.price = payload.price * payload.counter
+                state.backetNumbers = state.backetNumbers +itemss.counter
 
 
 
@@ -43,10 +48,10 @@ export default (state = initialState, action) =>{
 
                     return {
                         ...state,
-                        backetNumbers:  state.backetNumbers+1,
+                        backetNumbers:  state.backetNumbers+payload.counter,
                         // cartCost: state.cartCost + (action.payload.price * action.payload.counter),
                         // backetNumbers: state.backetNumbers +1,
-                        cartCost: state.cartCost + action.payload.price * 1,
+                        cartCost: state.cartCost + payload.price * payload.counter,
                         // getdiscount: state.cartCost * action.payload.discount * (1 / 100),
                         getdiscount: state.cartCost - ((state.cartCost) * action.payload.discount * (1 / 100)),
                         items: [

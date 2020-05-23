@@ -3,7 +3,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput } 
 import axios from 'axios';
 import {Link, Redirect} from 'react-router-dom';
 import './Styles/OrderCompleteDet.css';
-import Header from '../CommonComponents/header';
+import Header from '../CommonComponents/NavbarPage';
 import Footer from '../CommonComponents/footer';
 import {connect} from "react-redux";
 import {productQuntity} from "../../Actions/ProductQuantity";
