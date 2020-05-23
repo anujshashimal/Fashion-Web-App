@@ -102,7 +102,7 @@ export class StoreManagerDetails extends Component {
 
 
                     });
-                    axios.put('http://localhost:5000/storemanager/updatestoreManager',storeManagerUpdate)
+                    axios.put('http://54.84.43.211:5000/storemanager/updatestoreManager',storeManagerUpdate)
                         .then(res => {
                             // window.location.reload(false);
                         });

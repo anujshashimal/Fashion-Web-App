@@ -51,7 +51,7 @@ export class Home extends Component {
         try {
             const responce = axios({
                 method: 'get',
-                url: 'http://localhost:5000/cart/findWatchlistItems/' + values.username,
+                url: 'http://54.84.43.211:5000/cart/findWatchlistItems/' + values.username,
                 data: data,
             }).then(response => {
                 this.setState({
