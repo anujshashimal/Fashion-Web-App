@@ -9,11 +9,13 @@ import  { Redirect } from 'react-router-dom'
 import {connect} from 'react-redux';
 import './Styles/PlaceOrder.css';
 import paymentLogo from '../../img/paymentlogo.jpg';
+import pay from '../../img/pay.jpg';
 import dislogo from '../../img/dislogo.png';
 import CashOnDelivery from '../../img/Cash-On-Delivery.png'
 import {Button} from "semantic-ui-react";
 import { Label } from 'semantic-ui-react'
 import {Form, Col} from 'react-bootstrap';
+import queryString from 'query-string';
 
 class PlaceOrder extends Component {
     constructor(props) {
@@ -35,9 +37,19 @@ class PlaceOrder extends Component {
             expireDate: '',
             success: false,
             deliver: '',
-            activeSubmit: false
-
+            activeSubmit: false,
+            username:''
         }
+
+    }
+
+    componentDidMount() {
+        var values = queryString.parse(this.props.location.search)
+        console.log(this.props.location.search)
+        console.log(values.username)
+        this.setState({
+            username: values.username,
+        })
 
     }
 
@@ -165,57 +177,38 @@ class PlaceOrder extends Component {
 
          return(
          <div className='Container'>
-         <Header />
+         <Header username={this.state.username}/>
 
          <div className='total'>
 
          </div>
-             {/*<div className='total1'>*/}
-             {/*    <MDBCol>*/}
-             {/*        <MDBCard style={{ width: "26rem" }}>*/}
-             {/*            <MDBCardImage className="img-fluid" src={CashOnDelivery}  />*/}
-             {/*            <MDBCardBody>*/}
-             {/*                <MDBCardTitle>Now We Are Avaliable On Cash On Dilevery</MDBCardTitle>*/}
-             {/*            </MDBCardBody>*/}
-             {/*        </MDBCard>*/}
-             {/*    </MDBCol>*/}
-             {/*</div>*/}
 
          <MDBContainer>
+             <div className='imgheader'>
+                 <MDBCardImage className="img-fluid" style={{ width: "100rem", height:"10",color:"#c62828  "}} src={pay}/>
+             </div> <br/>
              <div className='mainClass'>
              <div className='myclass2'>
              <h1>Payment Info</h1>
              </div>
 
              <Form className='myform' onSubmit={this.handleRegisterSubmit}>
-                 <div className='mycard'>
+                 <div className='mycard' >
                  <Form.Row>
-                     <Form.Group as={Col} controlId="formGridEmail">
-                         <MDBCard style={{ width: "26rem" ,color:"#c62828  "}}>
-                            <MDBCardImage className="img-fluid" src={paymentLogo}  />
-                                <MDBCardBody>
-                                    <MDBCardTitle>Total Amount You Have To Pay :</MDBCardTitle>
-                                    <MDBCardTitle>
-                                        Rs {this.props.basketProps.cartCost}.00
-                                    </MDBCardTitle>
-                                </MDBCardBody>
-                         </MDBCard>
-                     </Form.Group>
-                     <Form.Group as={Col} controlId="formGridEmail">
-                         <MDBCard style={{ width: "26rem" , height:"21rem",color:"#c62828 " }}>
-                               <MDBCardImage className="img-fluid" src={dislogo} />
-                                <MDBCardBody>
-                                 <MDBCardTitle>
-                                     You got Rs {this.props.basketProps.getdiscount} % Discount <br /> <br />
+                     <MDBCol col='4'>
+                         <MDBCard wide>
+                             <MDBCardImage
+                                 className='view view-cascade gradient-card-header red lighten-4'
+                                 cascade
+                                 tag='div'>
+                                 <h2 className='h2-responsive mb-2'> Rs {this.props.basketProps.cartCost}.00 <br /> <br/>
                                      You got Rs {this.props.basketProps.withDiscartCost} .00 Discount <br /> <br />
-                                 </MDBCardTitle>
-                             </MDBCardBody>
+                                 </h2>
+                             </MDBCardImage>
                          </MDBCard>
-                     </Form.Group>
+                     </MDBCol>
                  </Form.Row>
-
              </div>
-
                  <br />
                  <br />
                  <div className='myclass2'>
@@ -314,10 +307,11 @@ class PlaceOrder extends Component {
                          <input
                              className="input-field1"
                              type="text"
-                             placeholder="Contact No"
+                             placeholder="Telephone No (+94xxxxxxxxx)"
                              id="defaultFormContactSubjectEx"
                              value={contactNo}
                              onChange={this.handleContactNoChange}
+                             pattern="[+]{1}[0-9]{11}"
                              required/>
                      </div>
                  </Form.Group>
@@ -453,7 +447,7 @@ class PlaceOrder extends Component {
                              <input
                                  className="input-field1"
                                  type="text"
-                                 placeholder="Card Number"
+                                 placeholder="Expire Date"
                                  id="defaultFormContactSubjectEx"
                                  onChange={this.handleExpireDateChange}
                                  value={expireDate}
@@ -511,7 +505,8 @@ class PlaceOrder extends Component {
 }
 
 const mapStateToPropss = state => ({
-    basketProps : state.basketState
+    basketProps : state.basketState,
+    placeOrderProps: state.PlaceOrderState
 })
 
 export default connect(mapStateToPropss)(PlaceOrder);

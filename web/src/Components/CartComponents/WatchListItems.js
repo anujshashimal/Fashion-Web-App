@@ -23,12 +23,12 @@ class WatchListItems extends Component {
             image: '',
             discount: '',
             Items: [],
+            Items1:[],
             username: '',
             productid: ''
 
         }
         console.log(props)
-
     }
 
 componentDidUpdate() {
@@ -55,7 +55,7 @@ componentDidUpdate() {
         })
 
         const data = {
-            userID: this.state.userID,
+            watchID: this.state.watchID,
             avaliable: this.state.avaliable,
             product_ID: this.state.productID,
             price: this.state.price,
@@ -67,7 +67,7 @@ componentDidUpdate() {
         try {
             const responce = axios({
                 method: 'get',
-                url: 'http://localhost:5000/cart/findWatchlistItems/' + values.username,
+                url: 'http://54.84.43.211:5000/findWatchlistItems/' + values.username,
                 data: data,
             }).then(response => {
                 this.setState({
@@ -83,10 +83,12 @@ componentDidUpdate() {
     }
 
 
+
+
     removeItemFromWatch = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:5000/cart/deleteItem/' + id,
+            url: 'http://54.84.43.211:5000/cart/deleteItem/' + id,
         })
     }
 
@@ -104,20 +106,40 @@ componentDidUpdate() {
                 // })
                 console.log('hello')
 
-
+                console.log(this.props.basketProps)
                 this.state.Items.map((item, index) => {
                     console.log(item)
-                    this.props.basketProps.items.push(this.state.Items[index])
+                    let total = item.price
+                    total = total + item.price
+                    let newval = total - item.price
+                    this.props.basketProps.cartCost = newval - newval
+                    item.counter = 1
+                    this.props.basketProps.cartCost = this.props.basketProps.cartCost + newval
+                    console.log(this.props.basketProps.cartCost)
+                    this.props.basketProps.items.push(item)
+
+                    console.log(this.props.basketProps)
                     // this.props.basketProps.backetNumbers = this.props.basketProps.backetNumbers+1
                     // this.props.basketProps.cartCost = this.props.watchListProps.cartCost
+                    this.props.watchListProps.backetNumbers = this.props.watchListProps.backetNumbers -1
                     this.removeItemFromWatch(item._id)
+
                 })
             }
 
 
 
-            let filteredArr = [];
-            filteredArr = this.state.Items.map( (product, index) => {
+            let arr = [];
+        arr = this.state.Items.reduce((acc, current) => {
+            const x = acc.find(item => item.productID === current.productID);
+            if (!x) {
+                return acc.concat([current]);
+            } else {
+                return acc;
+            }
+        }, [])
+
+                arr = arr.map( (product, index) => {
                 console.log(product)
 
                 return(
@@ -135,7 +157,7 @@ componentDidUpdate() {
                             <i onClick={() =>this.props.productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>
                         </td>
                         <td className="tabletext">{product.avaliable}</td>
-                        <td className="tabletext">{product.discount}</td>
+                        <td className="tabletext">{product.discount} %</td>
                         <td className="tabletext">{product.price}</td>
                     </tr>
                 )})
@@ -152,9 +174,9 @@ componentDidUpdate() {
                         <img src={this.state.image} alt="Product" style={{height: "100px" }} />
                         <td className="tabletext">{this.state.name}</td>
                         <td className="tabletext">
-                            {/*<i onClick={() =>productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>*/}
-                            {this.state.avaliable}
-                            {/*<i onClick={() =>productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>*/}
+                            <i onClick={() =>productQuntity("DECREASE", this.state.productID, this.state.price)} className="fas fa-angle-left"></i>
+                            {this.state.counter}
+                            <i onClick={() =>productQuntity("INCREASE",this.state.productID,this.state.price)} className="fas fa-angle-right"></i>
                         </td>
                         <td className="tabletext">{this.state.avaliable}</td>
                         <td className="tabletext">{this.state.discount}</td>
@@ -193,7 +215,7 @@ componentDidUpdate() {
                                     </tr>
                                 </MDBTableHead>
                                 <MDBTableBody>
-                                    {filteredArr}
+                                    {arr}
 
                                 </MDBTableBody>
                             </MDBTable>

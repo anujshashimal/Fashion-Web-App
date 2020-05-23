@@ -54,7 +54,7 @@ export class viewProduct extends Component {
             maincategory: values.maincategory,
         })
     
-        axios.get('http://localhost:5000/category/:id')
+        axios.get('http://54.84.43.211:5000/category/:id')
         .then(response=>{
           if(response.data.length>0){
             this.setState({
@@ -63,7 +63,7 @@ export class viewProduct extends Component {
          })}
         })
         
-        axios.get('http://localhost:5000/Products/find')
+        axios.get('http://54.84.43.211:5000/Products/find')
         .then(response=>{
           if(response.data.length>0){
             this.setState({
