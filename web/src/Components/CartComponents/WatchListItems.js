@@ -1,6 +1,6 @@
 import React,{Component} from "react";
 import axios from 'axios';
-import Hea from '../CommonComponents/header'
+import Hea from '../CommonComponents/NavbarPage'
 import Foo from '../CommonComponents/footer'
 import {MDBBtn, MDBCloseIcon, MDBTable, MDBTableHead,MDBTableBody} from "mdbreact";
 import {removeItem} from "../../Actions/addActions";

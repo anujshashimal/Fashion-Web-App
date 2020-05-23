@@ -116,13 +116,13 @@ render() {
 
           {(this.props.username != '' && this.props.username != undefined && this.props.username != "undefined") ? (
             <MDBNavbarNav right>
-            <MDBNavItem onClick={() => {this.cartF()}}>
+            <MDBNavItem onClick={() => {this.watchF()}}>
             <MDBNavLink className="waves-effect waves-light" to="">
             <span className="badge red z-depth-1 mr-1">{this.props.WatchListState.backetNumbers}</span>
             <MDBIcon icon="heart" />
             </MDBNavLink>
           </MDBNavItem>
-          <MDBNavItem onClick={() => {this.watchF()}}>
+          <MDBNavItem onClick={() => {this.cartF()}}>
             <MDBNavLink className="waves-effect waves-light" to="">
             <span className="badge red z-depth-1 mr-1">{this.props.basketProps.backetNumbers}</span>
             <MDBIcon icon="shopping-cart" />

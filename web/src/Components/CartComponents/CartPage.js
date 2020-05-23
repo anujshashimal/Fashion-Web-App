@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import img from '../../img/sample1.jpg'
 import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 import './Styles/Style..css';
-import Hea from "../CommonComponents/header";
+import Hea from "../CommonComponents/NavbarPage";
 import Foo from "../CommonComponents/footer";
 import PlaceOrder from '../CartComponents/PlaceOrder';
 import {Link, Redirect} from "react-router-dom";
@@ -11,6 +11,7 @@ import { MDBBtn, MDBCloseIcon  } from "mdbreact";
 import {productQuntity} from '../../Actions/ProductQuantity'
 import {removeItem }from '../../Actions/addActions'
 import { MDBTable, MDBTableBody, MDBTableHead ,MDBCardTitle} from 'mdbreact';
+
 const queryString = require('query-string');
 
 const CartPage = (props) =>{
@@ -89,7 +90,7 @@ const CartPage = (props) =>{
                 <header>
 
                     <div className='product-header'>
-                        Cart Page
+                        Cart Items
                     </div>
                     <MDBTable>
                         <MDBTableHead color="red darken-3" textWhite>

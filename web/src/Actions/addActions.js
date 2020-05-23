@@ -17,6 +17,7 @@ export const removeItem = (id, price, counter)=>{
 export const addBasket = (userID,ID,productName, price, avaliable, discount, image, counter) => {
 
     return function (dispatch) {
+
         console.log("Adding to the Backet")
         console.log("Product", productName)
         console.log("price", price)
