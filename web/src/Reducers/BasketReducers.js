@@ -14,6 +14,7 @@ const initialState = {
     withDiscartCost: 0,
     getdiscount: 0,
     items: [],
+    discount:0,
     showItem: false,
 }
 
@@ -22,36 +23,35 @@ export default (state = initialState, action) =>{
 
     switch(action.type) {
         case ADD_PRODUCT_TO_BACKET:
+            state.getdiscount= state.getdiscount + payload.price * payload.discount * (1 / 100)
+            console.log(state.getdiscount)
 
-            state.items.map((itemss, index)=>{
-                console.log(itemss)
+            if(state.items.map.length === 1){
+                console.log(state.getdiscount)
                 console.log(payload.productID)
-                if(payload.productID === itemss.productID){
-                        itemss.counter++
-
-                        // state.backetNumbers = itemss.counter
-                }
-
-            })
-
-            if(payload.counter == 0){
-                payload.counter =1
+                if(payload.counter === 0){payload.counter =1}
+                state.cartCost = state.cartCost + payload.price*payload.counter
+                console.log(state.cartCost)
+            }else{
+                state.items.map((items, index) =>{
+                    if(payload.productID === items.productID || items.length === 0){
+                        state.cartCost = state.cartCost + payload.price*payload.counter
+                    }})
             }
 
+            if(payload.counter === 0){
+                payload.counter =1
+            }
                     return {
                         ...state,
-                        backetNumbers:  state.backetNumbers+1,
-                        // cartCost: state.cartCost + (action.payload.price * action.payload.counter),
-                        // backetNumbers: state.backetNumbers +1,
-                        cartCost: state.cartCost + action.payload.price * 1,
-                        getdiscount: state.cartCost * action.payload.discount * (1 / 100),
-                        withDiscartCost: state.cartCost - ((state.cartCost) * action.payload.discount * (1 / 100)),
+                        backetNumbers:  state.backetNumbers+payload.counter,
+                        cartCost: state.cartCost ,
+                        getdiscount: state.getdiscount,
                         items: [
                             ...state.items,
                             {...payload}
                         ]
                     }
-
 
             case GET_NUMBERS_IN_BASKET:
                     return {
@@ -60,24 +60,33 @@ export default (state = initialState, action) =>{
         case REMOVE_PRODUCT:
             const id = action.payload.id
             let deletedItem = state.items.findIndex(item => item.id === action.id);
-            state.items.splice(deletedItem, 1)
+            state.items.map((item, index) =>{
+                if(index === deletedItem){
+                    let del = item.counter;
+                    console.log(del)
+                    payload.price = item.price * item.counter
+                    state.items.splice(deletedItem, 1)
+                    state.backetNumbers = state.backetNumbers - item.counter
+                }
+            })
 
             return {
                 ...state,
                 ...state.items,
-                backetNumbers: state.backetNumbers - 1,
+                // backetNumbers: state.backetNumbers - 1,
                 cartCost: state.cartCost - payload.price
 
             }
 
         case INCREASE_QUANITY:
             console.log(payload)
+            state.getdiscount= state.getdiscount + payload.price * payload.discount * (1 / 100)
+            console.log(state.getdiscount)
             state.items.map((itemss, index)=>{
                 console.log(itemss.productID)
                 console.log(action.payload.ID)
                 if(itemss.productID == payload.ID){
                     itemss.counter = itemss.counter +1;
-
 
                 }})
 
@@ -87,32 +96,40 @@ export default (state = initialState, action) =>{
                 cartCost: state.cartCost + payload.price
             }
         case DECREASE_QUANITY:
+            state.getdiscount= state.getdiscount - payload.price * payload.discount * (1 / 100)
+            console.log(state.getdiscount)
+
             console.log(payload)
             state.items.map((itemss, index)=>{
                 console.log(itemss.productID)
                 console.log(action.payload.ID)
                 if(itemss.productID == payload.ID){
-                    if(itemss.counter >= 0){
+                    if(itemss.counter > 0){
                     itemss.counter = itemss.counter -1;
+                        state.backetNumbers =  state.backetNumbers - 1
+                        state.cartCost = state.cartCost - payload.price
+
                     }
                     console.log(itemss.counter)
                 }
             })
             return {
                 ...state,
-                backetNumbers: state.backetNumbers - 1,
-                cartCost: state.cartCost - payload.price
             }
         case PLACE_ORDER_DIR:
-            if(payload.counter == 0){
+
+            if(payload.counter === 0){
                 payload.counter =1
             }
 
+            state.getdiscount= (payload.price * payload.avaliable * (1 / 100)) * payload.counter
+            console.log(state.getdiscount)
+
+            console.log(payload)
             return {
                 ...state,
                 cartCost: payload.price * payload.counter,
-                getdiscount: payload.price * payload.discount * (1 / 100),
-
+                getdiscount: state.getdiscount,
             }
 
         case CLEAT_ALL_DETAILS:

@@ -13,6 +13,8 @@ import {NotificationContainer, NotificationManager} from 'react-notifications';
 import swal from 'sweetalert';
 import { MDBBadge, MDBContainer, MDBIcon } from "mdbreact";
 import Payment from './payment.png'
+import './icon.css'
+import Nav from '../CommonComponents/NavbarPage'
 
 
 import {placeOrder} from "../../Actions/placeOrderDir";
@@ -48,7 +50,7 @@ export class ProductDetails extends Component {
             username: values.username,
         })
         console.log('itemid',values.id)
-        axios.get('http://localhost:5000/Products/finds/'+values.item)
+        axios.get('http://54.84.43.211:5000/Products/finds/'+values.item)
         .then(response=>{
             this.setState({
                 product :  response.data.map(product=>product),
@@ -80,14 +82,25 @@ export class ProductDetails extends Component {
         const {itemid, product, Cprice, username} =this.state
         console.log(this.state)
         if(this.state.ragister) {
+            swal({
+                title: "Please Login To the System",
+                text: "If your are not registered you can register",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
             return <Redirect to={"/Login"} />
+
         }else if(this.state.place){
             return <Redirect  to={"/PlaceOrder?username=" + this.state.username} />
         }
 
         return (
+            <div>
+            <Nav username={this.state.username}/>
             <div style={{backgroundColor: "#ffcdd2"}}>
-                <Header username={this.state.username} />
+                
+                {/* <Header username={this.state.username} /> */}
                 <br />
                 <div className="" style={{backgroundColor: "#ffffff", color: ""}}>
                     {this.state.product.map( val => (
@@ -153,9 +166,20 @@ export class ProductDetails extends Component {
                                 <div style={{textAlign: "", marginTop:""}}>
                                     <div className="row">
                                         <div className="col">
-                                            <button type="button" className="btn btn-deep-purple btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.addBasket(val._id, val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i className="fas fa-cart-arrow-down"></i>&nbsp;&nbsp; Add to Cart</button>                                        </div>
+
+                                            <button type="button" className="btn btn-deep-purple btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.addBasket(val._id, val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true})) ; swal({
+                                                title: "Added to Cart",
+                                                text: "Your item is added to the Cart!",
+                                                icon: "warning",
+                                                dangerMode: true,
+                                            })}}><i className="fa fa-cart-arrow-down fa-lg"></i>&nbsp;&nbsp; Add to Cart</button>                                        </div>
                                         <div className="col">
-                                            <button type="button" className="btn btn-red darken-3 btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.addToWatchList(val._id,this.state.username, val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true}))}}><i className="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>                                        </div>
+                                            <button type="button" className="btn btn-red darken-3 btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.addToWatchList(val._id,this.state.username, val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true})) ; swal({
+                                                title: "Added to WishList",
+                                                text: "Your item is added to the WishList!",
+                                                icon: "warning",
+                                                dangerMode: true,
+                                            }) }}><i className="fa fa-heart fa-lg"></i>&nbsp;&nbsp;Add to Wishlist</button>                                        </div>
                                     </div>
                                     {/* <div className="row" style={{marginTop: "3%", marginBottom: "3%"}}>
                                         <div className="col">
@@ -164,7 +188,7 @@ export class ProductDetails extends Component {
                                         </div> */}
                                         <div className="row" style={{marginTop: "3%", marginBottom: "3%"}}>
                                         <div className="col">
-                                            <button type="button" className="btn btn-pink btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.placeOrder(val.productid, val.description, val.price, val.quantity, val.discount, this.state.counter)) : (this.setState({ragister:true})) ; (this.setState({place:true})) }}><i className="fas fa-shopping-bag fa-lg"></i>&nbsp;&nbsp; Place Order</button>
+                                            <button type="button" className="btn btn-pink btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.placeOrder(val.productid, val.description, val.price, val.quantity, val.discount, this.state.counter)) : (this.setState({ragister:true})) ; (this.setState({place:true})) }}><i className="fa fa-shopping-bag fa-spin-hover fa-lg"></i>&nbsp;&nbsp; Place Order</button>
                                             <img src={Payment} style={{width:'100%'}}/>
                                         
                                         </div>
@@ -190,6 +214,7 @@ export class ProductDetails extends Component {
 
                 <Footer />
                 <NotificationContainer/>
+            </div>
             </div>
         )
     }

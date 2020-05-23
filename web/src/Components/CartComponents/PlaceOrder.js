@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBTabPane, MDBTabContent,MDBNav,MDBNavItem,MDBNavLink,MDBCard,MDBCardBody,MDBCardImage,MDBCardTitle,MDBCardText } from 'mdbreact';
 import axios from 'axios';
 import {Link} from "react-router-dom";
-import Header from "../CommonComponents/header";
+import Header from "../CommonComponents/NavbarPage";
 import Footer from '../CommonComponents/footer'
 import { PaymentInputsWrapper, usePaymentInputs } from 'react-payment-inputs';
 import  { Redirect } from 'react-router-dom'
@@ -16,6 +16,7 @@ import {Button} from "semantic-ui-react";
 import { Label } from 'semantic-ui-react'
 import {Form, Col} from 'react-bootstrap';
 import queryString from 'query-string';
+import swal from "sweetalert";
 
 class PlaceOrder extends Component {
     constructor(props) {
@@ -109,6 +110,11 @@ class PlaceOrder extends Component {
         this.setState({
             success: true
         })
+        swal({
+            title: "You Placed The Order",
+            icon: "warning",
+            dangerMode: true,
+        })
 
     }
 
@@ -156,7 +162,7 @@ class PlaceOrder extends Component {
          try{
              const responce = await axios({
                  method: 'post',
-                 url: 'http://localhost:5000/cart/PlaceOrder',
+                 url: 'http://54.84.43.211:5000/cart/PlaceOrder',
                  data: data,
              });
              console.log(responce);
@@ -192,7 +198,7 @@ class PlaceOrder extends Component {
              <h1>Payment Info</h1>
              </div>
 
-             <Form className='myform' onSubmit={this.handleRegisterSubmit}>
+             <Form className='myform' onSubmit={this.handleRegisterSubmit } >
                  <div className='mycard' >
                  <Form.Row>
                      <MDBCol col='4'>
@@ -202,7 +208,8 @@ class PlaceOrder extends Component {
                                  cascade
                                  tag='div'>
                                  <h2 className='h2-responsive mb-2'> Rs {this.props.basketProps.cartCost}.00 <br /> <br/>
-                                     You got Rs {this.props.basketProps.withDiscartCost} .00 Discount <br /> <br />
+                                     You got Rs {this.props.basketProps.cartCost - this.props.basketProps.getdiscount} .00 Discount <br /> <br />
+
                                  </h2>
                              </MDBCardImage>
                          </MDBCard>
@@ -487,7 +494,7 @@ class PlaceOrder extends Component {
 
 
                  <div className="myclass1 mt-4">
-                     <Button type="button" className="btn1" type="submit" >Confirm Payment</Button>
+                     <Button type="button" className="btn1" type="submit"  >Confirm Payment</Button>
                  </div>
              </Form>
 

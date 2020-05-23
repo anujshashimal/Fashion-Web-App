@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import img from '../../img/sample1.jpg'
 import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 import './Styles/Style..css';
-import Hea from "../CommonComponents/header";
+import Hea from "../CommonComponents/NavbarPage";
 import Foo from "../CommonComponents/footer";
 import PlaceOrder from '../CartComponents/PlaceOrder';
 import {Link, Redirect} from "react-router-dom";
@@ -11,6 +11,7 @@ import { MDBBtn, MDBCloseIcon  } from "mdbreact";
 import {productQuntity} from '../../Actions/ProductQuantity'
 import {removeItem }from '../../Actions/addActions'
 import { MDBTable, MDBTableBody, MDBTableHead ,MDBCardTitle} from 'mdbreact';
+
 const queryString = require('query-string');
 
 const CartPage = (props) =>{
@@ -57,15 +58,15 @@ const CartPage = (props) =>{
         console.log(index)
         return(
             <tr>
-                <button type="button" className="close" aria-label="Close" onClick={() => props.removeItem(index, product.price)}>
+                <button type="button" className="close" aria-label="Close" onClick={() => props.removeItem(index, product.price, product.counter)}>
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <img src={product.image} alt="Product" style={{height: "100px" }} />
                 <td className="tabletext">{product.name}</td>
                 <td className="tabletext">
-                    <i onClick={() =>props.productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>&nbsp;&nbsp;
+                    <i onClick={() =>props.productQuntity("DECREASE", product.productID, product.price, product.discount)} className="fas fa-angle-left"></i>&nbsp;&nbsp;
                     {product.counter}&nbsp;&nbsp;
-                    <i onClick={() =>props.productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>
+                    <i onClick={() =>props.productQuntity("INCREASE",product.productID,product.price , product.discount)} className="fas fa-angle-right"></i>
                 </td>
                 <td className="tabletext">{product.avaliable}</td>
                 <td className="tabletext">{product.discount} %</td>
@@ -89,7 +90,7 @@ const CartPage = (props) =>{
                 <header>
 
                     <div className='product-header'>
-                        Cart Page
+                        Cart Items
                     </div>
                     <MDBTable>
                         <MDBTableHead color="red darken-3" textWhite>
@@ -110,7 +111,8 @@ const CartPage = (props) =>{
                         <hr/>
                         <h4 className='basketTotalTitle'>Total Amount to Pay: </h4>
                         <h4 className='basketTotal'>Rs. {props.basketProps.cartCost},00 </h4>
-                        <Link type="button" className="btn red darken-3" to={'PlaceOrder?username='+username}  >Place Order
+
+                        <Link type="button" className="btn btn-red darken-3" to={'PlaceOrder?username='+username}  >Place Order
                         </Link>
                     </div>
                 </header>

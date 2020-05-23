@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import img from '../../img/sample1.jpg'
 import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 import './Styles/Style..css';
-import Hea from "../CommonComponents/header";
+import Hea from "../CommonComponents/NavbarPage";
 import Foo from "../CommonComponents/footer";
 import {Link, Redirect} from "react-router-dom";
 import {MDBBtn, MDBCloseIcon, MDBTable, MDBTableHead,MDBTableBody} from "mdbreact";

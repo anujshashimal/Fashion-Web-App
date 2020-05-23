@@ -3,7 +3,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput } 
 import axios from 'axios';
 import {Link, Redirect} from 'react-router-dom';
 import './Styles/OrderCompleteDet.css';
-import Header from '../CommonComponents/header';
+import Header from '../CommonComponents/NavbarPage';
 import Footer from '../CommonComponents/footer';
 import {connect} from "react-redux";
 import {productQuntity} from "../../Actions/ProductQuantity";
@@ -40,7 +40,7 @@ class OrderCompleteDetails extends Component {
 
         axios({
             method: 'get',
-            url: 'http://localhost:5000/cart/findUserOrder/' + values.username
+            url: 'http://54.84.43.211:5000/cart/findUserOrder/' + values.username
         }).then(response => {
             this.setState({
                 UserDetails :  response.data.map(product=>product),

@@ -11,8 +11,19 @@ export class AvgRating extends Component {
         }
     }
 
+    // componentDidUpdate(){
+    //     axios.get('http://localhost:5000/Comments/finds/'+this.props.productid)
+    //     .then(response=>{
+
+    //         this.setState({
+    //             AvgRate : response.data.avg,
+    //     })
+    //     console.log('avg', this.state.AvgRate)
+    //   })
+    // }
+
     AvarageRate = () =>{
-        axios.get('http://localhost:5000/Comments/finds/'+this.props.productid)
+        axios.get('http://54.84.43.211:5000/Comments/finds/'+this.props.productid)
         .then(response=>{
 
             this.setState({
@@ -24,7 +35,7 @@ export class AvgRating extends Component {
     render() {
         return (
             <div>
-                {this.AvarageRate(this.state.itemid)}
+                {this.AvarageRate()}
 
 
 {(this.state.AvgRate == 0 || this.state.AvgRate == null) ? (
