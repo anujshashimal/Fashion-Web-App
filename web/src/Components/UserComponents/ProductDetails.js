@@ -96,8 +96,10 @@ export class ProductDetails extends Component {
         }
 
         return (
+            <div>
+            <Nav username={this.state.username}/>
             <div style={{backgroundColor: "#ffcdd2"}}>
-                <Nav username={this.state.username}/>
+                
                 {/* <Header username={this.state.username} /> */}
                 <br />
                 <div className="" style={{backgroundColor: "#ffffff", color: ""}}>
@@ -170,7 +172,7 @@ export class ProductDetails extends Component {
                                                 text: "Your item is added to the Cart!",
                                                 icon: "warning",
                                                 dangerMode: true,
-                                            })}}><i className="fas fa-cart-arrow-down"></i>&nbsp;&nbsp; Add to Cart</button>                                        </div>
+                                            })}}><i className="fa fa-cart-arrow-down fa-lg"></i>&nbsp;&nbsp; Add to Cart</button>                                        </div>
                                         <div className="col">
                                             <button type="button" className="btn btn-red darken-3 btn-block" onClick={() => {((username != '' && username != "undefined")) ? (this.props.addToWatchList(val._id,this.state.username, val.productid, val.description, val.price, val.quantity, val.discount, val.image, this.state.counter)) : (this.setState({ragister: true})) ; swal({
                                                 title: "Added to WishList",
@@ -212,6 +214,7 @@ export class ProductDetails extends Component {
 
                 <Footer />
                 <NotificationContainer/>
+            </div>
             </div>
         )
     }
