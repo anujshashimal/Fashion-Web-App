@@ -51,7 +51,7 @@ export class StoreManagerDetails extends Component {
         });
         //console.log("Id is "+this.state.id);
 
-        axios.get('http://167.172.155.186/storemanager/findstoreManager/'+values.id)
+        axios.get('http://167.172.155.186:5000/storemanager/findstoreManager/'+values.id)
             .then(response=>{
 
                 this.setState({
@@ -102,7 +102,7 @@ export class StoreManagerDetails extends Component {
 
 
                     });
-                    axios.put('http://167.172.155.186/storemanager/updatestoreManager',storeManagerUpdate)
+                    axios.put('http://167.172.155.186:5000/storemanager/updatestoreManager',storeManagerUpdate)
                         .then(res => {
                             // window.location.reload(false);
                         });
