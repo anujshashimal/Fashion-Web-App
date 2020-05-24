@@ -9,6 +9,7 @@ import {connect} from "react-redux";
 import {removeItemFromWathList} from "../../Actions/addWatchList";
 import {productQuntity} from '../../Actions/ProductQuantity'
 import swal from "sweetalert";
+import './Styles/Style..css';
 
 const queryString = require('query-string');
 
@@ -37,7 +38,7 @@ componentDidUpdate() {
 
     axios({
         method: 'get',
-        url: 'http://54.84.43.211:5000/cart/findWatchlistItems/' + values.username,
+        url: 'http://100.24.72.11:5000/cart/findWatchlistItems/' + values.username,
     }).then(response => {
         this.setState({
             Items: response.data.map(Items => Items)
@@ -68,7 +69,7 @@ componentDidUpdate() {
         try {
             const responce = axios({
                 method: 'get',
-                url: 'http://54.84.43.211:5000/findWatchlistItems/' + values.username,
+                url: 'http://100.24.72.11:5000/findWatchlistItems/' + values.username,
                 data: data,
             }).then(response => {
                 this.setState({
@@ -89,7 +90,7 @@ componentDidUpdate() {
     removeItemFromWatch = (id) => {
         axios({
             method: 'delete',
-            url: 'http://54.84.43.211:5000/cart/deleteItem/' + id,
+            url: 'http://100.24.72.11:5000/cart/deleteItem/' + id,
         })
 
     }
@@ -98,7 +99,7 @@ componentDidUpdate() {
         this.props.watchListProps.backetNumbers = this.props.watchListProps.backetNumbers -1
         axios({
             method: 'delete',
-            url: 'http://54.84.43.211:5000/cart/deleteItem/' + id,
+            url: 'http://100.24.72.11:5000/cart/deleteItem/' + id,
         })
 
     }
@@ -170,15 +171,10 @@ componentDidUpdate() {
             const data = () =>{
             return(
                     <tr>
-                        {/*<button type="button" className="close" aria-label="Close" onClick={() => removeItem(index, this.state.price)}>*/}
-                        {/*    <span aria-hidden="true">&times;</span>*/}
-                        {/*</button>*/}
                         <img src={this.state.image} alt="Product" style={{height: "100px" }} />
                         <td className="tabletext">{this.state.name}</td>
                         <td className="tabletext">
-                            {/*<i onClick={() =>productQuntity("DECREASE", this.state.productID, this.state.price)} className="fas fa-angle-left"></i>*/}
                             {this.state.counter}
-                            {/*<i onClick={() =>productQuntity("INCREASE",this.state.productID,this.state.price)} className="fas fa-angle-right"></i>*/}
                         </td>
                         <td className="tabletext">{this.state.avaliable}</td>
                         <td className="tabletext">{this.state.discount}</td>
@@ -188,17 +184,6 @@ componentDidUpdate() {
             }
             return (
                 <div>
-                    {/*{*/}
-                    {/*filteredArr.map( (product, index) => {*/}
-
-                    {/*    this.state.userID = product.user,*/}
-                    {/*        this.state.avaliable = product.avaliable,*/}
-                    {/*        this.state.Product_ID = product.productID,*/}
-                    {/*        this.state.price = product.price,*/}
-                    {/*        this.state.name = product.name,*/}
-                    {/*        this.state.image = product.image,*/}
-                    {/*        this.state.discount = product.discount*/}
-                    {/*})}*/}
                     <Hea username={this.state.username}/>
                     <div className='container'>
                         <header >
@@ -220,19 +205,15 @@ componentDidUpdate() {
                                     {arr}
                                 </MDBTableBody>
                             </MDBTable>
-                            <div className='basketTotalContainer'>
                                 <hr/>
+                            <div className='basketTotalTitle'>
                                 {/*<h4 className='basketTotalTitle'>Total Amount to Pay: </h4>*/}
-                                <button type="button" className='btn btn-red darken-3' onClick={() => {addToCartForPayment() ; swal({
+                                <button type="button" className='btn red lighten-2 btn-block' onClick={() => {addToCartForPayment() ; swal({
                                     title: "Your all item is added to the cart",
                                     icon: "warning",
                                     dangerMode: true,
                                 })}}> Add Product To Cart
-                                    {/*<span aria-hidden="true">&times;</span>*/}
                                 </button>
-                                {/*<h4 className='basketTotal'>Rs. {basketProps.cartCost},00 </h4>*/}
-                                {/*<Link type="button" className="btn red darken-3" onClick={() => addToCartForPayment()} >Add to Cart*/}
-                                {/*</Link>*/}
                             </div>
                         </header>
                     </div>
@@ -240,8 +221,6 @@ componentDidUpdate() {
                 </div>
             )
         }
-
-
 }
 const mapStateToPropss = state => ({
     watchListProps : state.watchListState,

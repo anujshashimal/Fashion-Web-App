@@ -107,14 +107,12 @@ const CartPage = (props) =>{
                             {filteredArr}
                         </MDBTableBody>
                     </MDBTable>
-                    <div className='basketTotalContainer'>
                         <hr/>
-                        <h4 className='basketTotalTitle'>Total Amount to Pay: </h4>
-                        <h4 className='basketTotal'>Rs. {props.basketProps.cartCost},00 </h4>
-
-                        <Link type="button" className="btn btn-red darken-3" to={'PlaceOrder?username='+username}  >Place Order
+                        <div className='basketTotalTitle'>
+                        <h4>Without Discount Rs. {props.basketProps.cartCost},00 <br/><br/></h4>
+                        <Link type="button" className="btn red lighten-2 btn-block" to={'PlaceOrder?username='+username}  >Place Order
                         </Link>
-                    </div>
+                        </div>
                 </header>
             </div>
             <Foo />
