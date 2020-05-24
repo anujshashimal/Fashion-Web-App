@@ -7,7 +7,4 @@ export const placeOrder = function( productID,discount,price,description, avalia
     dispatch({
         type: PLACE_ORDER_DIR,
         payload: {productID, description, price,discount, avaliable, counter}
-    })
-
-    }
-}
+    })}}

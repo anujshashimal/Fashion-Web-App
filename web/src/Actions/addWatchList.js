@@ -17,16 +17,11 @@ export const addToWatchList = (watchID,userID,ID,productName, price, avaliable, 
             type: ADD_PRODUCT_TO_WATCHLIST,
             payload: {watchID:watchID, userID: userID, productID: ID,name :productName, price: price, avaliable: avaliable, discount: discount, image:image, counter: counter}
         })
-
-
     }
-
-
 }
 
 
 export const removeItemFromWathList = ( name, price) => {
-
     console.log(name)
     return function (dispatch) {
         dispatch({

@@ -108,7 +108,6 @@ cloudinary.config({                        //cloud configuration
 
             cloudinary.uploader.upload(req.file.path,function(err,result){
                 console.log(result)
-             
                  product.image=result.url;
                  console.log(product.image);
                  product.save()
@@ -124,7 +123,6 @@ cloudinary.config({                        //cloud configuration
        //Delete the product
 
 exports.Delete_Product = (req,res,next)=>{
-
        Product.findOneAndDelete({'productid':req.params.productid})
        .then(()=>res.json('Product Deleted'))
        .catch(err=>res.status(400).json('Error'+err))

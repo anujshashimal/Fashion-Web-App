@@ -25,18 +25,6 @@ export default class header extends Component{
         }
     }
 
-    // componentDidMount(){
-    //     axios.get('http://localhost:5000/user/find')
-    //     .then(response=>{
-    //       if(response.data.length>0){
-    //         this.setState({
-    //             users :  response.data.map(users=>users),
-    //         //   subcategory : response.data[0].CategoryName
-    //      })
-    //       }
-    //     })
-    // }
-
     handleUsernameChange = event => {
         this.setState({
             username: event.target.value
@@ -52,18 +40,6 @@ export default class header extends Component{
     handleLoginSubmit = event => {
         event.preventDefault();
         this.getUser();
-        // if(this.state.user.length != 1){
-        //     alert("invalid");
-        // } else{
-            // this.setState({
-            //     user: this.state.users.filter(users => users.username === this.state.username).map(users => users)
-            // })
-            
-            // console.log(this.state.user)
-            // console.log(this.state.users)
-            
-        // }
-        
     }
 
     async getUser (){
@@ -74,15 +50,9 @@ export default class header extends Component{
             console.log(response.data.length)
             console.log('res',response.data[0])
             if(response.data.length != 1){
-                // alert("Please Ragister");
-                // NotificationManager.success('Please Ragister', 'Hi....');
                 swal("Hi User...", "Please Register Before Login", "info");
-                // NotificationManager.warning('Click hear to register', 'Please Register', 5000, () => {
-                //     (this.setState({register: true}))
-                //   });
                 this.setState({register: true});
             }
-
             this.setState({
                 user : response.data[0]
             },()=>{
@@ -90,15 +60,9 @@ export default class header extends Component{
                 console.log('user password',this.state.user.password)
                 console.log('user password',this.state.user.username)
                 if(this.state.password == this.state.user.password){
-                    // sessionStorage.setItem('userData', this.state.user);
-                    // swal("Login Success", "Hi "+this.state.username, "success");
-                    // alert("Login Success");
-                    // NotificationManager.success('Hi '+this.state.username, 'Login Success');
+
                     this.setState({success: true});
                 } else{
-                    // NotificationManager.success('Success message', 'Title here');
-                    // alert("Password incorect");
-                    // swal("Password incorect", "", "error");
                     NotificationManager.error(this.state.username+' Please enter correct password', 'Password incorect');
                 }
             });
@@ -118,16 +82,9 @@ export default class header extends Component{
             return <Redirect to={"/Register?username="+this.state.username} />
         }
 
-        // if(sessionStorage.getItem("userData")) {
-        //     return <Redirect to={"/viewProduct"} />
-        // }
-            
         const {username, password} =this.state
         return(
             <div className="" style={{marginLeft: "5%", marginRight: "5%", marginTop: "2%"}}>
-                {/* <div className="row" style={{backgroundColor: "#ef9a9a"}}>
-                    <br/>
-                    </div> */}
                 <div className="row">
                     <div className="col-md-6">
                     <div style={{textAlign: "center"}}>
@@ -188,9 +145,6 @@ export default class header extends Component{
                                 </form>
                     </div>
                 </div>
-                {/* <div className="row" style={{backgroundColor: "#ef9a9a"}}>
-                    <br/>
-                    </div> */}
                     <NotificationContainer/>
             </div>
         )

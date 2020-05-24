@@ -21,7 +21,6 @@ export class StoreManagerNavbar extends Component {
        storemanagerid : this.props.managerid,
        storemanagerusername  :this.props.managername
      })
-     // console.log(this.props.managerid)
    }
   
    Onsubmit(e)
@@ -66,13 +65,9 @@ export class StoreManagerNavbar extends Component {
                                             <Link to={'/Storemanagerlogin'} style={{color: "white"}}><i id="navbar-static-cart" alt="Cart" className="fas fa-user"></i>Login</Link>
                                             {window.location = '/Storemanagerlogin'}
                                             &nbsp;&nbsp;&nbsp;&nbsp;
-                                            
-                                            {/* <Link to={'/Register'} style={{color: "white"}}><i id="navbar-static-cart" alt="Cart" className="fas fa-user-plus"></i>Singup</Link> */}
                                             </span>
                                         )}
-                                        {/* {props.username}
-                                            <button class="btn btn-outline-white btn-sm my-0" type="submit">Logout</button>
-                                        <span className="sr-only"> Cart </span></div></li>  */}
+
                                     </div>
                                 </li>
 

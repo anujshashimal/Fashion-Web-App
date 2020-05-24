@@ -15,7 +15,6 @@ class OrderCompleteDetails extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             userID:'',
             username: '',
@@ -33,14 +32,16 @@ class OrderCompleteDetails extends Component {
     componentDidMount() {
         this.getUser()
 
-    }
-
-    async getUser () {
         var values = queryString.parse(this.props.location.search)
         console.log(this.props.location.search)
         this.setState({
             fullname: values.fullname,
         })
+    }
+
+    async getUser () {
+        var values = queryString.parse(this.props.location.search)
+        console.log(this.props.location.search)
         axios({
             method: 'get',
             url: 'http://100.24.72.11:5000/cart/findUserOrder/' + values.username
@@ -57,14 +58,11 @@ myFun = () =>{
         success: true
     })
 this.props.clearDetails()
-
     }
-
 render() {
         if( this.state.success){
             return <Redirect to={"/ViewProduct"} ></Redirect>
         }
-
     return (
 <div>
     <Header username={this.state.fullname}/>
@@ -103,11 +101,7 @@ render() {
                         ))}
 <Footer />
 </div>
-
-    );
-}
-};
-
+    );}};
 
 const mapStateToPropss = state => ({
     basketProps : state.basketState,

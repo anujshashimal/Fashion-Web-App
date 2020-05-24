@@ -65,30 +65,19 @@ export default class header extends Component{
                 });
                 
                 if(this.state.storemanagerpassword == this.state.storemanager.Password){
-                    // sessionStorage.setItem('userData', this.state.user);
-                    // alert("Login Success");
                     swal("Login Success", "Hi "+this.state.storemanagerusername, "success");
-
                     this.setState({success: true});
                 } else{
-                    // alert("Password  Incorect!!.Please Re-enter");
                     NotificationManager.error(' Please enter correct password', 'Password incorect');
                     this.setState({
                         storemanagerusername : '',
                         storemanagerpassword : ''
-                    })
-                }
-
+                    })}
             }else{
                 NotificationManager.error(' Error', 'You are not store Manager');
             }
-           
-            
         }).catch(err=>console.log("Error:"+err))
-        
     }
-
-
     
     render() {
         if(this.state.success) {
@@ -97,10 +86,6 @@ export default class header extends Component{
          else if(this.state.register){
             return <Redirect to={"/adminhome"} />
         }
-         
-        // if(sessionStorage.getItem("userData")) {
-        //     return <Redirect to={"/viewProduct"} />
-        // }
        
             const { storemanagerusername,storemanagerpassword} =this.state
         return(

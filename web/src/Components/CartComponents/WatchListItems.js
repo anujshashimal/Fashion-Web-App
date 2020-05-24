@@ -111,27 +111,13 @@ componentDidUpdate() {
                 console.log(this.props.basketProps)
                 this.state.Items.map((item, index) => {
                     console.log(item)
-                    // let nTotal;
-                    // let total = item.price
-                    // nTotal = total + item.price
-                    // let newval = total - item.price
-                    // this.props.basketProps.cartCost = newval - newval
                     item.counter = 0
-                    // this.props.basketProps.cartCost = this.props.basketProps.cartCost + item.price
                     console.log(this.props.basketProps.cartCost)
                     this.props.basketProps.items.push(item)
-
-                    console.log(this.props.basketProps)
-                    // this.props.basketProps.backetNumbers = this.props.basketProps.backetNumbers+1
-                    // this.props.basketProps.cartCost = this.props.watchListProps.cartCost
                     this.props.watchListProps.backetNumbers = this.props.watchListProps.backetNumbers -1
                     this.removeItemFromWatch(item._id)
-
                 })
             }
-
-
-
             let arr = [];
         arr = this.state.Items.reduce((acc, current) => {
             const x = acc.find(item => item.productID === current.productID);
@@ -141,23 +127,18 @@ componentDidUpdate() {
                 return acc;
             }
         }, [])
-
                 arr = arr.map( (product, index) => {
                 console.log(product)
-
                 return(
 
                     <tr>
                         <button type="button" className="close" aria-label="Close" onClick={() => this.removeItemFromWatchPage(product._id)}>
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        {/*{this.setState({productid: product._id})}*/}
                         <img src={product.image} alt="Product" style={{height: "100px" }} />
                         <td className="tabletext">{product.name}</td>
                         <td className="tabletext">
-                            {/*<i onClick={() =>this.props.productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>&nbsp;&nbsp;*/}
                             {product.counter}&nbsp;&nbsp;
-                            {/*<i onClick={() =>this.props.productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>*/}
                         </td>
                         <td className="tabletext">{product.avaliable}</td>
                         <td className="tabletext">{product.discount} %</td>
@@ -207,7 +188,6 @@ componentDidUpdate() {
                             </MDBTable>
                                 <hr/>
                             <div className='basketTotalTitle'>
-                                {/*<h4 className='basketTotalTitle'>Total Amount to Pay: </h4>*/}
                                 <button type="button" className='btn red lighten-2 btn-block' onClick={() => {addToCartForPayment() ; swal({
                                     title: "Your all item is added to the cart",
                                     icon: "warning",

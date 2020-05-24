@@ -9,8 +9,6 @@ let  User = require('../models/User');
     .catch(err=>res.status(400).json("Error:"+err))
 }
 
-
-
   //find all products
   exports.Find_All_Users = (req,res,next)=>{
 
@@ -48,27 +46,6 @@ let  User = require('../models/User');
 
    console.log(user);
 }
-
-
-// exports.Add_User = ('/', async (req, res) => {
-//     const post = new Post({
-//         userid: req.body.userid,
-//         username: req.body.username,
-//         email: req.body.email,
-//         address: req.body.address,
-//         contactno: Number(req.body.contactno),
-//         gender: req.body.gender,
-//         password: req.body.password
-//     });
-
-//     try{
-//     const savedPost = await post.save();
-//     res.json(savedPost);
-//     }catch (err){
-//         res.json({ message: err });
-//     }
-// });
-
 
 
 // Update the User----------------------------------------------

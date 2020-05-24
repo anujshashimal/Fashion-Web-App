@@ -5,9 +5,5 @@ export const getNumbers = function() {
         console.log("Getting all Numbers")
         dispatch({
             type: GET_NUMBERS_IN_BASKET
-
-        })
-
-    }
-
+        })}
 }

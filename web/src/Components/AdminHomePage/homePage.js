@@ -16,14 +16,9 @@ export class homePage extends Component {
                     <div className="row">
                         <div className="col-1"></div>
                         <div className="col-10">
-
-
                             <div className="row">
                                 <div className="col-5">
-
                                     <div className="card card-image" id="background1">
-
-
                                         <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-3">
                                             <div>
                                                 <h5 ><i className="fas fa-user"></i> Store Manager</h5>
@@ -32,15 +27,11 @@ export class homePage extends Component {
                                                 <Link to={'/showstoremanager'} className="btn btn-red darken-3"><i className="fas fa-clone left"></i> View</Link>
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </div>
                                 <div className="col-1"></div>
                                 <div className="col-5">
                                     <div className="card card-image" id="background2">
-
-
                                         <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                                             <div>
                                                 <h5 ><i className="fas fa-window-maximize"></i> Category</h5>
@@ -53,11 +44,6 @@ export class homePage extends Component {
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
                         </div>
                         <div className="col-1"></div>
                     </div>

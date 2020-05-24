@@ -27,11 +27,8 @@ export default (state = initialState, action) =>{
             console.log(state.getdiscount)
 
             if(state.items.map.length === 1){
-                console.log(state.getdiscount)
-                console.log(payload.productID)
                 if(payload.counter === 0){payload.counter =1}
                 state.cartCost = state.cartCost + payload.price*payload.counter
-                console.log(state.cartCost)
             }else{
                 state.items.map((items, index) =>{
                     if(payload.productID === items.productID || items.length === 0){
@@ -73,18 +70,13 @@ export default (state = initialState, action) =>{
             return {
                 ...state,
                 ...state.items,
-                // backetNumbers: state.backetNumbers - 1,
                 cartCost: state.cartCost - payload.price
-
             }
 
         case INCREASE_QUANITY:
             console.log(payload)
             state.getdiscount= state.getdiscount + payload.price * payload.discount * (1 / 100)
-            console.log(state.getdiscount)
             state.items.map((itemss, index)=>{
-                console.log(itemss.productID)
-                console.log(action.payload.ID)
                 if(itemss.productID == payload.ID){
                     itemss.counter = itemss.counter +1;
 
@@ -101,14 +93,11 @@ export default (state = initialState, action) =>{
 
             console.log(payload)
             state.items.map((itemss, index)=>{
-                console.log(itemss.productID)
-                console.log(action.payload.ID)
                 if(itemss.productID == payload.ID){
                     if(itemss.counter > 0){
                     itemss.counter = itemss.counter -1;
                         state.backetNumbers =  state.backetNumbers - 1
                         state.cartCost = state.cartCost - payload.price
-
                     }
                     console.log(itemss.counter)
                 }
@@ -123,7 +112,6 @@ export default (state = initialState, action) =>{
             }
 
             state.getdiscount= (payload.price * payload.avaliable * (1 / 100)) * payload.counter
-            console.log(state.getdiscount)
 
             console.log(payload)
             return {
