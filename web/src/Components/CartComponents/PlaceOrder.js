@@ -41,9 +41,7 @@ class PlaceOrder extends Component {
             username:'',
             deliverHome:''
         }
-
     }
-
     componentDidMount() {
         var values = queryString.parse(this.props.location.search)
         console.log(this.props.location.search)
@@ -51,9 +49,7 @@ class PlaceOrder extends Component {
         this.setState({
             username: values.username,
         })
-
     }
-
     toggle = tab => e => {
         if (this.state.activeItem !== tab) {
             this.setState({
@@ -139,10 +135,6 @@ class PlaceOrder extends Component {
         })
     }
 
-
-
-
-
      async sendOrderData () {
          const data ={
              fullname: this.state.fullname,
@@ -171,24 +163,19 @@ class PlaceOrder extends Component {
          }
      }
 
-
      render() {
 
-         const {fullname, email, address, contactNo, OrderId, cardNumber,cvv,expireDate,address1,state,postalCode} =this.state
+         const {fullname, email, address, contactNo, OrderId, cardNumber,cvv,expireDate,address1,state,postalCode, deliverHome} =this.state
 
          if( this.state.success){
              return <Redirect to={'orderDetails?username='+ this.state.fullname +'&fullname='+this.state.username} />
          }
-
-
          return(
          <div className='Container'>
          <Header username={this.state.username}/>
 
          <div className='total'>
-
          </div>
-
          <MDBContainer>
              <div className='imgheader'>
                  <MDBCardImage className="img-fluid" style={{ width: "100rem", height:"10",color:"#c62828  "}} src={pay}/>
@@ -209,7 +196,6 @@ class PlaceOrder extends Component {
                                  tag='div'>
                                  <h2 className='h2-responsive mb-2'> Without Discount : {this.props.basketProps.cartCost}.00 <br /> <br/>
                                      Your New Total Price : {this.props.basketProps.cartCost - this.props.basketProps.getdiscount}.00 <br /> <br />
-
                                  </h2>
                              </MDBCardImage>
                          </MDBCard>
@@ -222,7 +208,6 @@ class PlaceOrder extends Component {
                      <h3>Personal Informations</h3>
                  </div>
                  <br />
-
                  <Form.Row>
                      <Form.Group as={Col} controlId="formGridField1">
                          <div className="input-container">
@@ -322,27 +307,6 @@ class PlaceOrder extends Component {
                              required/>
                      </div>
                  </Form.Group>
-
-                 {/*<Form.Row>*/}
-                 {/*    /!*<Form.Group as={Col} controlId="formGridCity">*!/*/}
-                 {/*    /!*    <Form.Label>City</Form.Label>*!/*/}
-                 {/*    /!*    <Form.Control />*!/*/}
-                 {/*    /!*</Form.Group>*!/*/}
-
-                 {/*    <Form.Group as={Col} controlId="formGridState">*/}
-                 {/*        /!*<Form.Label>State</Form.Label>*!/*/}
-                 {/*        /!*<Form.Control as="select" value="Choose...">*!/*/}
-                 {/*        /!*    <option>Choose...</option>*!/*/}
-                 {/*        /!*    <option>...</option>*!/*/}
-                 {/*        /!*</Form.Control>*!/*/}
-                 {/*    </Form.Group>*/}
-
-                 {/*    <Form.Group as={Col} controlId="formGridZip">*/}
-                 {/*        <Form.Label>Zip</Form.Label>*/}
-                 {/*        <Form.Control />*/}
-                 {/*    </Form.Group>*/}
-                 {/*</Form.Row>*/}
-
                  <Form.Group id="formAddress3">
                      <div className="input-container">
                          <i className="fa fa-cart-plus icon fa-lg"></i>
@@ -354,9 +318,7 @@ class PlaceOrder extends Component {
                              placeholder={this.props.basketProps.cartCost - this.props.basketProps.getdiscount}/>
                      </div>
                  </Form.Group>
-
                  <br />
-
                  <div className='myclass2'>
                      <h3>Payment Details</h3>
                  </div>
@@ -386,8 +348,7 @@ class PlaceOrder extends Component {
                                  id="defaultFormContactSubjectEx"
                                  onChange={this.handleCardNumberChange}
                                  value={cardNumber}
-                                 pattern="^[0-16]{16}$"
-
+                                 />
                              />
                          </div>
 
@@ -396,7 +357,7 @@ class PlaceOrder extends Component {
                              <input
                                  className="input-field1"
                                  type="text"
-                                 placeholder="Card Number"
+                                 placeholder="Expire Date"
                                  id="defaultFormContactSubjectEx"
                                  onChange={this.handleExpireDateChange}
                                  value={expireDate}
@@ -426,18 +387,13 @@ class PlaceOrder extends Component {
                                  type='static'
                                  id="defaultFormContactSubjectEx"
                                  className="form-control"
-                                 placeholder="Cash On Deliver"
+                                 placeholder="Type YES"
+                                 value={deliverHome}
                                  onChange={this.handleDeliverChange}
                              />
                          </div>
-
                      </MDBTabPane>
-
                  </MDBTabContent>
-
-
-
-
                  <MDBTabContent activeItem={this.state.activeSubmit} >
                      <MDBTabPane tabId="1" role="tabpanel">
                          <div className="input-container">
@@ -454,9 +410,10 @@ class PlaceOrder extends Component {
                          <div className="input-container">
                              <i className="fa fa-credit-card icon fa-lg"></i>
                              <input
-                                 className="input-field1"
+                                 className="input-field2"
                                  type="text"
                                  placeholder="Expire Date"
+                                 pattern='^[0-9]*$'
                                  id="defaultFormContactSubjectEx"
                                  onChange={this.handleExpireDateChange}
                                  value={expireDate}
@@ -465,16 +422,16 @@ class PlaceOrder extends Component {
                          <div className="input-container">
                              <i className="fa fa-credit-card icon fa-lg"></i>
                              <input
-                                 className="input-field1"
+                                 className="input-field3"
                                  type="text"
                                  placeholder="Cvv"
+                                 pattern='^[0-9]*$'
                                  id="defaultFormContactSubjectEx"
                                  onChange={this.handleCVVChange}
                                  value={cvv}
                              />
                          </div>
                      </MDBTabPane>
-
                      <MDBTabPane tabId="2" role="tabpane1">
                          <br/>
                          <label htmlFor="defaultFormContactMessageEx" className="grey-text">
@@ -486,30 +443,20 @@ class PlaceOrder extends Component {
                                  className="input-field1"
                                  type='static'
                                  id="defaultFormContactSubjectEx"
-                                 className="form-control"
                                  placeholder="Type YES"
                                  onChange={this.handleDeliverChange}
                              />
                          </div>
                      </MDBTabPane>
                  </MDBTabContent>
-
-
                  <div className="myclass1 mt-4">
                      <Button type="button" className="btn1" type="submit"  >Confirm Payment</Button>
                  </div>
              </Form>
-
              </div>
          </MDBContainer>
-
-
-
              <Footer />
-
          </div>
-
-
 )}
 }
 

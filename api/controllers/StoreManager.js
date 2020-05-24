@@ -14,26 +14,6 @@ exports.getAllStoreManager=(req,res,next)=>{
         .catch(err=>res.status(400).json("error:"+err))
 }
 
-
-// router.route('/addCategory').post((req,res)=>{
-//     const Category_ID = req.body.Category_ID;
-//     const CategoryName = req.body.CategoryName;
-//     const  MainCategory = req.body.MainCategory;
-//     const  Admin = req.body.Admin;
-//
-//     const  newCategory = new Category({
-//         Category_ID,
-//         CategoryName,
-//         MainCategory,
-//         Admin
-//     });
-//
-//     newCategory.save()
-//         .then(()=>res.json('Category Added!'))
-//         .catch(err=>res.status(400).json("Error:"+err));
-//
-// });
-
 exports.SaveStoreManager = (req,res,next)=>{
 
     const smId = req.body.smId;
@@ -42,28 +22,21 @@ exports.SaveStoreManager = (req,res,next)=>{
     const  Password = req.body.Password;
     const  RePassword = req.body.RePassword;
     const  Admin = req.body.Admin;
-
-
-
     var transporter = nodemailer.createTransport({
         host:'smtp.gmail.com',
         port:456,
-
         service: 'gmail',
         auth: {
             user: 'sliitfashionwebapp@gmail.com',
             pass: 'sliit@123'
-        }
-    });
+        }});
 
     var mailOptions = {
         from: 'sliitfashionwebapp@gmail.com',
         to: Email,
         subject: 'Congratulation !! You were added as a Store Manager in SLIIT Fashion Web app by '+Admin,
-        text: ' Email :'+Email+' User Name :'+UserName+' Password : '+Password+' please click this link to go loging page http://100.24.72.11:5000/Storemanagerlogin'
+        text: ' Email :'+Email+' User Name :'+UserName+' Password : '+Password+' please click this link to go login page http://100.24.72.11/Storemanagerlogin'
     };
-
-    console.log(Email);
 
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {
@@ -81,8 +54,6 @@ exports.SaveStoreManager = (req,res,next)=>{
         RePassword,
         Admin
     });
-
-
     newStoreManager.save()
         .then(()=>res.json('Store Manager Added!'))
         .catch(err=>res.status(400).json("Error:"+err));
@@ -98,25 +69,19 @@ exports.Update_StoreManger = (req,res,next)=>{
             storemanager.Password = req.body.Password;
             storemanager.RePassword = req.body.RePassword;
             storemanager.Admin  =   req.body.Admin;
-
             storemanager.save()
                 .then(()=>res.json('store Manger Updated'))
                 .catch(err=>res.status(400).json('Error'+err));
         })
         .catch(err=> res.status(400).json('Err'+err));
-
 }
 
 
 exports.Delete_StoreManager = (req,res,next)=>{
-
     StoreManager.findOneAndDelete({'smId':req.params.smId})
         .then(()=>res.json('store Manager Deleted'))
         .catch(err=>res.status(400).json('Error'+err))
-
 }
-
-
 
 exports.Find_StoreManager_byname = (req,res,next)=>{
    

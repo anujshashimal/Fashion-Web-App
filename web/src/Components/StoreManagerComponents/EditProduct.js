@@ -67,27 +67,9 @@ class EditProduct extends Component {
       if(response.data.length>0){
         this.setState({
           categorys  : response.data.map(categorys =>categorys),
-         // maincategorys : response.data.map(product=>product.MainCategory),
           subcategorys :  response.data.map(product=>product.CategoryName),
-       
-     })
-      }
- 
-      // this.setState({
-      
-      //   subcategory : this.state.categorys.filter(categorys => categorys.MainCategory === this.state.maincategory)
-      // })
-  
-
-    })   
-
-
-
-
-
-
-
-
+     })}
+    })
   }
 
   increment() {
@@ -196,8 +178,6 @@ class EditProduct extends Component {
         stockmanagerid : '',
        
     })
-        // window.location = '/';
-       // alert('Product Details Updated Successfully')
        NotificationManager.success('Product Details Updated Successfully', 'Success');
   } 
 
@@ -208,19 +188,13 @@ class EditProduct extends Component {
     const {  description,price,quantity,discount, image } = this.state;    
     let formErrors = {};    
     let formIsValid = true;    
-    //var numberpattern =  '^[0-9]*$';
 
     //product description      
     if (!description) {    
         formIsValid = false;    
         formErrors["descriptionErr"] = "Description is required.";    
     }
-  //   else if(description.length<2)    
-  //  {
-  //       formIsValid = false;    
-  //       formErrors["descriptionErr"] = "Description characters more than 2 required."; 
 
-  //  }
    if (image === null) {
     formIsValid = false;    
     formErrors["imageErr"] = "Please select image"; 

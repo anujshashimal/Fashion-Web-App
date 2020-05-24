@@ -15,22 +15,13 @@ import { MDBTable, MDBTableBody, MDBTableHead ,MDBCardTitle} from 'mdbreact';
 const queryString = require('query-string');
 
 const CartPage = (props) =>{
-    // console.log(basketProps)
     console.log(props)
     let productInCart = [];
     let filteredArr = [];
-
     let prody = []
     const [username, setUsername] = useState('');
 
     var values = queryString.parse(props.location.search)
-    console.log(props.location.search)
-    console.log(values.item)
-    console.log(values.username)
-    // this.setState({
-    //     itemid: values.item,
-    //     username: values.username,
-    // })
 
     useEffect(() => {
             setUsername(values.username)
@@ -49,8 +40,6 @@ const CartPage = (props) =>{
             return acc;
         }
     }, [])
-
-
 
 
     filteredArr = filteredArr.map( (product, index) => {
@@ -84,11 +73,8 @@ const CartPage = (props) =>{
         <div>
             <Hea  username={username}/>
             {console.log(username)}
-
             <div className='container'>
-
                 <header>
-
                     <div className='product-header'>
                         Cart Items
                     </div>

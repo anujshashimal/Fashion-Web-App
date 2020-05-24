@@ -24,27 +24,9 @@ export class viewProduct extends Component {
             products: [],
             username: '',
             search: '',
-            
-            // redirect: false,
         }
-        // this.Logout = this.Logout.bind(this);
     }
 
-    // componentWillMount(){
-    //     if(sessionStorage.getItem("userData")){
-    //         console.log("call User Feed")
-    //     }
-    //     else{
-    //         this.setState({redirect: true});
-    //     }
-    // }
-
-    // Logout(){
-    //     sessionStorage.setItem("userData",'');
-    //     sessionStorage.clear();
-    //     this.setState({redirect: true});
-    // }
-    
     componentDidMount(){
 
         var values = queryString.parse(this.props.location.search)
@@ -60,7 +42,6 @@ export class viewProduct extends Component {
           if(response.data.length>0){
             this.setState({
                 categorys :  response.data.map(categorys=>categorys),
-            //   subcategory : response.data[0].CategoryName
          })}
         })
         
@@ -69,7 +50,6 @@ export class viewProduct extends Component {
           if(response.data.length>0){
             this.setState({
                 products :  response.data.map(product=>product),
-            //   subcategory : response.data[0].CategoryName
          })
     
           }
@@ -100,18 +80,12 @@ export class viewProduct extends Component {
        }
     
     render() {
-        
-        // if(this.state.redirect) {
-        //     return <Redirect to={"/Login"} />
-        // }
         const {subcategory, maincategory} =this.state
         return (
             <div>
-                {/* <Header username={this.state.username} /> */}
                 <Nav username={this.state.username}/>
                 <br/>
-                {/* <button type="button" className="button" onClick={this.Logout}>Logout</button> */}
-                
+
                 <div className="row" style={{marginLeft: "", marginTop: "", marginRight: '', backgroundColor: '#ffcdd2'}}>
                     <div className="col-md" style={{marginTop: "2%"}}>
                         <div className="texboxwidth" style={{width: "70%"}}>
@@ -201,7 +175,6 @@ export class viewProduct extends Component {
                                     ) : (
                                         <div>
                                             <h5><MDBBadge tag="a" color="dark"> Available : {products.quantity} </MDBBadge></h5>
-                                        {/* Available : {products.quantity} */}
                                     </div>
                                     )}
                                             </div>
@@ -248,15 +221,6 @@ export class viewProduct extends Component {
                                             </div>
                                         </div>
 
-                                   {/* Available : {products.quantity}</p> */}
-                                   {/* {(products.quantity == 0) ? (
-                                        <h5><MDBBadge tag="a" color="red"> Out of Stock </MDBBadge></h5>
-                                    ) : (
-                                        <div>
-                                            <h5><MDBBadge tag="a" color="dark"> Available : {products.quantity} </MDBBadge></h5> */}
-                                        {/* Available : {products.quantity} */}
-                                    {/* </div>
-                                    )} */}
                                       </p>
                                </div>
                        </div></Link>

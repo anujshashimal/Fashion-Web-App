@@ -11,8 +11,6 @@ import  {Link}  from  'react-router-dom'
 import Page from 'react-page-loading'
 import Nav from '../CommonComponents/NavbarPage'
 import {connect} from "react-redux";
-import {removeItemFromWathList} from "../../Actions/addWatchList";
-import {productQuntity} from "../../Actions/ProductQuantity";
 import axios from "axios";
 import delivery from './img/delivery.gif'
 

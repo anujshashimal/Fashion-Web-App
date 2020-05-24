@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
-import Footer from '../CommonComponents/footer';
 import { MDBContainer, MDBInputGroup ,MDBBtn} from "mdbreact";
 import './css/Product.css';
 import '../UserComponents/LoginRegister.css'
 import axios from 'axios'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
-import swal from 'sweetalert';
 const queryString = require('query-string');
-
-
-
 
 class AddProduct extends Component {
     
@@ -27,7 +22,6 @@ class AddProduct extends Component {
       this.onSubmit = this.onSubmit.bind(this);
       this.increment = this.increment.bind(this);
       this.decrement = this.decrement.bind(this);
-     
 
      this.state = {
           categorys : [],
@@ -48,27 +42,17 @@ class AddProduct extends Component {
 
   componentDidMount(){
 
-  //  var values = queryString.parse(this.props.location.search)
-  //  console.log(values.storenamagerusername)
-  //  console.log(values.storemanagerid)
-
      this.setState({
       stockmanagerid : this.props.match.params.storemanagerid,
      
        })
-
 
       axios.get('http://100.24.72.11:5000/category/:id')
       .then(response=>{
         if(response.data.length>0){
           this.setState({
             categorys  : response.data.map(categorys =>categorys),
-           // maincategorys : response.data.map(product=>product.MainCategory) ,
-           // maincategory : response.data[0].MainCategory,
-           // subcategorys :  response.data.map(product=>product.CategoryName),
-           // subcategory : response.data[0].CategoryName
        })
-  
         }
       })   
   }
@@ -178,8 +162,7 @@ class AddProduct extends Component {
        
     })
 
-        // window.location = '/';
-       // alert('Product Details Added Successfully')
+
         NotificationManager.success('Product Added Successfully', 'Success');
   } 
 
@@ -191,7 +174,6 @@ class AddProduct extends Component {
     const {  description,price,quantity,discount, image } = this.state;    
     let formErrors = {};    
     let formIsValid = true;    
-    //var numberpattern =  '^[0-9]*$';
 
     //product description      
     if (!description) {    
@@ -223,15 +205,13 @@ class AddProduct extends Component {
    
   render() {
 
-    const { descriptionErr, priceErr, quantityErr, discountErr, imageErr } = this.state.formErrors;    
-
+    const { descriptionErr, priceErr, quantityErr, discountErr, imageErr } = this.state.formErrors;
     return (
       <div className="jumbotron">
            <h2 className="header">Add Product</h2>
            <form  onSubmit={this.onSubmit}>
               <div >
                    <div className="jumbotron" style={{fontFamily:"Cambria, Cochin, Georgia, Times, 'Times New Roman', serif",fontSize:"medium"}}>
-
                          <div className="texboxwidth">
                               <label htmlFor="exampleInput">Product Main Category</label>
                               <div className="icons">
@@ -254,16 +234,12 @@ class AddProduct extends Component {
                                  <select ref="userInput" required className="form-control" value = {this.state.subcategory} onChange = {this.OnChangesubcategory} multiple= {false}>
                                    {
                                       this.state.categorys.filter(categorys => categorys.MainCategory === this.state.maincategory).map(function(categorys){
-                                           
                                       return <option key ={categorys.CategoryName} value={categorys.CategoryName}>{categorys.CategoryName}</option>
-
                                       })
                                    }
-                                   
                                </select>   
                            </div>
                           <br/>
-
                           <div className="texboxwidth">
                           <div className="form-group">
                             <label htmlFor="exampleFormControlTextarea1">Product Description</label>
@@ -277,7 +253,6 @@ class AddProduct extends Component {
                             }  
                            </div>
                           <br/>
-
                           <div className="texboxwidth">
                                <label htmlFor="exampleInput">Price</label>
                                <div className="icons">
@@ -285,7 +260,6 @@ class AddProduct extends Component {
                                 </div>
                                <div className="input-group mb-3">
                                   <div className="input-group-prepend">
-                                     
                                   </div>
                                   <input pattern ='^[0-9]{0,5}' type="text" className="form-control ${priceErr ? 'showError' : ''}" value={this.state.price}  onChange={this.OnChangeprice} aria-label="Amount (to the nearest dollar)" />
                                   <div className="input-group-append">
@@ -297,7 +271,6 @@ class AddProduct extends Component {
                                  </div>
                           </div>
                           <br/>
-
                           <div className="texboxwidth">
                           <label htmlFor="exampleInput">Quantity</label> <br/>  
                           <div className="icons">
@@ -326,7 +299,6 @@ class AddProduct extends Component {
                                   </div>
                           </div>
                           <br/>
-
                           <div className="texboxwidth">
                           <label htmlFor="exampleInput">Image</label>
                           <div className="icons">
