@@ -9,8 +9,7 @@ import {connect} from "react-redux";
 import {productQuntity} from "../../Actions/ProductQuantity";
 import {removeItem} from "../../Actions/addActions";
 import {clearDetails } from "../../Actions/addActions";
-
-const queryString = require('query-string');
+import queryString from 'query-string';
 
 class OrderCompleteDetails extends Component {
 
@@ -26,21 +25,25 @@ class OrderCompleteDetails extends Component {
             Address:'',
             Number:'',
             TrackNum:'',
-            success: false
+            success: false,
+            fullname:''
 
         }
     }
     componentDidMount() {
         this.getUser()
+
     }
 
     async getUser () {
         var values = queryString.parse(this.props.location.search)
         console.log(this.props.location.search)
-
+        this.setState({
+            fullname: values.fullname,
+        })
         axios({
             method: 'get',
-            url: 'http://54.84.43.211:5000/cart/findUserOrder/' + values.username
+            url: 'http://100.24.72.11:5000/cart/findUserOrder/' + values.username
         }).then(response => {
             this.setState({
                 UserDetails :  response.data.map(product=>product),
@@ -64,7 +67,7 @@ render() {
 
     return (
 <div>
-    <Header />
+    <Header username={this.state.fullname}/>
     {this.state.UserDetails.map( val => (
                             <div className="container" style={{width: "40%", height:"50%", textAlign: "center"}}>
                                 <h1 style={{color: "#e91e63"}} > ORDER DETAILS </h1>

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './css/StoreLoginRegister.css';
-import back from './shopping.gif'
+import back from './images/Store Manager.gif'
 import logo from './images/logo.gif'
-import Header from '../CommonComponents/header'
+import Header from '../CommonComponents/NavbarPage'
 import  { Redirect } from 'react-router-dom'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import swal from 'sweetalert';
@@ -48,7 +48,7 @@ export default class header extends Component{
 
 
         console.log(this.state.storemanagerusername);
-        axios.get('hhttp://100.24.72.11:5000/storemanager/storemanager/'+this.state.storemanagerusername)
+        axios.get('http://100.24.72.11:5000/storemanager/storemanager/'+this.state.storemanagerusername)
         .then(response=>{
 
             console.log(response.data.length)

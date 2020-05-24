@@ -21,7 +21,6 @@ import swal from "sweetalert";
 class PlaceOrder extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
             fullname: '',
             email: '',
@@ -31,7 +30,7 @@ class PlaceOrder extends Component {
             postalCode:'',
             contactNo: '',
             OrderId: '',
-            TotalCost: this.props.basketProps.cartCost,
+            TotalCost: this.props.basketProps.cartCost - this.props.basketProps.getdiscount,
             activeItem: "",
             cardNumber: '',
             cvv: '',
@@ -39,7 +38,8 @@ class PlaceOrder extends Component {
             success: false,
             deliver: '',
             activeSubmit: false,
-            username:''
+            username:'',
+            deliverHome:''
         }
 
     }
@@ -111,7 +111,7 @@ class PlaceOrder extends Component {
             success: true
         })
         swal({
-            title: "You Placed The Order",
+            title: "You Placed The Order. Order details is Sent to your email",
             icon: "warning",
             dangerMode: true,
         })
@@ -135,7 +135,7 @@ class PlaceOrder extends Component {
     }
     handleDeliverChange = event => {
         this.setState({
-            deliver: event.target.value
+            deliverHome:  event.target.value
         })
     }
 
@@ -157,12 +157,12 @@ class PlaceOrder extends Component {
              cardNumber: this.state.cardNumber,
              cvv: this.state.cvv,
              expireDate: this.state.expireDate,
-             deliver: this.state.deliver
+             deliverHome: this.state.deliverHome
          }
          try{
              const responce = await axios({
                  method: 'post',
-                 url: 'http://54.84.43.211:5000/cart/PlaceOrder',
+                 url: 'http://100.24.72.11:5000/cart/PlaceOrder',
                  data: data,
              });
              console.log(responce);
@@ -177,7 +177,7 @@ class PlaceOrder extends Component {
          const {fullname, email, address, contactNo, OrderId, cardNumber,cvv,expireDate,address1,state,postalCode} =this.state
 
          if( this.state.success){
-             return <Redirect to={'orderDetails?username='+ this.state.fullname} />
+             return <Redirect to={'orderDetails?username='+ this.state.fullname +'&fullname='+this.state.username} />
          }
 
 
@@ -207,8 +207,8 @@ class PlaceOrder extends Component {
                                  className='view view-cascade gradient-card-header red lighten-4'
                                  cascade
                                  tag='div'>
-                                 <h2 className='h2-responsive mb-2'> Rs {this.props.basketProps.cartCost}.00 <br /> <br/>
-                                     You got Rs {this.props.basketProps.cartCost - this.props.basketProps.getdiscount} .00 Discount <br /> <br />
+                                 <h2 className='h2-responsive mb-2'> Without Discount : {this.props.basketProps.cartCost}.00 <br /> <br/>
+                                     Your New Total Price : {this.props.basketProps.cartCost - this.props.basketProps.getdiscount}.00 <br /> <br />
 
                                  </h2>
                              </MDBCardImage>
@@ -351,7 +351,7 @@ class PlaceOrder extends Component {
                              type='static'
                              id="defaultFormContactSubjectEx"
                              className="form-control"
-                             placeholder={this.props.basketProps.cartCost}/>
+                             placeholder={this.props.basketProps.cartCost - this.props.basketProps.getdiscount}/>
                      </div>
                  </Form.Group>
 
@@ -386,6 +386,8 @@ class PlaceOrder extends Component {
                                  id="defaultFormContactSubjectEx"
                                  onChange={this.handleCardNumberChange}
                                  value={cardNumber}
+                                 pattern="^[0-16]{16}$"
+
                              />
                          </div>
 
@@ -485,7 +487,7 @@ class PlaceOrder extends Component {
                                  type='static'
                                  id="defaultFormContactSubjectEx"
                                  className="form-control"
-                                 placeholder="Cash On Deliver"
+                                 placeholder="Type YES"
                                  onChange={this.handleDeliverChange}
                              />
                          </div>

@@ -27,14 +27,6 @@ const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
     })
 
 
-            // axios.post('http://localhost:5000/cart/WatchList')
-            //     .then(function (response) {
-            //         console.log(response)
-            //     })
-            //     .catch(function (error) {
-            //         console.log(error)
-            //     })
-
     filteredArr = watchListItems.reduce((acc, current) => {
         const x = acc.find(item => item.productID === current.productID);
         if (!x) {
@@ -52,7 +44,6 @@ const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
         console.log(product)
 
         return(
-
             <tr>
                 <button type="button" className="close" aria-label="Close" onClick={() => removeItem(index, product.price)}>
                 <span aria-hidden="true">&times;</span>
@@ -86,17 +77,6 @@ const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
 
 
             <div>
-                {/*{*/}
-                {/*filteredArr.map( (product, index) => {*/}
-
-                {/*    this.state.userID = product.user,*/}
-                {/*        this.state.avaliable = product.avaliable,*/}
-                {/*        this.state.Product_ID = product.productID,*/}
-                {/*        this.state.price = product.price,*/}
-                {/*        this.state.name = product.name,*/}
-                {/*        this.state.image = product.image,*/}
-                {/*        this.state.discount = product.discount*/}
-                {/*})}*/}
                 <Hea />
                 <div className='container'>
                     <header>
