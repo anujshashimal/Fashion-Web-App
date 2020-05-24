@@ -48,7 +48,7 @@ export default class header extends Component{
 
 
         console.log(this.state.storemanagerusername);
-        axios.get('http://167.172.155.186:5000/storemanager/storemanager/'+this.state.storemanagerusername)
+        axios.get('http://18.207.3.182:5000/storemanager/storemanager/'+this.state.storemanagerusername)
         .then(response=>{
 
             console.log(response.data.length)
