@@ -16,15 +16,13 @@
  }
 
 .product-header{
-    solid-color: #e91e63;
     width: 100%;
     display: flex;
     border-bottom: 4px solid lightgray;
     margin-top: 15%;
     padding: 13px;
     justify-content: center;
-    color: #e91e63;
-    background-color: #ffebee ;
+    color: #c62828;
 }
 
 .product-title{
@@ -80,14 +78,13 @@
 }
 
 .basketTotalTitle{
-    width: 22%;
-    padding-right: 1%;
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    color: #b50418;
 
 }
 
-.basketTotal{
-    width: 15%;
-}
 
 @media all {
     nav h2 {
@@ -139,4 +136,8 @@
     text-align: center;
     background-color: #9725ff;
     color: white;
+}
+
+#basketTotalTitle button {
+    padding-bottom: 300px;
 }
