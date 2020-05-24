@@ -264,7 +264,7 @@ class EditProduct extends Component {
                           <br/>
                              <h1></h1>
                           <div className="texboxwidth">
-                              <label htmlFor="exampleInput">Product Sub Category</label>
+                              <label htmlFor="exampleInput">Product Sub Category</label> <b style={{ color: "red",marginLeft:"1%"}}>[Please select a subcategory]</b>
                                          <div className="icons">
                                               <i class="fas fa-list fa-lg"></i>
                                           </div>
@@ -349,7 +349,7 @@ class EditProduct extends Component {
                                 <div className="icons">
                                      <i class="fas fa-image fa-lg"></i>
                                 </div>
-                           <input ref=" " type="file" className="form-control-file ${imageErr ? 'showError' : ''}" id="exampleFormControlFile1"  onChange={(e)=>this.OnChangeImage(e)} /><b>Please select image</b>
+                           <input ref=" " type="file" className="form-control-file ${imageErr ? 'showError' : ''}" id="exampleFormControlFile1"  onChange={(e)=>this.OnChangeImage(e)} /><b style={{ color: "red"}}>Please select image</b>
                            {imageErr &&    
                                 <div style={{ color: "red", paddingBottom: 10 }}>{imageErr}</div>    
                                   }  
