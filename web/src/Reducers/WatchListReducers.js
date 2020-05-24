@@ -20,7 +20,7 @@ export default (state = initialState, action) =>{
 
             console.log(payload)
             axios({
-                url: 'http://167.172.155.186:5000/cart/WatchList',
+                url: 'http://18.207.3.182:5000/cart/WatchList',
                 method: 'post',
                 data: payload
             })

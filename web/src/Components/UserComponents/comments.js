@@ -24,7 +24,7 @@ export class comments extends Component {
 
     
     componentDidUpdate(){
-        axios.get('hhttp://167.172.155.186:5000/Comments/find')
+        axios.get('http://18.207.3.182:5000/Comments/find')
         .then(response=>{
           if(response.data.length>0){
             this.setState({
@@ -60,7 +60,7 @@ export class comments extends Component {
         try{
             const responce = await axios({
                 method: 'post',
-                url: 'http://167.172.155.186:5000/Comments/add',
+                url: 'http://18.207.3.182:5000/Comments/add',
                 data: data,
               });
               console.log(responce);
@@ -69,7 +69,7 @@ export class comments extends Component {
     }
 
     deleteComment(comment_id) {
-        axios.delete('http://167.172.155.186:5000/Comments/delete/'+comment_id)
+        axios.delete('http://18.207.3.182:5000/Comments/delete/'+comment_id)
         .then(res=>console.log(res.data))
         // this.setState({
         // Products : this.state.Products.filter(product=>product.productid != product_id)
@@ -110,7 +110,7 @@ export class comments extends Component {
             rate: this.state.rating,
         }
 
-        axios.post('http://167.172.155.186:5000/Comments/update/'+this.state.editid,Comments)
+        axios.post('http://18.207.3.182:5000/Comments/update/'+this.state.editid,Comments)
        .then(res=>console.log(res.data));
        this.setState({
         editid: '',

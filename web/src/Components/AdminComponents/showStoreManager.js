@@ -25,7 +25,7 @@ export class showStoreManager extends Component {
     }
     componentDidUpdate() {
 
-        axios.get('http://167.172.155.186:5000/storemanager/getallstoremanagers')
+        axios.get('http://18.207.3.182:5000/storemanager/getallstoremanagers')
             .then(response=>{
                 if(response.data.length>0){
                     this.setState({
@@ -35,7 +35,7 @@ export class showStoreManager extends Component {
             })
     }
     componentDidMount() {
-        axios.get('http://167.172.155.186:5000/storemanager/getallstoremanagers')
+        axios.get('http://18.207.3.182:5000/storemanager/getallstoremanagers')
             .then(response=>{
                 if(response.data.length>0){
                     this.setState({
@@ -115,7 +115,7 @@ export class showStoreManager extends Component {
 
 
                                                                     });
-                                                                    axios.delete('http://167.172.155.186:5000/storemanager/deletestoreManager/'+storeManager.smId)
+                                                                    axios.delete('http://18.207.3.182:5000/storemanager/deletestoreManager/'+storeManager.smId)
                                                                         .then(res=>console.log(res.data));
                                                                 } else {
                                                                     swal("Store Manager is safe!");
