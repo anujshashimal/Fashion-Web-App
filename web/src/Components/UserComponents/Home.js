@@ -52,7 +52,7 @@ export class Home extends Component {
         try {
             const responce = axios({
                 method: 'get',
-                url: 'http://18.207.3.182:5000/cart/findWatchlistItems/' + values.username,
+                url: 'http://100.24.72.11:5000/cart/findWatchlistItems/' + values.username,
                 data: data,
             }).then(response => {
                 this.setState({

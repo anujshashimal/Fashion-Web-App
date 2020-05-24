@@ -125,7 +125,7 @@ export default class header extends Component{
         try{
             const responce = await axios({
                 method: 'post',
-                url: 'http://167.172.155.186:5000/user/add',
+                url: 'http://100.24.72.11:5000/user/add',
                 data: data,
               });
               console.log(responce);
@@ -136,7 +136,7 @@ export default class header extends Component{
 
     async getUsers (){
         console.log(this.state.username)
-        axios.get('http://18.207.3.182:5000/user/finds/'+this.state.username)
+        axios.get('http://100.24.72.11:5000/user/finds/'+this.state.username)
         .then(response=>{
             this.setState({
                 UserAlreadyTaken : response.data.map(user=>user),

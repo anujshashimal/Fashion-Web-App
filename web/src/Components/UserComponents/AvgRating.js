@@ -23,7 +23,7 @@ export class AvgRating extends Component {
     // }
 
     AvarageRate = () =>{
-        axios.get('http://18.207.3.182:5000/Comments/finds/'+this.props.productid)
+        axios.get('http://100.24.72.11:5000/Comments/finds/'+this.props.productid)
         .then(response=>{
 
             this.setState({
