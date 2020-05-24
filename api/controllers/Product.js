@@ -84,7 +84,6 @@ cloudinary.config({                        //cloud configuration
    }
    console.log(newProduct);
   
-   
 }
 
 

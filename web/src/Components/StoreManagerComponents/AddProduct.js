@@ -250,6 +250,7 @@ class AddProduct extends Component {
                               <label htmlFor="exampleInput">Product Sub Category</label>
                               <div className="icons">
                               <i class="fas fa-list fa-lg"></i>
+                              <b style={{ color: "red"}}>Please select a subcategory</b>
                               </div>
                                  <select ref="userInput" required className="form-control" value = {this.state.subcategory} onChange = {this.OnChangesubcategory} multiple= {false}>
                                    {
