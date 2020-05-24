@@ -18,12 +18,6 @@ const header = (props) => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
-                            {/*<li className="nav-item active">*/}
-                            {/*    <Link to={'/adminhome'} className=" nav-link" id="font">Home*/}
-                            {/*        <span className="sr-only">(current)</span>*/}
-                            {/*    </Link>*/}
-
-                            {/*</li>*/}
                              <li className="nav-item">
                                 <Link to={'/addstoremanager'} className=" nav-link" id="font">Add store Manager</Link>
                                 </li>
@@ -35,25 +29,8 @@ const header = (props) => {
                                 </li>
                         </ul>
                         <ul className="nav navbar-nav nav-flex-icons ml-auto">
-                            {/*<li className="nav-item"><a  className="nav-link waves-effect"><span*/}
-                            {/*    className="badge red z-depth-1 mr-1"> {props.WatchListState.backetNumbers} </span> <Link to='/watchlist'> <i id="navbar-static-cart" alt="Cart" className="fas fa-heart"></i><span*/}
-                            {/*    className="sr-only"> Cart </span>  </Link></a> </li>*/}
-
-                            {/*<li className="nav-item"><a  className="nav-link waves-effect">*/}
-                            {/*        <span*/}
-                            {/*            className="badge red z-depth-1 mr-1"> {props.basketProps.backetNumbers} </span><Link to='/cartpage' style={{color: "white"}}><i*/}
-                            {/*    id="navbar-static-cart" alt="Cart" className="fas fa-shopping-cart"></i></Link><span*/}
-                            {/*    className="sr-only"> Cart </span></a></li>*/}
-
-                            {/* <li className="nav-item"><a href="" className="nav-link waves-effect"> <span
-                                    className="badge red z-depth-1 mr-1"> {props.basketProps.backetNumbers} </span><i
-                                    id="navbar-static-cart" alt="Cart" className="fas fa-shopping-cart"></i><span
-                                    className="sr-only"> Cart </span></a></li> */}
-
-
                             <li className="nav-item">
                                 <div className="nav-link waves-effect">
-
                                     {(props.username != '' && props.username != undefined && props.username != "undefined") ?(
                                         <span>
                                                 <i id="navbar-static-cart" alt="Cart" className="fas fa-user"></i>
@@ -61,7 +38,6 @@ const header = (props) => {
                                             &nbsp;&nbsp;&nbsp;&nbsp;
                                             {/* <Link to={"/viewProduct?username="+""} style={{color: "white"}}><i id="navbar-static-cart" alt="Cart" className="fas fa-sign-out-alt"></i>Logout</Link> */}
                                             <Link to={"/Storemanagerlogin"} style={{color: "white"}}><i id="navbar-static-cart" alt="Cart" className="fas fa-sign-out-alt"></i>Logout</Link>
-
                                             {/* <button className="btn btn-outline-white btn-sm my-0" type="">Logout</button> */}
                                             </span>
                                     ) : (
@@ -72,9 +48,6 @@ const header = (props) => {
                                             <Link to={'/Register'} style={{color: "white"}}><i id="navbar-static-cart" alt="Cart" className="fas fa-user-plus"></i>Singup</Link>
                                             </span>
                                     )}
-                                    {/* {props.username}
-                                            <button class="btn btn-outline-white btn-sm my-0" type="submit">Logout</button>
-                                        <span className="sr-only"> Cart </span></div></li>  */}
                                 </div>
                             </li>
                         </ul>
@@ -83,12 +56,10 @@ const header = (props) => {
             </header>
         </div>
     )
-
 }
 const mapStatetoProps = (state) => ({
     basketProps: state.basketState,
     WatchListState : state.watchListState
 })
-
 
 export default connect(mapStatetoProps, {getNumbers}) (header);

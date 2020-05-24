@@ -7,14 +7,12 @@ const initialState = {
 
 export default (state = initialState, action) => {
     const {payload} = action
-
     switch (action.type) {
         case PLACE_ORDER_DIR:
         return{
             ...state,
             cartCost : state.cartCost + payload.price * payload.counter
         }
-
         default :
             return{
                 ...state

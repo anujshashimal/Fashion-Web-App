@@ -1,7 +1,5 @@
 import {ADD_PRODUCT_TO_BACKET, ADD_PRODUCT_TO_WATCHLIST, REMOVE_PRODUCT, CLEAT_ALL_DETAILS} from "./types";
 
-
-
 export const removeItem = (id, price, counter)=>{
     return function (dispatch) {
         console.log("id is" , id)

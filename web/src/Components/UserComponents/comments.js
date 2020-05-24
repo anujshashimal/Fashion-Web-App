@@ -71,10 +71,6 @@ export class comments extends Component {
     deleteComment(comment_id) {
         axios.delete('http://100.24.72.11:5000/Comments/delete/'+comment_id)
         .then(res=>console.log(res.data))
-        // this.setState({
-        // Products : this.state.Products.filter(product=>product.productid != product_id)
-        // })
-        // window.location.reload(false);
         NotificationManager.success('', 'Comment Delete Success');
     }
 

@@ -21,7 +21,6 @@ exports.Find_All_OrderDetails = (req,res,next)=>{
     Order.find()
         .then(products => res.json(products))
         .catch(err=>res.status(400).json('Error :'+err));
-
 };
 
 
@@ -72,8 +71,6 @@ exports.Find_All_OrderDetails_User = (req,res,next)=>{
                     }
                 });
                 }
-
-
             ))}).catch(err=>res.status(400).json("Error:"+err))
 }
 
@@ -84,16 +81,13 @@ exports.Find_Watchlist_Items = (req,res,next)=>{
             res.send(orderDetails)
             console.log(orderDetails)
         })
-
 }
-
 
 exports.Delete_WatchList_Items = (req,res,next)=>{
     WatchListItems.findOneAndDelete({'_id':req.params._id})
         .then(()=>res.json('Item Deleted'))
         .catch(err=>res.status(400).json('Error'+err))
 }
-
 
 exports.Update_WatchList_Items = (req,res,next)=>{
     Product.findOne({'productid':req.params.productid})
@@ -102,10 +96,8 @@ exports.Update_WatchList_Items = (req,res,next)=>{
         }).then(()=>res.json('Item Updated'))
         .catch(err=> res.status(400).json('Err'+err))}
 
-
 exports.GET_Watchlist_Items = (req,res,next)=>{
     WatchListItems.find()
         .then(products => res.json(products))
         .catch(err=>res.status(400).json('Error :'+err));
-
 }

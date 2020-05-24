@@ -12,12 +12,9 @@ export default (state = initialState, action) =>{
     const {payload} = action
     switch(action.type) {
         case ADD_PRODUCT_TO_WATCHLIST:
-
             if(payload.qty == 0){
                 payload.qty =1
             }
-
-
             console.log(payload)
             axios({
                 url: 'http://100.24.72.11:5000/cart/WatchList',
@@ -56,7 +53,6 @@ export default (state = initialState, action) =>{
                     WatchListitems: state.WatchListitems.filter((item, index) => index !== action.payload.name),
                     cartCost: state.cartCost - payload.price
                 }
-
         default:
             return state;
     }

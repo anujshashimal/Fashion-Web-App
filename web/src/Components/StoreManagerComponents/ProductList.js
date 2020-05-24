@@ -17,7 +17,6 @@ const Product = props =>{
         <td className="tabletext"><b><div className="quantitycolor">Out of Stock</div></b></td>
         <td className="tabletext"><b>{props.product.discount}</b></td>
         <td className="tabletext"><img src={props.product.image} alt="Product" style={{width: "10%" , marginTop: "0.5%" , marginBottom: "0.5%" }} /></td>
-        {/* <td className="tabletext"><b>{props.product.stockmanagerid}</b></td> */}
         <td>
          <Link  to= {'/Product/edit/'+props.product.productid}><button  className ="productlistbuttoncolor"><img  src={editimage} alt="logo"/></button></Link>
         </td>  
@@ -37,7 +36,6 @@ const Product = props =>{
         <td className="tabletext"><b>{props.product.quantity}</b></td>
         <td className="tabletext"><b>{props.product.discount}</b></td>
         <td className="tabletext"><img src={props.product.image} alt="Product" style={{width: "10%" , marginTop: "0.5%" , marginBottom: "0.5%" }} /></td>
-        {/* <td className="tabletext"><b>{props.product.stockmanagerid}</b></td> */}
         <td>
          <Link  to= {'/Product/edit/'+props.product.productid}><button  className ="productlistbuttoncolor"><img  src={editimage} alt="logo"/></button></Link>
         </td>  
@@ -54,12 +52,9 @@ export class ProductList extends Component {
   
     constructor(props)
     {   super(props)
-
         this.state = {
-
            Products : [],
         }
-
         this.deleteproduct = this.deleteproduct.bind(this);
     }
  
@@ -91,11 +86,8 @@ export class ProductList extends Component {
    {
       return this.state.Products.map(currentproduct=>{
         return <Product product ={currentproduct}  key={currentproduct.productid} deletedproduct ={this.deleteproduct} ></Product>
-
       })
-
    }
-
   render() {
 
 

@@ -44,50 +44,9 @@ export class showStoreManager extends Component {
                 }
             })
     }
-    // updatesm=(e,id,name,email,password,admin)=>{
-    //     e.preventDefault();
-    //     this.state.Email=this.refs.UpdateEmail.value;
-    //     this.state.password=this.refs.updatePassword.value;
-    //     const updateStoreManager={
-    //         "smId":id,
-    //         "UserName":name,
-    //         "Email":this.state.Email,
-    //         "Password":this.state.password,
-    //         "RePassword":this.state.password,
-    //         "Admin":admin
-    //
-    //     }
-    //     console.log(name);
-    //     swal({
-    //         title: "Do you want to Update "+name,
-    //
-    //         icon: "warning",
-    //         buttons: true,
-    //         dangerMode: true,
-    //     })
-    //         .then((willDelete) => {
-    //             if (willDelete) {
-    //                 swal("Poof! "+name+" has been updated!", {
-    //                     icon: "success",
-    //
-    //
-    //                 });
-    //
-    //                 axios.delete('http://localhost:5000/storemanager/updatestoreManager',updateStoreManager)
-    //                     .then(res=>console.log(res.data));
-    //             } else {
-    //                 swal("Store Manager is safe!");
-    //             }
-    //         });
-    //
-    //
-    // }
-
     render() {
-
         return (    <div> <Header username="admin" /><br/><br/>
                 {this.state.storeManager.map(function(storeManager){
-
                     return <li key={storeManager.smId} value={storeManager.smId}>
                         <div className="conatainer">
                             <div className="row">
@@ -100,7 +59,6 @@ export class showStoreManager extends Component {
                                                 <div className="col-3">
                                                     <h4 className="card-title"><a>{storeManager.UserName}</a></h4>
                                                     <a href="#" id="button" className="btn" onClick={() =>{
-
                                                         swal({
                                                             title: "Do you want to remove "+storeManager.UserName,
                                                             text: "Once deleted, you will not be able to recover !",
@@ -112,8 +70,6 @@ export class showStoreManager extends Component {
                                                                 if (willDelete) {
                                                                     swal("Poof! "+storeManager.UserName+" has been deleted!", {
                                                                         icon: "success",
-
-
                                                                     });
                                                                     axios.delete('http://100.24.72.11:5000/storemanager/deletestoreManager/'+storeManager.smId)
                                                                         .then(res=>console.log(res.data));
@@ -121,32 +77,8 @@ export class showStoreManager extends Component {
                                                                     swal("Store Manager is safe!");
                                                                 }
                                                             });
-
-
                                                     }}>Remove</a>
-                                                    {/*<a href="#" id="button" className="btn " onClick={() =>{*/}
-                                                    {/*    const email =*/}
-                                                    {/*    alert(email);*/}
-                                                    {/*    const updateStoreManager={*/}
-                                                    {/*                "smId":storeManager.smId,*/}
-                                                    {/*                 "UserName":storeManager.UserName,*/}
-                                                    {/*                 "Email":email,*/}
-                                                    {/*                 "Password":email,*/}
-                                                    {/*                 "RePassword":email,*/}
-                                                    {/*                 "Admin":storeManager.Admin*/}
 
-                                                    {/*             }*/}
-
-                                                    {/*    axios.post('http://localhost:5000/storemanager/updatestoreManager',updateStoreManager)*/}
-                                                    {/*                        .then(res=>console.log(res.data));*/}
-
-
-
-
-
-                                                    {/*   }}*/}
-
-                                                    {/*>Update</a>*/}
                                                 </div>
                                                 <div className="col-1"></div>
                                                 <div className="col-8">
@@ -179,51 +111,6 @@ export class showStoreManager extends Component {
                                                         <input type="text" className="form-control py-0"
                                                                id="inlineFormInputGroup" disabled="disabled" placeholder={storeManager.Admin}/>
                                                     </div>
-                                                        {/*<button type="submit" id="button" className="btn " onClick={(e) =>this.updatesm(e,storeManager.smId,storeManager.UserName,storeManager.Password,storeManager.Password,storeManager.Admin)*/}
-
-                                                        {/*    // this.state.Email=this.refs.UpdateEmail.value;*/}
-                                                        {/*    // this.state.password=this.refs.updatePassword.value;*/}
-
-                                                        {/*//     const updateStoreManager={*/}
-                                                        {/*//     "smId":storeManager.smId,*/}
-                                                        {/*//     "UserName":storeManager.UserName,*/}
-                                                        {/*//     "Email":this.refs.UpdateEmail.value,*/}
-                                                        {/*//     "Password":storeManager.Password,*/}
-                                                        {/*//     "RePassword":storeManager.Password,*/}
-                                                        {/*//     "Admin":storeManager.Admin*/}
-                                                        {/*//*/}
-                                                        {/*// }*/}
-                                                        {/*//     console.log(storeManager.UserName);*/}
-                                                        {/*//     swal({*/}
-                                                        {/*//     title: "Do you want to Update "+storeManager.UserName,*/}
-                                                        {/*//*/}
-                                                        {/*//     icon: "warning",*/}
-                                                        {/*//     buttons: true,*/}
-                                                        {/*//     dangerMode: true,*/}
-                                                        {/*// })*/}
-                                                        {/*//     .then((willDelete) => {*/}
-                                                        {/*//     if (willDelete) {*/}
-                                                        {/*//     swal("Poof! "+storeManager.UserName+" has been updated!", {*/}
-                                                        {/*//     icon: "success",*/}
-                                                        {/*//*/}
-                                                        {/*//*/}
-                                                        {/*// });*/}
-                                                        {/*//*/}
-                                                        {/*//     axios.delete('http://localhost:5000/storemanager/updatestoreManager',updateStoreManager)*/}
-                                                        {/*//     .then(res=>console.log(res.data));*/}
-                                                        {/*// } else {*/}
-                                                        {/*//     swal("Store Manager is safe!");*/}
-                                                        {/*// }*/}
-                                                        {/*// });*/}
-
-
-
-
-
-
-                                                        {/*}*/}
-
-                                                        {/*>Update</button>*/}
                                                     </form>
                                                 </div>
                                             </div>

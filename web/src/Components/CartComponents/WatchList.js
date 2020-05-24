@@ -41,7 +41,6 @@ const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
 
     console.log(filteredArr)
     filteredArr = filteredArr.map( (product, index) => {
-        console.log(product)
 
         return(
             <tr>
@@ -51,9 +50,7 @@ const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
                 <img src={product.image} alt="Product" style={{height: "100px" }} />
                 <td className="tabletext">{product.name}</td>
                 <td className="tabletext">
-                    {/*<i onClick={() =>productQuntity("DECREASE", product.productID, product.price)} className="fas fa-angle-left"></i>*/}
                     {product.qty}
-                    {/*<i onClick={() =>productQuntity("INCREASE",product.productID,product.price)} className="fas fa-angle-right"></i>*/}
                 </td>
                 <td className="tabletext">{product.avaliable}</td>
                 <td className="tabletext">{product.discount}</td>
@@ -65,7 +62,6 @@ const WatchList = ({watchListProps, basketProps, removeItemFromWathList}) => {
     const addToCartForPayment = () => {
 
         Object.keys(watchListProps.WatchListitems).forEach( function (item) {
-            console.log(item)
             basketProps.items.push(watchListProps.WatchListitems[item])
             basketProps.backetNumbers = basketProps.backetNumbers+1
             basketProps.cartCost = watchListProps.cartCost

@@ -85,31 +85,8 @@ export default class header extends Component{
             NotificationManager.error('pleace correct', 'Confirm Password not matched');
             return false;
         } else{
-            // this.sendData();
-            // console.log(this.state.username);
-            // console.log(this.state.email);
-            // console.log(this.state.contactno);
-            // console.log(this.state.address);
-            // console.log(this.state.password);
-            // console.log(this.state.conformpassword);
-            // console.log(this.state.gender);
+
             this.getUsers();
-            // if(this.state.UserAlreadyTaken.length > 0){
-            //     alert("User Already Taken");
-            //     return false;
-            // } else{
-            //     this.sendData();
-            //     alert("register successfully");
-            //     this.setState({
-            //         username:'',
-            //         email:'',
-            //         contactno:'',
-            //         address:'',
-            //         password:'',
-            //         conformpassword:'',
-            //         gender:'',
-            //     })
-            // }
         }
     }
 
@@ -150,15 +127,6 @@ export default class header extends Component{
                     // alert("register successfully");
                     swal("Register Success", "", "success");
                     this.setState({success: true});
-                    // this.setState({
-                    //     username:'',
-                    //     email:'',
-                    //     contactno:'',
-                    //     address:'',
-                    //     password:'',
-                    //     conformpassword:'',
-                    //     gender:'',
-                    // })
                 }
             })
             console.log(response)
