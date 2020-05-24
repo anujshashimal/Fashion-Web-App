@@ -51,7 +51,7 @@ export class StoreManagerDetails extends Component {
         });
         //console.log("Id is "+this.state.id);
 
-        axios.get('http://18.207.3.182:5000/storemanager/findstoreManager/'+values.id)
+        axios.get('http://100.24.72.11:5000/storemanager/findstoreManager/'+values.id)
             .then(response=>{
 
                 this.setState({
@@ -102,7 +102,7 @@ export class StoreManagerDetails extends Component {
 
 
                     });
-                    axios.put('http://18.207.3.182:5000/storemanager/updatestoreManager',storeManagerUpdate)
+                    axios.put('http://100.24.72.11:5000/storemanager/updatestoreManager',storeManagerUpdate)
                         .then(res => {
                             // window.location.reload(false);
                         });

@@ -50,7 +50,7 @@ export class ProductDetails extends Component {
             username: values.username,
         })
         console.log('itemid',values.id)
-        axios.get('http://18.207.3.182:5000/Products/finds/'+values.item)
+        axios.get('http://100.24.72.11:5000/Products/finds/'+values.item)
         .then(response=>{
             this.setState({
                 product :  response.data.map(product=>product),
