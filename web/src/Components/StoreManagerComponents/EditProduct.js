@@ -46,7 +46,7 @@ class EditProduct extends Component {
 
   componentDidMount(){
       
-    axios.get('http://167.172.155.186:5000/products/finds/'+this.props.match.params.id)
+    axios.get('http://18.207.3.182:5000/products/finds/'+this.props.match.params.id)
     .then(response=>{
         
          this.setState({
@@ -62,7 +62,7 @@ class EditProduct extends Component {
           console.log(this.state.subcategory);
     }).catch(err=>console.log("Error:"+err))
 
-    axios.get('http://167.172.155.186:5000/category/:id')
+    axios.get('http://18.207.3.182:5000/category/:id')
     .then(response=>{
       if(response.data.length>0){
         this.setState({
@@ -184,7 +184,7 @@ class EditProduct extends Component {
 
       console.log(formdata);
 
-      axios.put('http://167.172.155.186:5000/products/update/'+this.props.match.params.id,formdata)
+      axios.put('http://18.207.3.182:5000/products/update/'+this.props.match.params.id,formdata)
        .then(res=>console.log(res.data));
 
     this.setState({
